@@ -1,0 +1,94 @@
+@import "../../include/index.scss";
+
+/* Checkbox */
+.custom-control {
+    &.custom-checkbox {
+        padding-left: 20px;
+
+        .custom-control-input:checked ~ .custom-control-label:before {
+            border-color: $primary-1;
+        }
+
+        .custom-control-label {
+            &:before {
+                width: 16px;
+                height: 16px;
+                border-color: $b-60;
+                border-width: 2px;
+                left: -20px;
+                top: 3px;
+            }
+
+            &:after {
+                top: 1px;
+                left: -22px;
+                width: 20px;
+            }
+        }
+
+        &.b-custom-control-sm {
+            padding-left: 20px;
+
+            .custom-control-label {
+                &:before {
+                    top: 1px;
+                    left: -20px;
+                    width: 14px;
+                    height: 14px;
+                }
+
+                &:after {
+                    top: 0px;
+                    left: -21px;
+                    width: 17px;
+                    height: 17px;
+                }
+            }
+        }
+
+        &.b-custom-control-lg {
+            padding-left: 30px;
+
+            .custom-control-label {
+                &:before {
+                    top: 8px;
+                    left: -30px;
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 6px;
+                }
+
+                &:after {
+                    top: 6px;
+                    left: -33px;
+                    width: 30px;
+                    height: 28px;
+                }
+            }
+        }
+    }
+}
+
+// .custom-checkbox {
+//     .custom-control-label {
+//         cursor: pointer;
+//         padding-top: 1px;
+
+//         &:before {
+//             border-width: 2px;
+//         }
+//     }
+
+//     &.b-custom-control-lg .custom-control-label::before {
+//         border-radius: 4px;
+//     }
+
+//     &:disabled {
+//         background-color: $b-20;
+//         border-color: $b-60;
+
+//         label {
+//             color: $b-60;
+//         }
+//     }
+// }

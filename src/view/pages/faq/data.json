@@ -1,0 +1,144 @@
+[
+  {
+    "title": "Getting Started",
+    "icon": "ri-flag-line",
+    "accordion": [
+      {
+        "list": [
+          {
+            "id": "accordion-1-1",
+            "title": "Lorem Ipsum Collapse Title 1-1"
+          },
+          {
+            "id": "accordion-1-2",
+            "title": "Lorem Ipsum Collapse Title 1-2"
+          },
+          {
+            "id": "accordion-1-3",
+            "title": "Lorem Ipsum Collapse Title 1-3"
+          }
+        ]
+      },
+      {
+        "list": [
+          {
+            "id": "accordion-1-4",
+            "title": "Lorem Ipsum Collapse Title 1-1"
+          },
+          {
+            "id": "accordion-1-5",
+            "title": "Lorem Ipsum Collapse Title 1-2"
+          },
+          {
+            "id": "accordion-1-6",
+            "title": "Lorem Ipsum Collapse Title 1-3"
+          }
+        ]
+      },
+      {
+        "list": [
+          {
+            "id": "accordion-1-7",
+            "title": "Lorem Ipsum Collapse Title 1-1"
+          },
+          {
+            "id": "accordion-1-8",
+            "title": "Lorem Ipsum Collapse Title 1-2"
+          },
+          {
+            "id": "accordion-1-9",
+            "title": "Lorem Ipsum Collapse Title 1-3"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Pricing",
+    "icon": "ri-price-tag-3-line",
+    "accordion": [
+      {
+        "list": [
+          {
+            "id": "accordion-2-1",
+            "title": "Lorem Ipsum Collapse Title 2"
+          },
+          {
+            "id": "accordion-2-2",
+            "title": "Lorem Ipsum Collapse Title 2"
+          },
+          {
+            "id": "accordion-2-3",
+            "title": "Lorem Ipsum Collapse Title 2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Call Service",
+    "icon": "ri-customer-service-line",
+    "accordion": [
+      {
+        "list": [
+          {
+            "id": "accordion-3-1",
+            "title": "Lorem Ipsum Collapse Title 3"
+          },
+          {
+            "id": "accordion-3-2",
+            "title": "Lorem Ipsum Collapse Title 3"
+          },
+          {
+            "id": "accordion-3-3",
+            "title": "Lorem Ipsum Collapse Title 3"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Mailing",
+    "icon": "ri-mail-send-line",
+    "accordion": [
+      {
+        "list": [
+          {
+            "id": "accordion-4-1",
+            "title": "Lorem Ipsum Collapse Title 4"
+          },
+          {
+            "id": "accordion-4-2",
+            "title": "Lorem Ipsum Collapse Title 4"
+          },
+          {
+            "id": "accordion-4-3",
+            "title": "Lorem Ipsum Collapse Title 4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Server",
+    "icon": "ri-mail-line",
+    "accordion": [
+      {
+        "list": [
+          {
+            "id": "accordion-5-1",
+            "title": "Lorem Ipsum Collapse Title 5"
+          },
+          {
+            "id": "accordion-5-2",
+            "title": "Lorem Ipsum Collapse Title 5"
+          },
+          {
+            "id": "accordion-5-3",
+            "title": "Lorem Ipsum Collapse Title 5"
+          }
+        ]
+      }
+    ]
+  }
+]

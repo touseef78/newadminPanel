@@ -1,0 +1,10 @@
+@import '../../include/index.scss';
+
+/* Dashboard analytics */
+.#{$class-prefix}-analytics-col-2 {
+    flex: 0 0 400px;
+
+    @include breakpoint(lg) {
+        flex: 0 0 100%;
+    }
+}

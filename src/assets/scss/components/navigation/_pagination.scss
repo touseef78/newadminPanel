@@ -1,0 +1,21 @@
+@import "../../include/index.scss";
+
+/* Pagination */
+.pagination {
+    margin: 0 -16px;
+
+    .page-link {
+        min-width: 40px;
+        border-radius: $border-radius !important;
+        margin: 0 8px;
+        text-align: center;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    }
+
+    &.pagination-sm {
+        .page-link {
+            min-width: 32px;
+        }
+    }
+}

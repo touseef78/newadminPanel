@@ -1,0 +1,40 @@
+@import "../../include/index.scss";
+
+/* Modal */
+.modal {
+    &-primary {
+        .modal-title {
+            color: $primary-1;
+        }
+    }
+
+    &-secondary {
+        .modal-title {
+            color: $secondary-1;
+        }
+    }
+
+    &-success {
+        .modal-title {
+            color: $success-1;
+        }
+    }
+
+    &-danger {
+        .modal-title {
+            color: $danger-1;
+        }
+    }
+
+    &-warning {
+        .modal-title {
+            color: $warning-1;
+        }
+    }
+
+    &-info {
+        .modal-title {
+            color: $info-1;
+        }
+    }
+}

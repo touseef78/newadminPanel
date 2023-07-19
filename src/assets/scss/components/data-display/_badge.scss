@@ -1,0 +1,49 @@
+@import "../../include/index.scss";
+
+/* Badge */
+.badge {
+    color: $b-80;
+    background: $b-20;
+    border: 1px solid $b-60;
+
+    &.badge-primary {
+        background: $primary-4;
+        border-color: $primary-1;
+        color: $primary-1;
+    }
+
+    &.badge-secondary {
+        background: $secondary-4;
+        border-color: $secondary-1;
+        color: $secondary-1;
+    }
+
+    &.badge-success {
+        background: $success-4;
+        border-color: $success-1;
+        color: $success-1;
+    }
+
+    &.badge-danger {
+        background: $danger-4;
+        border-color: $danger-1;
+        color: $danger-1;
+    }
+
+    &.badge-warning {
+        background: $warning-4;
+        border-color: $warning-1;
+        color: $warning-1;
+    }
+
+    &.badge-info {
+        background: $info-4;
+        border-color: $info-1;
+        color: $info-1;
+    }
+
+    &.badge-dark {
+        background: $dark-bg;
+        border-color: $b-80;
+    }
+}

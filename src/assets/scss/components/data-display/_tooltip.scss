@@ -1,0 +1,22 @@
+@import "../../include/index.scss";
+
+/* Tooltip */
+.tooltip {
+    &.b-tooltip-warning {
+        .tooltip-inner {
+            color: $b-0;
+        }
+    }
+
+    &.b-tooltip-info {
+        .tooltip-inner {
+            color: $b-0;
+        }
+    }
+
+    &.b-tooltip-success {
+        .tooltip-inner {
+            color: $b-0;
+        }
+    }
+}

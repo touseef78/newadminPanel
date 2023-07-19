@@ -1,0 +1,19 @@
+/* Input */
+.input-group-text {
+    min-height: 40px !important;
+    max-height: 100%;
+}
+
+.input-group-sm > .form-control,
+.input-group-sm > .custom-select,
+.input-group-sm > .input-group-prepend > .input-group-text,
+.input-group-sm > .input-group-append > .input-group-text,
+.input-group-sm > .input-group-prepend > .btn,
+.input-group-sm > .input-group-append > .btn {
+    height: 32px;
+    min-height: 32px !important;
+}
+
+input[type="color"].form-control {
+    height: 20px;
+}

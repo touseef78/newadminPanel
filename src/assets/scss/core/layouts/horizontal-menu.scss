@@ -1,0 +1,136 @@
+@import "../../include/index.scss";
+
+/* Horizontal Menu */
+.#{$class-prefix}-horizontal-menu {
+    ul li a {
+        color: $b-80;
+    }
+
+    > ul > li {
+        > a {
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+
+            > i {
+                font-size: 17px;
+                margin-left: 8px;
+            }
+
+            &:hover,
+            &:focus {
+                background: $primary-4;
+                color: $primary-1;
+            }
+
+            &.active {
+                background: $primary-1;
+                color: $b-0;
+            }
+        }
+
+        ul {
+            min-width: 190px;
+            padding: 8px 0;
+            border: none;
+            background: none;
+            box-shadow: none;
+
+            li {
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 12px 14px;
+
+                    > span {
+                        display: flex;
+                        align-items: center;
+
+                        > i {
+                            margin-right: 8px;
+                        }
+                    }
+
+                    > i {
+                        font-size: 18px;
+                        margin-left: 8px;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        background: none;
+                        color: $primary-1;
+                    }
+
+                    &.dropdown-item {
+                        &.active {
+                            background: none !important;
+                        }
+                    }
+
+                    &.active {
+                        background: $primary-4;
+                        color: $primary-1;
+                    }
+                }
+            }
+        }
+    }
+
+    ul > li {
+        position: relative;
+        padding-bottom: 5px;
+        margin-bottom: -5px;
+
+        > ul > li {
+            ul {
+                transform: translate(0px, 0) !important;
+                left: 100% !important;
+                top: 0 !important;
+                margin: 0 -5px !important;
+                padding: 8px 0;
+            }
+
+            &:hover > ul,
+            > ul > li:hover > ul {
+                display: block;
+            }
+        }
+
+        ul {
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 5px;
+                right: 5px;
+                bottom: 0;
+                background: $b-0;
+                border-radius: 7px;
+                box-shadow: 0 3px 6px -4px rgb(0 0 0 / 1%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);
+                z-index: -1;
+            }
+
+            li a {
+                padding: 12px 20px;
+                margin: 0 5px;
+                width: auto;
+            }
+        }
+
+        &:hover > ul {
+            display: block;
+        }
+
+        > ul {
+            left: 12px !important;
+            transform: translate(0px, 0px) !important;
+            top: 95% !important;
+        }
+    }
+
+    @include breakpoint(lg) {
+        display: none;
+    }
+}
