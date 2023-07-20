@@ -2,56 +2,18 @@ export default {
   header: "Main",
   children: [
     {
-      id: "dashboards",
-      title: "Dashboards",
-      icon: "Curved-Home",
-      children: [
-        {
-          id: "analytics",
-          title: "Analytics",
-          navLink: "/main/dashboards/analytics",
-        },
-        {
-          id: "dashboard-ecommerce",
-          title: "Ecommerce",
-          navLink: "/main/dashboards/ecommerce",
-        },
-      ],
-    },
-    {
       id: "widgets",
       title: "Widgets",
       icon: "Curved-Graph",
       children: [
         {
-          id: "cards",
-          title: "Yoda Card",
-          children: [
-            {
-              id: "advance",
-              title: "Advance",
-              navLink: "/main/widgets/cards/advance",
-            },
-            {
-              id: "statistics",
-              title: "Statistics",
-              navLink: "/main/widgets/cards/statistics",
-            },
-            {
-              id: "widgets-analytics",
-              title: "Analytics",
-              navLink: "/main/widgets/cards/analytics",
-            },
-          ],
-        },
-        {
           id: "charts",
-          title: "Charts",
+          title: "Add Drivers",
           navLink: "/main/widgets/charts",
         },
         {
           id: "illustration-set",
-          title: "Illustration Set",
+          title: "List Drivers",
           navLink: "/main/widgets/illustration-set",
         },
         {

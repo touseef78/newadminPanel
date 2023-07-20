@@ -1,3 +1,4 @@
+
 <template>
   <b-card>
     <b-row class="justify-content-between">
@@ -16,7 +17,7 @@
       </b-col>
 
       <b-col class="hp-flex-none w-auto">
-        <b-button
+        <b-button 
           @click="codeClick()"
           variant="text"
           class="btn-icon-only show-code-btn"
@@ -116,6 +117,7 @@ import {
   BFormCheckbox,
   BFormSelect,
   BFormInput,
+   
 } from "bootstrap-vue";
 
 import code from "./code";
@@ -153,6 +155,7 @@ export default {
     BFormCheckbox,
     BFormSelect,
     BFormInput,
+    
   },
   methods: {
     onSubmit(event) {

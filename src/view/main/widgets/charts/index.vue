@@ -5,47 +5,52 @@
     </b-col>
 
     <b-col cols="12" class="mb-32">
-      <page-title desc="We used Apex Charts and customized for Yoda" />
+      <!-- <page-title desc="We used Apex Charts and customized for Yoda" /> -->
+    </b-col>
+
+    <!-- <b-col cols="12" class="mb-32"> -->
+    <!-- <line-chart /> -->
+
+
+    <b-col cols="12" class="mb-32">
+      <introduction />
+    </b-col>
+
+
+    <b-col cols="12" class="mb-32">
+      <!-- <column-chart /> -->
     </b-col>
 
     <b-col cols="12" class="mb-32">
-      <line-chart />
+      <!-- <area-chart /> -->
     </b-col>
 
     <b-col cols="12" class="mb-32">
-      <column-chart />
-    </b-col>
-
-    <b-col cols="12" class="mb-32">
-      <area-chart />
-    </b-col>
-
-    <b-col cols="12" class="mb-32">
-      <scatter-chart />
+      <!-- <scatter-chart /> -->
     </b-col>
 
     <b-col cols="12" xl="6" class="mb-32">
-      <bar-chart />
+      <!-- <bar-chart /> -->
     </b-col>
 
     <b-col cols="12" xl="6" class="mb-32">
-      <heatmap-chart />
+      <!-- <heatmap-chart /> -->
     </b-col>
 
     <b-col cols="12" xl="6" class="mb-32">
-      <radar-chart />
+      <!-- <radar-chart /> -->
     </b-col>
 
     <b-col cols="12" xl="6" class="mb-32">
-      <candlestick-chart />
+      <!-- <candlestick-chart /> -->
     </b-col>
 
     <b-col cols="12" xl="6" class="mb-32">
-      <donut-chart />
+      <!-- <donut-chart /> -->
     </b-col>
 
     <b-col cols="12" xl="6" class="mb-32">
-      <radialbar-chart />
+      <!-- <radialbar-chart /> -->
     </b-col>
   </b-row>
 </template>
@@ -65,6 +70,7 @@ import RadarChart from "./RadarChart.vue";
 import CandlestickChart from "./CandlestickChart.vue";
 import DonutChart from "./DonutChart.vue";
 import RadialbarChart from "./RadialbarChart.vue";
+import Introduction from "../../../components/data-entry/form/Introduction.vue";
 
 export default {
   components: {
@@ -82,6 +88,7 @@ export default {
     CandlestickChart,
     DonutChart,
     RadialbarChart,
+    Introduction,
   },
 };
 </script>

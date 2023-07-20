@@ -17,16 +17,6 @@ const router = new VueRouter({
 
     // MAIN
     {
-      path: "/main/dashboards/analytics",
-      name: "dashboards-analytics",
-      component: () => import("@/view/main/dashboards/analytics"),
-    },
-    {
-      path: "/main/dashboards/ecommerce",
-      name: "dashboards-ecommerce",
-      component: () => import("@/view/main/dashboards/ecommerce"),
-    },
-    {
       path: "/main/widgets/cards/advance",
       name: "advance",
       component: () => import("@/view/main/widgets/cards/advance"),
