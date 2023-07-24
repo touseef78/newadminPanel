@@ -17,15 +17,8 @@
       </b-col>
 
       <b-col class="hp-flex-none w-auto">
-        <b-button 
-          @click="codeClick()"
-          variant="text"
-          class="btn-icon-only show-code-btn"
-        >
-          <i
-            class="ri-code-s-slash-line hp-text-color-black-80 hp-text-color-dark-30 lh-1"
-            style="font-size: 16px"
-          ></i>
+        <b-button @click="codeClick()" variant="text" class="btn-icon-only show-code-btn">
+          <i class="ri-code-s-slash-line hp-text-color-black-80 hp-text-color-dark-30 lh-1" style="font-size: 16px"></i>
         </b-button>
       </b-col>
     </b-row>
@@ -33,49 +26,22 @@
     <b-row>
       <div class="col-12 mt-16">
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-          <b-form-group
-            id="input-group-1"
-            label="Email address:"
-            label-for="input-1"
-            description="We'll never share your email with anyone else."
-          >
-            <b-form-input
-              id="input-1"
-              v-model="form.email"
-              type="email"
-              placeholder="Enter email"
-              required
-            ></b-form-input>
+          <b-form-group id="input-group-1" label="Email address:" label-for="input-1"
+            description="We'll never share your email with anyone else.">
+            <b-form-input id="input-1" v-model="form.email" type="email" placeholder="Enter email"
+              required></b-form-input>
           </b-form-group>
 
-          <b-form-group
-            id="input-group-2"
-            label="Your Name:"
-            label-for="input-2"
-          >
-            <b-form-input
-              id="input-2"
-              v-model="form.name"
-              placeholder="Enter name"
-              required
-            ></b-form-input>
+          <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+            <b-form-input id="input-2" v-model="form.name" placeholder="Enter name" required></b-form-input>
           </b-form-group>
 
           <b-form-group id="input-group-3" label="Food:" label-for="input-3">
-            <b-form-select
-              id="input-3"
-              v-model="form.food"
-              :options="foods"
-              required
-            ></b-form-select>
+            <b-form-select id="input-3" v-model="form.food" :options="foods" required></b-form-select>
           </b-form-group>
 
           <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
-            <b-form-checkbox-group
-              v-model="form.checked"
-              id="checkboxes-4"
-              :aria-describedby="ariaDescribedby"
-            >
+            <b-form-checkbox-group v-model="form.checked" id="checkboxes-4" :aria-describedby="ariaDescribedby">
               <b-form-checkbox value="me">Check me out</b-form-checkbox>
               <b-form-checkbox value="that">Check that out</b-form-checkbox>
             </b-form-checkbox-group>
@@ -90,11 +56,7 @@
         </b-card>
       </div>
 
-      <div
-        v-if="codeActive"
-        class="col-12 mt-24 hljs-container"
-        :class="{ active: codeActiveClass }"
-      >
+      <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
         <pre v-highlightjs>
           <code class="hljs html">
             {{ codeText }}
@@ -117,7 +79,7 @@ import {
   BFormCheckbox,
   BFormSelect,
   BFormInput,
-   
+
 } from "bootstrap-vue";
 
 import code from "./code";
@@ -155,7 +117,7 @@ export default {
     BFormCheckbox,
     BFormSelect,
     BFormInput,
-    
+
   },
   methods: {
     onSubmit(event) {

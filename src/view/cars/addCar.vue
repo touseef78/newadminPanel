@@ -36,6 +36,17 @@
                             </b-form-group>
 
                         </div>
+                        <!--------------------- Uploading images button----------------------- -->
+                        <div style="margin-left: 15px; margin-bottom:15px;">
+                            <!-- Input field to upload image -->
+                            <input type="file" @change="handleFileChange" accept="image/*">
+
+                            <!-- Image preview -->
+                            <div v-if="imageUrl">
+                                <img :src="imageUrl" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
+                            </div>
+                        </div>
+
                         <!-- <b-form-group id="input-group-3" label="Food:" label-for="input-3">
                             <b-form-select id="input-3" v-model="form.food" :options="foods" required></b-form-select>
                         </b-form-group> -->
@@ -48,10 +59,10 @@
                             </b-form-checkbox-group>
                         </b-form-group> -->
 
-                        <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button>
+                        <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button> -->
                         <!-- <b-button type="reset" variant="danger" class="mb-8 mr-8">Reset</b-button> -->
                     </div>
-
+                    <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button>
 
                 </b-form>
 
@@ -150,4 +161,6 @@ export default {
         },
     },
 };
+
+
 </script>

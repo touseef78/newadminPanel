@@ -7,12 +7,12 @@ export default {
       icon: "Curved-Work",
       children: [
         {
-          id: "charts",
+          id: "drivers",
           title: "Add Drivers",
           navLink: "/drivers/add",
         },
         {
-          id: "illustration-set",
+          id: "drivers",
           title: "List Drivers",
           navLink: "/drivers/list",
         },
@@ -39,14 +39,14 @@ export default {
       icon: "Curved-Document",
       children: [
         {
-          id: "divider",
+          id: "Car",
           title: "Add Car",
-          navLink: "/cars/addCar",
+          navLink: "/cars/add",
         },
         {
-          id: "cars",
+          id: "Car",
           title: "Car List",
-          navLink: "/cars/carList",
+          navLink: "/cars/List",
         },
       ],
     },

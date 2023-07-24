@@ -1,148 +1,66 @@
-
 <template>
     <b-card>
+
+
+
         <b-row>
             <div class="col-12 mt-16">
-                <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-                    <div class="row">
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
-                                <b-form-input id="first_name" v-model="first_name" type="text"
-                                    placeholder="Enter first name" required></b-form-input>
-                            </b-form-group>
-                        </div>
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-2" label="Last Name:" label-for="last_name">
-                                <b-form-input id="last_name" v-model="last_name" placeholder="Enter last name"
-                                    required></b-form-input>
-                            </b-form-group>
-                        </div>
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-2" label="Email Address:" label-for="email">
-                                <b-form-input id="email" v-model="email" placeholder="Enter email address"
-                                    required></b-form-input>
-                            </b-form-group>
+                <b-table :items="items" :fields="fields" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" responsive="sm">
+                    <!-- Action Button Code -->                 
+                    <template #cell(actions)="row">
 
 
-                        </div>
-                        <!-- <b-form-group id="input-group-3" label="Food:" label-for="input-3">
-                            <b-form-select id="input-3" v-model="form.food" :options="foods" required></b-form-select>
-                        </b-form-group> -->
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            style="color: orange;margin-right:8px" class="bi bi-pencil" viewBox="0 0 16 16">
+                            <path
+                                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                        </svg>
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            style="color: red;" class="bi bi-trash3" viewBox="0 0 16 16">
+                            <path
+                                d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                        </svg>
+                    </template> 
 
-                        <!-- <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
-                            <b-form-checkbox-group v-model="form.checked" id="checkboxes-4"
-                                :aria-describedby="ariaDescribedby">
-                                <b-form-checkbox value="me">Check me out</b-form-checkbox>
-                                <b-form-checkbox value="that">Check that out</b-form-checkbox>
-                            </b-form-checkbox-group>
-                        </b-form-group> -->
-
-                        <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button> -->
-                        <!-- <b-button type="reset" variant="danger" class="mb-8 mr-8">Reset</b-button> -->
-                    </div>
-                    <!------------------------ Second Row--------------------------- -->
-                    <div class="row">
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
-                                <b-form-input id="mobile" v-model="mobile" type="text" placeholder="Enter mobile number"
-                                    required></b-form-input>
-                            </b-form-group>
-                        </div>
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-2" label="Gender:" label-for="gender">
-                                <b-form-input id="gender" v-model="gender" placeholder="Enter gender"
-                                    required></b-form-input>
-                            </b-form-group>
-                        </div>
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-2" label="Select Type:" label-for="">
-                                <b-form-input id="select_type" v-model="select_type" placeholder="Enter type"
-                                    required></b-form-input>
-                            </b-form-group>
-
-
-                        </div>
-             
-                    </div>
-                    <!----------------------------------- Third Row -------------------->
-                    <div class="row">
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-1" label="Reference Name:" label-for="ref_name">
-                                <b-form-input id="ref_name" v-model="ref_number" type="text"
-                                    placeholder="Enter reference name" required></b-form-input>
-                            </b-form-group>
-                        </div>
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-2" label="Reference Number:" label-for="ref_num">
-                                <b-form-input id="ref_num" v-model="ref_num" placeholder="Enter reference number"
-                                    required></b-form-input>
-                            </b-form-group>
-                        </div>
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-2" label="CNIC:" label-for="cnic">
-                                <b-form-input id="cnic" v-model="cnic" placeholder="Enter CNIC" required></b-form-input>
-                            </b-form-group>
-                        </div>
-                    </div>
-                        <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button>
-                       
-                </b-form>
+                </b-table>
             </div>
-            <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
-                <pre v-highlightjs>
-          <code class="hljs html">
-            {{ codeText }}
-          </code>
-        </pre>
-            </div>
+
+
+
         </b-row>
     </b-card>
 </template>
 
 <script>
-import {
-    BRow,
-    BCol,
-    BCard,
-    BButton,
-    BForm,
-    BFormGroup,
-    BFormCheckboxGroup,
-    BFormCheckbox,
-    BFormSelect,
-    BFormInput,
+import { BRow, BCol, BCard, BButton, BTable } from "bootstrap-vue";
 
-} from "bootstrap-vue";
-
-import code from "../components/data-entry/form/code";
 
 export default {
     data() {
         return {
-            form: {
-                email: "",
-                name: "",
-                food: null,
-                checked: [],
-            },
-            AddExpensive: [
-                { text: "Select One", value: null },
-                "Tuning",
-                "Change Mobile Oil",
-                "Petrol",
-                "washing",
+            sortBy: 'age',
+            sortDesc: false,
+            fields: [
+                { key: 'name', sortable: true },
+                { key: 'mobile', sortable: true },
+                { key: 'email', sortable: true },
+                { key: 'reference_name', sortable: true },
+                { key: 'reference_number', sortable: true },
+                { key: 'CNIC', sortable: true },
+                { key: 'selection', sortable: true },
+                { key: "actions", label: "Actions" },
+
+
             ],
-            show: true,
-            codeText: code.introduction,
+            items: [
+                { isActive: true, name: 'Ali', mobile: '098765', email: 'ali@gmail.com', reference_name: 'Hannan', reference_number: '098467', CNIC: '35201-9876543-1', selection: 'empty' },
+                { isActive: true, name: 'Ayyan', mobile: '098765', email: 'ali@gmail.com', reference_name: 'Ali', reference_number: '098467', CNIC: '35201-9876543-1', selection: 'empty' },
+                { isActive: true, name: 'Abbas', mobile: '098765', email: 'ali@gmail.com', reference_name: 'Musa', reference_number: '098467', CNIC: '35201-9876543-1', selection: 'empty' },
+                { isActive: true, name: 'Usman', mobile: '098765', email: 'ali@gmail.com', reference_name: 'Us  ama', reference_number: '098467', CNIC: '35201-9876543-1', selection: 'empty' },
+
+            ],
             codeActive: false,
             codeActiveClass: false,
         };
@@ -152,34 +70,9 @@ export default {
         BCol,
         BCard,
         BButton,
-        BForm,
-        BFormGroup,
-        BFormCheckboxGroup,
-        BFormCheckbox,
-        BFormSelect,
-        BFormInput,
-
+        BTable,
     },
     methods: {
-        onSubmit(event) {
-            event.preventDefault();
-            alert(JSON.stringify(this.form));
-            // debugger
-        },
-        onReset(event) {
-            event.preventDefault();
-            // Reset our form values
-            this.form.email = "";
-            this.form.name = "";
-            this.form.food = null;
-            this.form.checked = [];
-            // Trick to reset/clear native browser form validation state
-            this.show = false;
-            this.$nextTick(() => {
-                this.show = true;
-            });
-        },
-
         codeClick() {
             this.codeActive = !this.codeActive;
 

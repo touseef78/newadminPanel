@@ -14,8 +14,8 @@
                         </div>
                         <div class="col-4">
 
-                            <b-form-group id="input-group-2" label="Email:" label-for="email">
-                                <b-form-input id="email" v-model="email" placeholder="Enter email" required></b-form-input>
+                            <b-form-group id="input-group-2" label="Company Name:" label-for="comapnay_name">
+                                <b-form-input id="comapnay_name" v-model="email" placeholder="Enter comapnay name" required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-4">
@@ -47,14 +47,26 @@
                             <b-form-group id="input-group-2" label="Icon Types:" label-for="icon_type">
                                 <b-form-input id="icon_type" v-model="icon_type" placeholder="Select"
                                     required></b-form-input>
+                                <!-- <select>
+                                    <option>hello</option>
+                                </select> -->
                             </b-form-group>
                         </div>
 
-                        <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button>
+                        <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button> -->
                     </div>
-                    <!------------------------ Second Row--------------------------- -->
 
-                    <!-------------------------------- Fourth Row---------------------------- -->
+                    <!--------------------- Uploading images button----------------------- -->
+                    <div style="margin-left: 15px; margin-bottom:15px;">
+                        <!-- Input field to upload image -->
+                        <input type="file" @change="handleFileChange" accept="image/*">
+
+                        <!-- Image preview -->
+                        <div v-if="imageUrl">
+                            <img :src="imageUrl" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
+                        </div>
+                    </div>
+                    <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button>
 
                 </b-form>
 

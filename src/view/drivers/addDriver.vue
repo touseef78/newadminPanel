@@ -9,16 +9,16 @@
 
                             <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
                                 <b-form-input id="first_name" v-model="first_name" type="text"
-                                    placeholder="Enter first name" required></b-form-input>
+                                    placeholder="Enter first name" autocomplete="off" required></b-form-input>
                             </b-form-group>
                         </div>
-                        <div class="col-4">
+                        <!-- <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Last Name:" label-for="last_name">
                                 <b-form-input id="last_name" v-model="last_name" placeholder="Enter last name"
-                                    required></b-form-input>
+                                    autocomplete="off" required></b-form-input>
                             </b-form-group>
-                        </div>
+                        </div> -->
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Email Address:" label-for="email">
@@ -27,6 +27,13 @@
                             </b-form-group>
 
 
+                        </div>
+
+                        <div class="col-4">
+
+                            <b-form-group id="input-group-2" label="CNIC:" label-for="cnic">
+                                <b-form-input id="cnic" v-model="cnic" placeholder="Enter CNIC" required></b-form-input>
+                            </b-form-group>
                         </div>
                         <!-- <b-form-group id="input-group-3" label="Food:" label-for="input-3">
                             <b-form-select id="input-3" v-model="form.food" :options="foods" required></b-form-select>
@@ -61,14 +68,51 @@
                         </div>
                         <div class="col-4">
 
-                            <b-form-group id="input-group-2" label="Select Type:" label-for="">
-                                <b-form-input id="select_type" v-model="select_type" placeholder="Enter type"
+                            <b-form-group id="input-group-2" label="Reference Number:" label-for="ref_num">
+                                <b-form-input id="ref_num" v-model="ref_num" placeholder="Enter reference number"
                                     required></b-form-input>
+                            </b-form-group>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+
+                            <b-form-group id="input-group-1" label="Salary:" label-for="salary">
+                                <b-form-select id="salary" v-model="salary" type="text" placeholder="Enter salary" required>
+                                    <option>Fix</option>
+                                    <option>Commission</option>
+                                </b-form-select>
+                            </b-form-group>
+                        </div>
+
+                        <!-- <div class="col-4">
+
+                            <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
+                                <b-form-select id="select_type" v-model="select_car_type" placeholder="Enter car type"
+                                    required>
+                                    <option>Own</option>
+                                    <option>Company</option>
+
+
+                                </b-form-select>
                             </b-form-group>
 
 
-                        </div>
+                        </div> -->
 
+
+                        <!-- <div class="col-4">
+
+                            <b-form-group id="input-group-2" label="Select Car:" label-for="select_car">
+                                <b-form-select id="select_car" v-model="select_car" placeholder="Enter select car" required>
+                                    <option>Car</option>
+                                    <option>Mini car</option>
+                                    <option>Motorcycle</option>
+                                </b-form-select>
+                            </b-form-group>
+                        </div> -->
                     </div>
                     <!----------------------------------- Third Row -------------------->
                     <div class="row">
@@ -79,19 +123,35 @@
                                     placeholder="Enter reference name" required></b-form-input>
                             </b-form-group>
                         </div>
+
                         <div class="col-4">
 
-                            <b-form-group id="input-group-2" label="Reference Number:" label-for="ref_num">
-                                <b-form-input id="ref_num" v-model="ref_num" placeholder="Enter reference number"
-                                    required></b-form-input>
+                            <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
+                                <b-form-select id="select_type" v-model="select_car_type" placeholder="Enter car type"
+                                    required>
+                                    <option>Own Car</option>
+                                    <option>Company Car</option>
+
+
+                                </b-form-select>
                             </b-form-group>
+
+
                         </div>
+
+
                         <div class="col-4">
 
-                            <b-form-group id="input-group-2" label="CNIC:" label-for="cnic">
-                                <b-form-input id="cnic" v-model="cnic" placeholder="Enter CNIC" required></b-form-input>
+                            <b-form-group id="input-group-2" label="Select Car:" label-for="select_car">
+                                <b-form-select id="select_car" v-model="select_car" placeholder="Enter select car" required>
+                                    <option>Car</option>
+                                    <option>Mini car</option>
+                                    <option>Motorcycle</option>
+                                </b-form-select>
                             </b-form-group>
                         </div>
+
+
                     </div>
                     <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button>
 
