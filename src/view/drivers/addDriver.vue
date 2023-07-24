@@ -8,22 +8,21 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
-                                <b-form-input id="first_name" v-model="first_name" type="text"
-                                    placeholder="Enter first name" autocomplete="off" required></b-form-input>
+                                <b-form-input id="first_name" type="text" placeholder="Enter first name" autocomplete="off"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
                         <!-- <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Last Name:" label-for="last_name">
-                                <b-form-input id="last_name" v-model="last_name" placeholder="Enter last name"
+                                <b-form-input id="last_name"  placeholder="Enter last name"
                                     autocomplete="off" required></b-form-input>
                             </b-form-group>
                         </div> -->
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Email Address:" label-for="email">
-                                <b-form-input id="email" v-model="email" placeholder="Enter email address"
-                                    required></b-form-input>
+                                <b-form-input id="email" placeholder="Enter email address" required></b-form-input>
                             </b-form-group>
 
 
@@ -32,15 +31,15 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="CNIC:" label-for="cnic">
-                                <b-form-input id="cnic" v-model="cnic" placeholder="Enter CNIC" required></b-form-input>
+                                <b-form-input id="cnic" placeholder="Enter CNIC" required></b-form-input>
                             </b-form-group>
                         </div>
                         <!-- <b-form-group id="input-group-3" label="Food:" label-for="input-3">
-                            <b-form-select id="input-3" v-model="form.food" :options="foods" required></b-form-select>
+                            <b-form-select id="input-3" " :options="foods" required></b-form-select>
                         </b-form-group> -->
 
                         <!-- <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
-                            <b-form-checkbox-group v-model="form.checked" id="checkboxes-4"
+                            <b-form-checkbox-group " id="checkboxes-4"
                                 :aria-describedby="ariaDescribedby">
                                 <b-form-checkbox value="me">Check me out</b-form-checkbox>
                                 <b-form-checkbox value="that">Check that out</b-form-checkbox>
@@ -55,22 +54,20 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
-                                <b-form-input id="mobile" v-model="mobile" type="text" placeholder="Enter mobile number"
+                                <b-form-input id="mobile" type="text" placeholder="Enter mobile number"
                                     required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Gender:" label-for="gender">
-                                <b-form-input id="gender" v-model="gender" placeholder="Enter gender"
-                                    required></b-form-input>
+                                <b-form-input id="gender" placeholder="Enter gender" required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Reference Number:" label-for="ref_num">
-                                <b-form-input id="ref_num" v-model="ref_num" placeholder="Enter reference number"
-                                    required></b-form-input>
+                                <b-form-input id="ref_num" placeholder="Enter reference number" required></b-form-input>
                             </b-form-group>
                         </div>
 
@@ -80,7 +77,7 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-1" label="Salary:" label-for="salary">
-                                <b-form-select id="salary" v-model="salary" type="text" placeholder="Enter salary" required>
+                                <b-form-select id="salary" type="text" placeholder="Enter salary" required>
                                     <option>Fix</option>
                                     <option>Commission</option>
                                 </b-form-select>
@@ -90,7 +87,7 @@
                         <!-- <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
-                                <b-form-select id="select_type" v-model="select_car_type" placeholder="Enter car type"
+                                <b-form-select id="select_type"  placeholder="Enter car type"
                                     required>
                                     <option>Own</option>
                                     <option>Company</option>
@@ -106,7 +103,7 @@
                         <!-- <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Select Car:" label-for="select_car">
-                                <b-form-select id="select_car" v-model="select_car" placeholder="Enter select car" required>
+                                <b-form-select id="select_car"  placeholder="Enter select car" required>
                                     <option>Car</option>
                                     <option>Mini car</option>
                                     <option>Motorcycle</option>
@@ -119,16 +116,15 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-1" label="Reference Name:" label-for="ref_name">
-                                <b-form-input id="ref_name" v-model="ref_number" type="text"
-                                    placeholder="Enter reference name" required></b-form-input>
+                                <b-form-input id="ref_name" type="text" placeholder="Enter reference name"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
 
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
-                                <b-form-select id="select_type" v-model="select_car_type" placeholder="Enter car type"
-                                    required>
+                                <b-form-select id="select_type" placeholder="Enter car type" required>
                                     <option>Own Car</option>
                                     <option>Company Car</option>
 
@@ -143,7 +139,7 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Select Car:" label-for="select_car">
-                                <b-form-select id="select_car" v-model="select_car" placeholder="Enter select car" required>
+                                <b-form-select id="select_car" placeholder="Enter select car" required>
                                     <option>Car</option>
                                     <option>Mini car</option>
                                     <option>Motorcycle</option>

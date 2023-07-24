@@ -8,36 +8,34 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-1" label="Name:" label-for="name">
-                                <b-form-input id="name" v-model="first_name" type="text" placeholder="Enter name"
-                                    autocomplete="off" required></b-form-input>
+                                <b-form-input id="name" type="text" placeholder="Enter name" autocomplete="off"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Company Name:" label-for="comapnay_name">
-                                <b-form-input id="comapnay_name" v-model="email" placeholder="Enter comapnay name" required></b-form-input>
+                                <b-form-input id="comapnay_name" placeholder="Enter comapnay name" required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Capacity:" label-for="capacity">
-                                <b-form-input id="capacity" v-model="capacity" placeholder="Enter Capacity"
-                                    required></b-form-input>
+                                <b-form-input id="capacity" placeholder="Enter Capacity" required></b-form-input>
                             </b-form-group>
                         </div>
 
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Description:" label-for="description">
-                                <b-form-input id="description" v-model="description" placeholder="Enter Description"
-                                    required></b-form-input>
+                                <b-form-input id="description" placeholder="Enter Description" required></b-form-input>
                             </b-form-group>
                         </div>
 
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Short Vehicles:" label-for="short_veh">
-                                <b-form-input id="short_veh" v-model="short_veh" placeholder="Example:Toyota,Audi,Acura"
+                                <b-form-input id="short_veh" placeholder="Example:Toyota,Audi,Acura"
                                     required></b-form-input>
                             </b-form-group>
                         </div>
@@ -45,8 +43,7 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Icon Types:" label-for="icon_type">
-                                <b-form-input id="icon_type" v-model="icon_type" placeholder="Select"
-                                    required></b-form-input>
+                                <b-form-input id="icon_type" placeholder="Select" required></b-form-input>
                                 <!-- <select>
                                     <option>hello</option>
                                 </select> -->
@@ -59,12 +56,12 @@
                     <!--------------------- Uploading images button----------------------- -->
                     <div style="margin-left: 15px; margin-bottom:15px;">
                         <!-- Input field to upload image -->
-                        <input type="file" @change="handleFileChange" accept="image/*">
+                        <input type="file" accept="image/*">
 
                         <!-- Image preview -->
-                        <div v-if="imageUrl">
+                        <!-- <div v-if="imageUrl">
                             <img :src="imageUrl" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
-                        </div>
+                        </div> -->
                     </div>
                     <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button>
 

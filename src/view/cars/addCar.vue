@@ -8,22 +8,21 @@
                         <div class="col-6">
 
                             <b-form-group id="input-group-1" label="Car Make:" label-for="car_make">
-                                <b-form-input id="car_make" v-model="first_name" type="text" placeholder="select"
-                                    autocomplete="off" required></b-form-input>
+                                <b-form-input id="car_make" type="text" placeholder="select" autocomplete="off"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-6">
 
                             <b-form-group id="input-group-2" label="Car Model:" label-for="car_model">
-                                <b-form-input id="car_model" v-model="last_name" placeholder="select" autocomplete="off"
+                                <b-form-input id="car_model" placeholder="select" autocomplete="off"
                                     required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-6">
 
                             <b-form-group id="input-group-2" label="Car Color:" label-for="car_color">
-                                <b-form-input id="car_color" v-model="car_color" placeholder="Enter color"
-                                    required></b-form-input>
+                                <b-form-input id="car_color" placeholder="Enter color" required></b-form-input>
                             </b-form-group>
 
                         </div>
@@ -31,28 +30,27 @@
                         <div class="col-6">
 
                             <b-form-group id="input-group-2" label="Car Number:" label-for="car_num">
-                                <b-form-input id="car_color" v-model="car_num" placeholder="Enter number"
-                                    required></b-form-input>
+                                <b-form-input id="car_color" placeholder="Enter number" required></b-form-input>
                             </b-form-group>
 
                         </div>
                         <!--------------------- Uploading images button----------------------- -->
                         <div style="margin-left: 15px; margin-bottom:15px;">
                             <!-- Input field to upload image -->
-                            <input type="file" @change="handleFileChange" accept="image/*">
+                            <input type="file" accept="image/*">
 
                             <!-- Image preview -->
-                            <div v-if="imageUrl">
+                            <!-- <div v-if="imageUrl">
                                 <img :src="imageUrl" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
-                            </div>
+                            </div> -->
                         </div>
 
                         <!-- <b-form-group id="input-group-3" label="Food:" label-for="input-3">
-                            <b-form-select id="input-3" v-model="form.food" :options="foods" required></b-form-select>
+                            <b-form-select id="input-3" food" :options="foods" required></b-form-select>
                         </b-form-group> -->
 
                         <!-- <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
-                            <b-form-checkbox-group v-model="form.checked" id="checkboxes-4"
+                            <b-form-checkbox-group checked" id="checkboxes-4"
                                 :aria-describedby="ariaDescribedby">
                                 <b-form-checkbox value="me">Check me out</b-form-checkbox>
                                 <b-form-checkbox value="that">Check that out</b-form-checkbox>
