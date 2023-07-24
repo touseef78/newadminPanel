@@ -5,23 +5,23 @@
     </b-col>
 
     <b-col cols="12" class="mb-32">
-      <page-title desc="A divider line separates different content." />
+      <!-- <page-title desc="A divider line separates different content." /> -->
     </b-col>
 
     <b-col cols="12" class="mb-32">
-      <horizontal />
+      <!-- <horizontal /> -->
     </b-col>
 
     <b-col cols="12" class="mb-32">
-      <without-heading-style/>
+      <!-- <without-heading-style/> -->
     </b-col>
 
     <b-col cols="12" class="mb-32">
-      <with-title />
+      <!-- <with-title /> -->
     </b-col>
 
     <b-col cols="12" class="mb-32">
-      <vertical />
+      <!-- <vertical /> -->
     </b-col>
   </b-row>
 </template>

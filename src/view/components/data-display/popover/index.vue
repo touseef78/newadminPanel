@@ -11,11 +11,7 @@
         The Popover feature, which provides a tooltip-like behavior, can be
         easily applied to any interactive element via the
         <code>&lt;b-popover&gt;</code> component or
-        <a
-          href="https://bootstrap-vue.org/docs/directives/popover"
-          target="_blank"
-          >v-b-popover</a
-        >
+        <a href="https://bootstrap-vue.org/docs/directives/popover" target="_blank">v-b-popover</a>
         directive.
       </p>
     </b-col>

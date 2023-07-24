@@ -13,21 +13,17 @@
         events, and asynchronous data. For simple display of tabular data
         without all the fancy features, BootstrapVue provides two lightweight
         alternative components
-        <code
-          ><a
-            href="https://bootstrap-vue.org/docs/components/table#light-weight-tables"
-            target="_blank"
-            >&lt;b-table-lite&gt;</a
-          ></code
-        >
+        <code><a
+              href="https://bootstrap-vue.org/docs/components/table#light-weight-tables"
+              target="_blank"
+              >&lt;b-table-lite&gt;</a
+            ></code>
         and
-        <code
-          ><a
-            href="https://bootstrap-vue.org/docs/components/table#simple-tables"
-            target="_blank"
-            >&lt;b-table-simple&gt;</a
-          ></code
-        >.
+        <code><a
+              href="https://bootstrap-vue.org/docs/components/table#simple-tables"
+              target="_blank"
+              >&lt;b-table-simple&gt;</a
+            ></code>.
       </p>
     </b-col>
 

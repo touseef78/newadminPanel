@@ -73,24 +73,38 @@ const router = new VueRouter({
         ]
       },
     },
+
     {
-      path: "/main/widgets/charts",
-      name: "charts",
-      component: () => import("@/view/main/widgets/charts"),
-      meta: {
-        title: "Charts",
-        breadcrumb: [
-          {
-            text: "Main"
-          },
-          {
-            text: "Widgets"
-          }
-        ]
-      },
+      path: "/drivers/add",
+      name: "drivers",
+      component: () => import("@/view/drivers"),
+    },
+
+  {
+      path: "/vehicle/addVehicle",
+      name: "vehicle",
+      component: () => import("@/view/vehicle/addVehicle"),
     },
     {
-      path: "/main/widgets/illustration-set",
+      path: "/vehicle/listVehicle",
+      name: "vehicle",
+      component: () => import("@/view/vehicle/listVehicle"),
+    },
+    {
+      path: "/cars/addCar",
+      name: "Car",
+      component: () => import("@/view/cars/addCar"),
+    },
+
+     {
+      path: "/cars/carList",
+      name: "Car",
+      component: () => import("@/view/cars/carList"),
+    },
+
+
+    {
+      path: "/drivers/list",
       name: "illustration-set",
       component: () => import("@/view/main/widgets/illustration-set"),
       meta: {
