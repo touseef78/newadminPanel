@@ -1,5 +1,5 @@
 <template>
-  <div :class="`hp-theme-customizer${activeClass ? ' active' : ''}`">
+  <!-- <div :class="`hp-theme-customizer${activeClass ? ' active' : ''}`">
     <div class="hp-theme-customizer-button" @click="toggleActive()">
       <div class="hp-theme-customizer-button-bg">
         <svg
@@ -1125,7 +1125,7 @@
         </b-row>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>

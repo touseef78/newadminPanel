@@ -304,5 +304,22 @@
   {
     "title": "Spinner",
     "url": "/components/feedback/spinner"
+  },
+   {
+    "title": "Add Driver",
+    "url": "/drivers/add"
+  },
+  
+   {
+    "title": "List Driver",
+    "url": "/drivers/list"
+  },
+   {
+    "title": "Add Vehicle",
+    "url": "/vehicle/addVehicle"
+  },
+   {
+    "title": "List Vehicle",
+    "url": "/vehicle/listVehicle"
   }
 ]

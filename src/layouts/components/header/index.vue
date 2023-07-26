@@ -7,7 +7,7 @@
           align-h="between"
           class="w-100 position-relative"
         >
-          <b-col
+          <!-- <b-col
             class="w-auto hp-flex-none hp-mobile-sidebar-button ml-4 ml-lg-0 mr-24 px-0"
           >
             <b-button
@@ -20,7 +20,7 @@
                 style="font-size: 24px"
               ></i>
             </b-button>
-          </b-col>
+          </b-col> -->
 
           <header-text v-if="!searchActive" />
 
@@ -37,6 +37,7 @@
                 <div
                   class="d-flex align-items-center mr-4 hp-header-search-button"
                 >
+                <!-- Search Button -->
                   <b-button
                     variant="text"
                     class="btn-icon-only"
@@ -52,6 +53,8 @@
                       style="font-size: 24px"
                     ></i>
                   </b-button>
+
+                  <!-- Ending Search Button -->
                 </div>
               </div>
 
@@ -80,7 +83,7 @@
       width="256px"
       :visible="mobileSidebarShow"
     >
-      <div
+      <!-- <div
         class="d-flex align-items-center justify-content-between pt-16 pl-24 pr-16"
       >
         <logo />
@@ -97,7 +100,7 @@
             ></i>
           </b-button>
         </div>
-      </div>
+      </div> -->
 
       <sidebar :header="false" />
     </b-sidebar>

@@ -1,10 +1,10 @@
 <template>
-  <div class="mr-4 hp-basket-dropdown-button w-auto px-0 position-relative">
+  <!-- <div class="mr-4 hp-basket-dropdown-button w-auto px-0 position-relative">
     <b-button variant="text" class="btn-icon-only">
       <i class="iconly-Curved-Buy hp-text-color-black-60"></i>
-    </b-button>
+    </b-button> -->
 
-    <div class="hp-basket-dropdown">
+    <!-- <div class="hp-basket-dropdown">
       <b-row align-v="center" align-h="between" class="px-8">
         <h5 class="mb-0 w-auto hp-text-color-dark-15 ml-8">My Cart</h5>
 
@@ -93,8 +93,8 @@
           <b-button variant="primary" block>Checkout</b-button>
         </b-col>
       </b-row>
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
 </template>
 
 <script>

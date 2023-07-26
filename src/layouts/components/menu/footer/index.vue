@@ -1,5 +1,5 @@
 <template>
-  <b-row
+  <!-- <b-row
     align-v="center"
     align-h="between"
     class="hp-sidebar-footer pb-24 px-24 mx-0 hp-bg-color-dark-100"
@@ -44,7 +44,7 @@
         ></i>
       </b-link>
     </b-col>
-  </b-row>
+  </b-row> -->
 </template>
 
 <script>

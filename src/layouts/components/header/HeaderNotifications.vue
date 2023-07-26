@@ -3,17 +3,17 @@
     class="hover-dropdown-fade w-auto px-0 d-flex align-items-center mr-8 mr-sm-16 position-relative"
   >
     <b-button variant="text" class="btn-icon-only">
-      <i
+      <!-- <i
         class="iconly-Curved-Notification hp-text-color-black-60 position-relative"
       >
         <span
           class="position-absolute translate-middle rounded-circle bg-primary hp-notification-circle"
           style="width: 6px; height: 6px; top: 2px"
         ></span>
-      </i>
+      </i> -->
     </b-button>
 
-    <div
+    <!-- <div
       class="hp-notification-menu dropdown-fade position-absolute pt-18"
       style="width: 288px; top: 100%"
     >
@@ -160,7 +160,7 @@
           </b-button>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

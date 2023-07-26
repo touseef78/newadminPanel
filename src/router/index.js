@@ -15,6 +15,8 @@ const router = new VueRouter({
       component: () => import("@/view/main/dashboards/analytics"),
     },
 
+    
+
     // MAIN
     {
       path: "/main/widgets/cards/advance",
@@ -78,28 +80,43 @@ const router = new VueRouter({
       path: "/drivers/add",
       name: "drivers",
       component: () => import("@/view/drivers/addDriver"),
+      meta: {
+        layout: "full",
+      },
     },
 
   {
       path: "/vehicle/addVehicle",
       name: "vehicle",
       component: () => import("@/view/vehicle/addVehicle"),
+      meta: {
+        layout: "full",
+      },
     },
     {
       path: "/vehicle/listVehicle",
       name: "vehicle",
       component: () => import("@/view/vehicle/listVehicle"),
+      meta: {
+        layout: "full",
+      },
     },
     {
       path: "/cars/add",
       name: "Car",
       component: () => import("@/view/cars/addCar"),
+      meta: {
+        layout: "full",
+      },
     },
 
      {
       path: "/cars/List",
       name: "Car",
       component: () => import("@/view/cars/carList"),
+      meta: {
+        layout: "full",
+      },
     },
 
 
@@ -107,8 +124,11 @@ const router = new VueRouter({
       path: "/drivers/list",
       name: "drivers",
       component: () => import("@/view/drivers/listDriver"),
-     
+     meta: {
+        layout: "full",
+      },
     },
+    
     {
       path: "/main/widgets/crypto-icons",
       name: "crypto-icons",

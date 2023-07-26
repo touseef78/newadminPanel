@@ -26,7 +26,7 @@
 
         <div class="divider my-12"></div>
 
-        <b-row>
+        <!-- <b-row>
           <b-col cols="12">
             <b-link
               to="#"
@@ -50,7 +50,7 @@
               <span>Help Desk</span>
             </b-link>
           </b-col>
-        </b-row>
+        </b-row> -->
 
         <div class="divider my-12"></div>
 

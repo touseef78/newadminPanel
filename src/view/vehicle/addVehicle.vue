@@ -18,12 +18,7 @@
                                 <b-form-input id="comapnay_name" placeholder="Enter comapnay name" required></b-form-input>
                             </b-form-group>
                         </div>
-                        <div class="col-4">
 
-                            <b-form-group id="input-group-2" label="Capacity:" label-for="capacity">
-                                <b-form-input id="capacity" placeholder="Enter Capacity" required></b-form-input>
-                            </b-form-group>
-                        </div>
 
                         <div class="col-4">
 
@@ -34,27 +29,35 @@
 
                         <div class="col-4">
 
-                            <b-form-group id="input-group-2" label="Short Vehicles:" label-for="short_veh">
-                                <b-form-input id="short_veh" placeholder="Example:Toyota,Audi,Acura"
-                                    required></b-form-input>
-                            </b-form-group>
-                        </div>
+                                <b-form-group id="input-group-2" label="Car Make:" label-for="car_make">
+                                    <b-form-input id="car_make" placeholder="Enter Car Make" required></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-4">
 
-                        <div class="col-4">
+                                <b-form-group id="input-group-2" label="Car Model:" label-for="car_model">
+                                    <b-form-input id="car_model" placeholder="Enter Car Model" required></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-4">
 
-                            <b-form-group id="input-group-2" label="Icon Types:" label-for="icon_type">
-                                <b-form-input id="icon_type" placeholder="Select" required></b-form-input>
-                                <!-- <select>
-                                    <option>hello</option>
-                                </select> -->
-                            </b-form-group>
-                        </div>
+                                <b-form-group id="input-group-2" label="Car Color:" label-for="car_color">
+                                    <b-form-input id="car_color" placeholder="Enter Car Color" required></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-4">
+
+                                    <b-form-group id="input-group-2" label="Car Number:" label-for="car_numbar">
+                                        <b-form-input id="car_numbar" placeholder="Enter Car Number" required></b-form-input>
+                                    </b-form-group>
+                                </div>
+
 
                         <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button> -->
                     </div>
 
                     <!--------------------- Uploading images button----------------------- -->
-                    <div style="margin-left: 15px; margin-bottom:15px;">
+                    <div style="margin-left: 3px; margin-bottom:15px;">
                         <!-- Input field to upload image -->
                         <input type="file" accept="image/*">
 

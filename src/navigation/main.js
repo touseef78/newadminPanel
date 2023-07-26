@@ -33,23 +33,23 @@ export default {
         // },
       ],
     },
-    {
-      id: "Car",
-      title: "Car",
-      icon: "Curved-Document",
-      children: [
-        {
-          id: "Car",
-          title: "Add Car",
-          navLink: "/cars/add",
-        },
-        {
-          id: "Car",
-          title: "Car List",
-          navLink: "/cars/List",
-        },
-      ],
-    },
+    // {
+    //   id: "Car",
+    //   title: "Car",
+    //   icon: "Curved-Document",
+    //   children: [
+    //     {
+    //       id: "Car",
+    //       title: "Add Car",
+    //       navLink: "/cars/add",
+    //     },
+    //     {
+    //       id: "Car",
+    //       title: "Car List",
+    //       navLink: "/cars/List",
+    //     },
+    //   ],
+    // },
      {
       id: "vehicle",
       title: "Vehicle",
@@ -67,5 +67,6 @@ export default {
         },
       ],
     },
+      
   ]
 }

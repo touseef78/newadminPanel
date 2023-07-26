@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <header>
     <b-row class="w-100 m-0">
       <b-col class="pl-18 pr-16 px-sm-24">
@@ -71,7 +71,7 @@
       </b-col>
     </b-row>
   </header>
-</template>
+</template> -->
 
 <script>
 import { BCol, BRow, BButton, BLink } from "bootstrap-vue";
