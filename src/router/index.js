@@ -15,6 +15,15 @@ const router = new VueRouter({
       component: () => import("@/view/main/dashboards/analytics"),
     },
 
+     {
+      path: "/form/driver/add",
+      name: "form/driver/add",
+      component: () => import("../view/drivers/driverForm.vue"),    
+       meta: {
+        layout: "full",
+      }, 
+    },
+
 
      {
       path: "/",
@@ -135,6 +144,9 @@ const router = new VueRouter({
       component: () => import("../view/components/B2B/driver/addDriver.vue"),
      
     },
+
+
+   
     
     {
       path: "/main/widgets/crypto-icons",
