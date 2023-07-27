@@ -11,8 +11,18 @@ const router = new VueRouter({
   },
   routes: [
     {
-      path: "/",
+      path: "/dashboard",
       component: () => import("@/view/main/dashboards/analytics"),
+    },
+
+
+     {
+      path: "/",
+      name: "login",
+      component: () => import("@/view/pages/authentication/login"),
+      meta: {
+        layout: "full",
+      },
     },
 
     
@@ -80,53 +90,50 @@ const router = new VueRouter({
       path: "/drivers/add",
       name: "drivers",
       component: () => import("@/view/drivers/addDriver"),
-      meta: {
-        layout: "full",
-      },
+      //       meta: {
+      //   title: "Crypto Icons",
+      //   breadcrumb: [
+      //     {
+      //       text: "Main"
+      //     },
+      //     {
+      //       text: "Widgets"
+      //     }
+      //   ]
+      // },
     },
 
   {
       path: "/vehicle/addVehicle",
       name: "vehicle",
       component: () => import("@/view/vehicle/addVehicle"),
-      meta: {
-        layout: "full",
-      },
+     
     },
     {
       path: "/vehicle/listVehicle",
       name: "vehicle",
       component: () => import("@/view/vehicle/listVehicle"),
-      meta: {
-        layout: "full",
-      },
+      
     },
-    {
-      path: "/cars/add",
-      name: "Car",
-      component: () => import("@/view/cars/addCar"),
-      meta: {
-        layout: "full",
-      },
-    },
-
-     {
-      path: "/cars/List",
-      name: "Car",
-      component: () => import("@/view/cars/carList"),
-      meta: {
-        layout: "full",
-      },
-    },
-
-
+   
     {
       path: "/drivers/list",
       name: "drivers",
       component: () => import("@/view/drivers/listDriver"),
-     meta: {
-        layout: "full",
-      },
+     
+    },
+    //  B2B 
+     {
+      path: "/driver/lists",
+      name: "driver",
+      component: () => import("../view/components/B2B/driver/listDriver.vue"),
+     
+    },
+      {
+      path: "/driver/add",
+      name: "driver",
+      component: () => import("../view/components/B2B/driver/addDriver.vue"),
+     
     },
     
     {
@@ -449,14 +456,14 @@ const router = new VueRouter({
         ]
       },
     },
-    {
-      path: "/pages/authentication/login",
-      name: "login",
-      component: () => import("@/view/pages/authentication/login"),
-      meta: {
-        layout: "full",
-      },
-    },
+    // {
+    //   path: "/pages/authentication/login",
+    //   name: "login",
+    //   component: () => import("@/view/pages/authentication/login"),
+    //   meta: {
+    //     layout: "full",
+    //   },
+    // },
     {
       path: "/pages/authentication/register",
       name: "register",

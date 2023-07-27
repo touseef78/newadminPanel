@@ -33,26 +33,10 @@ export default {
         // },
       ],
     },
-    // {
-    //   id: "Car",
-    //   title: "Car",
-    //   icon: "Curved-Document",
-    //   children: [
-    //     {
-    //       id: "Car",
-    //       title: "Add Car",
-    //       navLink: "/cars/add",
-    //     },
-    //     {
-    //       id: "Car",
-    //       title: "Car List",
-    //       navLink: "/cars/List",
-    //     },
-    //   ],
-    // },
+    
      {
       id: "vehicle",
-      title: "Vehicle",
+      title: "Vehicle", 
       icon: "Curved-Document",
       children: [
         {
@@ -65,6 +49,48 @@ export default {
           title: "List Vehicle",
           navLink: "/vehicle/listVehicle",
         },
+      ],
+    },
+     {
+      id: "B2B",
+      title: "B2B",
+      icon: "Curved-Business",
+      children: [
+          {
+      id: "driver",
+      title: "Drivers",
+      icon: "Curved-Work",
+      children: [
+        {
+          id: "driver",
+          title: "Add Drivers",
+          navLink: "/driver/add",
+        },
+        {
+          id: "driver",
+          title: "List Drivers",
+          navLink: "/driver/lists",
+        },
+       
+      ],
+    },
+         {
+      id: "vehicles",
+      title: "Vehicle",
+      icon: "Curved-Document",
+      children: [
+        {
+          id: "vehicles",
+          title: "Add Vehicle",
+          navLink: "/vehicle/addVehicle",
+        },
+        {
+          id: "vehicles",
+          title: "List Vehicle",
+          navLink: "/vehicle/listVehicle",
+        },
+      ],
+    },
       ],
     },
       

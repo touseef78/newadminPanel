@@ -5,7 +5,7 @@
             <div class="col-12 mt-16">
                 <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                     <div style="background-color: rgb(97,116,152); height:30px">
-                        <h5 style="color: rgb(223,227,238); margin-left:5px;">Personal Information</h5 >
+                        <h5 style="color: rgb(223,227,238); margin-left:5px;">Personal Information</h5>
                     </div>
                     <div class="row">
                         <div class="col-4">
@@ -90,9 +90,9 @@
                     <!-- <div style="background-color: rgb(121, 156, 166); height:20px">
                         <h6 style="color: rgba(2, 2, 252, 0.607);">Driver Information</h6>
                     </div> -->
-                        <div style="background-color: rgb(97,116,152); height:30px">
-                            <h5 style="color: rgb(223,227,238); margin-left:5px;">Driver Information</h5 >
-                        </div>
+                    <div style="background-color: rgb(97,116,152); height:30px">
+                        <h5 style="color: rgb(223,227,238); margin-left:5px;">Driver Information</h5>
+                    </div>
                     <div class="row">
                         <div class="col-4">
 
@@ -161,10 +161,10 @@
                             <b-row>
 
                                 <div class="col-12 mt-16">
-                                        <div style="background-color: rgb(97,116,152); height:30px">
-                            <h5 style="color: rgb(223,227,238); margin-left:5px;">Add Vehicle</h5 >
-                        </div>
-                                
+                                    <div style="background-color: rgb(97,116,152); height:30px">
+                                        <h5 style="color: rgb(223,227,238); margin-left:5px;">Add Vehicle</h5>
+                                    </div>
+
                                     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                                         <div class="row">
                                             <div class="col-4">
@@ -249,9 +249,9 @@
                     <!-- <div style="background-color: rgb(121, 156, 166); height:20px">
                         <h6 style="color: rgba(2, 2, 252, 0.829);">Salary Information</h6>
                     </div> -->
-                        <div style="background-color: rgb(97,116,152); height:30px">
-                            <h5 style="color: rgb(223,227,238); margin-left:5px;">Salary Information</h5 >
-                        </div>
+                    <div style="background-color: rgb(97,116,152); height:30px">
+                        <h5 style="color: rgb(223,227,238); margin-left:5px;">Salary Information</h5>
+                    </div>
 
                     <div class="row">
                         <div class="col-4">
@@ -279,9 +279,9 @@
                         </div>
                     </div>
                     <!-- Bank Information -->
-                        <div style="background-color: rgb(97,116,152); height:30px">
-                            <h5 style="color: rgb(223,227,238); margin-left:5px;">Bank Information</h5 >
-                        </div>
+                    <div style="background-color: rgb(97,116,152); height:30px">
+                        <h5 style="color: rgb(223,227,238); margin-left:5px;">Bank Information</h5>
+                    </div>
                     <!-- <h3>Bank Infomation</h3> -->
                     <div class="row">
                         <div class="col-4">
@@ -295,7 +295,8 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Bank Account Number:" label-for="bank_account_number">
-                                <b-form-input id="bank_account_number" placeholder="Enter bank account number" required></b-form-input>
+                                <b-form-input id="bank_account_number" placeholder="Enter bank account number"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-4">
@@ -308,40 +309,84 @@
 
                     </div>
                     <div class="row">
-                            <div class="col-4">
+                        <div class="col-4">
 
-                                <b-form-group id="input-group-1" label="Upload Document:"
-                                    label-for="upload_doc">
-                                    <b-form-input id="upload_doc" type="text"
-                                        placeholder="Enter upload document" required></b-form-input>
-                                </b-form-group>
-                            </div>
-                            <div class="col-4">
-<!-- 
+                            <b-form-group id="input-group-1" label="Upload Document:" label-for="upload_doc">
+                                <b-form-input id="upload_doc" type="text" placeholder="Enter upload document"
+                                    required></b-form-input>
+                            </b-form-group>
+                        </div>
+                        <div class="col-4">
+                            <!-- 
                                 <b-form-group id="input-group-2" label="Taxi Driving Liscence:" label-for="taxi_driving_liscence">
                                     <b-form-select id="taxi_driving_liscence" placeholder="Enter taxi driving liscence" required>
                                         <option>Liscence B</option>
                                     </b-form-select>
                                 </b-form-group> -->
 
-                                <b-form-group id="input-group-1" label="Taxi Driving Liscence:" label-for="taxi_driving_liscence">
-                                    <b-form-select v-model="selectedOption" required>
-                                        <option value="">Select Liscence</option>
-                                        <option>Liscence B</option>
-                                        <!-- <option>Commission</option> -->
-                                    </b-form-select>
-                                </b-form-group>
-                            </div>
-                            <div class="col-4">
+                            <b-form-group id="input-group-1" label="Taxi Driving Liscence:"
+                                label-for="taxi_driving_liscence">
+                                <b-form-select v-model="selectedOption" required>
+                                    <option value="">Select Liscence</option>
+                                    <option>Liscence B</option>
+                                    <!-- <option>Commission</option> -->
+                                </b-form-select>
+                            </b-form-group>
+                        </div>
+                        <div class="col-4">
 
-                                <b-form-group id="input-group-1" label=" Emergency Contact Name:" label-for="emergenct_contact_name">
-                                    <b-form-input id="emergenct_contact_name" type="text" placeholder="Enter emergency contact name"
-                                        required></b-form-input>
-                                </b-form-group>
-                            </div>
+                            <b-form-group id="input-group-1" label=" Emergency Contact Name:"
+                                label-for="emergenct_contact_name">
+                                <b-form-input id="emergenct_contact_name" type="text"
+                                    placeholder="Enter emergency contact name" required></b-form-input>
+                            </b-form-group>
+                        </div>
+
+                    </div>
+                    <!-- Bank Information End -->
+
+                    <!-- Company Information  -->
+                    <div style="background-color: rgb(97,116,152); height:30px">
+                        <h5 style="color: rgb(223,227,238); margin-left:5px;">Company Information</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+
+                            <b-form-group id="input-group-1" label="Comapany:" label-for="company">
+                                <b-form-input id="company" type="text" placeholder="Enter comapany" required></b-form-input>
+                            </b-form-group>
+                        </div>
+                        <div class="col-4">
+                            <b-form-group id="input-group-1" label=" Owner Name:" label-for="owner_name">
+                                <b-form-input id="owner_name" type="text" placeholder="Enter owner name"
+                                    required></b-form-input>
+                            </b-form-group>
 
                         </div>
-                    <!-- Bank Information End -->
+                        <div class="col-4">
+
+                            <b-form-group id="input-group-1" label=" Owner Number:" label-for="owner_number">
+                                <b-form-input id="owner_number" type="text" placeholder="Enter owner number"
+                                    required></b-form-input>
+                            </b-form-group>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4">
+
+                            <b-form-group id="input-group-1" label="Comapany Document:" label-for="company_document">
+                                <b-form-input id="company_document" type="text" placeholder="Enter comapany document" required></b-form-input>
+                            </b-form-group>
+                        </div>
+
+
+
+                    </div>
+
+                    <!-- Company information End -->
+
                     <b-button type="submit" variant="primary" class="mb-8 mr-8">Submit</b-button>
 
                 </b-form>
@@ -372,13 +417,13 @@ import {
 
 } from "bootstrap-vue";
 
-import code from "../components/data-entry/form/code";
+// import code from "../components/data-entry/form/code";
 
 export default {
     data() {
         return {
             show: true,
-            codeText: code.introduction,
+            // codeText: code.introduction,
             codeActive: false,
             codeActiveClass: false,
             selectedOption: '', // Holds the selected option from the <b-form-select>

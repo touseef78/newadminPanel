@@ -17,7 +17,7 @@
 
           <b-form class="mt-16 mt-sm-32 mb-8">
             <b-form-group
-              label="Username :"
+              label="Email :"
               label-for="loginUsername"
               class="mb-16"
             >
@@ -37,22 +37,22 @@
                 <b-form-checkbox>Remember me</b-form-checkbox>
               </b-col>
 
-              <b-col class="hp-flex-none w-auto">
+              <!-- <b-col class="hp-flex-none w-auto">
                 <b-link
                   class="hp-button text-black-80 hp-text-color-dark-40"
                   to="/pages/authentication/recover-password"
                 >
                   Forgot Password?
                 </b-link>
-              </b-col>
+              </b-col> -->
             </b-row>
 
-            <b-button to="/" type="submit" variant="primary" class="w-100">
+            <b-button to="/dashboard" type="submit" variant="primary" class="w-100">
               Sign in
             </b-button>
           </b-form>
 
-          <div class="hp-form-info">
+          <!-- <div class="hp-form-info">
             <span class="text-black-80 hp-text-color-dark-40 hp-caption mr-4">
               Don’t you have an account?
             </span>
@@ -117,7 +117,7 @@
             <a href="javascript:;" class="text-black-80 hp-text-color-dark-40">
               Term of use
             </a>
-          </div>
+          </div> -->
         </b-col>
       </b-row>
     </b-col>
