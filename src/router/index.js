@@ -10,7 +10,8 @@ const router = new VueRouter({
   },
   routes: [
     {
-      path: "/dashboard",
+      path: "/",
+      name: "/",
       component: () => import("@/view/main/dashboards/analytics"),
     },
 
@@ -24,14 +25,14 @@ const router = new VueRouter({
     },
 
 
-     {
-      path: "/",
-      name: "login",
-      component: () => import("../view/pages/authentication/login/index.vue"),
-      meta: {
-        layout: "full",
-      },
-    },
+    //  {
+    //   path: "/",
+    //   name: "login",
+    //   component: () => import("../view/pages/authentication/login/index.vue"),
+    //   meta: {
+    //     layout: "full",
+    //   },
+    // },
 
     
 

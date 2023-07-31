@@ -1,6 +1,17 @@
 export default {
   header: "Main",
   children: [
+
+
+    {
+      id: "/",
+      title: "Dashboard",
+      icon: "Curved-Discount",
+      navLink: "/",
+    },
+    
+
+
     {
       id: "drivers",
       title: "Drivers",
@@ -33,7 +44,7 @@ export default {
         // },
       ],
     },
-    
+
      {
       id: "vehicle",
       title: "Vehicle", 
