@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueCompositionAPI, { createApp, h } from '@vue/composition-api'
 
 import store from './store'
+import "./axios";
 import router from './router'
 import App from './App.vue'
 

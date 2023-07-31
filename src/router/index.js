@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -19,7 +18,7 @@ const router = new VueRouter({
      {
       path: "/",
       name: "login",
-      component: () => import("@/view/pages/authentication/login"),
+      component: () => import("../view/pages/authentication/login/index.vue"),
       meta: {
         layout: "full",
       },
@@ -315,60 +314,8 @@ const router = new VueRouter({
     },
     {
       path: "/pages/profile/personel-information",
-      name: "profile-personel-information",
-      component: () => import("@/view/pages/profile"),
-      meta: {
-        title: "Profile",
-        breadcrumb: [
-          {
-            text: "Pages"
-          }
-        ]
-      },
-    },
-    {
-      path: "/pages/profile/notifications",
-      name: "profile-notifications",
-      component: () => import("@/view/pages/profile"),
-      meta: {
-        title: "Profile",
-        breadcrumb: [
-          {
-            text: "Pages"
-          }
-        ]
-      },
-    },
-    {
-      path: "/pages/profile/activity",
-      name: "profile-activity",
-      component: () => import("@/view/pages/profile"),
-      meta: {
-        title: "Profile",
-        breadcrumb: [
-          {
-            text: "Pages"
-          }
-        ]
-      },
-    },
-    {
-      path: "/pages/profile/security",
-      name: "profile-security",
-      component: () => import("@/view/pages/profile"),
-      meta: {
-        title: "Profile",
-        breadcrumb: [
-          {
-            text: "Pages"
-          }
-        ]
-      },
-    },
-    {
-      path: "/pages/profile/password-change",
       name: "profile-password-change",
-      component: () => import("@/view/pages/profile"),
+      component: () => import("../view/pages/profile/PasswordChange.vue"),
       meta: {
         title: "Profile",
         breadcrumb: [
@@ -378,19 +325,9 @@ const router = new VueRouter({
         ]
       },
     },
-    {
-      path: "/pages/profile/connect-with-social",
-      name: "profile-connect-with-social",
-      component: () => import("@/view/pages/profile"),
-      meta: {
-        title: "Profile",
-        breadcrumb: [
-          {
-            text: "Pages"
-          }
-        ]
-      },
-    },
+   
+    
+    
     {
       path: "/pages/invoice",
       name: "invoice",
@@ -1119,6 +1056,7 @@ const router = new VueRouter({
       },
     },
   ]
-})
+});
+
 
 export default router
