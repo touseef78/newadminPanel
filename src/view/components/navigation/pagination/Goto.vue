@@ -1,7 +1,7 @@
 <template>
   <b-card>
     <b-row class="justify-content-between">
-      <b-col class="pr-md-32 pr-md-120">
+      <!-- <b-col class="pr-md-32 pr-md-120">
         <h4>Goto first/last button type</h4>
 
         <p class="hp-p1-body">
@@ -10,7 +10,7 @@
           <code>last-number</code>
           props.
         </p>
-      </b-col>
+      </b-col> -->
 
       <b-col class="hp-flex-none w-auto">
         <b-button
@@ -30,7 +30,7 @@
       <div class="col-12 mt-16">
         <div class="overflow-auto">
           <div>
-            <h6>Goto first button number</h6>
+            <!-- <h6>Goto first button number</h6> -->
             <b-pagination
               v-model="currentPage"
               :total-rows="rows"

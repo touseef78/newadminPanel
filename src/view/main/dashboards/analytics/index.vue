@@ -1,9 +1,9 @@
 <template>
     <b-row class="mb-32">
-        <b-col cols="12" class="mb-32">
+        <!-- <b-col cols="12" class="mb-32">
             <h3>Welcome back, Edward 👋</h3>
             <p class="hp-p1-body mb-0">Your current status and analytics are here</p>
-        </b-col>
+        </b-col> -->
 
         <b-col cols="12">
             <b-row>

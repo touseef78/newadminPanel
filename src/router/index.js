@@ -468,14 +468,14 @@ const router = new VueRouter({
         ]
       },
     },
-    // {
-    //   path: "/pages/authentication/login",
-    //   name: "login",
-    //   component: () => import("@/view/pages/authentication/login"),
-    //   meta: {
-    //     layout: "full",
-    //   },
-    // },
+    {
+      path: "/pages/authentication/login",
+      name: "login",
+      component: () => import("@/view/pages/authentication/login"),
+      meta: {
+        layout: "full",
+      },
+    },
     {
       path: "/pages/authentication/register",
       name: "register",
