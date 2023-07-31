@@ -140,35 +140,12 @@
                         </div>
 
                     </div>
-                    <!-- Driver -->
-                    <!-- <div style="background-color: rgb(121, 156, 166); height:20px">
-                        <h6 style="color: rgba(2, 2, 252, 0.607);">Driver Information</h6>
-                    </div> -->
-                    <div style="background-color: rgb(97,116,152); height:30px">
-                        <h5 style="color: rgb(223,227,238); margin-left:5px;">Driver Information</h5>
-                    </div>
                     <div class="row">
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-1" label="Name:" label-for="name">
-                                <b-form-input id="name" type="text" placeholder="Enter  name" autocomplete="off"
-                                    required></b-form-input>
-                            </b-form-group>
-                        </div>
-
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-2" label="Phone Number:" label-for="phone_num">
-                                <b-form-input id="phone_num" placeholder="Enter phone number" required></b-form-input>
-                            </b-form-group>
-
-
-                        </div>
 
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_pic">
-
+                                <!-- <b-form-input id="profile_pic" placeholder="Enter profile picture" required></b-form-input> -->
                                 <div style="margin-left: 3px; margin-bottom:15px;">
                                     <!-- Input field to upload image -->
                                     <input type="file" accept="image/*">
@@ -180,19 +157,6 @@
                                 </div>
                             </b-form-group>
                         </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-1" label="Start Date:" label-for="start_date">
-                                <b-form-input id="start_date" type="date" placeholder="Enter start date" required>
-
-                                </b-form-input>
-                            </b-form-group>
-                        </div>
-
 
                         <div class="col-4">
                             <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
@@ -307,11 +271,10 @@
                             </b-row>
                         </div>
 
+
+
                     </div>
 
-                    <!-- <div style="background-color: rgb(121, 156, 166); height:20px">
-                        <h6 style="color: rgba(2, 2, 252, 0.829);">Salary Information</h6>
-                    </div> -->
                     <div style="background-color: rgb(97,116,152); height:30px">
                         <h5 style="color: rgb(223,227,238); margin-left:5px;">Salary Information</h5>
                     </div>

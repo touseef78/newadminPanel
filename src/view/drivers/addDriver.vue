@@ -86,178 +86,139 @@
                         </div>
 
                     </div>
-                    <!-- Driver -->
-                    <!-- <div style="background-color: rgb(121, 156, 166); height:20px">
-                        <h6 style="color: rgba(2, 2, 252, 0.607);">Driver Information</h6>
-                    </div> -->
-                        <div style="background-color: rgb(97,116,152); height:30px">
-                            <h5 style="color: rgb(223,227,238); margin-left:5px;">Driver Information</h5 >
-                        </div>
-                    <div class="row">
-                        <div class="col-4">
+                     <div class="row">
+                           <div class="col-4">
 
-                            <b-form-group id="input-group-1" label="Name:" label-for="name">
-                                <b-form-input id="name" type="text" placeholder="Enter  name" autocomplete="off"
-                                    required></b-form-input>
-                            </b-form-group>
-                        </div>
-
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-2" label="Phone Number:" label-for="phone_num">
-                                <b-form-input id="phone_num" placeholder="Enter phone number" required></b-form-input>
-                            </b-form-group>
-
-
-                        </div>
-
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_pic">
-                                <!-- <b-form-input id="profile_pic" placeholder="Enter profile picture" required></b-form-input> -->
-                                 <div style="margin-left: 3px; margin-bottom:15px;">
-                                        <!-- Input field to upload image -->
-                                        <input type="file" accept="image/*">
-
-                                        <!-- Image preview -->
-                                        <!-- <div v-if="imageUrl">
-                            <img :src="imageUrl" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
-                        </div> -->
-                                    </div>
-                            </b-form-group>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-4">
-
-                            <b-form-group id="input-group-1" label="Start Date:" label-for="start_date">
-                                <b-form-input id="start_date" type="date" placeholder="Enter start date" required>
-
-                                </b-form-input>
-                            </b-form-group>
-                        </div>
-
-
-                        <div class="col-4">
-                            <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
-                                <b-form-select v-model="selectedCarType" required>
-                                    <option value="">Select Car Type</option>
-                                    <option>Own</option>
-                                    <option>Company</option>
-                                </b-form-select>
-                            </b-form-group>
-                        </div>
-
-
-
-                        <div v-if="selectedCarType === 'Company'" class="col-4">
-                            <b-form-group id="input-group-2" label="Select Car:" label-for="select_car">
-                                <b-form-select id="select_car" placeholder="Enter select car" required>
-                                    <option value="">Select Car</option>
-                                    <option>Taxi</option>
-                                    <option>Delivery</option>
-                                    <option>Service</option>
-                                    <option>Office Use</option>
-                                    <option>Extra</option>
-
-                                </b-form-select>
-                            </b-form-group>
-                        </div>
-                        <!-- Dropdown  of Add Vehicle -->
-                        <div v-if="selectedCarType === 'Own'">
-                            <b-row>
-
-                                <div class="col-12 mt-16">
-                                        <div style="background-color: rgb(97,116,152); height:30px">
-                            <h5 style="color: rgb(223,227,238); margin-left:5px;">Add Vehicle</h5 >
-                        </div>
-                                
-                                    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-                                        <div class="row">
-                                            <div class="col-4">
-
-                                                <b-form-group id="input-group-1" label="Name:" label-for="name">
-                                                    <b-form-input id="name" type="text" placeholder="Enter name"
-                                                        autocomplete="off" required></b-form-input>
-                                                </b-form-group>
-                                            </div>
-                                            <div class="col-4">
-
-                                                <b-form-group id="input-group-2" label="Company Name:"
-                                                    label-for="comapnay_name">
-                                                    <b-form-input id="comapnay_name" placeholder="Enter comapnay name"
-                                                        required></b-form-input>
-                                                </b-form-group>
-                                            </div>
-
-
-                                            <div class="col-4">
-
-                                                <b-form-group id="input-group-2" label="Description:"
-                                                    label-for="description">
-                                                    <b-form-input id="description" placeholder="Enter Description"
-                                                        required></b-form-input>
-                                                </b-form-group>
-                                            </div>
-
-                                            <div class="col-4">
-
-                                                <b-form-group id="input-group-2" label="Car Make:" label-for="car_make">
-                                                    <b-form-input id="car_make" placeholder="Enter Car Make"
-                                                        required></b-form-input>
-                                                </b-form-group>
-                                            </div>
-                                            <div class="col-4">
-
-                                                <b-form-group id="input-group-2" label="Car Model:" label-for="car_model">
-                                                    <b-form-input id="car_model" placeholder="Enter Car Model"
-                                                        required></b-form-input>
-                                                </b-form-group>
-                                            </div>
-                                            <div class="col-4">
-
-                                                <b-form-group id="input-group-2" label="Car Color:" label-for="car_color">
-                                                    <b-form-input id="car_color" placeholder="Enter Car Color"
-                                                        required></b-form-input>
-                                                </b-form-group>
-                                            </div>
-                                            <div class="col-4">
-
-                                                <b-form-group id="input-group-2" label="Car Number:" label-for="car_numbar">
-                                                    <b-form-input id="car_numbar" placeholder="Enter Car Number"
-                                                        required></b-form-input>
-                                                </b-form-group>
-                                            </div>
-                                        </div>
-
-                                        <!--------------------- Uploading images button----------------------- -->
-                                        <div style="margin-left: 3px; margin-bottom:15px;">
+                                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_pic">
+                                    <!-- <b-form-input id="profile_pic" placeholder="Enter profile picture" required></b-form-input> -->
+                                     <div style="margin-left: 3px; margin-bottom:15px;">
                                             <!-- Input field to upload image -->
                                             <input type="file" accept="image/*">
+
+                                            <!-- Image preview -->
+                                            <!-- <div v-if="imageUrl">
+                            <img :src="imageUrl" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
+                        </div> -->
                                         </div>
-                                    </b-form>
+                                </b-form-group>
+                            </div>
+                            
+                            <div class="col-4">
+                                <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
+                                    <b-form-select v-model="selectedCarType" required>
+                                        <option value="">Select Car Type</option>
+                                        <option>Own</option>
+                                        <option>Company</option>
+                                    </b-form-select>
+                                </b-form-group>
+                            </div>
 
 
-                                </div>
 
-                                <div v-if="codeActive" class="col-12 mt-24 hljs-container"
-                                    :class="{ active: codeActiveClass }">
-                                    <pre v-highlightjs>
+                            <div v-if="selectedCarType === 'Company'" class="col-4">
+                                <b-form-group id="input-group-2" label="Select Car:" label-for="select_car">
+                                    <b-form-select id="select_car" placeholder="Enter select car" required>
+                                        <option value="">Select Car</option>
+                                        <option>Taxi</option>
+                                        <option>Delivery</option>
+                                        <option>Service</option>
+                                        <option>Office Use</option>
+                                        <option>Extra</option>
+
+                                    </b-form-select>
+                                </b-form-group>
+                            </div>
+                            <!-- Dropdown  of Add Vehicle -->
+                            <div v-if="selectedCarType === 'Own'">
+                                <b-row>
+
+                                    <div class="col-12 mt-16">
+                                            <div style="background-color: rgb(97,116,152); height:30px">
+                                <h5 style="color: rgb(223,227,238); margin-left:5px;">Add Vehicle</h5 >
+                            </div>
+                                
+                                        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+                                            <div class="row">
+                                                <div class="col-4">
+
+                                                    <b-form-group id="input-group-1" label="Name:" label-for="name">
+                                                        <b-form-input id="name" type="text" placeholder="Enter name"
+                                                            autocomplete="off" required></b-form-input>
+                                                    </b-form-group>
+                                                </div>
+                                                <div class="col-4">
+
+                                                    <b-form-group id="input-group-2" label="Company Name:"
+                                                        label-for="comapnay_name">
+                                                        <b-form-input id="comapnay_name" placeholder="Enter comapnay name"
+                                                            required></b-form-input>
+                                                    </b-form-group>
+                                                </div>
+
+
+                                                <div class="col-4">
+
+                                                    <b-form-group id="input-group-2" label="Description:"
+                                                        label-for="description">
+                                                        <b-form-input id="description" placeholder="Enter Description"
+                                                            required></b-form-input>
+                                                    </b-form-group>
+                                                </div>
+
+                                                <div class="col-4">
+
+                                                    <b-form-group id="input-group-2" label="Car Make:" label-for="car_make">
+                                                        <b-form-input id="car_make" placeholder="Enter Car Make"
+                                                            required></b-form-input>
+                                                    </b-form-group>
+                                                </div>
+                                                <div class="col-4">
+
+                                                    <b-form-group id="input-group-2" label="Car Model:" label-for="car_model">
+                                                        <b-form-input id="car_model" placeholder="Enter Car Model"
+                                                            required></b-form-input>
+                                                    </b-form-group>
+                                                </div>
+                                                <div class="col-4">
+
+                                                    <b-form-group id="input-group-2" label="Car Color:" label-for="car_color">
+                                                        <b-form-input id="car_color" placeholder="Enter Car Color"
+                                                            required></b-form-input>
+                                                    </b-form-group>
+                                                </div>
+                                                <div class="col-4">
+
+                                                    <b-form-group id="input-group-2" label="Car Number:" label-for="car_numbar">
+                                                        <b-form-input id="car_numbar" placeholder="Enter Car Number"
+                                                            required></b-form-input>
+                                                    </b-form-group>
+                                                </div>
+                                            </div>
+
+                                            <!--------------------- Uploading images button----------------------- -->
+                                            <div style="margin-left: 3px; margin-bottom:15px;">
+                                                <!-- Input field to upload image -->
+                                                <input type="file" accept="image/*">
+                                            </div>
+                                        </b-form>
+
+
+                                    </div>
+
+                                    <div v-if="codeActive" class="col-12 mt-24 hljs-container"
+                                        :class="{ active: codeActiveClass }">
+                                        <pre v-highlightjs>
                                      <code class="hljs html">
                                     {{ codeText }}
                                           </code>
                                                 </pre>
-                                </div>
-                            </b-row>
+                                    </div>
+                                </b-row>
+                            </div>
+                            
+
                         </div>
-
-                    </div>
-
-                    <!-- <div style="background-color: rgb(121, 156, 166); height:20px">
-                        <h6 style="color: rgba(2, 2, 252, 0.829);">Salary Information</h6>
-                    </div> -->
+                    
                         <div style="background-color: rgb(97,116,152); height:30px">
                             <h5 style="color: rgb(223,227,238); margin-left:5px;">Salary Information</h5 >
                         </div>
