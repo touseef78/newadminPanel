@@ -107,7 +107,7 @@
 
             <b-col class="w-auto px-0">
               <span class="d-block w-100 mb-4 font-weight-medium hp-p1-body">
-                Network p⛔️
+                Network ppp⛔️
               </span>
 
               <span
