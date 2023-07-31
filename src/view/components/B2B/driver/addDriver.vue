@@ -2,7 +2,61 @@
 <template>
     <b-card>
         <b-row>
+
             <div class="col-12 mt-16">
+                <!-- Company Information  -->
+                <div style="background-color: rgb(97,116,152); height:30px">
+                    <h5 style="color: rgb(223,227,238); margin-left:5px;">Company Information</h5>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+
+                        <b-form-group id="input-group-1" label="Comapany:" label-for="company">
+                            <b-form-input id="company" type="text" placeholder="Enter comapany" required></b-form-input>
+                        </b-form-group>
+                    </div>
+                    <div class="col-4">
+                        <b-form-group id="input-group-1" label=" Owner Name:" label-for="owner_name">
+                            <b-form-input id="owner_name" type="text" placeholder="Enter owner name"
+                                required></b-form-input>
+                        </b-form-group>
+
+                    </div>
+                    <div class="col-4">
+
+                        <b-form-group id="input-group-1" label=" Owner Number:" label-for="owner_number">
+                            <b-form-input id="owner_number" type="text" placeholder="Enter owner number"
+                                required></b-form-input>
+                        </b-form-group>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+
+                        <b-form-group id="input-group-1" label="Comapany Document:" label-for="company_document">
+
+                            <div style="margin-left: 3px; margin-bottom:15px;">
+                                <!-- Input field to upload image -->
+                                <input type="file" accept="image/*">
+
+                                <!-- Image preview -->
+                                <!-- <div v-if="imageUrl">
+                            <img :src="imageUrl" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
+                        </div> -->
+                            </div>
+                        </b-form-group>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+                <!-- Company information End -->
                 <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                     <div style="background-color: rgb(97,116,152); height:30px">
                         <h5 style="color: rgb(223,227,238); margin-left:5px;">Personal Information</h5>
@@ -51,7 +105,7 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-1" label="Emergency Name:" label-for="emg_name">
-                                <b-form-input id="emg_name" type="text" placeholder="Enter emer name"
+                                <b-form-input id="emg_name" type="text" placeholder="Enter emergency name"
                                     required></b-form-input>
                             </b-form-group>
                         </div>
@@ -61,7 +115,7 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Emergency Number:" label-for="emg_num">
-                                <b-form-input id="emg_num" placeholder="Enter remergency number" required></b-form-input>
+                                <b-form-input id="emg_num" placeholder="Enter emergency number" required></b-form-input>
                             </b-form-group>
                         </div>
 
@@ -114,7 +168,16 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_pic">
-                                <b-form-input id="profile_pic" placeholder="Enter profile picture" required></b-form-input>
+
+                                <div style="margin-left: 3px; margin-bottom:15px;">
+                                    <!-- Input field to upload image -->
+                                    <input type="file" accept="image/*">
+
+                                    <!-- Image preview -->
+                                    <!-- <div v-if="imageUrl">
+                            <img :src="imageUrl" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
+                        </div> -->
+                                </div>
                             </b-form-group>
                         </div>
 
@@ -312,8 +375,16 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-1" label="Upload Document:" label-for="upload_doc">
-                                <b-form-input id="upload_doc" type="text" placeholder="Enter upload document"
-                                    required></b-form-input>
+
+                                <div style="margin-left: 3px; margin-bottom:15px;">
+                                    <!-- Input field to upload image -->
+                                    <input type="file" accept="image/*">
+
+                                    <!-- Image preview -->
+                                    <!-- <div v-if="imageUrl">
+                            <img :src="imageUrl" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
+                        </div> -->
+                                </div>
                             </b-form-group>
                         </div>
                         <div class="col-4">
@@ -346,7 +417,7 @@
                     <!-- Bank Information End -->
 
                     <!-- Company Information  -->
-                    <div style="background-color: rgb(97,116,152); height:30px">
+                    <!-- <div style="background-color: rgb(97,116,152); height:30px">
                         <h5 style="color: rgb(223,227,238); margin-left:5px;">Company Information</h5>
                     </div>
                     <div class="row">
@@ -383,7 +454,7 @@
 
 
 
-                    </div>
+                    </div> -->
 
                     <!-- Company information End -->
 
