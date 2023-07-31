@@ -4,8 +4,8 @@
         <b-row>
             <div class="col-12 mt-16">
                 <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-                    <div style="background-color: rgb(97,116,152); height:30px">
-                        <h5 style="color: rgb(223,227,238); margin-left:5px;">Personal Information</h5 >
+                    <div style="background-color: rgb(97,116,152); height:32px; border-radius:4px;">
+                        <h5 style="color: rgb(223,227,238); margin-left:5px; font-weight:bold;">Personal Information</h5 >
                     </div>
                     <div class="row">
                         <div class="col-4">
@@ -133,8 +133,8 @@
                                 <b-row>
 
                                     <div class="col-12 mt-16">
-                                            <div style="background-color: rgb(97,116,152); height:30px">
-                                <h5 style="color: rgb(223,227,238); margin-left:5px;">Add Vehicle</h5 >
+                                            <div style="background-color: rgb(97,116,152); height:32px;border-radius:4px;">
+                                <h5 style="color: rgb(223,227,238); margin-left:5px; font-weight:bold;">Add Vehicle</h5 >
                             </div>
                                 
                                         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
@@ -219,8 +219,8 @@
 
                         </div>
                     
-                        <div style="background-color: rgb(97,116,152); height:30px">
-                            <h5 style="color: rgb(223,227,238); margin-left:5px;">Salary Information</h5 >
+                        <div style="background-color: rgb(97,116,152); height:32px; border-radius:4px;">
+                            <h5 style="color: rgb(223,227,238); margin-left:5px; font-weight:bold;">Salary Information</h5 >
                         </div>
 
                     <div class="row">
@@ -249,8 +249,8 @@
                         </div>
                     </div>
                     <!-- Bank Information -->
-                        <div style="background-color: rgb(97,116,152); height:30px">
-                            <h5 style="color: rgb(223,227,238); margin-left:5px;">Bank Information</h5 >
+                        <div style="background-color: rgb(97,116,152); height:32px;border-radius:4px;">
+                            <h5 style="color: rgb(223,227,238); margin-left:5px; font-weight:bold;">Bank Information</h5 >
                         </div>
                     <!-- <h3>Bank Infomation</h3> -->
                     <div class="row">

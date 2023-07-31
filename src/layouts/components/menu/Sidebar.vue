@@ -2,19 +2,11 @@
   <div class="hp-sidebar hp-bg-color-black-0 hp-bg-color-dark-100">
     <div class="hp-sidebar-container">
       <div class="hp-sidebar-header-menu">
-        <sidebar-header
-          v-if="header"
-          :collapsed="storeSidebarCollapsed"
-          @sidebarCollapsedProps="sidebarCollapsed"
-        />
+        <sidebar-header v-if="header" :collapsed="storeSidebarCollapsed" @sidebarCollapsedProps="sidebarCollapsed" />
 
         <ul>
-          <sidebar-item
-            :collapsed="storeSidebarCollapsed"
-            :key="index"
-            v-for="(item, index) in sidebarItems"
-            :item="item"
-          />
+          <sidebar-item :collapsed="storeSidebarCollapsed" :key="index" v-for="(item, index) in sidebarItems"
+            :item="item" />
         </ul>
       </div>
 

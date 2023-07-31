@@ -3,12 +3,7 @@
     <div class="menu-title">{{ item.header }}</div>
 
     <ul>
-      <sub-menu
-        :key="index"
-        v-for="(item, index) in item.children"
-        :item="item"
-        :collapsed="collapsed"
-      />
+      <sub-menu :key="index" v-for="(item, index) in item.children" :item="item" :collapsed="collapsed" />
     </ul>
   </li>
 </template>

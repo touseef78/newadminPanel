@@ -6,7 +6,7 @@ export default {
     {
       id: "/",
       title: "Dashboard",
-      icon: "Curved-Discount",
+      icon: "Curved-Graph",
       navLink: "/",
     },
     
@@ -15,7 +15,8 @@ export default {
     {
       id: "drivers",
       title: "Drivers",
-      icon: "Curved-Work",
+      icon: "Curved-AddUser",
+      
       children: [
         {
           id: "drivers",
@@ -48,7 +49,7 @@ export default {
      {
       id: "vehicle",
       title: "Vehicle", 
-      icon: "Curved-Document",
+      icon: "Curved-Wallet",
       children: [
         {
           id: "vehicle",
@@ -65,7 +66,7 @@ export default {
      {
       id: "B2B",
       title: "B2B",
-      icon: "Curved-Business",
+      icon: "Curved-People",
       children: [
           {
       id: "driver",
