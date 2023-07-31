@@ -54,14 +54,16 @@
 
         <div class="divider my-12"></div>
 
-        <b-link class="hp-p1-body" to="/">Logout</b-link>
+        <b-link class="hp-p1-body" @click="logout">Logout</b-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { BRow, BCol, BAvatar, BLink } from "bootstrap-vue";
+import { mapGetters } from "vuex";
+
+import { BRow, BCol, BAvatar, BLink, } from "bootstrap-vue";
 
 export default {
   components: {
@@ -70,5 +72,17 @@ export default {
     BAvatar,
     BLink,
   },
+  computed: {
+    ...mapGetters(["user"]),
+  },
+
+  methods: {
+    logout() {
+      localStorage.removeItem("token");
+      this.$store.dispatch("user", null);
+      this.$router.push("/");
+    },
+  },
+
 };
 </script>
