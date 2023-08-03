@@ -19,6 +19,7 @@
                 id="email"
                 type="text"
                 v-model="email"
+                required
               ></b-form-input>
             </b-form-group>
             <b-form-group label="Password :" label-for="password" class="mb-16">
@@ -26,6 +27,7 @@
                 id="password"
                 type="password"
                 v-model="password"
+                required
               ></b-form-input>
             </b-form-group>
 

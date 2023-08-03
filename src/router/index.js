@@ -10,8 +10,8 @@ const router = new VueRouter({
   },
   routes: [
     {
-      path: "/",
-      name: "/",
+      path: "/dashboard",
+      name: "dashboard",
       component: () => import("@/view/main/dashboards/analytics"),
     },
 
@@ -25,14 +25,14 @@ const router = new VueRouter({
     },
 
 
-    //  {
-    //   path: "/",
-    //   name: "login",
-    //   component: () => import("../view/pages/authentication/login/index.vue"),
-    //   meta: {
-    //     layout: "full",
-    //   },
-    // },
+     {
+      path: "/",
+      name: "login",
+      component: () => import("../view/pages/authentication/login/index.vue"),
+      meta: {
+        layout: "full",
+      },
+    },
 
     
 
@@ -1069,6 +1069,19 @@ const router = new VueRouter({
       },
     },
   ]
+});
+
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+      if (store.getters.user) {
+          next();
+          return;
+      }
+      next("/");
+  } else {
+      next();
+  }
 });
 
 
