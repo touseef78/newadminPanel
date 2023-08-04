@@ -1,7 +1,5 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/yoda-admin-template/vue/'
-    : '/',
+  publicPath:"/",
   lintOnSave: false,
   css: {
     loaderOptions: {
@@ -13,3 +11,22 @@ module.exports = {
     },
   },
 }
+
+
+// module.exports = {
+//   publicPath: process.env.NODE_ENV === 'production'
+//     ? '/yoda-admin-template/vue/'
+//     : '/',
+//   lintOnSave: false,
+//   css: {
+//     loaderOptions: {
+//       sass: {
+//         sassOptions: {
+//           includePaths: ['./node_modules', './src/assets'],
+//         },
+//       },
+//     },
+//   },
+// }
+
+
