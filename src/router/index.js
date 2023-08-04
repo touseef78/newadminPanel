@@ -144,7 +144,22 @@ const router = new VueRouter({
       component: () => import("../view/components/B2B/driver/addDriver.vue"),
      
     },
-
+    // Eidt 
+    //   {
+    //   path: "/drivers/edit",
+    //   name: "drivers",
+    //   component: () => import("@/view/drivers/editDriver"),
+     
+    // },
+   
+    // View Driver 
+    
+  // {
+  //     path: "/drivers/view",
+  //     name: "drivers",
+  //     component: () => import("@/view/drivers/viewDriver"),
+     
+  //   },
 
    
     
