@@ -12,7 +12,8 @@
                     <div class="col-4">
 
                         <b-form-group id="input-group-1" label="Company Name:" label-for="company_name">
-                            <b-form-input id="company_name" type="text" placeholder="Enter comapany name" required></b-form-input>
+                            <b-form-input id="company_name" type="text" placeholder="Enter comapany name"
+                                required></b-form-input>
                         </b-form-group>
                     </div>
                     <div class="col-4">
@@ -189,7 +190,8 @@
 
                                 <div class="col-12 mt-16">
                                     <div style="background-color: rgb(97,116,152); height:32px; border-radius:4px;">
-                                        <h5 style="color: rgb(223,227,238); margin-left:5px; font-weight:bold;">Add Vehicle</h5>
+                                        <h5 style="color: rgb(223,227,238); margin-left:5px; font-weight:bold;">Add Vehicle
+                                        </h5>
                                     </div>
 
                                     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
@@ -286,7 +288,7 @@
                                     <option value="">Select Salary Type</option>
                                     <option>Fix</option>
                                     <option>Commission</option>
-                                     <option>Hourly Enter Amount</option>
+                                    <option>Hourly Enter Amount</option>
                                 </b-form-select>
                             </b-form-group>
                         </div>
@@ -304,12 +306,12 @@
                                     placeholder="Enter commission"></b-form-input>
                             </b-form-group>
                         </div>
-                         <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                                <b-form-group label="Hourly Enter Amount (4$/hour)" label-for="fix-salary-input">
-                                    <b-form-input id="fix-salary-input" type="text" v-model="HourlyEnterAmount"
-                                        placeholder="Enter hourly amount"></b-form-input>
-                                </b-form-group>
-                            </div>
+                        <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
+                            <b-form-group label="Hourly Enter Amount (4$/hour)" label-for="fix-salary-input">
+                                <b-form-input id="fix-salary-input" type="text" v-model="HourlyEnterAmount"
+                                    placeholder="Enter hourly amount"></b-form-input>
+                            </b-form-group>
+                        </div>
                     </div>
                     <!-- Bank Information -->
                     <div style="background-color: rgb(97,116,152); height:32px; border-radius:4px;">
@@ -358,7 +360,7 @@
                             </b-form-group>
                         </div>
                         <div class="col-4">
-                          
+
 
                             <b-form-group id="input-group-1" label="Taxi Driving Liscence:"
                                 label-for="taxi_driving_liscence">
