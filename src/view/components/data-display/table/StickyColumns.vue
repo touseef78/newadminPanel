@@ -8,25 +8,15 @@
           Columns can be made sticky, where they stick to the left of the table
           when the table has a horizontal scrollbar. To make a column a sticky
           column, set the <code>stickyColumn</code> prop in the
-          <a
-            href="https://bootstrap-vue.org/docs/components/table#field-definition-reference"
-            target="_blank"
-            >field's header definition</a
-          >. Sticky columns will only work when the table has either the
+          <a href="https://bootstrap-vue.org/docs/components/table#field-definition-reference" target="_blank">field's
+            header definition</a>. Sticky columns will only work when the table has either the
           <code>sticky-header</code> prop set and/or the responsive prop is set.
         </p>
       </b-col>
 
       <b-col class="hp-flex-none w-auto">
-        <b-button
-          @click="codeClick()"
-          variant="text"
-          class="btn-icon-only show-code-btn"
-        >
-          <i
-            class="ri-code-s-slash-line hp-text-color-black-80 hp-text-color-dark-30 lh-1"
-            style="font-size: 16px"
-          ></i>
+        <b-button @click="codeClick()" variant="text" class="btn-icon-only show-code-btn">
+          <i class="ri-code-s-slash-line hp-text-color-black-80 hp-text-color-dark-30 lh-1" style="font-size: 16px"></i>
         </b-button>
       </b-col>
     </b-row>
@@ -39,17 +29,12 @@
           </b-form-checkbox>
 
           <b-form-checkbox v-model="noCollapse" inline>
-            No border collapse
+            No border collapse 
           </b-form-checkbox>
         </div>
 
-        <b-table
-          :sticky-header="stickyHeader"
-          :no-border-collapse="noCollapse"
-          responsive
-          :items="items"
-          :fields="fields"
-        >
+        <b-table :sticky-header="stickyHeader" :no-border-collapse="noCollapse" responsive :items="items"
+          :fields="fields">
           <template #head(id)>
             <div class="text-nowrap">Row ID</div>
           </template>
@@ -60,11 +45,7 @@
         </b-table>
       </div>
 
-      <div
-        v-if="codeActive"
-        class="col-12 mt-24 hljs-container"
-        :class="{ active: codeActiveClass }"
-      >
+      <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
         <pre v-highlightjs>
           <code class="hljs html">
             {{ codeText }}
