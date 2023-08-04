@@ -1,7 +1,7 @@
 <template>
   <b-card>
     <b-row class="justify-content-between">
-      <b-col class="pr-md-32 pr-md-120">
+      <!-- <b-col class="pr-md-32 pr-md-120">
         <h4>Basic</h4>
 
         <p class="hp-p1-body">
@@ -14,18 +14,11 @@
           <code>&lt;b-pagination-nav&gt;</code> component instead. <br /><br />
           Example Usage with <code>&lt;b-table&gt;</code>:
         </p>
-      </b-col>
+      </b-col> -->
 
       <b-col class="hp-flex-none w-auto">
-        <b-button
-          @click="codeClick()"
-          variant="text"
-          class="btn-icon-only show-code-btn"
-        >
-          <i
-            class="ri-code-s-slash-line hp-text-color-black-80 hp-text-color-dark-30 lh-1"
-            style="font-size: 16px"
-          ></i>
+        <b-button @click="codeClick()" variant="text" class="btn-icon-only show-code-btn">
+          <i class="ri-code-s-slash-line hp-text-color-black-80 hp-text-color-dark-30 lh-1" style="font-size: 16px"></i>
         </b-button>
       </b-col>
     </b-row>
@@ -35,30 +28,16 @@
         <div class="overflow-auto">
           <p class="mt-3 hp-p1-body">Current Page: {{ currentPage }}</p>
 
-          <b-table
-            id="my-table"
-            :items="items"
-            :per-page="perPage"
-            :current-page="currentPage"
-            small
-          ></b-table>
+          <b-table id="my-table" :items="items" :per-page="perPage" :current-page="currentPage" small></b-table>
         </div>
 
         <div class="mx-8 d-flex justify-content-end">
-          <b-pagination
-            v-model="currentPage"
-            :total-rows="rows"
-            :per-page="perPage"
-            aria-controls="my-table"
-          ></b-pagination>
+          <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"
+            aria-controls="my-table"></b-pagination>
         </div>
       </div>
 
-      <div
-        v-if="codeActive"
-        class="col-12 mt-24 hljs-container"
-        :class="{ active: codeActiveClass }"
-      >
+      <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
         <pre v-highlightjs>
           <code class="hljs html">
             {{ codeText }}
