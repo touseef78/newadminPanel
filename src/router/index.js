@@ -166,7 +166,7 @@ const router = new VueRouter({
    
     
   {
-      path: "/drivers/view",
+      path: "/drivers/view/:id",
       name: "viewDrivers",
       component: () => import("../view/drivers/viewDriver.vue"),
     },
