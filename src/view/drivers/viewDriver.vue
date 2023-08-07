@@ -57,7 +57,7 @@
                       id="email"
                       placeholder="Enter email address"
                       v-model="email"
-                      required
+                      disabled
                     >
                     </b-form-input>
                     <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
@@ -70,7 +70,7 @@
                       id="ssn"
                       placeholder="Enter SSN"
                       v-model="ssn"
-                      required
+                      disabled
                     ></b-form-input>
                   </b-form-group>
                 </div>
@@ -88,7 +88,7 @@
                       type="text"
                       placeholder="Enter mobile number"
                       v-model="mobile"
-                      required
+                      disabled
                     ></b-form-input>
                   </b-form-group>
                 </div>
@@ -102,7 +102,7 @@
                       id="gender"
                       placeholder="Enter gender"
                       v-model="gender"
-                      required
+                      disabled
                     ></b-form-input>
                   </b-form-group>
                 </div>
@@ -117,7 +117,7 @@
                       type="text"
                       placeholder="Enter emer name"
                       v-model="emergency_name"
-                      required
+                      disabled
                     ></b-form-input>
                   </b-form-group>
                 </div>
@@ -133,7 +133,7 @@
                       id="emergency_number"
                       placeholder="Enter remergency number"
                       v-model="emergency_number"
-                      required
+                      disabled
                     ></b-form-input>
                   </b-form-group>
                 </div>
@@ -148,7 +148,7 @@
                       id="address"
                       placeholder="Enter address"
                       v-model="address"
-                      required
+                      disabled
                     >
                     </b-form-input>
                   </b-form-group>
@@ -164,7 +164,7 @@
                       type="date"
                       placeholder="Enter date of birth"
                       v-model="date_of_birth"
-                      required
+                      disabled
                     ></b-form-input>
                   </b-form-group>
                 </div>
@@ -188,7 +188,7 @@
                     label="Select Car Type:"
                     label-for="select_car_type"
                   >
-                    <b-form-select v-model="selectedCarType">
+                    <b-form-select v-model="selectedCarType" disabled>
                       <option value="">Select Car Type</option>
                       <option>Own</option>
                       <option>Company</option>
@@ -206,7 +206,7 @@
                       id="vehicle_id"
                       placeholder="Enter select car"
                       v-model="vehicle_id"
-                      required
+                      disabled
                     >
                       <option value="">Select Car</option>
                       <option
@@ -242,109 +242,118 @@
                       </div>
   
                       <!-- <b-form @submit="onSubmit" @reset="onReset" v-if="show"> -->
-                      <div class="row">
-                        <div class="col-4">
-                          <b-form-group
-                            id="input-group-1"
-                            label="Name:"
-                            label-for="name"
-                          >
-                            <b-form-input
-                              id="name"
-                              type="text"
-                              placeholder="Enter name"
-                              autocomplete="off"
-                            ></b-form-input>
-                          </b-form-group>
-                        </div>
-                        <div class="col-4">
-                          <b-form-group
-                            id="input-group-2"
-                            label="Company Name:"
-                            label-for="company_name"
-                          >
-                            <b-form-input
-                              id="company_name"
-                              placeholder="Enter comapnay name"
-                              v-model="company_name"
-                              required
-                            ></b-form-input>
-                          </b-form-group>
-                        </div>
-  
-                        <div class="col-4">
-                          <b-form-group
-                            id="input-group-2"
-                            label="Description:"
-                            label-for="description"
-                          >
-                            <b-form-input
-                              id="description"
-                              placeholder="Enter Description"
-                              required
-                            ></b-form-input>
-                          </b-form-group>
-                        </div>
-  
-                        <div class="col-4">
-                          <b-form-group
-                            id="input-group-2"
-                            label="Car Make:"
-                            label-for="car_make"
-                          >
-                            <b-form-input
-                              id="car_make"
-                              placeholder="Enter Car Make"
-                              required
-                            ></b-form-input>
-                          </b-form-group>
-                        </div>
-                        <div class="col-4">
-                          <b-form-group
-                            id="input-group-2"
-                            label="Car Model:"
-                            label-for="car_model"
-                          >
-                            <b-form-input
-                              id="car_model"
-                              placeholder="Enter Car Model"
-                              required
-                            ></b-form-input>
-                          </b-form-group>
-                        </div>
-                        <div class="col-4">
-                          <b-form-group
-                            id="input-group-2"
-                            label="Car Color:"
-                            label-for="car_color"
-                          >
-                            <b-form-input
-                              id="car_color"
-                              placeholder="Enter Car Color"
-                              v-model="car_color"
-                              required
-                            ></b-form-input>
-                          </b-form-group>
-                        </div>
-                        <div class="col-4">
-                          <b-form-group
-                            id="input-group-2"
-                            label="Car Number:"
-                            label-for="car_numbar"
-                          >
-                            <b-form-input
-                              id="car_numbar"
-                              placeholder="Enter Car Number"
-                              required
-                            ></b-form-input>
-                          </b-form-group>
-                        </div>
+                        <div class="row">
+                      <div class="col-4">
+                        <b-form-group
+                          id="input-group-1"
+                          label="Name:"
+                          label-for="name"
+                        >
+                          <b-form-input
+                            id="name"
+                            type="text"
+                            placeholder="Enter name"
+                            autocomplete="off"
+                            v-model="vehicle_name"
+                            disabled
+                          ></b-form-input>
+                        </b-form-group>
                       </div>
+                      <div class="col-4">
+                        <b-form-group
+                          id="input-group-2"
+                          label="Company Name:"
+                          label-for="company_name"
+                        >
+                          <b-form-input
+                            id="vehicle_company"
+                            placeholder="Enter comapnay name"
+                            v-model="vehicle_company"
+                            disabled
+
+                          ></b-form-input>
+                        </b-form-group>
+                      </div>
+
+                      <div class="col-4">
+                        <b-form-group
+                          id="input-group-2"
+                          label="Description:"
+                          label-for="description"
+                        >
+                          <b-form-input
+                            id="description"
+                            placeholder="Enter Description"
+                            v-model="description"
+                            disabled
+                          ></b-form-input>
+                        </b-form-group>
+                      </div>
+
+                      <div class="col-4">
+                        <b-form-group
+                          id="input-group-2"
+                          label="Car Make:"
+                          label-for="car_make"
+                        >
+                          <b-form-input
+                            id="car_make"
+                            placeholder="Enter Car Make"
+                            v-model="car_make"
+                            disabled
+                          ></b-form-input>
+                        </b-form-group>
+                      </div>
+                      <div class="col-4">
+                        <b-form-group
+                          id="input-group-2"
+                          label="Car Model:"
+                          label-for="car_model"
+                        >
+                          <b-form-input
+                            id="car_model"
+                            placeholder="Enter Car Model"
+                            v-model="car_model"
+                            disabled
+
+                          ></b-form-input>
+                        </b-form-group>
+                      </div>
+                      <div class="col-4">
+                        <b-form-group
+                          id="input-group-2"
+                          label="Car Color:"
+                          label-for="car_color"
+                        >
+                          <b-form-input
+                            id="car_color"
+                            placeholder="Enter Car Color"
+                            v-model="car_color"
+                            disabled
+
+                          ></b-form-input>
+                        </b-form-group>
+                      </div>
+                      <div class="col-4">
+                        <b-form-group
+                          id="input-group-2"
+                          label="Car Number:"
+                          label-for="car_number"
+                        >
+                          <b-form-input
+                            id="car_numbar"
+                            placeholder="Enter Car Number"
+                            v-model="car_number"
+                            disabled
+                          ></b-form-input>
+                        </b-form-group>
+                      </div>
+                    </div>
   
                       <!--------------------- Uploading images button----------------------- -->
                       <div style="margin-left: 3px; margin-bottom: 15px">
                         <!-- Input field to upload image -->
-                        <input type="file" accept="image/*" />
+                        <img :src="'/' + vehicle_image" alt="vehicle Picture" width="100" height="100">
                       </div>
                       <!-- </b-form> -->
                     </div>
@@ -389,7 +398,7 @@
                     label="Salary:"
                     label-for="salary"
                   >
-                    <b-form-select v-model="selectedOption" required>
+                    <b-form-select v-model="selectedOption" disabled>
                       <option value="">Select Salary Type</option>
                       <option>Fix</option>
                       <option>Commission</option>
@@ -408,6 +417,7 @@
                       type="text"
                       v-model="salary_fix"
                       placeholder="Enter fix salary"
+                      disabled
                     ></b-form-input>
                   </b-form-group>
                 </div>
@@ -473,7 +483,7 @@
                       type="text"
                       placeholder="Enter bank account holder name"
                       v-model="bank_name"
-                      required
+                      disabled
                     ></b-form-input>
                   </b-form-group>
                 </div>
@@ -487,7 +497,7 @@
                       id="bank_account_number"
                       placeholder="Enter bank account number"
                       v-model="bank_account_number"
-                      required
+                      disabled
                     ></b-form-input>
                   </b-form-group>
                 </div>
@@ -502,7 +512,7 @@
                       type="text"
                       placeholder="Enter company name"
                       v-model="company_name_own"
-                      required
+                      disabled
                     ></b-form-input>
                   </b-form-group>
                 </div>
@@ -511,15 +521,10 @@
                 <div class="col-4">
                   <b-form-group
                     id="input-group-1"
-                    label="Upload Document:"
-                    label-for="upload_doc"
+                    label-for="bank_upload_document"
                   >
                     <div style="margin-left: 3px; margin-bottom: 15px">
-                      <input
-                        type="file"
-                        accept="image/*"
-                        id="bank_upload_document"
-                      />
+                      <img :src="'/' + bank_upload_document" alt="Bank Documents" width="100" height="100">
                     </div>
                   </b-form-group>
                 </div>
@@ -529,7 +534,7 @@
                     label="Taxi Driving Liscence:"
                     label-for="taxi_driving_liscence"
                   >
-                    <b-form-select v-model="taxi_driving_liscence">
+                    <b-form-select v-model="taxi_driving_liscence" disabled>
                       <option value="">Select Liscence</option>
                       <option>Liscence B</option>
                       <!-- <option>Commission</option> -->
@@ -547,7 +552,7 @@
                       type="text"
                       placeholder="Enter emergency contact name"
                       v-model="bank_emergency_contact_name"
-                      required
+                      disabled
                     ></b-form-input>
                   </b-form-group>
                 </div>
@@ -648,7 +653,17 @@
         successMessage: "",
         vehicle_id: "",
         vehicles: [],
-        editedUser: {}
+        editedUser: {},
+
+
+        vehicle_name: "",
+vehicle_company: "",
+description: "",
+car_make: "",
+car_model: "",
+car_color: "",
+car_number: "",
+vehicle_image: null,
       };
     },
     components: {
@@ -708,6 +723,14 @@
         this.company_document = this.editedUser.company_document;
         this.vehicle_id = this.editedUser.vehicle_id;
         this.taxi_driving_liscence = this.editedUser.taxi_driving_liscence;
+        this.vehicle_name = this.editedUser.vehicle_name;
+        this.description = this.editedUser.description;
+        this.vehicle_company = this.editedUser.vehicle_company;
+        this.car_make = this.editedUser.car_make;
+        this.car_model = this.editedUser.car_model;
+        this.car_color = this.editedUser.car_color;
+        this.car_number = this.editedUser.car_number;
+        this.vehicle_image = this.editedUser.vehicle_image;
     // Depending on the selected option, set the appropriate salary value
     if (this.editedUser.salary_fix !== null) {
           this.selectedOption = 'Fix';
