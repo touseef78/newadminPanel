@@ -7,11 +7,11 @@
     <b-col cols="12" class="mb-32">
       <page-title />
 
-      <p class="hp-p1-body mb-0">
+      <!-- <p class="hp-p1-body mb-0">
         Quick first, previous, next, last, and page buttons for pagination
         control of another component (such as <code>&lt;b-table&gt;</code> or
         lists).
-      </p>
+      </p> -->
     </b-col>
 
     <b-col cols="12" class="mb-32">

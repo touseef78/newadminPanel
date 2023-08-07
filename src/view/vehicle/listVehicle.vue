@@ -60,7 +60,7 @@ export default {
         return {
             sortBy: 'age',
             sortDesc: false,
-            vehicles:[],
+            vehicles: [],
             fields: [
                 { key: 'id', sortable: true },
                 { key: 'name', sortable: true },
@@ -105,7 +105,18 @@ export default {
     //             console.log(error);
     //         });
     // },
-   
+    computed: {
+        sortOptions() {
+            return this.fields
+                .filter((f) => f.sortable)
+                .map((f) => {
+                    return { text: f.label, value: f.key };
+                });
+        },
+    },
+    mounted() {
+        this.fetchData();
+    },
     methods: {
         fetchData() {
             axios
@@ -119,19 +130,59 @@ export default {
                 });
         },
 
-        viewUser(user) {
-            // Implement the functionality to view the user details, e.g., show a modal
-            console.log('View user:', user);
+        // viewUser(user) {
+        //     // Implement the functionality to view the user details, e.g., show a modal
+        //     console.log('View user:', user);
+        // },
+
+        // editUser(user) {
+        //     // Implement the functionality to edit the user details, e.g., show an edit form
+        //     console.log('Edit user:', user);
+        // },
+
+        // deleteUser(user) {
+        //     // Implement the functionality to delete the user, e.g., show a confirmation dialog
+        //     console.log('Delete user:', user);
+        // },
+        onFiltered(filteredItems) {
+            this.totalRows = filteredItems.length;
+            this.currentPage = 1;
+        },
+        codeClick() {
+            this.codeActive = !this.codeActive;
         },
 
-        editUser(user) {
-            // Implement the functionality to edit the user details, e.g., show an edit form
-            console.log('Edit user:', user);
+        exportDataToCSV() {
+            const csv = Papa.unparse(this.users);
+            const blob = new Blob([csv], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "exported_data.csv";
+            a.click();
+            URL.revokeObjectURL(url);
         },
 
-        deleteUser(user) {
-            // Implement the functionality to delete the user, e.g., show a confirmation dialog
-            console.log('Delete user:', user);
+
+        editUser(userId) {
+            this.$router.push({ name: "editVehicle", params: { id: userId } });
+        },
+
+        showDrivers(userId) {
+            this.$router.push({ name: "viewVehicle", params: { id: userId } });
+        },
+        deleteItem(itemId) {
+            this.itemIdToDelete = itemId; // Set the item ID to be deleted
+            axios
+                .delete(`vehicle/${itemId}`)
+                .then((response) => {
+                    this.showDeleteConfirmation = false;
+                    this.fetchData(); // Refresh the data after deletion
+                })
+                .catch((error) => {
+                    // Handle error
+                    console.error("Error deleting item:", error);
+                });
         },
     },
 };
