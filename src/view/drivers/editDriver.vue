@@ -170,6 +170,23 @@
               </div>
             </div>
             <div class="row">
+              <!-- <div class="col-4">
+                <b-form-group
+                  id="input-group-2"
+                  label="Profile Picture:"
+                  label-for="profile_picture"
+                >
+                  <div style="margin-left: 3px; margin-bottom: 15px">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id="profile_picture"
+                      @change="onProfilePictureChange"
+                    />
+                  </div>
+                </b-form-group>
+              </div> -->
+
               <div class="col-4">
                 <b-form-group
                   id="input-group-2"
@@ -177,6 +194,14 @@
                   label-for="profile_picture"
                 >
                   <div style="margin-left: 3px; margin-bottom: 15px">
+                    <!-- Display current profile picture -->
+                    <img
+                      v-if="editedUser.profile_picture"
+                      :src="editedUser.profile_picture"
+                      alt="Picture"
+                      style="max-width: 100px; max-height: 100px"
+                    />
+                    <!-- Input field to upload new profile picture -->
                     <input
                       type="file"
                       accept="image/*"
@@ -653,7 +678,7 @@ export default {
       successMessage: "",
       vehicle_id: "",
       vehicles: [],
-      editedUser: {}
+      editedUser: {},
     };
   },
   components: {
@@ -682,59 +707,58 @@ export default {
         console.log(error);
       });
 
-      const userId = this.$route.params.id;
-  axios
-    .get(`drivers/${userId}`)
-    .then(response => {
-      this.editedUser = response.data.data;
-      // Set the data properties with values from editedUser
-      this.name = this.editedUser.name;
-      this.email = this.editedUser.email;
-      this.ssn = this.editedUser.ssn;
-      this.mobile = this.editedUser.mobile;
-      this.gender = this.editedUser.gender;
-      this.emergency_name = this.editedUser.emergency_name;
-      this.emergency_number = this.editedUser.emergency_number;
-      this.address = this.editedUser.address;
-      this.date_of_birth = this.editedUser.date_of_birth;
-      this.profile_picture = this.editedUser.profile_picture;
-      this.salary_commission = this.editedUser.salary_commission;
-      this.salary_fix = this.editedUser.salary_fix;
-      this.hourly_enter_amount = this.editedUser.hourly_enter_amount;
-      this.bank_name = this.editedUser.bank_name;
-      this.bank_title = this.editedUser.bank_title;
-      this.bank_account_number = this.editedUser.bank_account_number;
-      this.company_name_own = this.editedUser.company_name_own;
-      this.bank_upload_document = this.editedUser.bank_upload_document;
-      this.bank_emergency_contact_name = this.editedUser.bank_emergency_contact_name;
-      this.company_name = this.editedUser.company_name;
-      this.owner_name = this.editedUser.owner_name;
-      this.owner_number = this.editedUser.owner_number;
-      this.company_document = this.editedUser.company_document;
-      this.vehicle_id = this.editedUser.vehicle_id;
-      this.taxi_driving_liscence = this.editedUser.taxi_driving_liscence;
-  // Depending on the selected option, set the appropriate salary value
-  if (this.editedUser.salary_fix !== null) {
-        this.selectedOption = 'Fix';
-      } else if (this.editedUser.salary_commission !== null) {
-        this.selectedOption = 'Commission';
-      } else if (this.editedUser.hourly_enter_amount !== null) {
-        this.selectedOption = 'Hourly Enter Amount';
-      }
+    const userId = this.$route.params.id;
+    axios
+      .get(`drivers/${userId}`)
+      .then((response) => {
+        this.editedUser = response.data.data;
+        // Set the data properties with values from editedUser
+        this.name = this.editedUser.name;
+        this.email = this.editedUser.email;
+        this.ssn = this.editedUser.ssn;
+        this.mobile = this.editedUser.mobile;
+        this.gender = this.editedUser.gender;
+        this.emergency_name = this.editedUser.emergency_name;
+        this.emergency_number = this.editedUser.emergency_number;
+        this.address = this.editedUser.address;
+        this.date_of_birth = this.editedUser.date_of_birth;
+        this.profile_picture = this.editedUser.profile_picture;
+        this.salary_commission = this.editedUser.salary_commission;
+        this.salary_fix = this.editedUser.salary_fix;
+        this.hourly_enter_amount = this.editedUser.hourly_enter_amount;
+        this.bank_name = this.editedUser.bank_name;
+        this.bank_title = this.editedUser.bank_title;
+        this.bank_account_number = this.editedUser.bank_account_number;
+        this.company_name_own = this.editedUser.company_name_own;
+        this.bank_upload_document = this.editedUser.bank_upload_document;
+        this.bank_emergency_contact_name =
+          this.editedUser.bank_emergency_contact_name;
+        this.company_name = this.editedUser.company_name;
+        this.owner_name = this.editedUser.owner_name;
+        this.owner_number = this.editedUser.owner_number;
+        this.company_document = this.editedUser.company_document;
+        this.vehicle_id = this.editedUser.vehicle_id;
+        this.taxi_driving_liscence = this.editedUser.taxi_driving_liscence;
+        // Depending on the selected option, set the appropriate salary value
+        if (this.editedUser.salary_fix !== null) {
+          this.selectedOption = "Fix";
+        } else if (this.editedUser.salary_commission !== null) {
+          this.selectedOption = "Commission";
+        } else if (this.editedUser.hourly_enter_amount !== null) {
+          this.selectedOption = "Hourly Enter Amount";
+        }
 
+        if (this.editedUser.vehicle_id !== null) {
+          this.selectedCarType = "Company";
+        } else if (this.editedUser.car_color !== null) {
+          this.selectedCarType = "Own";
+        }
 
-      if (this.editedUser.vehicle_id !== null) {
-        this.selectedCarType = 'Company';
-      } else if (this.editedUser.car_color !== null) {
-        this.selectedCarType = 'Own';
-      } 
-      
-      // ... and so on for other properties ...
-    })
-    .catch(error => {
-      console.error('Error fetching user data:', error);
-    });
-
+        // ... and so on for other properties ...
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
   },
   methods: {
     showMsgBoxOne() {
@@ -806,12 +830,7 @@ export default {
           console.log(error.response.data);
           this.isLoading = false;
         });
-
-
-
     },
-
-   
 
     onProfilePictureChange(event) {
       const file = event.target.files[0];
