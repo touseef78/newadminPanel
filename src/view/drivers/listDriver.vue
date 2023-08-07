@@ -1,3 +1,4 @@
+
 <template>
   <b-card>
     <!-- filter  -->
@@ -25,7 +26,7 @@
       <div class="col-12 mt-16">
         <b-table id="dataTable" :items="users" :fields="fields" :current-page="currentPage" :per-page="perPage"
           :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
-          :sort-direction="sortDirection" stacked="md" show-empty @filtered="onFiltered" y responsive>
+          :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
           <!-- Action Button Code -->
           <template #cell(actions)="row">
             <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
