@@ -157,21 +157,20 @@ const router = new VueRouter({
      
     },
     // Eidt 
-    //   {
-    //   path: "/drivers/edit",
-    //   name: "drivers",
-    //   component: () => import("@/view/drivers/editDriver"),
+       {
+      path: "/drivers/edit/:id",
+      name: "editDrivers",
+      component: () => import("../view/drivers/editDriver.vue"),
      
-    // },
+    },
    
-    // View Driver 
     
-  // {
-  //     path: "/drivers/view",
-  //     name: "drivers",
-  //     component: () => import("@/view/drivers/viewDriver"),
-     
-  //   },
+  {
+      path: "/drivers/view",
+      name: "viewDrivers",
+      component: () => import("../view/drivers/viewDriver.vue"),
+    },
+
 
    
     
