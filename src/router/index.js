@@ -119,6 +119,18 @@ const router = new VueRouter({
      
     },
     {
+      path: "/vehicle/viewVehicle/:id",
+      name: "viewVehicle",
+      component: () => import("@/view/vehicle/viewVehicle"),
+     
+    },
+    {
+      path: "/vehicle/editVehicle/:id",
+      name: "editVehicle",
+      component: () => import("@/view/vehicle/editVehicle"),
+     
+    },
+    {
       path: "/vehicle/listVehicle",
       name: "vehicle",
       component: () => import("@/view/vehicle/listVehicle"),
@@ -144,22 +156,7 @@ const router = new VueRouter({
       component: () => import("../view/components/B2B/driver/addDriver.vue"),
      
     },
-    // Eidt 
-    //   {
-    //   path: "/drivers/edit",
-    //   name: "drivers",
-    //   component: () => import("@/view/drivers/editDriver"),
-     
-    // },
-   
-    // View Driver 
-    
-  // {
-  //     path: "/drivers/view",
-  //     name: "drivers",
-  //     component: () => import("@/view/drivers/viewDriver"),
-     
-  //   },
+
 
    
     
@@ -1084,19 +1081,6 @@ const router = new VueRouter({
       },
     },
   ]
-});
-
-
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-      if (store.getters.user) {
-          next();
-          return;
-      }
-      next("/");
-  } else {
-      next();
-  }
 });
 
 

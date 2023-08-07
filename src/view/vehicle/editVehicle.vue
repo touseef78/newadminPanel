@@ -8,14 +8,15 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-1" label="Name:" label-for="name">
-                                <b-form-input id="name" type="text" placeholder="Enter name" autocomplete="off"
-                                    required></b-form-input>
+                                <b-form-input id="name" type="text" v-model="name" placeholder="Enter name"
+                                    autocomplete="off" required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Company Name:" label-for="company_name">
-                                <b-form-input id="company_name" placeholder="Enter company name" required></b-form-input>
+                                <b-form-input id="company_name" v-model="company_name" placeholder="Enter company name"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
 
@@ -23,47 +24,53 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Description:" label-for="description">
-                                <b-form-input id="description" placeholder="Enter Description" required></b-form-input>
+                                <b-form-input id="description" v-model="description" placeholder="Enter Description"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
 
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Car Make:" label-for="car_make">
-                                <b-form-input id="car_make" placeholder="Enter Car Make" required></b-form-input>
+                                <b-form-input id="car_make" v-model="car_make" placeholder="Enter Car Make"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Car Model:" label-for="car_model">
-                                <b-form-input id="car_model" placeholder="Enter Car Model" required></b-form-input>
+                                <b-form-input id="car_model" v-model="car_model" placeholder="Enter Car Model"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Car Color:" label-for="car_color">
-                                <b-form-input id="car_color" placeholder="Enter Car Color" required></b-form-input>
+                                <b-form-input id="car_color" v-model="car_color" placeholder="Enter Car Color"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Car Number:" label-for="car_number">
-                                <b-form-input id="car_numbar" placeholder="Enter Car Number" required></b-form-input>
+                                <b-form-input id="car_numbar" v-model="car_numbar" placeholder="Enter Car Number"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
 
                         <div class="col-4">
 
                             <b-form-group id="input-group-2" label="Model Year:" label-for="model_year">
-                                <b-form-input id="model_year" placeholder="Enter Model Year" required></b-form-input>
+                                <b-form-input id="model_year" v-model="model_year" placeholder="Enter Model Year"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
 
                         <div class="col-4">
 
-                            <b-form-group id="input-group-2" label="Registration Number:" label-for="reg_number">
-                                <b-form-input id="reg_number" placeholder="Enter Registration Number"
-                                    required></b-form-input>
+                            <b-form-group id="input-group-2" label="Registration Number:" label-for="registration_number">
+                                <b-form-input id="registration_number" v-model="registration_number"
+                                    placeholder="Enter Registration Number" required></b-form-input>
                             </b-form-group>
                         </div>
 
@@ -182,6 +189,29 @@ export default {
         BFormInput,
         BToast,
 
+    },
+    created() {
+        console.log('created');
+        // Load the clients data when the component is created
+        axios
+            .get("vehicle/" + this.$route.params.id + '/edit')
+            .then((response) => {
+                this.vehicles = response.data.data;
+                this.name = this.vehicles.name;
+                this.vehicle_company = this.vehicles.vehicle_company;
+                this.description = this.vehicles.description;
+                this.car_make = this.vehicles.car_make;
+                this.car_model = this.vehicles.car_model;
+                this.car_color = this.vehicles.car_color;
+                this.car_number = this.vehicles.car_number;
+                this.model_year = this.vehicles.model_year;
+                this.registration_number = this.vehicles.registration_number;
+                this.equipment = this.vehicles.equipment;
+                this.image = this.vehicles.image;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     },
     methods: {
         onSubmit(event) {
