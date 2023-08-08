@@ -4,10 +4,10 @@ export default {
 
 
     {
-      id: "/",
+      id: "/dashboard",
       title: "Dashboard",
       icon: "Curved-Graph",
-      navLink: "/",
+      navLink: "/dashboard",
     },
     
 

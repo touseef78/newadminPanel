@@ -272,7 +272,7 @@
                     </div>
 
                     <!-- <b-form @submit="onSubmit" @reset="onReset" v-if="show"> -->
-                    <div class="row">
+                      <div class="row">
                       <div class="col-4">
                         <b-form-group
                           id="input-group-1"
@@ -284,6 +284,7 @@
                             type="text"
                             placeholder="Enter name"
                             autocomplete="off"
+                            v-model="vehicle_name"
                           ></b-form-input>
                         </b-form-group>
                       </div>
@@ -294,10 +295,9 @@
                           label-for="company_name"
                         >
                           <b-form-input
-                            id="company_name"
+                            id="vehicle_company"
                             placeholder="Enter comapnay name"
-                            v-model="company_name"
-                            required
+                            v-model="vehicle_company"
                           ></b-form-input>
                         </b-form-group>
                       </div>
@@ -311,7 +311,7 @@
                           <b-form-input
                             id="description"
                             placeholder="Enter Description"
-                            required
+                            v-model="description"
                           ></b-form-input>
                         </b-form-group>
                       </div>
@@ -325,7 +325,7 @@
                           <b-form-input
                             id="car_make"
                             placeholder="Enter Car Make"
-                            required
+                            v-model="car_make"
                           ></b-form-input>
                         </b-form-group>
                       </div>
@@ -338,7 +338,7 @@
                           <b-form-input
                             id="car_model"
                             placeholder="Enter Car Model"
-                            required
+                            v-model="car_model"
                           ></b-form-input>
                         </b-form-group>
                       </div>
@@ -352,7 +352,6 @@
                             id="car_color"
                             placeholder="Enter Car Color"
                             v-model="car_color"
-                            required
                           ></b-form-input>
                         </b-form-group>
                       </div>
@@ -360,12 +359,12 @@
                         <b-form-group
                           id="input-group-2"
                           label="Car Number:"
-                          label-for="car_numbar"
+                          label-for="car_number"
                         >
                           <b-form-input
                             id="car_numbar"
                             placeholder="Enter Car Number"
-                            required
+                            v-model="car_number"
                           ></b-form-input>
                         </b-form-group>
                       </div>
@@ -374,7 +373,10 @@
                     <!--------------------- Uploading images button----------------------- -->
                     <div style="margin-left: 3px; margin-bottom: 15px">
                       <!-- Input field to upload image -->
-                      <input type="file" accept="image/*" />
+                      <input type="file" accept="image/*" 
+                      id="vehicle_image"                
+                      @change="vehicleImageChange"
+                      />
                     </div>
                     <!-- </b-form> -->
                   </div>
@@ -549,6 +551,7 @@
                       type="file"
                       accept="image/*"
                       id="bank_upload_document"
+                      @change="BnakImageChange"
                     />
                   </div>
                 </b-form-group>
@@ -664,7 +667,7 @@ export default {
       bank_title: "",
       bank_account_number: "",
       company_name_own: "",
-      bank_upload_document: "",
+      bank_upload_document: null,
       taxi_driving_liscence: "",
       bank_emergency_contact_name: "",
       company_name: "",
@@ -679,6 +682,16 @@ export default {
       vehicle_id: "",
       vehicles: [],
       editedUser: {},
+
+  vehicle_name: "",
+vehicle_company: "",
+description: "",
+car_make: "",
+car_model: "",
+car_color: "",
+car_number: "",
+vehicle_image: null,
+
     };
   },
   components: {
@@ -739,6 +752,14 @@ export default {
         this.company_document = this.editedUser.company_document;
         this.vehicle_id = this.editedUser.vehicle_id;
         this.taxi_driving_liscence = this.editedUser.taxi_driving_liscence;
+        this.vehicle_name = this.editedUser.vehicle_name;
+        this.description = this.editedUser.description;
+        this.vehicle_company = this.editedUser.vehicle_company;
+        this.car_make = this.editedUser.car_make;
+        this.car_model = this.editedUser.car_model;
+        this.car_color = this.editedUser.car_color;
+        this.car_number = this.editedUser.car_number;
+        this.vehicle_image = this.editedUser.vehicle_image;
         // Depending on the selected option, set the appropriate salary value
         if (this.editedUser.salary_fix !== null) {
           this.selectedOption = "Fix";
@@ -815,6 +836,13 @@ export default {
       formData.append("hourly_enter_amount", this.hourly_enter_amount);
       formData.append("vehicle_id", this.vehicle_id);
       formData.append("profile_picture", this.profile_picture);
+      formData.append("vehicle_name", this.vehicle_name);
+      formData.append("vehicle_company", this.vehicle_company);
+      formData.append("car_make", this.car_make);
+      formData.append("car_model", this.car_model);
+      formData.append("car_color", this.car_color);
+      formData.append("car_number", this.car_number);
+      formData.append("vehicle_image", this.vehicle_image);
       axios
         .post(`driversUpdate/${this.editedUser.id}`, formData)
         .then((response) => {
@@ -837,6 +865,24 @@ export default {
       if (file) {
         // Set the selected file to the data property
         this.profile_picture = file;
+      }
+    },
+
+
+    
+    vehicleImageChange(event) {
+      const file = event.target.files[0];
+      if (file) {
+        // Set the selected file to the data property
+        this.vehicle_image = file;
+      }
+    },
+
+    BnakImageChange(event) {
+      const file = event.target.files[0];
+      if (file) {
+        // Set the selected file to the data property
+        this.bank_upload_document = file;
       }
     },
 
