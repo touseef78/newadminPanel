@@ -871,10 +871,17 @@ export default {
         .post(`driversUpdate/${this.editedUser.id}`, formData)
         .then((response) => {
           console.log(response.data);
-          this.successMessage = "Driver Update successfully!";
-          setTimeout(() => {
-            this.successMessage = ""; // Clear the success message after 5 seconds
-          }, 5000);
+          this.$bvToast.toast("Driver Update successfully!", {
+            title: "Success",
+            variant: "success",
+            solid: true,
+            appendToast: true, 
+            toaster: "b-toaster-top-right", 
+            autoHideDelay: 5000, 
+            variant: "dark", // Background color
+            titleClass: "text-black", // Title text color
+            bodyClass: "text-black", // Body text color
+          });
           this.isLoading = false;
         })
         .catch((error) => {
