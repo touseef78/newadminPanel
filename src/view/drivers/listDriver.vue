@@ -92,28 +92,9 @@
             aria-controls="my-table"></b-pagination>
         </div>
         <b-row class="mt-16 align-items-center justify-content-end">
-          <!-- <b-col class="hp-flex-none w-auto">
-            <b-form-group label-for="per-page-select" label-size="sm" class="mb-0">
-              <b-form-select id="per-page-select" v-model="perPage" :options="pageOptions"></b-form-select>
-            </b-form-group>
-          </b-col> -->
 
-          <!-- <b-col class="hp-flex-none w-auto">
-            <b-pagination align="end" v-model="currentPage" :total-rows="totalRows" :per-page="perPage"></b-pagination>
-          </b-col> -->
           <b-row>
-            <!-- <div class="col-12 mt-16">
-              <div class="overflow-auto">
-                <p class="mt-3 hp-p1-body">Current Page: {{ currentPage }}</p>
 
-                <b-table id="my-table" :items="users" :per-page="perPage" :current-page="currentPage" small></b-table>
-              </div>
-
-              <div class="mx-8 d-flex justify-content-end">
-                <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"
-                  aria-controls="my-table"></b-pagination>
-              </div>
-            </div> -->
 
             <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
               <pre v-highlightjs>

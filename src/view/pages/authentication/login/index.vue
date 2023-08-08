@@ -3,32 +3,17 @@
     <left-content />
     <b-col cols="12" lg="6" class="py-sm-64 py-lg-0">
       <b-row align-v="center" align-h="center" class="h-100 mx-4 mx-sm-n32">
-        <b-col
-          cols="12"
-          md="9"
-          xl="7"
-          class="col-xxxl-5 px-8 px-sm-0 pt-24 pb-48"
-        >
+        <b-col cols="12" md="9" xl="7" class="col-xxxl-5 px-8 px-sm-0 pt-24 pb-48">
           <h1 class="mb-0 mb-sm-24">Login</h1>
           <p class="mt-sm-8 mt-sm-0 text-black-60">
             Welcome back, please login to your account.
           </p>
           <b-form class="user" @submit.prevent="login">
             <b-form-group label="Email :" label-for="email" class="mb-16">
-              <b-form-input
-                id="email"
-                type="text"
-                v-model="email"
-                required
-              ></b-form-input>
+              <b-form-input id="email" type="text" v-model="email" required></b-form-input>
             </b-form-group>
             <b-form-group label="Password :" label-for="password" class="mb-16">
-              <b-form-input
-                id="password"
-                type="password"
-                v-model="password"
-                required
-              ></b-form-input>
+              <b-form-input id="password" type="password" v-model="password" required></b-form-input>
             </b-form-group>
 
             <b-row align-v="center" align-h="between" class="mb-16">
