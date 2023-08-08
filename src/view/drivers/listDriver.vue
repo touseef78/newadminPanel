@@ -97,7 +97,10 @@
             aria-controls="my-table"></b-pagination>
         </div>
         <b-row class="mt-16 align-items-center justify-content-end">
+
           <b-row>
+
+
             <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
               <pre v-highlightjs>
           <code class="hljs html">

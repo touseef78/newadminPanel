@@ -17,8 +17,8 @@
               " alt="Background Image" /> -->
 
             <img class="m-auto" :src="this.$store.state.themeConfig.theme == 'dark'
-              ? require('@/assets/img/pages/authentication/car.webp')
-              : require('@/assets/img/pages/authentication/car.webp')
+              ? require('@/assets/img/pages/authentication/logo.jpg')
+              : require('@/assets/img/pages/authentication/logo.jpg')
               " alt="Background Image" />
           </b-col>
 

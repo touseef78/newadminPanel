@@ -73,6 +73,49 @@
                                     placeholder="Enter Registration Number" required></b-form-input>
                             </b-form-group>
                         </div>
+                                           <div class="col-4">
+
+                                >
+                                <b-form-group id="input-group-2" label="Vehicle Type:" label-for="vehicle_type">
+                                    <b-form-select v-model="selectedVehicleType" required>
+                                        <option value="">Select Vehicle Type</option>
+                                        <option>Taxi</option>
+                                        <option>Delivery Service</option>
+                                        <option>Office Use</option>
+                                        <option>Extra</option>
+
+
+                                    </b-form-select>
+                                </b-form-group>
+                            </div>
+                            <div class="col-4">
+
+                                <b-form-group id="input-group-2" label="Last Inspection:" label-for="last_inspection">
+                                    <b-form-input id="last_inspection" placeholder="Enter Last Inspection"
+                                        required></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-4">
+
+                                <b-form-group id="input-group-2" label="Next Inspection:" label-for="next_inspection">
+                                    <b-form-input id="next_inspection" placeholder="Enter Next Inspection"
+                                        required></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-4">
+
+                                <b-form-group id="input-group-2" label="Insurance:" label-for="insurance">
+                                    <b-form-input id="insurance" placeholder="Enter Insurance" required></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-4">
+
+                                <b-form-group id="input-group-2" label="Texameter Inspection Date:"
+                                    label-for="texameter_inspection_date">
+                                    <b-form-input id="texameter_inspection_date" type="date"
+                                        placeholder="Enter Texameter Inspection Date" required></b-form-input>
+                                </b-form-group>
+                            </div>
 
                         <div class="col-4">
                             <b-form-group id="input-group-2" label="Select Equipment:" label-for="select_equipment">
@@ -173,6 +216,13 @@ export default {
             registration_number: '',
             equipment: '',
             image: '',
+             vehicle_type: '',
+            last_inspection: '',
+            insurance: '',
+            texameter_inspection_date: '',
+            last_inspection: '',
+            next_inspection: '',
+
 
         };
     },
