@@ -520,7 +520,7 @@
                 <b-form-group
                   id="input-group-1"
                   label="Upload Document:"
-                  label-for="upload_doc"
+                  label-for="bank_upload_document"
                 >
                   <div style="margin-left: 3px; margin-bottom: 15px">
                     <input
@@ -761,6 +761,7 @@ vehicle_image: null,
       formData.append("car_color", this.car_color);
       formData.append("car_number", this.car_number);
       formData.append("vehicle_image", this.vehicle_image);
+      formData.append("bank_upload_document", this.bank_upload_document);
       axios
         .post("drivers", formData)
         .then((response) => {
@@ -797,7 +798,6 @@ vehicle_image: null,
     BnakImageChange(event) {
       const file = event.target.files[0];
       if (file) {
-        // Set the selected file to the data property
         this.bank_upload_document = file;
       }
     },
