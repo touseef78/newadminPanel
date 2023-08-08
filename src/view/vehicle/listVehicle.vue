@@ -47,7 +47,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
                   color: rgba(0, 255, 195, 0.87);
                   margin-left: 6px;
-                  margin-bottom: 10px;
+                  margin-bottom: 8px;
                 " class="bi bi-eye" viewBox="0 0 16 16">
                                 <!-- ... your SVG path ... -->
                                 <path
@@ -73,10 +73,10 @@
                         </b-button>
 
                         <!-- ... your existing action button code ... -->
-                        <b-button @click="updateStatus(row.item)"
+                        <!-- <b-button @click="updateStatus(row.item)"
                             :variant="row.item.status === 'Approved' ? 'warning' : 'primary'" class="mb-8 mr-8">
                             {{ row.item.status === "Approved" ? "Pending" : "Approved" }}
-                        </b-button>
+                        </b-button> -->
                     </template>
 
                     <b-form-group label="Filter" label-for="filter-input" label-cols-sm="3" label-align-sm="right"
