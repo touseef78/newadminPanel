@@ -177,7 +177,7 @@
                     label-for="profile_picture"
                   >
                     <div style="margin-left: 3px; margin-bottom: 15px">
-                      <img :src="'/' + profile_picture" alt="Profile Picture" width="100" height="100">
+                      <img :src="'https://boltapi.fastnetstaffing.in/' + profile_picture" alt="Profile Picture" width="100" height="100">
                     </div>
                   </b-form-group>
                 </div>
@@ -353,7 +353,7 @@
                       <!--------------------- Uploading images button----------------------- -->
                       <div style="margin-left: 3px; margin-bottom: 15px">
                         <!-- Input field to upload image -->
-                        <img :src="'/' + vehicle_image" alt="vehicle Picture" width="100" height="100">
+                        <img :src="'https://boltapi.fastnetstaffing.in/' + vehicle_image" alt="vehicle Picture" width="100" height="100">
                       </div>
                       <!-- </b-form> -->
                     </div>
@@ -524,7 +524,7 @@
                     label-for="bank_upload_document"
                   >
                     <div style="margin-left: 3px; margin-bottom: 15px">
-                      <img :src="'/' + bank_upload_document" alt="Bank Documents" width="100" height="100">
+                      <img :src="'https://boltapi.fastnetstaffing.in/' + bank_upload_document" alt="Bank Documents" width="100" height="100">
                     </div>
                   </b-form-group>
                 </div>

@@ -239,6 +239,17 @@ export default {
       URL.revokeObjectURL(url);
     },
 
+    updateStatus(user) {
+    user.status = user.status === 'Approved' ? 'Pending' : 'Approved';
+    axios
+      .put(`drivers/${user.id}`, user)
+      .then(response => {
+        console.log('Status updated successfully:', response.data);
+      })
+      .catch(error => {
+        console.error('Error updating status:', error);
+      });
+  },
 
 
     editUser(userId) {
