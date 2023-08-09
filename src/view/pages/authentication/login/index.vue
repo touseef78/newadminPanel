@@ -34,9 +34,6 @@
 
 <script>
 import axios from "axios";
-
-// import * as notify from "../utils/sidebar-collapse-dropdown.js";
-
 import {
   BRow,
   BCol,
@@ -46,6 +43,7 @@ import {
   BFormGroup,
   BFormInput,
   BFormCheckbox,
+  BToast,
 } from "bootstrap-vue";
 import LeftContent from "../LeftContent.vue";
 
@@ -60,31 +58,16 @@ export default {
     BFormInput,
     BFormCheckbox,
     LeftContent,
+    BToast, // Add BToast component
   },
 
   data() {
     return {
       email: "",
       password: "",
-      verificationStatus: this.$route.query.verification_status === "success",
-      verificationMessage: "",
-      verificationAlertClasses: {
-        "alert-success": false,
-        "alert-danger": false,
-      },
     };
   },
 
-  mounted() {
-    if (this.verificationStatus) {
-      this.verificationMessage =
-        "Your account has been verified. Please log in.";
-      this.verificationAlertClasses["alert-success"] = true;
-    } else if (this.$route.query.verification_status === "error") {
-      this.verificationMessage = "Your account could not be verified.";
-      this.verificationAlertClasses["alert-danger"] = true;
-    }
-  },
   methods: {
     async login() {
       try {
@@ -95,9 +78,18 @@ export default {
 
         localStorage.setItem("token", response.data.token);
         this.$store.dispatch("user", response.data.user);
+        this.$bvToast.toast("Login successful!", {
+          title: "Success",
+          variant: "success",
+          solid: true,
+        });
         this.$router.push("/dashboard");
       } catch (error) {
-        // Handle the error here or show a notification
+        this.$bvToast.toast("Login failed. Please check your credentials.", {
+          title: "Error",
+          variant: "dark",
+          solid: true,
+        });
       }
     },
   },

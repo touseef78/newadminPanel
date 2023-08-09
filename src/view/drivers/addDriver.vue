@@ -520,7 +520,7 @@
                 <b-form-group
                   id="input-group-1"
                   label="Upload Document:"
-                  label-for="upload_doc"
+                  label-for="bank_upload_document"
                 >
                   <div style="margin-left: 3px; margin-bottom: 15px">
                     <input
@@ -761,14 +761,22 @@ vehicle_image: null,
       formData.append("car_color", this.car_color);
       formData.append("car_number", this.car_number);
       formData.append("vehicle_image", this.vehicle_image);
+      formData.append("bank_upload_document", this.bank_upload_document);
       axios
         .post("drivers", formData)
         .then((response) => {
           console.log(response.data);
-          this.successMessage = "Driver added successfully!";
-          setTimeout(() => {
-            this.successMessage = ""; // Clear the success message after 5 seconds
-          }, 5000);
+          this.$bvToast.toast("Driver added successfully!", {
+            title: "Success",
+            variant: "success",
+            solid: true,
+            appendToast: true, 
+            toaster: "b-toaster-top-right", 
+            autoHideDelay: 5000, 
+            variant: "dark", // Background color
+            titleClass: "text-black", // Title text color
+            bodyClass: "text-black", // Body text color
+          });
           this.isLoading = false;
         })
         .catch((error) => {
@@ -797,7 +805,6 @@ vehicle_image: null,
     BnakImageChange(event) {
       const file = event.target.files[0];
       if (file) {
-        // Set the selected file to the data property
         this.bank_upload_document = file;
       }
     },

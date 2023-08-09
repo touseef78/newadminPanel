@@ -2,7 +2,11 @@
 <template>
   <b-card>
     <!-- filter  -->
-    <div>
+    <div v-if="loading" class="text-center mt-4">
+      <b-spinner label="Loading..."></b-spinner>
+    </div>
+    <div class="col-12 mt-16">
+      <div>
       <b-row class="align-items-center">
         <b-col lg="6" class="my-1">
           <b-form-group label="Filter" label-for="filter-input" label-cols-sm="1" label-align-sm="right" label-size="sm"
@@ -20,7 +24,8 @@
           <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
         </b-col>
       </b-row>
-    </div>
+    </div>     
+   </div>
     <!-- filter end -->
     <b-row>
       <div class="col-12 mt-16">
@@ -123,6 +128,7 @@ import {
   BFormSelect,
   BPagination,
   BInputGroupAppend,
+  BSpinner,
 } from "bootstrap-vue";
 import axios from "axios";
 import Papa from "papaparse";
@@ -133,7 +139,7 @@ import Papa from "papaparse";
 export default {
   data() {
     return {
-      perPage: 10,
+      perPage: 8,
       currentPage: 1,
       sortBy: "age",
       sortDesc: false,
@@ -157,6 +163,7 @@ export default {
       totalRows: 0, // Initialize totalRows to 0
       showDeleteConfirmation: false,
       itemIdToDelete: null,
+      loading: false,
 
     };
   },
@@ -172,6 +179,8 @@ export default {
     BFormSelect,
     BPagination,
     BInputGroupAppend,
+    BSpinner,
+
   },
   computed: {
     sortOptions() {
@@ -191,6 +200,7 @@ export default {
   },
   methods: {
     fetchData() {
+      this.loading = true; // Set loading to true before fetching data
       axios
         .get("drivers") // Replace 'your_api_endpoint_url_here' with your actual API URL
         .then((response) => {
@@ -199,7 +209,10 @@ export default {
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
-        });
+        })
+        .finally(() => {
+        this.loading = false; // Set loading to false after fetching data, whether success or error
+      });
     },
     onFiltered(filteredItems) {
       this.totalRows = filteredItems.length;
