@@ -139,7 +139,7 @@ import Papa from "papaparse";
 export default {
   data() {
     return {
-      perPage: 10,
+      perPage: 8,
       currentPage: 1,
       sortBy: "age",
       sortDesc: false,
