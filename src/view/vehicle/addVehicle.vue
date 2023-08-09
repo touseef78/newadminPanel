@@ -68,8 +68,6 @@
                         </div>
                         <!-- new code  -->
                         <div class="col-4">
-
-                            >
                             <b-form-group id="input-group-2" label="Vehicle Type:" label-for="vehicle_type">
                                 <b-form-select v-model="selectedVehicleType" required>
                                     <option value="">Select Vehicle Type</option>
@@ -213,10 +211,10 @@ export default {
             // new code 
             vehicle_type: '',
             last_inspection: '',
-            insurance:'',
-            texameter_inspection_date:'',
-            last_inspection:'',
-            next_inspection:'',
+            insurance: '',
+            texameter_inspection_date: '',
+            last_inspection: '',
+            next_inspection: '',
 
 
 
