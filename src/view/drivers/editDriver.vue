@@ -915,6 +915,12 @@ export default {
       }
     },
 
+    handleSelectedCarTypeChange(newVal) {
+    if (newVal !== 'Company') {
+      this.vehicle_id = null; // Set vehicle_id to null when not applicable
+    }
+  },
+
     codeClick() {
       this.codeActive = !this.codeActive;
 
@@ -927,5 +933,6 @@ export default {
       this.showModal = false;
     },
   },
+  
 };
 </script>
