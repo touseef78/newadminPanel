@@ -534,9 +534,7 @@ export default {
     codeClick() {
       this.codeActive = !this.codeActive;
 
-      //   setTimeout(() => {
-      //     this.codeActiveClass = !this.codeActiveClass;
-      //   }, 100);
+      
     },
 
     saveOwnCar() {
