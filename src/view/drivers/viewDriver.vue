@@ -243,13 +243,13 @@
               <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
                 <b-form-group label="Hourly Enter Amount" label-for="hourly_enter_amount">
                   <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
-                    placeholder="Enter Hourly Amount"  disabled ></b-form-input>
+                    placeholder="Enter Hourly Amount" disabled></b-form-input>
                 </b-form-group>
               </div>
               <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
                 <b-form-group label="Total Number Of Hours" label-for="total_number_hour">
                   <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
-                    placeholder="Enter Total Number Hours"  disabled ></b-form-input>
+                    placeholder="Enter Total Number Hours" disabled></b-form-input>
                 </b-form-group>
               </div>
             </div>
@@ -302,8 +302,10 @@
                 <b-form-group id="input-group-1" label="Taxi Driving Liscence:" label-for="taxi_driving_liscence">
                   <b-form-select v-model="taxi_driving_liscence" disabled>
                     <option value="">Select Liscence</option>
-                    <option>Liscence B</option>
+                    <!-- <option>Liscence B</option> -->
                     <!-- <option>Commission</option> -->
+                    <option>Driving Liscence/Swedish ID</option>
+                    <option>Taxi Liscence</option>
                   </b-form-select>
                 </b-form-group>
               </div>
@@ -484,7 +486,7 @@ export default {
         } else if (this.editedUser.hourly_enter_amount !== null) {
           this.selectedOption = "Hourly Enter Amount";
         }
-        
+
 
         if (this.editedUser.vehicle_id !== null) {
           this.selectedCarType = "Company";

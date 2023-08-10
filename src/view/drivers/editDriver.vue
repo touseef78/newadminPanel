@@ -125,16 +125,8 @@
               </div>
 
               <div v-if="selectedCarType === 'Company'" class="col-4">
-                <b-form-group
-                  id="input-group-2"
-                  label="Select Car:"
-                  label-for="vehicle_id"
-                >
-                  <b-form-select
-                    id="vehicle_id"
-                    placeholder="Enter select car"
-                    v-model="vehicle_id"
-                  >
+                <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
+                  <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id">
                     <option value="">Select Car</option>
                     <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
                       {{ vehicle.name }}
@@ -357,7 +349,9 @@
                 <b-form-group id="input-group-1" label="Taxi Driving Liscence:" label-for="taxi_driving_liscence">
                   <b-form-select v-model="taxi_driving_liscence">
                     <option value="">Select Liscence</option>
-                    <option>Liscence B</option>
+                    <option>Driving Liscence/Swedish ID</option>
+                    <option>Taxi Liscence</option>
+                    <!-- <option>Liscence B</option> -->
                     <!-- <option>Commission</option> -->
                   </b-form-select>
                 </b-form-group>
@@ -603,10 +597,10 @@ export default {
       formData.append("salary_commission", this.salary_commission);
       formData.append("salary_fix", this.salary_fix);
       formData.append("hourly_enter_amount", this.hourly_enter_amount);
-      if(this.vehicle_id != null){
+      if (this.vehicle_id != null) {
         formData.append(
-          "vehicle_id",  this.vehicle_id);
-        }
+          "vehicle_id", this.vehicle_id);
+      }
       formData.append("profile_picture", this.profile_picture);
       formData.append("vehicle_name", this.vehicle_name);
       formData.append("vehicle_company", this.vehicle_company);
@@ -625,9 +619,9 @@ export default {
             title: "Success",
             variant: "success",
             solid: true,
-            appendToast: true, 
-            toaster: "b-toaster-top-right", 
-            autoHideDelay: 5000, 
+            appendToast: true,
+            toaster: "b-toaster-top-right",
+            autoHideDelay: 5000,
             variant: "primary", // Background color
           });
           this.isLoading = false;
