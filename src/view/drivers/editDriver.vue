@@ -125,8 +125,16 @@
               </div>
 
               <div v-if="selectedCarType === 'Company'" class="col-4">
-                <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
-                  <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id" required>
+                <b-form-group
+                  id="input-group-2"
+                  label="Select Car:"
+                  label-for="vehicle_id"
+                >
+                  <b-form-select
+                    id="vehicle_id"
+                    placeholder="Enter select car"
+                    v-model="vehicle_id"
+                  >
                     <option value="">Select Car</option>
                     <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
                       {{ vehicle.name }}
@@ -202,9 +210,18 @@
                       <b-form-group id="input-group-1" label="Vehicle Document:" label-for="vehicle_image">
                         <div style="margin-left: 3px; margin-bottom: 15px">
                           <!-- Display current profile picture -->
-                          <img v-if="editedUser.vehicle_image" :src="editedUser.vehicle_image" alt="Picture"
-                            style="max-width: 100px; max-height: 100px" />
-                          <input type="file" accept="image/*" id="vehicle_image" @change="BnakImageChange" />
+                          <img
+                            v-if="editedUser.vehicle_image"
+                            :src="editedUser.vehicle_image"
+                            alt="Picture"
+                            style="max-width: 100px; max-height: 100px"
+                          />
+                          <input
+                            type="file"
+                            accept="image/*"
+                            id="vehicle_image"
+                            @change="vehicleImageChange"
+                          />
                         </div>
                       </b-form-group>
                     </div>
@@ -584,10 +601,10 @@ export default {
       formData.append("salary_commission", this.salary_commission);
       formData.append("salary_fix", this.salary_fix);
       formData.append("hourly_enter_amount", this.hourly_enter_amount);
-      formData.append(
-        "vehicle_id",
-        this.vehicle_id === "null" ? null : this.vehicle_id
-      );
+      if(this.vehicle_id != null){
+        formData.append(
+          "vehicle_id",  this.vehicle_id);
+        }
       formData.append("profile_picture", this.profile_picture);
       formData.append("vehicle_name", this.vehicle_name);
       formData.append("vehicle_company", this.vehicle_company);
@@ -605,12 +622,10 @@ export default {
             title: "Success",
             variant: "success",
             solid: true,
-            appendToast: true,
-            toaster: "b-toaster-top-right",
-            autoHideDelay: 5000,
-            variant: "dark", // Background color
-            titleClass: "text-black", // Title text color
-            bodyClass: "text-black", // Body text color
+            appendToast: true, 
+            toaster: "b-toaster-top-right", 
+            autoHideDelay: 5000, 
+            variant: "primary", // Background color
           });
           this.isLoading = false;
         })
@@ -645,11 +660,6 @@ export default {
       }
     },
 
-    handleSelectedCarTypeChange(newVal) {
-      if (newVal !== 'Company') {
-        this.vehicle_id = null; // Set vehicle_id to null when not applicable
-      }
-    },
 
     codeClick() {
       this.codeActive = !this.codeActive;
