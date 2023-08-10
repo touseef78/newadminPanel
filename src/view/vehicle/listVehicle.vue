@@ -2,6 +2,9 @@
 <template>
     <b-card>
         <!-- filter  -->
+        <div v-if="loading" class="text-center mt-4">
+      <b-spinner label="Loading..."></b-spinner>
+    </div>
         <div>
             <b-row class="align-items-center">
                 <b-col lg="6" class="my-1">
@@ -127,6 +130,7 @@ import {
     BFormSelect,
     BPagination,
     BInputGroupAppend,
+    BSpinner,
 } from "bootstrap-vue";
 import axios from "axios";
 import Papa from "papaparse";
@@ -137,7 +141,7 @@ import Papa from "papaparse";
 export default {
     data() {
         return {
-            perPage: 10,
+            perPage: 8,
             currentPage: 1,
             sortBy: "age",
             sortDesc: false,
@@ -166,6 +170,7 @@ export default {
             totalRows: 0, // Initialize totalRows to 0
             showDeleteConfirmation: false,
             itemIdToDelete: null,
+            loading: false,
 
         };
     },
@@ -181,6 +186,7 @@ export default {
         BFormSelect,
         BPagination,
         BInputGroupAppend,
+        BSpinner,
     },
     computed: {
         sortOptions() {
@@ -200,6 +206,7 @@ export default {
     },
     methods: {
         fetchData() {
+            this.loading = true; // Set loading to true before fetching data
             axios
                 .get("vehicle") // Replace 'your_api_endpoint_url_here' with your actual API URL
                 .then((response) => {
@@ -208,7 +215,10 @@ export default {
                 })
                 .catch((error) => {
                     console.error("Error fetching data:", error);
-                });
+                })
+                .finally(() => {
+           this.loading = false; // Set loading to false after fetching data, whether success or error
+      });
         },
         onFiltered(filteredItems) {
             this.totalRows = filteredItems.length;
@@ -242,7 +252,7 @@ export default {
         deleteItem(itemId) {
             this.itemIdToDelete = itemId; // Set the item ID to be deleted
             axios
-                .delete(`drivers/${itemId}`)
+                .delete(`vehicle/${itemId}`)
                 .then((response) => {
                     this.showDeleteConfirmation = false;
                     this.fetchData(); // Refresh the data after deletion

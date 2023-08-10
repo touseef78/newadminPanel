@@ -53,7 +53,12 @@
               </div>
               <div class="col-4">
                 <b-form-group id="input-group-2" label="Gender:" label-for="gender">
-                  <b-form-input id="gender" placeholder="Enter gender" v-model="gender" required></b-form-input>
+                    <b-form-select v-model="gender" required>
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                  </b-form-select>
                 </b-form-group>
               </div>
               <div class="col-4">
@@ -234,13 +239,13 @@
                 </b-form-group>
               </div>
               <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                <b-form-group label="Hourly Enter Amount" label-for="hourly_enter_amount">
+                <b-form-group label="Hourly Enter Amount ($/hr)" label-for="hourly_enter_amount">
                   <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
                     placeholder="Enter Hourly Amount"></b-form-input>
                 </b-form-group>
               </div>
               <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                <b-form-group label="Total Number Of Hours" label-for="total_number_hour">
+                <b-form-group label="Total Number Of Hours ($/hr)" label-for="total_number_hour">
                   <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
                     placeholder="Enter Total Number Hours"></b-form-input>
                 </b-form-group>
@@ -300,8 +305,8 @@
                 </b-form-group>
               </div>
               <div class="col-4">
-                <b-form-group id="input-group-1" label=" Emergency Contact Name:" label-for="bank_emergency_contact_name">
-                  <b-form-input id="bank_emergency_contact_name" type="text" placeholder="Enter emergency contact name"
+                <b-form-group id="input-group-1" label=" Description:" label-for="bank_emergency_contact_name">
+                  <b-form-input id="bank_emergency_contact_name" type="text" placeholder="Enter Description"
                     v-model="bank_emergency_contact_name" required></b-form-input>
                 </b-form-group>
               </div>

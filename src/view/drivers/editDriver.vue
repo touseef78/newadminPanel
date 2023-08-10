@@ -363,8 +363,8 @@
                 </b-form-group>
               </div>
               <div class="col-4">
-                <b-form-group id="input-group-1" label=" Emergency Contact Name:" label-for="bank_emergency_contact_name">
-                  <b-form-input id="bank_emergency_contact_name" type="text" placeholder="Enter emergency contact name"
+                <b-form-group id="input-group-1" label=" Description:" label-for="bank_emergency_contact_name">
+                  <b-form-input id="bank_emergency_contact_name" type="text" placeholder="Enter Description"
                     v-model="bank_emergency_contact_name" required></b-form-input>
                 </b-form-group>
               </div>

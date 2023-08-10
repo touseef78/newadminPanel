@@ -301,7 +301,7 @@ export default {
 
 
             axios
-                .post("Vehicles", formData)
+                .post("Vehicle", formData)
                 .then((response) => {
                     console.log(response.data);
                     this.successMessage = "Vehicle added successfully!";
