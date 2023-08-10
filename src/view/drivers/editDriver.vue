@@ -318,19 +318,19 @@
               <div class="col-4">
                 <b-form-group id="input-group-1" label="Bank Account Holder Name:" label-for="bank_account_holder_name">
                   <b-form-input id="bank_name" type="text" placeholder="Enter bank account holder name"
-                    v-model="bank_name" required></b-form-input>
+                    v-model="bank_name" ></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-4">
                 <b-form-group id="input-group-2" label="Bank Account Number:" label-for="bank_account_number">
                   <b-form-input id="bank_account_number" placeholder="Enter bank account number"
-                    v-model="bank_account_number" required></b-form-input>
+                    v-model="bank_account_number" ></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-4">
                 <b-form-group id="input-group-1" label=" Company Name(own):" label-for="company_name_own">
                   <b-form-input id="company_name_own" type="text" placeholder="Enter company name"
-                    v-model="company_name_own" required></b-form-input>
+                    v-model="company_name_own" ></b-form-input>
                 </b-form-group>
               </div>
             </div>

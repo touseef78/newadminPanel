@@ -33,7 +33,7 @@
                     :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
                     <!-- Action Button Code -->
                     <template #cell(actions)="row">
-                        <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
+                        <b-button @click="showVehicle(row.item.id)" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
                 color: rgba(0, 255, 195, 0.87);
                 margin-left: 6px;
@@ -65,7 +65,7 @@
                                 <b-button variant="secondary" @click="showDeleteConfirmation = false">Cancel</b-button>
                             </template>
                         </b-modal>
-                        <b-button @click="editUser(row.item.id)" variant="link" class="p-0">
+                        <b-button @click="editVehicle(row.item.id)" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                                 style="color: orange; margin-left: 10px; margin-bottom: 10px" class="bi bi-pencil"
                                 viewBox="0 0 16 16">
@@ -241,11 +241,11 @@ export default {
 
 
 
-        editUser(userId) {
+        editVehicle(userId) {
             this.$router.push({ name: "editVehicle", params: { id: userId } });
         },
 
-        showDrivers(userId) {
+        showVehicle(userId) {
             this.$router.push({ name: "viewVehicle", params: { id: userId } });
         },
 
