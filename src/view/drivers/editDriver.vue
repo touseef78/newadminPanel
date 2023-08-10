@@ -236,7 +236,6 @@
                     id="vehicle_id"
                     placeholder="Enter select car"
                     v-model="vehicle_id"
-                    required
                   >
                     <option value="">Select Car</option>
                     <option
@@ -389,7 +388,7 @@
                             type="file"
                             accept="image/*"
                             id="vehicle_image"
-                            @change="BnakImageChange"
+                            @change="vehicleImageChange"
                           />
                         </div>
                       </b-form-group>
@@ -854,10 +853,10 @@ export default {
       formData.append("salary_commission", this.salary_commission);
       formData.append("salary_fix", this.salary_fix);
       formData.append("hourly_enter_amount", this.hourly_enter_amount);
-      formData.append(
-        "vehicle_id",
-        this.vehicle_id === "null" ? null : this.vehicle_id
-      );
+      if(this.vehicle_id != null){
+        formData.append(
+          "vehicle_id",  this.vehicle_id);
+        }
       formData.append("profile_picture", this.profile_picture);
       formData.append("vehicle_name", this.vehicle_name);
       formData.append("vehicle_company", this.vehicle_company);
@@ -878,9 +877,7 @@ export default {
             appendToast: true, 
             toaster: "b-toaster-top-right", 
             autoHideDelay: 5000, 
-            variant: "dark", // Background color
-            titleClass: "text-black", // Title text color
-            bodyClass: "text-black", // Body text color
+            variant: "primary", // Background color
           });
           this.isLoading = false;
         })
@@ -915,11 +912,6 @@ export default {
       }
     },
 
-    handleSelectedCarTypeChange(newVal) {
-    if (newVal !== 'Company') {
-      this.vehicle_id = null; // Set vehicle_id to null when not applicable
-    }
-  },
 
     codeClick() {
       this.codeActive = !this.codeActive;
