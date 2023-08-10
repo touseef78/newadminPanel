@@ -1,10 +1,10 @@
 <template>
   <main>
     <div class="hp-bg-color-dark-90 min-vh-100 d-flex">
-      <div class="hp-main-layout hp-main-layout-horizontal">
+      <div class="hp-layout hp-layout-horizontal">
         <header-horizontal />
 
-        <div class="hp-main-layout-content">
+        <div class="hp-layout-content">
           <router-view />
         </div>
 

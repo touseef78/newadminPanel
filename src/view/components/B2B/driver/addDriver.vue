@@ -306,10 +306,17 @@
                                     placeholder="Enter commission"></b-form-input>
                             </b-form-group>
                         </div>
+
                         <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                            <b-form-group label="Hourly Enter Amount (4$/hour)" label-for="fix-salary-input">
-                                <b-form-input id="fix-salary-input" type="text" v-model="HourlyEnterAmount"
-                                    placeholder="Enter hourly amount"></b-form-input>
+                            <b-form-group label="Hourly Enter Amount" label-for="hourly_enter_amount">
+                                <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
+                                    placeholder="Enter Hourly Amount"></b-form-input>
+                            </b-form-group>
+                        </div>
+                        <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
+                            <b-form-group label="Total Number Of Hours" label-for="total_number_hour">
+                                <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
+                                    placeholder="Enter Total Number Hours"></b-form-input>
                             </b-form-group>
                         </div>
                     </div>
@@ -360,14 +367,13 @@
                             </b-form-group>
                         </div>
                         <div class="col-4">
-
-
                             <b-form-group id="input-group-1" label="Taxi Driving Liscence:"
                                 label-for="taxi_driving_liscence">
-                                <b-form-select v-model="selectedOption" required>
+                                <b-form-select v-model="taxi_driving_liscence" required>
                                     <option value="">Select Liscence</option>
-                                    <option>Liscence B</option>
-                                    <!-- <option>Commission</option> -->
+                                    <!-- <option>Liscence B</option> -->
+                                    <option>Driving Liscence/Swedish ID</option>
+                                    <option>Taxi Liscence</option>
                                 </b-form-select>
                             </b-form-group>
                         </div>
@@ -472,6 +478,48 @@ export default {
             inputField2: '', // Holds the value of the second input field
             inputField3: '', // Holds the value of the third input field
             showModal: false, // Controls the visibility of the modal
+            isLoading: false,
+            // Add Driver
+            name: "",
+            email: "",
+            ssn: "",
+            mobile: "",
+            gender: "",
+            emergency_name: "",
+            emergency_number: "",
+            address: "",
+            date_of_birth: "",
+            salary: "",
+            bank_name: "",
+            bank_title: "",
+            bank_account_number: "",
+            company_name_own: "",
+            bank_upload_document: null,
+            taxi_driving_liscence: "",
+            bank_emergency_contact_name: "",
+            company_name: "",
+            owner_name: "",
+            owner_number: "",
+            company_document: "",
+            salary_commission: "",
+            salary_fix: "",
+            hourly_enter_amount: "",
+            profile_picture: null,
+            successMessage: "",
+            vehicle_id: "",
+            vehicles: [],
+            ////
+
+            vehicle_name: "",
+            vehicle_company: "",
+            description: "",
+            car_make: "",
+            car_model: "",
+            car_color: "",
+            car_number: "",
+            vehicle_image: null,
+            hourly_enter_amount: '',
+            total_number_hour: '',
 
         };
     },

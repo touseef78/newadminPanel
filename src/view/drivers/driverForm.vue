@@ -129,8 +129,8 @@
                     <!-- <div style="background-color: rgb(121, 156, 166); height:20px">
                         <h6 style="color: rgba(2, 2, 252, 0.607);">Driver Information</h6>
                     </div> -->
-                    <div style="background-color: rgb(97,116,152); height:30px">
-                        <h5 style="color: rgb(223,227,238); margin-left:5px;">Driver Information</h5>
+                    <div style="background-color: rgb(97,116,152); height:30px;border-radius:4px;">
+                        <h5 style="color: rgb(223,227,238); margin-left:5px; font-weight:bold;">Driver Information</h5>
                     </div>
                     <div class="row">
                         <div class="col-4">
@@ -171,13 +171,13 @@
                     </div>
 
                     <div style="background-color: rgb(97,116,152); height:32px;border-radius:4px;">
-                        <h5 style="color: rgb(223,227,238); margin-left:5px; font-weight:bold;">Salary Information</h5>
+                        <h5 style="color: rgb(223,227,238); margin-left:5px;font-weight:bold;">Salary Information</h5>
                     </div>
 
                     <div class="row">
                         <div class="col-4">
                             <b-form-group id="input-group-1" label="Salary:" label-for="salary">
-                                <b-form-select v-model="selectedOption" required>
+                                <b-form-select v-model="selectedOptions" required>
                                     <option value="">Select Salary Type</option>
                                     <option>Fix</option>
                                     <option>Commission</option>
@@ -199,10 +199,17 @@
                                     placeholder="Enter commission"></b-form-input>
                             </b-form-group>
                         </div>
+
                         <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                            <b-form-group label="Hourly Enter Amount" label-for="commission-input">
+                            <b-form-group label="Hourly Enter Amount" label-for="hourly_enter_amount">
                                 <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
-                                    placeholder="Enter commission"></b-form-input>
+                                    placeholder="Enter Hourly Amount"></b-form-input>
+                            </b-form-group>
+                        </div>
+                        <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
+                            <b-form-group label="Total Number Of Hours" label-for="total_number_hour">
+                                <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
+                                    placeholder="Enter Total Number Hours"></b-form-input>
                             </b-form-group>
                         </div>
                     </div>
@@ -240,9 +247,21 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-1" label="Upload Document:" label-for="upload_doc">
-                                <b-form-input id="upload_doc" type="text" placeholder="Enter upload document"
-                                    required></b-form-input>
+                                <!-- <b-form-select id="upload_doc" type="text" placeholder="Enter upload document"
+                                    required></b-form-select> -->
+                                <!-- <b-form-file id="upload_doc" v-model="selectedFile" placeholder="Choose a file..."
+                                    accept=".pdf, .doc, .docx" required></b-form-file> -->
+                                <div style="margin-left: 3px; margin-bottom:15px;">
+                                    <!-- Input field to upload image -->
+                                    <input type="file" accept="image/*">
+
+                                    <!-- Image preview -->
+                                    <!-- <div v-if="imageUrl">
+                            <img :src="imageUrl" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
+                        </div> -->
+                                </div>
                             </b-form-group>
+
                         </div>
                         <div class="col-4">
 
@@ -251,8 +270,10 @@
                                 label-for="taxi_driving_liscence">
                                 <b-form-select v-model="selectedOption" required>
                                     <option value="">Select Liscence</option>
-                                    <option>Liscence B</option>
-                                    <!-- <option>Commission</option> -->
+                                    <!-- <option>Liscence B</option> -->
+                                    <option>Driving Liscence/Swedish ID</option>
+                                    <!-- <option>Swedish ID</option> -->
+                                    <option>Taxi Liscence</option>
                                 </b-form-select>
                             </b-form-group>
                         </div>
@@ -294,14 +315,17 @@ import {
     BFormCheckbox,
     BFormSelect,
     BFormInput,
+    BFormFile,
 
 } from "bootstrap-vue";
+// import { BFormFile, BFormGroup } from "bootstrap-vue";
 
 import code from "../components/data-entry/form/code";
 
 export default {
     data() {
         return {
+            selectedOptions: '',
             show: true,
             codeText: code.introduction,
             codeActive: false,
@@ -314,7 +338,7 @@ export default {
             inputField2: '', // Holds the value of the second input field
             inputField3: '', // Holds the value of the third input field
             showModal: false, // Controls the visibility of the modal
-
+            selectedFile: null
         };
     },
     components: {
@@ -328,6 +352,7 @@ export default {
         BFormCheckbox,
         BFormSelect,
         BFormInput,
+        BFormFile,
 
     },
     methods: {
@@ -367,6 +392,19 @@ export default {
             // Then, close the modal by setting showModal to false
             this.showModal = false;
         },
-    },
+
+        uploadFile() {
+            if (this.selectedFile) {
+                // Here, you can implement your file upload logic
+                // For example, using axios or a similar library
+                // You can access the selected file using this.selectedFile
+                console.log("Uploading file:", this.selectedFile);
+            } else {
+                console.log("No file selected.");
+            }
+        }
+
+    }
+
 };
 </script>

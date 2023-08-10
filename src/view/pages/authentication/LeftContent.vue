@@ -24,7 +24,7 @@
 
           <b-col cols="12" md="11" lg="9" class="hp-text-item text-center">
             <h2 class="text-primary-1 hp-text-color-dark-0 mx-16 mx-lg-0 mb-16">
-              Uber/Bolt Management System 🤞
+              Uber/Bolt Management System
             </h2>
 
             <!-- <p class="mb-0 text-black-80 hp-text-color-dark-30">

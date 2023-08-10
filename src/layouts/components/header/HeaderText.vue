@@ -1,10 +1,22 @@
 <template>
   <div class="hp-header-text-info col col-lg-14 col-xl-16 hp-header-start-text d-flex align-items-center">
-    <div
+
+    <!-- <div
       class="d-flex rounded-lg hp-text-color-primary-1 hp-text-color-dark-0 p-4 hp-bg-color-primary-4 hp-bg-color-dark-70"
       style="min-width: 18px">
       <i class="iconly-Curved-Document"></i>
+    </div> -->
+    <!-- Display on Mobile screen  -->
+
+    <div>
+      <div
+        class="d-md-none d-flex rounded-lg hp-text-color-primary-1 hp-text-color-dark-0 p-4 hp-bg-color-primary-4 hp-bg-color-dark-70"
+        style="min-width: 18px">
+        <i class="iconly-Curved-Document"></i>
+      </div>
     </div>
+
+    <!-- Display on Mobile screen End -->
 
     <!-- <p
       class="hp-header-start-text-item hp-input-label hp-text-color-black-100 hp-text-color-dark-0 ml-16 mb-0 lh-1 d-flex align-items-center"
