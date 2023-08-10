@@ -239,32 +239,17 @@
                     placeholder="Enter commission"></b-form-input>
                 </b-form-group>
               </div>
-              <!-- <div
-                v-if="selectedOption === 'Hourly Enter Amount'"
-                class="col-4"
-              >
-                <b-form-group
-                  label="Hourly Enter Amount"
-                  label-for="commission-input"
-                >
-                  <b-form-input
-                    id="hourly_enter_amount"
-                    type="text"
-                    v-model="hourly_enter_amount"
-                    placeholder="Enter commission"
-                  ></b-form-input>
-                </b-form-group>
-              </div> -->
+
               <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
                 <b-form-group label="Hourly Enter Amount" label-for="hourly_enter_amount">
                   <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
-                    placeholder="Enter Hourly Amount"></b-form-input>
+                    placeholder="Enter Hourly Amount"  disabled ></b-form-input>
                 </b-form-group>
               </div>
               <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
                 <b-form-group label="Total Number Of Hours" label-for="total_number_hour">
                   <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
-                    placeholder="Enter Total Number Hours"></b-form-input>
+                    placeholder="Enter Total Number Hours"  disabled ></b-form-input>
                 </b-form-group>
               </div>
             </div>
@@ -420,6 +405,7 @@ export default {
       car_model: "",
       car_color: "",
       car_number: "",
+      total_number_hour: "",
       vehicle_image: null,
     };
   },
@@ -489,6 +475,7 @@ export default {
         this.car_color = this.editedUser.car_color;
         this.car_number = this.editedUser.car_number;
         this.vehicle_image = this.editedUser.vehicle_image;
+        this.total_number_hour = this.editedUser.total_number_hour;
         // Depending on the selected option, set the appropriate salary value
         if (this.editedUser.salary_fix !== null) {
           this.selectedOption = "Fix";
@@ -497,6 +484,7 @@ export default {
         } else if (this.editedUser.hourly_enter_amount !== null) {
           this.selectedOption = "Hourly Enter Amount";
         }
+        
 
         if (this.editedUser.vehicle_id !== null) {
           this.selectedCarType = "Company";

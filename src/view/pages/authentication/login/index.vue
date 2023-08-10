@@ -87,7 +87,7 @@ export default {
       } catch (error) {
         this.$bvToast.toast("Login failed. Please check your credentials.", {
           title: "Error",
-          variant: "dark",
+          variant: "primary",
           solid: true,
         });
       }

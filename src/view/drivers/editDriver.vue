@@ -461,6 +461,7 @@ export default {
       car_color: "",
       car_number: "",
       vehicle_image: null,
+      total_number_hour: "",
     };
   },
   components: {
@@ -528,6 +529,7 @@ export default {
         this.car_color = this.editedUser.car_color;
         this.car_number = this.editedUser.car_number;
         this.vehicle_image = this.editedUser.vehicle_image;
+        this.total_number_hour = this.editedUser.total_number_hour;
         // Depending on the selected option, set the appropriate salary value
         if (this.editedUser.salary_fix !== null) {
           this.selectedOption = "Fix";
@@ -614,6 +616,7 @@ export default {
       formData.append("car_number", this.car_number);
       formData.append("vehicle_image", this.vehicle_image);
       formData.append("bank_upload_document", this.bank_upload_document);
+      formData.append("total_number_hour", this.total_number_hour);
       axios
         .post(`driversUpdate/${this.editedUser.id}`, formData)
         .then((response) => {

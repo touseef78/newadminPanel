@@ -107,8 +107,6 @@
                 <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
                   <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id" required>
                     <option value="">Select Car</option>
-                    <option value="">Audi</option>
-                    <option value="">Honda Live</option>
                     <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
                       {{ vehicle.name }}
                     </option>
@@ -510,9 +508,8 @@ export default {
             appendToast: true,
             toaster: "b-toaster-top-right",
             autoHideDelay: 5000,
-            variant: "dark", // Background color
-            titleClass: "text-black", // Title text color
-            bodyClass: "text-black", // Body text color
+            variant: "primary", // Background color
+
           });
           this.isLoading = false;
         })
