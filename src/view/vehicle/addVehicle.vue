@@ -19,8 +19,8 @@
                     </div>
                     <div class="row">
                         <div class="col-4">
-                            <b-form-group id="input-group-2" label="Company Name:" label-for="company_name">
-                                <b-form-input id="company_name" v-model="company_name" placeholder="Enter company name"
+                            <b-form-group id="input-group-2" label="Company Name:" label-for="vehicle_company">
+                                <b-form-input id="vehicle_company" v-model="vehicle_company" placeholder="Enter company name"
                                     required></b-form-input>
                             </b-form-group>
                         </div>
@@ -202,6 +202,7 @@
                                 </div>
                             </b-form-group>
                         </div> -->
+                        
                     </div>
                     <div style="
               background-color: rgb(97, 116, 152);

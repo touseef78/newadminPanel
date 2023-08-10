@@ -289,25 +289,7 @@ import { BToast } from "bootstrap-vue";
 export default {
     data() {
         return {
-            selectedType: '',
-            selectedTypes: '',
-            selectedTypess: '',
-            selectedTypesss: '',
-            selectedTypessss: '',
-            selectedTypesssss: '',
-            // form: {
-            //     email: "",
-            //     name: "",
-            //     food: null,
-            //     checked: [],
-            // },
-            // AddExpensive: [
-            //     { text: "Select One", value: null },
-            //     "Tuning",
-            //     "Change Mobile Oil",
-            //     "Petrol",
-            //     "washing",
-            // ],
+
             show: true,
             codeText: code.introduction,
             codeActive: false,
