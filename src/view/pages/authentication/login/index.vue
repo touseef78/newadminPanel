@@ -78,11 +78,11 @@ export default {
 
         localStorage.setItem("token", response.data.token);
         this.$store.dispatch("user", response.data.user);
-        this.$bvToast.toast("Login successful!", {
-          title: "Success",
-          variant: "success",
-          solid: true,
-        });
+        // this.$bvToast.toast("Login successful!", {
+        //   title: "Success",
+        //   variant: "success",
+        //   solid: true,
+        // });
         this.$router.push("/dashboard");
       } catch (error) {
         this.$bvToast.toast("Login failed. Please check your credentials.", {

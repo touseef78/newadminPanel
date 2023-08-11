@@ -489,11 +489,6 @@ export default {
   data() {
     return {
       selectedType: "",
-      selectedTypes: "",
-      selectedTypess: "",
-      selectedTypesss: "",
-      selectedTypessss: "",
-      selectedTypesssss: "",
       show: true,
       codeText: code.introduction,
       codeActive: false,
