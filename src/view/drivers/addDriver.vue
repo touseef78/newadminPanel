@@ -183,7 +183,7 @@
 
                     <!--------------------- Uploading images button----------------------- -->
                     <div style="margin-left: 3px; margin-bottom: 15px">
-                      <input type="file" accept="image/*" id="vehicle_image" @change="vehicleImageChange" />
+                      <input type="file" accept="image/*" id="vehicle_image[]"  multiple @change="vehicleImageChange" />
                     </div>
                     <!-- </b-form> -->
                   </div>
@@ -402,7 +402,7 @@ export default {
       car_model: "",
       car_color: "",
       car_number: "",
-      vehicle_image: null,
+      vehicle_image: [],
       hourly_enter_amount: '',
       total_number_hour: '',
 
@@ -500,8 +500,9 @@ export default {
       formData.append("car_color", this.car_color);
       formData.append("car_number", this.car_number);
       formData.append("total_number_hour", this.total_number_hour);
-      formData.append("vehicle_image", this.vehicle_image);
-      formData.append("bank_upload_document", this.bank_upload_document);
+      for (const image of this.vehicle_image) {
+    formData.append('vehicle_image[]', image);
+  }      formData.append("bank_upload_document", this.bank_upload_document);
       axios
         .post("drivers", formData)
         .then((response) => {
@@ -534,12 +535,12 @@ export default {
     },
 
     vehicleImageChange(event) {
-      const file = event.target.files[0];
-      if (file) {
-        // Set the selected file to the data property
-        this.vehicle_image = file;
-      }
-    },
+  const files = event.target.files;
+  if (files && files.length > 0) {
+    // Convert FileList to an array
+    this.vehicle_image = Array.from(files);
+  }
+},
 
     BnakImageChange(event) {
       const file = event.target.files[0];
