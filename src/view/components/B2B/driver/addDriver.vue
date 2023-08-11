@@ -203,14 +203,14 @@
                                                         autocomplete="off" required></b-form-input>
                                                 </b-form-group>
                                             </div>
-                                            <div class="col-4">
+                                            <!-- <div class="col-4">
 
                                                 <b-form-group id="input-group-2" label="Company Name:"
                                                     label-for="comapnay_name">
                                                     <b-form-input id="comapnay_name" placeholder="Enter comapnay name"
                                                         required></b-form-input>
                                                 </b-form-group>
-                                            </div>
+                                            </div> -->
 
 
                                             <div class="col-4">
