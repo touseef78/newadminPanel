@@ -181,11 +181,14 @@
                     </div>
 
                     <!--------------------- Uploading images button----------------------- -->
-                    <div style="margin-left: 3px; margin-bottom: 15px">
-                      <!-- Input field to upload image -->
-                      <img :src="'https://boltapi.fastnetstaffing.in/' + vehicle_image
-                        " alt="vehicle Picture" width="100" height="100" />
-                    </div>
+                    <div v-if="editedUser.vehicle_image && editedUser.vehicle_image.length > 0">
+    <h6>Vehicle Images:</h6>
+    <div style="display: flex;">
+    <div v-for="(image, index) in editedUser.vehicle_image" :key="index" style="margin-left: 3px; margin-bottom: 15px">
+      <img :src="'http://127.0.0.1:8000/' + image" alt="Vehicle Image" width="100" height="100" />
+    </div>
+  </div>
+  </div>
                     <!-- </b-form> -->
                   </div>
 
@@ -398,8 +401,10 @@ export default {
       successMessage: "",
       vehicle_id: "",
       vehicles: [],
-      editedUser: {},
-
+      editedUser: {
+      // ... other properties ...
+      vehicle_image: [] // Initialize the array here
+    },
       vehicle_name: "",
       vehicle_company: "",
       description: "",
@@ -408,7 +413,7 @@ export default {
       car_color: "",
       car_number: "",
       total_number_hour: "",
-      vehicle_image: null,
+      // vehicle_image: null,
     };
   },
   components: {
