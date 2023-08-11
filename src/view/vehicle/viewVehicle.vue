@@ -431,15 +431,20 @@
           <!-- <div style="margin-left: 3px; margin-bottom: 15px">
                         <input type="file" accept="image/*" id="image" @change="vehicleImageChange" />
                     </div> -->
-          <div style="margin-left: 3px; margin-bottom: 15px">
-            <!-- Input field to upload image -->
-            <img
-              :src="'https://boltapi.fastnetstaffing.in/' + image"
-              alt="vehicle Picture"
-              width="100"
-              height="100"
-            />
-          </div>
+                    <div style="display: flex">
+              <!-- Display current vehicle images -->
+              <div
+                v-for="(image, index) in editedUser.image"
+                :key="index"
+                style="margin-left: 3px; margin-bottom: 15px"
+              >
+                <img
+                  :src="'https://boltapi.fastnetstaffing.in/' + image"
+                  alt="Vehicle Image"
+                  style="max-width: 100px; max-height: 100px"
+                />
+              </div>
+            </div>
         </b-form>
       </div>
 
@@ -493,8 +498,9 @@ export default {
       model_year: "",
       registration_number: "",
       equipment: "",
-      image: null,
-      // new code
+      editedUser: {
+        image: [], // Initialize the array here
+      },      // new code
       vehicle_type: "",
       last_inspection: "",
       insurance: "",
@@ -512,7 +518,6 @@ export default {
       mileage: "",
       accidental_claim: "",
       other_expense: "",
-      editedUser: {},
     };
   },
   components: {

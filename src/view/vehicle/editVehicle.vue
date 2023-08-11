@@ -56,7 +56,6 @@
                   id="description"
                   v-model="description"
                   placeholder="Enter Description"
-                  
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -71,7 +70,6 @@
                   id="car_make"
                   v-model="car_make"
                   placeholder="Enter Car Make"
-                  
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -85,7 +83,6 @@
                   id="car_model"
                   v-model="car_model"
                   placeholder="Enter Car Model"
-                  
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -99,7 +96,6 @@
                   id="car_color"
                   v-model="car_color"
                   placeholder="Enter Car Color"
-                  
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -113,7 +109,6 @@
                   id="car_numbar"
                   v-model="car_number"
                   placeholder="Enter Car Number"
-                  
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -128,7 +123,6 @@
                   id="model_year"
                   v-model="model_year"
                   placeholder="Enter Model Year"
-                  
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -143,7 +137,6 @@
                   id="registration_number"
                   v-model="registration_number"
                   placeholder="Enter Registration Number"
-                  
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -154,7 +147,7 @@
                 label="Vehicle Type:"
                 label-for="vehicle_type"
               >
-                <b-form-select v-model="vehicle_type" >
+                <b-form-select v-model="vehicle_type">
                   <option value="">Select Vehicle Type</option>
                   <option>Taxi</option>
                   <option>Delivery Service</option>
@@ -194,7 +187,6 @@
                   v-model="last_inspection"
                   type="date"
                   placeholder="Enter Last Inspection"
-                  
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -209,7 +201,6 @@
                   type="date"
                   v-model="next_inspection"
                   placeholder="Enter Next Inspection"
-                  
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -247,7 +238,7 @@
                 label="Select Equipment:"
                 label-for="select_equipment"
               >
-                <b-form-select v-model="select_equipment" >
+                <b-form-select v-model="select_equipment">
                   <option value="">Select Select Equipment</option>
                   <option>Tool Kit</option>
                   <option>Air Pump</option>
@@ -277,7 +268,7 @@
                 label="Vendor Name:"
                 label-for="vendor_name"
               >
-                <b-form-select v-model="vendor_name" >
+                <b-form-select v-model="vendor_name">
                   <option value="">Select Vendor Name</option>
                   <option>Uber</option>
                   <option>Bolt</option>
@@ -293,7 +284,6 @@
                 <b-form-input
                   v-model="insurance_company_name"
                   placeholder="Enter Insurance Company Name"
-                  
                 >
                   <!-- <option value="">Select Car Type</option> -->
                   <!-- <option>Uber</option> -->
@@ -400,7 +390,6 @@
                   id="accidental_claim"
                   v-model="accidental_claim"
                   placeholder="Enter Accidental Claim"
-                  
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -414,21 +403,39 @@
                   id="other_expense"
                   v-model="other_expense"
                   placeholder="Enter Other Expense"
-                  
                 ></b-form-input>
               </b-form-group>
             </div>
           </div>
           <!-- Equipment -->
           <h4>Equipment</h4>
-          <b-form-group id="input-group-1" label="Upload Document:" label-for="bank_upload_document">
-                  <div style="margin-left: 3px; margin-bottom: 15px">
-                    <!-- Display current profile picture -->
-                    <img v-if="editVehicle.image" :src="editVehicle.image" alt="Picture"
-                      style="max-width: 100px; max-height: 100px" />
-                    <input type="file" accept="image/*" id="image" @change="vehiclesImageChange" />
-                  </div>
-                </b-form-group>
+          <b-form-group
+            id="input-group-1"
+            label="Upload Document:"
+            label-for="bank_upload_document"
+          >
+            <div style="display: flex">
+              <!-- Display current vehicle images -->
+              <div
+                v-for="(image, index) in editVehicle.image"
+                :key="index"
+                style="margin-left: 3px; margin-bottom: 15px"
+              >
+                <img
+                  :src="'https://boltapi.fastnetstaffing.in/' + image"
+                  alt="Vehicle Image"
+                  style="max-width: 100px; max-height: 100px"
+                />
+              </div>
+            </div>
+            <input
+              type="file"
+              accept="image/*"
+              id="vehicle_image"
+              multiple
+              @change="vehicleImageChange"
+            />
+          </b-form-group>
           <b-button
             type="submit"
             variant="primary"
@@ -516,9 +523,10 @@ export default {
       mileage: "",
       accidental_claim: "",
       other_expense: "",
-      editVehicle: {},
+      editVehicle: {
+        image: [], // Initialize the array here
+      },
       vehicles: [],
-
     };
   },
   components: {
@@ -533,7 +541,7 @@ export default {
     BFormSelect,
     BFormInput,
     BToast,
-    BSpinner
+    BSpinner,
   },
 
   created() {
@@ -565,7 +573,8 @@ export default {
         this.vehicle_type = this.editVehicle.vehicle_type;
         this.last_inspection = this.editVehicle.last_inspection;
         this.insurance = this.editVehicle.insurance;
-        this.texameter_inspection_date =this.editVehicle.texameter_inspection_date;
+        this.texameter_inspection_date =
+          this.editVehicle.texameter_inspection_date;
         this.next_inspection = this.editVehicle.next_inspection;
         this.select_equipment = this.editVehicle.select_equipment;
         this.vendor_name = this.editVehicle.vendor_name;
@@ -616,7 +625,9 @@ export default {
       formData.append("model_year", this.model_year);
       formData.append("registration_number", this.registration_number);
       formData.append("equipment", this.equipment);
-      formData.append("image", this.image);
+      for (const image of this.image) {
+        formData.append("image[]", image);
+      }
       formData.append("vehicle_type", this.vehicle_type);
       formData.append("last_inspection", this.last_inspection);
       formData.append("insurance", this.insurance);
@@ -641,7 +652,7 @@ export default {
       formData.append("other_expense", this.other_expense);
 
       axios
-      .post(`vehicleUpdate/${this.editVehicle.id}`, formData)
+        .post(`vehicleUpdate/${this.editVehicle.id}`, formData)
         .then((response) => {
           console.log(response.data);
           this.$bvToast.toast("Vehicle Update successfully!", {
@@ -662,17 +673,16 @@ export default {
         });
     },
 
-    vehiclesImageChange(event) {
-      const file = event.target.files[0];
-      if (file) {
-        // Set the selected file to the data property
-        this.image = file;
+    vehicleImageChange(event) {
+      const files = event.target.files;
+      if (files && files.length > 0) {
+        // Convert FileList to an array
+        this.image = Array.from(files);
       }
     },
 
     codeClick() {
       this.codeActive = !this.codeActive;
-
     },
   },
 };

@@ -432,7 +432,8 @@
             <input
               type="file"
               accept="image/*"
-              id="image"
+              id="image[]"
+              multiple
               @change="vehicleImageChange"
             />
           </div>
@@ -504,7 +505,7 @@ export default {
       model_year: "",
       registration_number: "",
       equipment: "",
-      image: null,
+      image: [],
       isLoading: false,
       // new code
       vehicle_type: "",
@@ -574,8 +575,9 @@ export default {
       formData.append("model_year", this.model_year);
       formData.append("registration_number", this.registration_number);
       formData.append("equipment", this.equipment);
-      formData.append("image", this.image);
-      formData.append("vehicle_type", this.vehicle_type);
+      for (const image of this.image) {
+    formData.append('image[]', image);
+  }           formData.append("vehicle_type", this.vehicle_type);
       formData.append("last_inspection", this.last_inspection);
       formData.append("insurance", this.insurance);
       formData.append(
@@ -624,12 +626,12 @@ export default {
     },
 
     vehicleImageChange(event) {
-      const file = event.target.files[0];
-      if (file) {
-        // Set the selected file to the data property
-        this.image = file;
-      }
-    },
+  const files = event.target.files;
+  if (files && files.length > 0) {
+    // Convert FileList to an array
+    this.image = Array.from(files);
+  }
+},
   },
 };
 </script>
