@@ -243,7 +243,17 @@
           <!-- Equipment -->
           <h4>Equipment</h4>
           <div style="margin-left: 3px; margin-bottom: 15px">
+<<<<<<< HEAD
             <input type="file" accept="image/*" id="image" @change="vehicleImageChange" />
+=======
+            <input
+              type="file"
+              accept="image/*"
+              id="image[]"
+              multiple
+              @change="vehicleImageChange"
+            />
+>>>>>>> d976c62e2635b1008ca16b7bfc8d08eff5616f29
           </div>
           <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
             <span v-if="!isLoading">Submit</span>
@@ -299,7 +309,7 @@ export default {
       model_year: "",
       registration_number: "",
       equipment: "",
-      image: null,
+      image: [],
       isLoading: false,
       // new code
       vehicle_type: "",
@@ -369,8 +379,9 @@ export default {
       formData.append("model_year", this.model_year);
       formData.append("registration_number", this.registration_number);
       formData.append("equipment", this.equipment);
-      formData.append("image", this.image);
-      formData.append("vehicle_type", this.vehicle_type);
+      for (const image of this.image) {
+    formData.append('image[]', image);
+  }           formData.append("vehicle_type", this.vehicle_type);
       formData.append("last_inspection", this.last_inspection);
       formData.append("insurance", this.insurance);
       formData.append(
@@ -419,12 +430,12 @@ export default {
     },
 
     vehicleImageChange(event) {
-      const file = event.target.files[0];
-      if (file) {
-        // Set the selected file to the data property
-        this.image = file;
-      }
-    },
+  const files = event.target.files;
+  if (files && files.length > 0) {
+    // Convert FileList to an array
+    this.image = Array.from(files);
+  }
+},
   },
 };
 </script>

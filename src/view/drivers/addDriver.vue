@@ -524,7 +524,8 @@ export default {
       formData.append("total_number_hour", this.total_number_hour);
       for (const image of this.vehicle_image) {
     formData.append('vehicle_image[]', image);
-  }      formData.append("bank_upload_document", this.bank_upload_document);
+  }      
+  formData.append("bank_upload_document", this.bank_upload_document);
       axios
         .post("drivers", formData)
         .then((response) => {
