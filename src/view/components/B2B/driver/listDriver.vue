@@ -219,7 +219,7 @@ export default {
                     :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
                     <!-- Action Button Code -->
                     <template #cell(actions)="row">
-                        <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
+                        <b-button @click="showDriver(row.item.id)" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
                 color: rgba(0, 255, 195, 0.87);
                 margin-left: 6px;
@@ -326,6 +326,7 @@ import Papa from "papaparse";
 export default {
     data() {
         return {
+
             perPage: 10,
             currentPage: 1,
             sortBy: "age",
@@ -340,11 +341,11 @@ export default {
                 { key: "reference_name", sortable: true },
                 { key: "reference_number", sortable: true },
                 { key: "ssn", sortable: true },
-                { key: "selection", sortable: true },
+                // { key: "selection", sortable: true },
                 { key: "status", sortable: true },
-                { key: "car_name", sortable: true },
-                { key: "car_model", sortable: true },
-                { key: "car_number", sortable: true },
+                // { key: "car_name", sortable: true },
+                // { key: "car_model", sortable: true },
+                // { key: "car_number", sortable: true },
                 { key: "actions", label: "Actions" },
             ],
 
@@ -429,11 +430,11 @@ export default {
 
 
         editUser(userId) {
-            this.$router.push({ name: "editDrivers", params: { id: userId } });
+            this.$router.push({ name: "B2B/driver/edit", params: { id: userId } });
         },
 
-        showDrivers(userId) {
-            this.$router.push({ name: "viewDrivers", params: { id: userId } });
+        showDriver(userId) {
+            this.$router.push({ name: "B2B/driver/view", params: { id: userId } });
         },
 
         deleteItem(itemId) {
