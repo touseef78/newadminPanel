@@ -266,25 +266,11 @@
                           ></b-form-input>
                         </b-form-group>
                       </div>
-<<<<<<< HEAD
                       <!-- <div class="col-4">
                         <b-form-group id="input-group-2" label="Company Name:" label-for="company_name">
                           <b-form-input id="vehicle_company" placeholder="Enter comapnay name" v-model="vehicle_company"
                             disabled></b-form-input>
-=======
-                      <div class="col-4">
-                        <b-form-group
-                          id="input-group-2"
-                          label="Company Name:"
-                          label-for="company_name"
-                        >
-                          <b-form-input
-                            id="vehicle_company"
-                            placeholder="Enter comapnay name"
-                            v-model="vehicle_company"
-                            disabled
-                          ></b-form-input>
->>>>>>> d976c62e2635b1008ca16b7bfc8d08eff5616f29
+
                         </b-form-group>
                       </div> -->
 
