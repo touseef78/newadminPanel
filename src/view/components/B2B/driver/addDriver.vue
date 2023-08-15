@@ -105,8 +105,8 @@
                         </div>
                         <div class="col-4">
 
-                            <b-form-group id="input-group-1" label="Emergency Name:" label-for="emg_name">
-                                <b-form-input id="emg_name" type="text" placeholder="Enter emergency name"
+                            <b-form-group id="input-group-1" label="Emergency Name:" label-for="emergency_name">
+                                <b-form-input id="emergency_name    " type="text" placeholder="Enter emergency name"
                                     required></b-form-input>
                             </b-form-group>
                         </div>
@@ -115,8 +115,9 @@
                     <div class="row">
                         <div class="col-4">
 
-                            <b-form-group id="input-group-2" label="Emergency Number:" label-for="emg_num">
-                                <b-form-input id="emg_num" placeholder="Enter emergency number" required></b-form-input>
+                            <b-form-group id="input-group-2" label="Emergency Number:" label-for="emergency_number">
+                                <b-form-input id="emergency_number" placeholder="Enter emergency number"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
 
@@ -203,14 +204,14 @@
                                                         autocomplete="off" required></b-form-input>
                                                 </b-form-group>
                                             </div>
-                                            <div class="col-4">
+                                            <!-- <div class="col-4">
 
                                                 <b-form-group id="input-group-2" label="Company Name:"
                                                     label-for="comapnay_name">
                                                     <b-form-input id="comapnay_name" placeholder="Enter comapnay name"
                                                         required></b-form-input>
                                                 </b-form-group>
-                                            </div>
+                                            </div> -->
 
 
                                             <div class="col-4">
@@ -253,9 +254,36 @@
                                         </div>
 
                                         <!--------------------- Uploading images button----------------------- -->
-                                        <div style="margin-left: 3px; margin-bottom:15px;">
-                                            <!-- Input field to upload image -->
+                                        <!-- <div style="margin-left: 3px; margin-bottom:15px;">
                                             <input type="file" accept="image/*">
+                                        </div> -->
+                                        <div class="col-12">
+
+                                            <div>
+                                                <b-form-group id="input-group-2" label="Profile Picture:"
+                                                    label-for="profile_picture">
+
+                                                    <input type="file" @change="handleFileChange" accept=".pdf, image/*"
+                                                        id="profile_picture" multiple />
+                                                    <div class="file-preview">
+                                                        <div v-for="(file, index) in uploadedFiles" :key="index"
+                                                            class="preview-item">
+                                                            <div class="preview-content">
+                                                                <template v-if="isImage(file)">
+                                                                    <img :src="file.preview" class="preview-image"
+                                                                        style="disply:flex;" />
+                                                                </template>
+                                                                <template v-else>
+                                                                    <span class="pdf-icon">&#128462;</span>
+                                                                </template>
+                                                                <span class="file-name">{{ file.name }}</span>
+                                                            </div>
+                                                            <span class="cross-icon"
+                                                                @click="removeFile(index)">&#10060;</span>
+                                                        </div>
+                                                    </div>
+                                                </b-form-group>
+                                            </div>
                                         </div>
                                     </b-form>
 
@@ -466,6 +494,7 @@ import {
 export default {
     data() {
         return {
+             uploadedFiles: [],
             show: true,
             // codeText: code.introduction,
             codeActive: false,

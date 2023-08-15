@@ -287,6 +287,12 @@
                           ></b-form-input>
                         </b-form-group>
                       </div>
+<<<<<<< HEAD
+                      <!-- <div class="col-4">
+                        <b-form-group id="input-group-2" label="Company Name:" label-for="company_name">
+                          <b-form-input id="vehicle_company" placeholder="Enter comapnay name"
+                            v-model="vehicle_company"></b-form-input>
+=======
                       <div class="col-4">
                         <b-form-group
                           id="input-group-2"
@@ -298,8 +304,9 @@
                             placeholder="Enter comapnay name"
                             v-model="vehicle_company"
                           ></b-form-input>
+>>>>>>> d976c62e2635b1008ca16b7bfc8d08eff5616f29
                         </b-form-group>
-                      </div>
+                      </div> -->
 
                       <div class="col-4">
                         <b-form-group
@@ -371,6 +378,14 @@
 
                     <!--------------------- Uploading images button----------------------- -->
                     <div class="col-4">
+<<<<<<< HEAD
+                      <b-form-group id="input-group-1" label="Vehicle Document:" label-for="vehicle_image">
+                        <div style="margin-left: 3px; margin-bottom: 15px">
+                          <!-- Display current profile picture -->
+                          <img v-if="editedUser.vehicle_image" :src="editedUser.vehicle_image" alt="Picture"
+                            style="max-width: 100px; max-height: 100px" />
+                          <input type="file" accept="image/*" id="vehicle_image" @change="vehicleImageChange" />
+=======
                       <b-form-group
                         id="input-group-1"
                         label="Vehicle Documents:"
@@ -389,6 +404,7 @@
                               style="max-width: 100px; max-height: 100px"
                             />
                           </div>
+>>>>>>> d976c62e2635b1008ca16b7bfc8d08eff5616f29
                         </div>
                         <input
                           type="file"
@@ -549,6 +565,23 @@
             <!-- <h3>Bank Infomation</h3> -->
             <div class="row">
               <div class="col-4">
+<<<<<<< HEAD
+                <b-form-group id="input-group-1" label="Bank Account Holder Name:" label-for="bank_account_holder_name">
+                  <b-form-input id="bank_name" type="text" placeholder="Enter bank account holder name"
+                    v-model="bank_name"></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-4">
+                <b-form-group id="input-group-2" label="Bank Account Number:" label-for="bank_account_number">
+                  <b-form-input id="bank_account_number" placeholder="Enter bank account number"
+                    v-model="bank_account_number"></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-4">
+                <b-form-group id="input-group-1" label=" Company Name(own):" label-for="company_name_own">
+                  <b-form-input id="company_name_own" type="text" placeholder="Enter company name"
+                    v-model="company_name_own"></b-form-input>
+=======
                 <b-form-group
                   id="input-group-1"
                   label="Bank Account Holder Name:"
@@ -587,6 +620,7 @@
                     placeholder="Enter company name"
                     v-model="company_name_own"
                   ></b-form-input>
+>>>>>>> d976c62e2635b1008ca16b7bfc8d08eff5616f29
                 </b-form-group>
               </div>
             </div>
