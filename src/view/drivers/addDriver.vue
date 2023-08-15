@@ -570,7 +570,7 @@ export default {
   }
 },
 
-    BnakImageChange(event) {
+BankImageChange(event) {
       const file = event.target.files[0];
       if (file) {
         this.bank_upload_document = file;
@@ -591,127 +591,7 @@ export default {
 
 
   },
-  showMsgBoxOne() {
-    debugger;
-  },
-  onSubmit(event) {
-    event.preventDefault();
-    alert(JSON.stringify(this.form));
-    // debugger
-  },
-  onReset(event) {
-    event.preventDefault();
-    // Reset our form values
-    this.form.email = "";
-    this.form.name = "";
-    this.form.food = null;
-    this.form.checked = [];
-    // Trick to reset/clear native browser form validation state
-    this.show = false;
-    this.$nextTick(() => {
-      this.show = true;
-    });
-  },
-
-  addUser() {
-    this.isLoading = true;
-    // Create a FormData object to handle the image file
-    const formData = new FormData();
-    formData.append("profile_picture", this.profile_picture);
-    formData.append("name", this.name);
-    formData.append("email", this.email);
-    formData.append("ssn", this.ssn);
-    formData.append("mobile", this.mobile);
-    formData.append("gender", this.gender);
-    formData.append("emergency_name", this.emergency_name);
-    formData.append("emergency_number", this.emergency_number);
-    formData.append("address", this.address);
-    formData.append("date_of_birth", this.date_of_birth);
-    formData.append("salary", this.salary);
-    formData.append("bank_name", this.bank_name);
-    formData.append("bank_account_number", this.bank_account_number);
-    formData.append("company_name_own", this.company_name_own);
-    formData.append("company_name", this.company_name);
-    formData.append("taxi_driving_liscence", this.taxi_driving_liscence);
-    formData.append(
-      "bank_emergency_contact_name",
-      this.bank_emergency_contact_name
-    );
-    formData.append("owner_name", this.owner_name);
-    formData.append("owner_number", this.owner_number);
-    formData.append("company_document", this.company_document);
-    formData.append("salary_commission", this.salary_commission);
-    formData.append("salary_fix", this.salary_fix);
-    formData.append("hourly_enter_amount", this.hourly_enter_amount);
-    formData.append("vehicle_id", this.vehicle_id);
-    formData.append("vehicle_name", this.vehicle_name);
-    formData.append("vehicle_company", this.vehicle_company);
-    formData.append("description", this.description);
-    formData.append("car_make", this.car_make);
-    formData.append("car_model", this.car_model);
-    formData.append("car_color", this.car_color);
-    formData.append("car_number", this.car_number);
-    formData.append("total_number_hour", this.total_number_hour);
-    formData.append("vehicle_image", this.vehicle_image);
-    formData.append("bank_upload_document", this.bank_upload_document);
-    axios
-      .post("drivers", formData)
-      .then((response) => {
-        console.log(response.data);
-        this.$bvToast.toast("Driver added successfully!", {
-          title: "Success",
-          variant: "success",
-          solid: true,
-          appendToast: true,
-          toaster: "b-toaster-top-right",
-          autoHideDelay: 5000,
-          variant: "primary", // Background color
-
-        });
-        this.isLoading = false;
-      })
-      .catch((error) => {
-        this.errors = error.response.data.errors;
-        console.log(error.response.data);
-        this.isLoading = false;
-      });
-  },
-
-  onProfilePictureChange(event) {
-    const file = event.target.files[0];
-    if (file) {
-      // Set the selected file to the data property
-      this.profile_picture = file;
-    }
-  },
-
-  vehicleImageChange(event) {
-    const file = event.target.files[0];
-    if (file) {
-      // Set the selected file to the data property
-      this.vehicle_image = file;
-    }
-  },
-
-  BnakImageChange(event) {
-    const file = event.target.files[0];
-    if (file) {
-      this.bank_upload_document = file;
-    }
-  },
-
-  codeClick() {
-    this.codeActive = !this.codeActive;
-
-    //   setTimeout(() => {
-    //     this.codeActiveClass = !this.codeActiveClass;
-    //   }, 100);
-  },
-
-  saveOwnCar() {
-    this.showModal = false;
-  },
-
+  
 
 };
 </script>
