@@ -7,7 +7,6 @@
             <b-row>
                 <div class="col-12 mt-16">
 
-
                     <div style="background-color: rgb(97,116,152); height:32px; border-radius:4px;">
                         <h5 style="color: rgb(223,227,238); margin-left:5px; font-weight:bold; ">Company Information</h5>
                     </div>
@@ -45,23 +44,11 @@
 
                                     <input type="file" accept="image/*" id="company_document"
                                         @change="onCompanyDocumentChange" />
-                                
+
                                 </div>
                             </b-form-group>
                         </div>
-
-                        <!-- new code  -->
-                        <!-- <div class="col-4">
-                            <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                                <div style="margin-left: 3px; margin-bottom: 15px">
-                                    <input type="file" accept="image/*" id="profile_picture"
-                                        @change="onProfilePictureChange" />
-                                </div>
-                            </b-form-group>
-                        </div> -->
-                        <!-- new code end  -->
                     </div>
-
                     <b-form @submit.prevent="addUser" v-if="show">
                         <div style="
                 background-color: rgb(97, 116, 152);
@@ -109,12 +96,8 @@
                             </div>
                             <div class="col-4">
                                 <b-form-group id="input-group-2" label="Gender:" label-for="gender">
-                                    <b-form-select v-model="gender" required>
-                                        <option value="">Select Gender</option>
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Other</option>
-                                    </b-form-select>
+                                    <b-form-input id="gender" placeholder="Enter gender" v-model="gender"
+                                        required></b-form-input>
                                 </b-form-group>
                             </div>
                             <div class="col-4">
@@ -146,15 +129,36 @@
                             </div>
                         </div>
                         <div class="row">
+                            <!-- <div class="col-4">
+                <b-form-group
+                  id="input-group-2"
+                  label="Profile Picture:"
+                  label-for="profile_picture"
+                >
+                  <div style="margin-left: 3px; margin-bottom: 15px">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id="profile_picture"
+                      @change="onProfilePictureChange"
+                    />
+                  </div>
+                </b-form-group>
+              </div> -->
+
                             <div class="col-4">
                                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
                                     <div style="margin-left: 3px; margin-bottom: 15px">
+                                        <!-- Display current profile picture -->
+                                        <img v-if="editedUser.profile_picture"
+                                            :src="'https://boltapi.fastnetstaffing.in/' + profile_picture" alt="Picture"
+                                            style="max-width: 100px; max-height: 100px" />
+                                        <!-- Input field to upload new profile picture -->
                                         <input type="file" accept="image/*" id="profile_picture"
                                             @change="onProfilePictureChange" />
                                     </div>
                                 </b-form-group>
                             </div>
-                            <!-- new images code  -->
 
                             <div class="col-4">
                                 <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
@@ -168,8 +172,7 @@
 
                             <div v-if="selectedCarType === 'Company'" class="col-4">
                                 <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
-                                    <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id"
-                                        required>
+                                    <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id">
                                         <option value="">Select Car</option>
                                         <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
                                             {{ vehicle.name }}
@@ -203,12 +206,13 @@
                                                         autocomplete="off" v-model="vehicle_name"></b-form-input>
                                                 </b-form-group>
                                             </div>
-                                            <!-- <div class="col-4">
-                        <b-form-group id="input-group-2" label="Company Name:" label-for="company_name">
-                          <b-form-input id="vehicle_company" placeholder="Enter comapnay name"
-                            v-model="vehicle_company"></b-form-input>
-                        </b-form-group>
-                      </div> -->
+                                            <div class="col-4">
+                                                <b-form-group id="input-group-2" label="Company Name:"
+                                                    label-for="company_name">
+                                                    <b-form-input id="vehicle_company" placeholder="Enter comapnay name"
+                                                        v-model="vehicle_company"></b-form-input>
+                                                </b-form-group>
+                                            </div>
 
                                             <div class="col-4">
                                                 <b-form-group id="input-group-2" label="Description:"
@@ -245,20 +249,33 @@
                                         </div>
 
                                         <!--------------------- Uploading images button----------------------- -->
-                                        <div style="margin-left: 3px; margin-bottom: 15px">
-                                            <input type="file" accept="image/*" id="vehicle_image[]" multiple
-                                                @change="vehicleImageChange" />
+                                        <div class="col-4">
+                                            <b-form-group id="input-group-1" label="Vehicle Documents:"
+                                                label-for="vehicle_image">
+                                                <div style="display: flex">
+                                                    <!-- Display current vehicle images -->
+                                                    <div v-for="(image, index) in editedUser.vehicle_image" :key="index"
+                                                        style="margin-left: 3px; margin-bottom: 15px">
+                                                        <img :src="'https://boltapi.fastnetstaffing.in/' + image"
+                                                            alt="Vehicle Image"
+                                                            style="max-width: 100px; max-height: 100px" />
+                                                    </div>
+                                                </div>
+                                                <input type="file" accept="image/*" id="vehicle_image" multiple
+                                                    @change="vehicleImageChange" />
+                                            </b-form-group>
                                         </div>
+
                                         <!-- </b-form> -->
                                     </div>
 
                                     <div v-if="codeActive" class="col-12 mt-24 hljs-container"
                                         :class="{ active: codeActiveClass }">
                                         <pre v-highlightjs>
-                                     <code class="hljs html">
-                                    {{ codeText }}
-                                          </code>
-                                                </pre>
+                                       <code class="hljs html">
+                                      {{ codeText }}
+                                            </code>
+                                                  </pre>
                                     </div>
                                 </b-row>
                             </div>
@@ -303,14 +320,30 @@
                                         placeholder="Enter commission"></b-form-input>
                                 </b-form-group>
                             </div>
+                            <!-- <div
+                v-if="selectedOption === 'Hourly Enter Amount'"
+                class="col-4"
+              >
+                <b-form-group
+                  label="Hourly Enter Amount"
+                  label-for="commission-input"
+                >
+                  <b-form-input
+                    id="hourly_enter_amount"
+                    type="text"
+                    v-model="hourly_enter_amount"
+                    placeholder="Enter commission"
+                  ></b-form-input>
+                </b-form-group>
+              </div> -->
                             <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                                <b-form-group label="Hourly Enter Amount ($/hr)" label-for="hourly_enter_amount">
+                                <b-form-group label="Hourly Enter Amount" label-for="hourly_enter_amount">
                                     <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
                                         placeholder="Enter Hourly Amount"></b-form-input>
                                 </b-form-group>
                             </div>
                             <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                                <b-form-group label="Total Number Of Hours ($/hr)" label-for="total_number_hour">
+                                <b-form-group label="Total Number Of Hours" label-for="total_number_hour">
                                     <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
                                         placeholder="Enter Total Number Hours"></b-form-input>
                                 </b-form-group>
@@ -336,20 +369,20 @@
                                 <b-form-group id="input-group-1" label="Bank Account Holder Name:"
                                     label-for="bank_account_holder_name">
                                     <b-form-input id="bank_name" type="text" placeholder="Enter bank account holder name"
-                                        v-model="bank_name" required></b-form-input>
+                                        v-model="bank_name"></b-form-input>
                                 </b-form-group>
                             </div>
                             <div class="col-4">
                                 <b-form-group id="input-group-2" label="Bank Account Number:"
                                     label-for="bank_account_number">
                                     <b-form-input id="bank_account_number" placeholder="Enter bank account number"
-                                        v-model="bank_account_number" required></b-form-input>
+                                        v-model="bank_account_number"></b-form-input>
                                 </b-form-group>
                             </div>
                             <div class="col-4">
                                 <b-form-group id="input-group-1" label=" Company Name(own):" label-for="company_name_own">
                                     <b-form-input id="company_name_own" type="text" placeholder="Enter company name"
-                                        v-model="company_name_own" required></b-form-input>
+                                        v-model="company_name_own"></b-form-input>
                                 </b-form-group>
                             </div>
                         </div>
@@ -357,19 +390,24 @@
                             <div class="col-4">
                                 <b-form-group id="input-group-1" label="Upload Document:" label-for="bank_upload_document">
                                     <div style="margin-left: 3px; margin-bottom: 15px">
+                                        <!-- Display current profile picture -->
+                                        <img v-if="editedUser.bank_upload_document"
+                                            :src="'https://boltapi.fastnetstaffing.in/' + bank_upload_document"
+                                            alt="Picture" style="max-width: 100px; max-height: 100px" />
                                         <input type="file" accept="image/*" id="bank_upload_document"
-                                            @change="BankImageChange" />
+                                            @change="BnakImageChange" />
                                     </div>
                                 </b-form-group>
                             </div>
                             <div class="col-4">
                                 <b-form-group id="input-group-1" label="Taxi Driving Liscence:"
                                     label-for="taxi_driving_liscence">
-                                    <b-form-select v-model="taxi_driving_liscence" required>
+                                    <b-form-select v-model="taxi_driving_liscence">
                                         <option value="">Select Liscence</option>
-                                        <!-- <option>Liscence B</option> -->
                                         <option>Driving Liscence/Swedish ID</option>
                                         <option>Taxi Liscence</option>
+                                        <!-- <option>Liscence B</option> -->
+                                        <!-- <option>Commission</option> -->
                                     </b-form-select>
                                 </b-form-group>
                             </div>
@@ -391,10 +429,10 @@
                 </div>
                 <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
                     <pre v-highlightjs>
-          <code class="hljs html">
-            {{ codeText }}
-          </code>
-        </pre>
+            <code class="hljs html">
+              {{ codeText }}
+            </code>
+          </pre>
                 </div>
             </b-row>
         </b-card>
@@ -422,7 +460,6 @@ import code from "../../../components/data-entry/form/code";
 export default {
     data() {
         return {
-            selectedImage: null,
             show: true,
             codeText: code.introduction,
             codeActive: false,
@@ -454,6 +491,10 @@ export default {
             bank_upload_document: null,
             taxi_driving_liscence: "",
             bank_emergency_contact_name: "",
+            company_name: "",
+            owner_name: "",
+            owner_number: "",
+            company_document: "",
             salary_commission: "",
             salary_fix: "",
             hourly_enter_amount: "",
@@ -461,11 +502,9 @@ export default {
             successMessage: "",
             vehicle_id: "",
             vehicles: [],
-            ////
-            company_name: "",
-            owner_name: "",
-            owner_number: "",
-            company_document: "",
+            editedUser: {
+                vehicle_image: [], // Initialize the array here
+            },
             vehicle_name: "",
             vehicle_company: "",
             description: "",
@@ -474,13 +513,7 @@ export default {
             car_color: "",
             car_number: "",
             vehicle_image: [],
-            hourly_enter_amount: '',
-            total_number_hour: '',
-
-
-
-
-
+            total_number_hour: "",
         };
     },
     components: {
@@ -507,6 +540,67 @@ export default {
             })
             .catch((error) => {
                 console.log(error);
+            });
+
+        const userId = this.$route.params.id;
+        axios
+            .get(`drivers/${userId}`)
+            .then((response) => {
+                this.editedUser = response.data.data;
+                this.name = this.editedUser.name;
+                this.email = this.editedUser.email;
+                this.ssn = this.editedUser.ssn;
+                this.mobile = this.editedUser.mobile;
+                this.gender = this.editedUser.gender;
+                this.emergency_name = this.editedUser.emergency_name;
+                this.emergency_number = this.editedUser.emergency_number;
+                this.address = this.editedUser.address;
+                this.date_of_birth = this.editedUser.date_of_birth;
+                this.profile_picture = this.editedUser.profile_picture;
+                this.salary_commission = this.editedUser.salary_commission;
+                this.salary_fix = this.editedUser.salary_fix;
+                this.hourly_enter_amount = this.editedUser.hourly_enter_amount;
+                this.bank_name = this.editedUser.bank_name;
+                this.bank_title = this.editedUser.bank_title;
+                this.bank_account_number = this.editedUser.bank_account_number;
+                this.company_name_own = this.editedUser.company_name_own;
+                this.bank_upload_document = this.editedUser.bank_upload_document;
+                this.bank_emergency_contact_name =
+                    this.editedUser.bank_emergency_contact_name;
+                this.company_name = this.editedUser.company_name;
+                this.owner_name = this.editedUser.owner_name;
+                this.owner_number = this.editedUser.owner_number;
+                this.company_document = this.editedUser.company_document;
+                this.vehicle_id = this.editedUser.vehicle_id;
+                this.taxi_driving_liscence = this.editedUser.taxi_driving_liscence;
+                this.vehicle_name = this.editedUser.vehicle_name;
+                this.description = this.editedUser.description;
+                this.vehicle_company = this.editedUser.vehicle_company;
+                this.car_make = this.editedUser.car_make;
+                this.car_model = this.editedUser.car_model;
+                this.car_color = this.editedUser.car_color;
+                this.car_number = this.editedUser.car_number;
+                this.vehicle_image = this.editedUser.vehicle_image;
+                this.total_number_hour = this.editedUser.total_number_hour;
+                // Depending on the selected option, set the appropriate salary value
+                if (this.editedUser.salary_fix !== null) {
+                    this.selectedOption = "Fix";
+                } else if (this.editedUser.salary_commission !== null) {
+                    this.selectedOption = "Commission";
+                } else if (this.editedUser.hourly_enter_amount !== null) {
+                    this.selectedOption = "Hourly Enter Amount";
+                }
+
+                if (this.editedUser.vehicle_id !== null) {
+                    this.selectedCarType = "Company";
+                } else if (this.editedUser.car_color !== null) {
+                    this.selectedCarType = "Own";
+                }
+
+                // ... and so on for other properties ...
+            })
+            .catch((error) => {
+                console.error("Error fetching user data:", error);
             });
     },
     methods: {
@@ -536,7 +630,6 @@ export default {
             this.isLoading = true;
             // Create a FormData object to handle the image file
             const formData = new FormData();
-            formData.append("profile_picture", this.profile_picture);
             formData.append("name", this.name);
             formData.append("email", this.email);
             formData.append("ssn", this.ssn);
@@ -562,24 +655,26 @@ export default {
             formData.append("salary_commission", this.salary_commission);
             formData.append("salary_fix", this.salary_fix);
             formData.append("hourly_enter_amount", this.hourly_enter_amount);
-            formData.append("vehicle_id", this.vehicle_id);
+            if (this.vehicle_id != null) {
+                formData.append("vehicle_id", this.vehicle_id);
+            }
+            formData.append("profile_picture", this.profile_picture);
             formData.append("vehicle_name", this.vehicle_name);
             formData.append("vehicle_company", this.vehicle_company);
-            formData.append("description", this.description);
             formData.append("car_make", this.car_make);
             formData.append("car_model", this.car_model);
             formData.append("car_color", this.car_color);
             formData.append("car_number", this.car_number);
-            formData.append("total_number_hour", this.total_number_hour);
             for (const image of this.vehicle_image) {
                 formData.append('vehicle_image[]', image);
             }
             formData.append("bank_upload_document", this.bank_upload_document);
+            formData.append("total_number_hour", this.total_number_hour);
             axios
-                .post("drivers", formData)
+                .post(`driversUpdate/${this.editedUser.id}`, formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("Driver added successfully!", {
+                    this.$bvToast.toast("Driver Update successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,
@@ -587,7 +682,6 @@ export default {
                         toaster: "b-toaster-top-right",
                         autoHideDelay: 5000,
                         variant: "primary", // Background color
-
                     });
                     this.isLoading = false;
                 })
@@ -601,15 +695,19 @@ export default {
         onProfilePictureChange(event) {
             const file = event.target.files[0];
             if (file) {
+                // Set the selected file to the data property
                 this.profile_picture = file;
             }
         },
-        onCompanyDocumentChange(event) {
-            const file = event.target.files[0];
-            if (file) {
-                this.company_document = file;
-            }
-        },
+
+        //   vehicleImagesChange(event) {
+        //   const files = event.target.files;
+        //   if (files && files.length > 0) {
+        //     const imageUrls = Array.from(files).map(file => URL.createObjectURL(file));
+        //     this.editedUser.vehicle_image = this.editedUser.vehicle_image.concat(imageUrls);
+        //   }
+        // },
+
 
         vehicleImageChange(event) {
             const files = event.target.files;
@@ -619,10 +717,18 @@ export default {
             }
         },
 
-        BankImageChange(event) {
+        BnakImageChange(event) {
             const file = event.target.files[0];
             if (file) {
+                // Set the selected file to the data property
                 this.bank_upload_document = file;
+            }
+        },
+
+         onCompanyDocumentChange(event) {
+            const file = event.target.files[0];
+            if (file) {
+                this.company_document = file;
             }
         },
 
@@ -637,10 +743,6 @@ export default {
         saveOwnCar() {
             this.showModal = false;
         },
-
-
     },
-
-
 };
 </script>

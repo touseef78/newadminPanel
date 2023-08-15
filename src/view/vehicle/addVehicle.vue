@@ -243,9 +243,7 @@
           <!-- Equipment -->
           <h4>Equipment</h4>
           <div style="margin-left: 3px; margin-bottom: 15px">
-<<<<<<< HEAD
-            <input type="file" accept="image/*" id="image" @change="vehicleImageChange" />
-=======
+
             <input
               type="file"
               accept="image/*"
@@ -253,7 +251,6 @@
               multiple
               @change="vehicleImageChange"
             />
->>>>>>> d976c62e2635b1008ca16b7bfc8d08eff5616f29
           </div>
           <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
             <span v-if="!isLoading">Submit</span>

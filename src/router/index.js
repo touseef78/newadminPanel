@@ -145,15 +145,27 @@ const router = new VueRouter({
     },
     //  B2B 
      {
-      path: "/driver/lists",
+      path: "/B2B/driver/lists",
       name: "driver",
       component: () => import("../view/components/B2B/driver/listDriver.vue"),
      
     },
       {
-      path: "/driver/add",
+      path: "/B2B/driver/add",
       name: "driver",
       component: () => import("../view/components/B2B/driver/addDriver.vue"),
+     
+    },
+        {
+      path: "/B2B/driver/edit/:id",
+      name: "B2B/driver/edit",
+      component: () => import("../view/components/B2B/driver/editDriver.vue"),
+     
+    },
+        {
+      path: "/B2B/driver/view/:id",
+      name: "B2B/driver/view",
+      component: () => import("../view/components/B2B/driver/viewDriver.vue"),
      
     },
     // Eidt 
@@ -171,6 +183,11 @@ const router = new VueRouter({
       component: () => import("../view/drivers/viewDriver.vue"),
     },
 
+  // {
+  //     path: "/drivers/upload",
+  //     name: "uploadImage",
+  //     component: () => import("../view/drivers/uploadImage.vue"),
+  //   },
 
    
     

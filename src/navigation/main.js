@@ -79,14 +79,14 @@ export default {
         {
           id: "driver",
           title: "Add Drivers",
-          navLink: "/driver/add",
+          navLink: "/B2B/driver/add",
         },
         {
           id: "driver",
           title: "List Drivers",
-          navLink: "/driver/lists",
+          navLink: "/B2B/driver/lists",
         },
-       
+         
       ],
     },
          {
