@@ -788,19 +788,12 @@ export default {
           this.isLoading = false;
         });
     },
-
     onProfilePictureChange(event) {
-      const file = event.target.files[0];
-      if (file && file.type.startsWith("image/")) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          this.selectedImage = reader.result;
-        };
-        reader.readAsDataURL(file);
-      } else {
-        this.selectedImage = null;
-      }
-    },
+        const file = event.target.files[0];
+        if (file) {
+          this.profile_picture = file;
+        }
+      },
 
     vehicleImageChange(event) {
       const files = event.target.files;

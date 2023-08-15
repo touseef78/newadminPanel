@@ -90,33 +90,14 @@
                 </div>
               </div>
               <div class="row">
-                <!-- <div class="col-4">
-                  <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                    <div style="margin-left: 3px; margin-bottom: 15px">
-                      <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
-                    </div>
-                  </b-form-group>
-                </div> -->
-  
-                <!-- new images code  -->
                 <div class="col-4">
                   <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
                     <div style="margin-left: 3px; margin-bottom: 15px">
                       <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
-                      <!-- Display selected image preview and icons -->
-                      <div v-if="selectedImage" style="position: relative;">
-                        <img :src="selectedImage" alt="Selected Profile Picture"
-                          style="max-width: 100px; max-height: 100px; border: 1px solid #ccc;">
-                        <span style="position: absolute; top: 5px; left: 5px;">
-                          <i class="fa fa-check-circle" style="color: green;"></i>
-                        </span>
-                        <span style="position: absolute; top: 5px; right: 5px;">
-                          <i class="fa fa-trash" style="color: red;"></i>
-                        </span>
-                      </div>
                     </div>
                   </b-form-group>
                 </div>
+  
                 <!-- new images code  -->
   
                 <div class="col-4">
@@ -462,14 +443,8 @@
   
       onProfilePictureChange(event) {
         const file = event.target.files[0];
-        if (file && file.type.startsWith('image/')) {
-          const reader = new FileReader();
-          reader.onload = () => {
-            this.selectedImage = reader.result;
-          };
-          reader.readAsDataURL(file);
-        } else {
-          this.selectedImage = null;
+        if (file) {
+          this.profile_picture = file;
         }
       },
   
