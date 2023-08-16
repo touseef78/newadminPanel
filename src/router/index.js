@@ -143,7 +143,7 @@ const router = new VueRouter({
       component: () => import("@/view/drivers/listDriver"),
      
     },
-    //  B2B 
+    //  B2B Driver 
      {
       path: "/B2B/driver/lists",
       name: "driver",
@@ -168,6 +168,22 @@ const router = new VueRouter({
       component: () => import("../view/components/B2B/driver/viewDriver.vue"),
      
     },
+   // B2B Vehicle
+
+    {
+      path: "/B2B/Vehicle/lists",
+      name: "/B2B/Vehicle/lists",
+      component: () => import("../view/components/B2B/vehicles/listVehicle.vue"),
+     
+    },
+      {
+      path: "/B2B/Vehicle/add",
+      name: "/B2B/Vehicle/add",
+      component: () => import("../view/components/B2B/vehicles/addVehicle.vue"),
+     
+    },
+
+
     // Eidt 
        {
       path: "/drivers/edit/:id",

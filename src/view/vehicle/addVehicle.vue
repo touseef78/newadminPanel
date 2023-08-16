@@ -19,8 +19,8 @@
           </div>
           <div class="row">
             <div class="col-4">
-              <b-form-group id="input-group-2" label="Company Name:" label-for="company_name">
-                <b-form-input id="company_name" v-model="company_name" placeholder="Enter company name"
+              <b-form-group id="input-group-2" label="Company Name:" label-for="vehicle_company">
+                <b-form-input id="vehicle_company" v-model="vehicle_company" placeholder="Enter company name"
                   required></b-form-input>
               </b-form-group>
             </div>
@@ -243,13 +243,13 @@
           <!-- Equipment -->
           <h4>Equipment</h4>
           <div style="margin-left: 3px; margin-bottom: 15px">
-
             <input
               type="file"
               accept="image/*"
               id="image[]"
               multiple
               @change="vehicleImageChange"
+              required
             />
           </div>
           <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
