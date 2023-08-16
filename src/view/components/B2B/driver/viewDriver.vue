@@ -428,6 +428,7 @@ import code from "../../../components/data-entry/form/code";
 export default {
     data() {
         return {
+             filterOn: true,
             show: true,
             codeText: code.introduction,
             codeActive: false,

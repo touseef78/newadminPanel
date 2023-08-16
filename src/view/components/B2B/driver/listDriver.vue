@@ -326,7 +326,8 @@ import Papa from "papaparse";
 export default {
     data() {
         return {
-
+            filterOn: true,
+            codeActive: true,
             perPage: 10,
             currentPage: 1,
             sortBy: "age",
