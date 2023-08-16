@@ -389,7 +389,7 @@ export default {
     methods: {
         fetchData() {
             axios
-                .get("drivers") // Replace 'your_api_endpoint_url_here' with your actual API URL
+                .get("B2BgetDriver") // Replace 'your_api_endpoint_url_here' with your actual API URL
                 .then((response) => {
                     this.users = response.data.data;
                     this.totalRows = this.users.length;
