@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store'; // Import your store or authentication-related logic
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -13,6 +14,9 @@ const router = new VueRouter({
       path: "/dashboard",
       name: "dashboard",
       component: () => import("@/view/main/dashboards/analytics"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
     },
 
      {
@@ -143,7 +147,7 @@ const router = new VueRouter({
       component: () => import("@/view/drivers/listDriver"),
      
     },
-    //  B2B 
+    //  B2B Driver 
      {
       path: "/B2B/driver/lists",
       name: "driver",
@@ -168,6 +172,22 @@ const router = new VueRouter({
       component: () => import("../view/components/B2B/driver/viewDriver.vue"),
      
     },
+   // B2B Vehicle
+
+    {
+      path: "/B2B/Vehicle/lists",
+      name: "/B2B/Vehicle/lists",
+      component: () => import("../view/components/B2B/vehicles/listVehicle.vue"),
+     
+    },
+      {
+      path: "/B2B/Vehicle/add",
+      name: "/B2B/Vehicle/add",
+      component: () => import("../view/components/B2B/vehicles/addVehicle.vue"),
+     
+    },
+
+
     // Eidt 
        {
       path: "/drivers/edit/:id",
@@ -1112,6 +1132,19 @@ const router = new VueRouter({
       },
     },
   ]
+});
+
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.getters.isAuthenticated) {
+      next({ name: 'login' });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 

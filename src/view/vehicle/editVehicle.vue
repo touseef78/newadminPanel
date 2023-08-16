@@ -272,6 +272,10 @@
                   <option value="">Select Vendor Name</option>
                   <option>Uber</option>
                   <option>Bolt</option>
+                  <option>Taxijakt</option>
+                  <option>Daytrip</option>
+                  <option>TaxiKurir</option>
+                  <option>Others</option>
                 </b-form-select>
               </b-form-group>
             </div>

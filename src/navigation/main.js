@@ -97,12 +97,12 @@ export default {
         {
           id: "vehicles",
           title: "Add Vehicle",
-          navLink: "/vehicle/addVehicle",
+          navLink: "/B2B/Vehicle/add",
         },
         {
           id: "vehicles",
           title: "List Vehicle",
-          navLink: "/vehicle/listVehicle",
+          navLink: "/B2B/Vehicle/lists",
         },
       ],
     },

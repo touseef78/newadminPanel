@@ -115,7 +115,7 @@
                   <b-form-input
                     id="emergency_name"
                     type="text"
-                    placeholder="Enter emer name"
+                    placeholder="Enter enter name"
                     v-model="emergency_name"
                     required
                   ></b-form-input>
