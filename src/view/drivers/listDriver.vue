@@ -64,7 +64,7 @@
                 <b-button variant="danger" @click="deleteItem(row.item.id)">Delete</b-button>
                 <b-button variant="secondary" @click="showDeleteConfirmation = false">Cancel</b-button>
               </template>
-            </b-modal>ssss
+            </b-modal>
             <b-button @click="editUser(row.item.id)" variant="link" class="p-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                 style="color: orange; margin-left: 10px; margin-bottom: 10px" class="bi bi-pencil" viewBox="0 0 16 16">
