@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store'; // Import your store or authentication-related logic
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -13,6 +14,9 @@ const router = new VueRouter({
       path: "/dashboard",
       name: "dashboard",
       component: () => import("@/view/main/dashboards/analytics"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
     },
 
      {
@@ -1128,6 +1132,19 @@ const router = new VueRouter({
       },
     },
   ]
+});
+
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.getters.isAuthenticated) {
+      next({ name: 'login' });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 
