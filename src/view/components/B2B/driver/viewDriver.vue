@@ -40,9 +40,9 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-1" label="Company Document:" label-for="company_document">
-
                                 <div style="margin-left: 3px; margin-bottom:15px;">
-
+                                    <img :src="'https://boltapi.fastnetstaffing.in/' + company_document
+                                        " alt="Profile Picture" width="100" height="100" />
                                     <input type="file" accept="image/*" id="company_document"
                                         @change="onCompanyDocumentChange" />
 
@@ -428,7 +428,7 @@ import code from "../../../components/data-entry/form/code";
 export default {
     data() {
         return {
-             filterOn: true,
+            filterOn: true,
             show: true,
             codeText: code.introduction,
             codeActive: false,

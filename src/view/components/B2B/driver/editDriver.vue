@@ -39,9 +39,10 @@
                         <div class="col-4">
 
                             <b-form-group id="input-group-1" label="Company Document:" label-for="company_document">
-
                                 <div style="margin-left: 3px; margin-bottom:15px;">
-
+                                    <img v-if="editedUser.company_document"
+                                        :src="'https://boltapi.fastnetstaffing.in/' + company_document" alt="Picture"
+                                        style="max-width: 100px; max-height: 100px" />
                                     <input type="file" accept="image/*" id="company_document"
                                         @change="onCompanyDocumentChange" />
 
@@ -665,8 +666,10 @@ export default {
             formData.append("car_model", this.car_model);
             formData.append("car_color", this.car_color);
             formData.append("car_number", this.car_number);
-            for (const image of this.vehicle_image) {
-                formData.append('vehicle_image[]', image);
+            if (this.vehicle_image) {
+                for (const image of this.vehicle_image) {
+                    formData.append("vehicle_image[]", image);
+                }
             }
             formData.append("bank_upload_document", this.bank_upload_document);
             formData.append("total_number_hour", this.total_number_hour);
@@ -725,7 +728,7 @@ export default {
             }
         },
 
-         onCompanyDocumentChange(event) {
+        onCompanyDocumentChange(event) {
             const file = event.target.files[0];
             if (file) {
                 this.company_document = file;

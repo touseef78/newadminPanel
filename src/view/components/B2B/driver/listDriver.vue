@@ -326,6 +326,7 @@ import Papa from "papaparse";
 export default {
     data() {
         return {
+
             filterOn: true,
             codeActive: true,
             perPage: 10,
@@ -339,14 +340,17 @@ export default {
                 { key: "name", sortable: true },
                 { key: "mobile", sortable: true },
                 { key: "email", sortable: true },
-                { key: "reference_name", sortable: true },
-                { key: "reference_number", sortable: true },
+                { key: "emergency_name", sortable: true },
+                { key: "salary_commission", sortable: true },
+                { key: "hourly_enter_amount", sortable: true },
                 { key: "ssn", sortable: true },
+                { key: "status", sortable: true },
                 // { key: "selection", sortable: true },
                 { key: "status", sortable: true },
                 // { key: "car_name", sortable: true },
                 // { key: "car_model", sortable: true },
                 // { key: "car_number", sortable: true },
+
                 { key: "actions", label: "Actions" },
             ],
 
