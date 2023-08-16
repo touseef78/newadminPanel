@@ -78,6 +78,7 @@ export default {
 
         localStorage.setItem("token", response.data.token);
         this.$store.dispatch("user", response.data.user);
+        console.log("User data set in store:", response.data.user);
         // this.$bvToast.toast("Login successful!", {
         //   title: "Success",
         //   variant: "success",
