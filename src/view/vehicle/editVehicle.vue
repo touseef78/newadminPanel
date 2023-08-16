@@ -412,7 +412,7 @@
             </div>
           </div>
           <!-- Equipment -->
-          <h4>Equipment</h4>
+          <h4>Upload Document</h4>
           <b-form-group
             id="input-group-1"
             label="Upload Document:"
