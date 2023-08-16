@@ -151,7 +151,6 @@ export default {
         { key: "mobile", sortable: true },
         { key: "email", sortable: true },
         { key: "emergency_name", sortable: true },
-        { key: "fix_salary", sortable: true },
         { key: "salary_commission", sortable: true },
         { key: "hourly_enter_amount", sortable: true },
         { key: "ssn", sortable: true },

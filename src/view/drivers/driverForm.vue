@@ -102,7 +102,7 @@
   
                 <div class="col-4">
                   <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
-                    <b-form-select v-model="select_car_type">
+                    <b-form-select v-model="selectedCarType">
                       <option value="">Select Car Type</option>
                       <option>Own</option>
                       <option>Company</option>
@@ -414,6 +414,8 @@
         formData.append("car_color", this.car_color);
         formData.append("car_number", this.car_number);
         formData.append("total_number_hour", this.total_number_hour);
+              formData.append("selectedCarType", this.selectedCarType);
+
         for (const image of this.vehicle_image) {
       formData.append('vehicle_image[]', image);
     }      
