@@ -241,7 +241,7 @@
             </div>
           </div>
           <!-- Equipment -->
-          <h4>Equipment</h4>
+          <h4>Upload Document</h4>
           <div style="margin-left: 3px; margin-bottom: 15px">
             <input
               type="file"
