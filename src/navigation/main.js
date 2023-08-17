@@ -28,24 +28,6 @@ export default {
           title: "List Drivers",
           navLink: "/drivers/list",
         },
-
-        
-
-        // {
-        //   id: "crypto-icons",
-        //   title: "Crypto Icons",
-        //   navLink: "/main/widgets/crypto-icons",
-        // },
-        // {
-        //   id: "user-icons",
-        //   title: "User Icons",
-        //   navLink: "/main/widgets/user-icons",
-        // },
-        // {
-        //   id: "flags",
-        //   title: "Flags",
-        //   navLink: "/main/widgets/flags",
-        // },
       ],
     },
 
@@ -106,6 +88,25 @@ export default {
         },
       ],
     },
+      ],
+    },
+    //  Report 
+     {
+      id: "Expense",
+      title: "Expense",
+      icon: "Curved-EditSquare",
+      
+      children: [
+        {
+          id: "Expense",
+          title: "Add Expense",
+          navLink: "/expense/add",
+        },
+        {
+          id: "Expense",
+          title: "List Expense",
+          navLink: "/expense/list",
+        },
       ],
     },
       

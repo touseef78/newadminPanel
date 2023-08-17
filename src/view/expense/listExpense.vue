@@ -1,28 +1,31 @@
+
 <template>
     <b-card>
         <!-- filter  -->
         <div v-if="loading" class="text-center mt-4">
             <b-spinner label="Loading..."></b-spinner>
         </div>
-        <div>
-            <b-row class="align-items-center">
-                <b-col lg="6" class="my-1">
-                    <b-form-group label="Filter" label-for="filter-input" label-cols-sm="1" label-align-sm="right"
-                        label-size="sm" class="mb-0">
-                        <b-input-group size="sm">
-                            <b-form-input id="filter-input" v-model="filter" type="search"
-                                placeholder="Type to Search"></b-form-input>
-                            <b-input-group-append>
-                                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
-                            </b-input-group-append>
-                        </b-input-group>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="6" class="my-1 d-flex justify-content-end">
-                    <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button>
-                    <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
-                </b-col>
-            </b-row>
+        <div class="col-12 mt-16">
+            <div>
+                <b-row class="align-items-center">
+                    <b-col lg="6" class="my-1">
+                        <b-form-group label="Filter" label-for="filter-input" label-cols-sm="1" label-align-sm="right"
+                            label-size="sm" class="mb-0">
+                            <b-input-group size="sm">
+                                <b-form-input id="filter-input" v-model="filter" type="search"
+                                    placeholder="Type to Search"></b-form-input>
+                                <b-input-group-append>
+                                    <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                                </b-input-group-append>
+                            </b-input-group>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="6" class="my-1 d-flex justify-content-end">
+                        <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button>
+                        <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
+                    </b-col>
+                </b-row>
+            </div>
         </div>
         <!-- filter end -->
         <b-row>
@@ -31,8 +34,12 @@
                     :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
                     :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
                     <!-- Action Button Code -->
+                    <template #cell(image)="row">
+                        <img :src="'https://boltapi.fastnetstaffing.in/' + row.item.image" alt="Image" class="img-fluid"
+                            style="max-width: 100px; max-height: 100px">
+                    </template>
                     <template #cell(actions)="row">
-                        <b-button @click="showDriver(row.item.id)" variant="link" class="p-0">
+                        <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
                 color: rgba(0, 255, 195, 0.87);
                 margin-left: 6px;
@@ -129,6 +136,7 @@ import {
     BFormSelect,
     BPagination,
     BInputGroupAppend,
+    BSpinner,
 } from "bootstrap-vue";
 import axios from "axios";
 import Papa from "papaparse";
@@ -139,10 +147,7 @@ import Papa from "papaparse";
 export default {
     data() {
         return {
-
-            filterOn: true,
-            codeActive: true,
-            perPage: 10,
+            perPage: 5,
             currentPage: 1,
             sortBy: "age",
             sortDesc: false,
@@ -150,14 +155,10 @@ export default {
             ], // Instead of 'items', use 'users' array to store fetched data
             fields: [
                 { key: "id", sortable: true },
-                { key: "name", sortable: true },
-                { key: "mobile", sortable: true },
-                { key: "email", sortable: true },
-                { key: "emergency_name", sortable: true },
-                { key: "salary_commission", sortable: true },
-                { key: "hourly_enter_amount", sortable: true },
-                { key: "ssn", sortable: true },
-                { key: "status", sortable: true },
+                { key: "driver.name", sortable: true },
+                { key: "amount", sortable: true },
+                { key: "category", sortable: true },
+                { key: "image", sortable: true },
                 { key: "status", sortable: true },
                 { key: "actions", label: "Actions" },
             ],
@@ -182,6 +183,8 @@ export default {
         BFormSelect,
         BPagination,
         BInputGroupAppend,
+        BSpinner,
+
     },
     computed: {
         sortOptions() {
@@ -201,9 +204,9 @@ export default {
     },
     methods: {
         fetchData() {
-            this.loading = true;
+            this.loading = true; // Set loading to true before fetching data
             axios
-                .get("B2BgetDriver") // Replace 'your_api_endpoint_url_here' with your actual API URL
+                .get("expense") // Replace 'your_api_endpoint_url_here' with your actual API URL
                 .then((response) => {
                     this.users = response.data.data;
                     this.totalRows = this.users.length;
@@ -237,7 +240,7 @@ export default {
         updateStatus(user) {
             user.status = user.status === 'Approved' ? 'Pending' : 'Approved';
             axios
-                .put(`drivers/${user.id}`, user)
+                .post(`expenseUpdate/${user.id}`, user)
                 .then(response => {
                     console.log('Status updated successfully:', response.data);
                 })
@@ -248,17 +251,17 @@ export default {
 
 
         editUser(userId) {
-            this.$router.push({ name: "B2B/driver/edit", params: { id: userId } });
+            this.$router.push({ name: "editExpense", params: { id: userId } });
         },
 
-        showDriver(userId) {
-            this.$router.push({ name: "B2B/driver/view", params: { id: userId } });
+        showDrivers(userId) {
+            this.$router.push({ name: "viewExpense", params: { id: userId } });
         },
 
         deleteItem(itemId) {
             this.itemIdToDelete = itemId; // Set the item ID to be deleted
             axios
-                .delete(`drivers/${itemId}`)
+                .delete(`expense/${itemId}`)
                 .then((response) => {
                     this.showDeleteConfirmation = false;
                     this.fetchData(); // Refresh the data after deletion
