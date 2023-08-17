@@ -209,8 +209,28 @@ const router = new VueRouter({
   //     component: () => import("../view/drivers/uploadImage.vue"),
   //   },
 
-   
+  // Expense
+{
+      path: "/expense/add",
+      name: "addExpense",
+      component: () => import("../view/expense/addExpense.vue"),
+    },
+   {
+      path: "/expense/list",
+      name: "listExpense",
+      component: () => import("../view/expense/listExpense.vue"),
+    },
     
+     {
+      path: "/expense/edit/:id",
+      name: "editExpense",
+      component: () => import("../view/expense/editExpense.vue"),
+    },
+     {
+      path: "/expense/view/:id",
+      name: "viewExpense",
+      component: () => import("../view/expense/viewExpense.vue"),
+    },
     {
       path: "/main/widgets/crypto-icons",
       name: "crypto-icons",

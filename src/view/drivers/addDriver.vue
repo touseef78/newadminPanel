@@ -763,6 +763,7 @@ export default {
       formData.append("car_color", this.car_color);
       formData.append("car_number", this.car_number);
       formData.append("total_number_hour", this.total_number_hour);
+      formData.append("type", "driver ");
       for (const image of this.vehicle_image) {
         formData.append("vehicle_image[]", image);
       }

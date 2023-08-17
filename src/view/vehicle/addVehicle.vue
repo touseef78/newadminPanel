@@ -166,37 +166,7 @@
                 </b-form-input>
               </b-form-group>
             </div>
-            <!-- <div class="col-4">
-                            <b-form-group id="input-group-2" label="Vehicle Expenses:" label-for="vehicle_expense">
-                                <b-form-select v-model="selectedType" required>
-                                    <option value="">Select Vehicle Expenses</option>
-                                    <option>Running</option>
-                                    <option>Oil Change</option>
-                                    <option>Milage</option>
-                                    <option>Accidential Claim</option>
-                                    <option>Other Espense</option>
-                                </b-form-select>
-                            </b-form-group>
-                        </div> -->
-            <!-- TWo Dropdown field   -->
 
-            <!-- <div class="col-4">
-                            <b-form-group id="input-group-2" label="Car Maintenance Feature:"
-                                label-for="car_maintenance_feature">
-                                <div class="d-flex">
-                                    <b-form-select v-model="selectedType" required class="mr-2">
-                                        <option value="">Select Feature</option>
-                                        <option>Running</option>
-                                        <option>Oil Change</option>
-                                        <option>Mileage</option>
-                                        <option>Accidental Claim</option>
-                                        <option>Other Expense</option>
-                                    </b-form-select>
-                                    <b-form-input v-model="selectedTypes" placeholder="Mention Price" required>
-                                    </b-form-input>
-                                </div>
-                            </b-form-group>
-                        </div> -->
           </div>
           <div style="
               background-color: rgb(97, 116, 152);
@@ -243,14 +213,7 @@
           <!-- Equipment -->
           <h4>Upload Document</h4>
           <div style="margin-left: 3px; margin-bottom: 15px">
-            <input
-              type="file"
-              accept="image/*"
-              id="image[]"
-              multiple
-              @change="vehicleImageChange"
-              required
-            />
+            <input type="file" accept="image/*" id="image[]" multiple @change="vehicleImageChange" required />
           </div>
           <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
             <span v-if="!isLoading">Submit</span>
@@ -283,7 +246,8 @@ import {
   BFormSelect,
   BFormInput,
   BSpinner,
-} from "bootstrap-vue";
+}
+  from "bootstrap-vue";
 import axios from "axios";
 import code from "../components/data-entry/form/code";
 import { BToast } from "bootstrap-vue";
@@ -377,8 +341,8 @@ export default {
       formData.append("registration_number", this.registration_number);
       formData.append("equipment", this.equipment);
       for (const image of this.image) {
-    formData.append('image[]', image);
-  }           formData.append("vehicle_type", this.vehicle_type);
+        formData.append('image[]', image);
+      } formData.append("vehicle_type", this.vehicle_type);
       formData.append("last_inspection", this.last_inspection);
       formData.append("insurance", this.insurance);
       formData.append(
@@ -427,12 +391,12 @@ export default {
     },
 
     vehicleImageChange(event) {
-  const files = event.target.files;
-  if (files && files.length > 0) {
-    // Convert FileList to an array
-    this.image = Array.from(files);
-  }
-},
+      const files = event.target.files;
+      if (files && files.length > 0) {
+        // Convert FileList to an array
+        this.image = Array.from(files);
+      }
+    },
   },
 };
 </script>

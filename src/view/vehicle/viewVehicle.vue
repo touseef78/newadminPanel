@@ -162,37 +162,7 @@
                 </b-form-input>
               </b-form-group>
             </div>
-            <!-- <div class="col-4">
-                            <b-form-group id="input-group-2" label="Vehicle Expenses:" label-for="vehicle_expense">
-                                <b-form-select v-model="selectedType" required>
-                                    <option value="">Select Vehicle Expenses</option>
-                                    <option>Running</option>
-                                    <option>Oil Change</option>
-                                    <option>Milage</option>
-                                    <option>Accidential Claim</option>
-                                    <option>Other Espense</option>
-                                </b-form-select>
-                            </b-form-group>
-                        </div> -->
-            <!-- TWo Dropdown field   -->
-
-            <!-- <div class="col-4">
-                            <b-form-group id="input-group-2" label="Car Maintenance Feature:"
-                                label-for="car_maintenance_feature">
-                                <div class="d-flex">
-                                    <b-form-select v-model="selectedType" required class="mr-2">
-                                        <option value="">Select Feature</option>
-                                        <option>Running</option>
-                                        <option>Oil Change</option>
-                                        <option>Mileage</option>
-                                        <option>Accidental Claim</option>
-                                        <option>Other Expense</option>
-                                    </b-form-select>
-                                    <b-form-input v-model="selectedTypes" placeholder="Mention Price" required>
-                                    </b-form-input>
-                                </div>
-                            </b-form-group>
-                        </div> -->
+           
           </div>
           <div style="
               background-color: rgb(97, 116, 152);
