@@ -128,7 +128,6 @@ import {
     BFormInput,
     BFormSelect,
     BPagination,
-    BSpinner,
     BInputGroupAppend,
 } from "bootstrap-vue";
 import axios from "axios";
@@ -140,7 +139,7 @@ import Papa from "papaparse";
 export default {
     data() {
         return {
-            sortDirection: false,
+
             filterOn: true,
             codeActive: true,
             perPage: 10,
@@ -183,8 +182,6 @@ export default {
         BFormSelect,
         BPagination,
         BInputGroupAppend,
-        BSpinner,
-
     },
     computed: {
         sortOptions() {
