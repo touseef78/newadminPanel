@@ -7,25 +7,26 @@
     </div>
     <div class="col-12 mt-16">
       <div>
-      <b-row class="align-items-center">
-        <b-col lg="6" class="my-1">
-          <b-form-group label="Filter" label-for="filter-input" label-cols-sm="1" label-align-sm="right" label-size="sm"
-            class="mb-0">
-            <b-input-group size="sm">
-              <b-form-input id="filter-input" v-model="filter" type="search" placeholder="Type to Search"></b-form-input>
-              <b-input-group-append>
-                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
-              </b-input-group-append>
-            </b-input-group>
-          </b-form-group>
-        </b-col>
-        <b-col lg="6" class="my-1 d-flex justify-content-end">
-          <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button>
-          <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
-        </b-col>
-      </b-row>
-    </div>     
-   </div>
+        <b-row class="align-items-center">
+          <b-col lg="6" class="my-1">
+            <b-form-group label="Filter" label-for="filter-input" label-cols-sm="1" label-align-sm="right" label-size="sm"
+              class="mb-0">
+              <b-input-group size="sm">
+                <b-form-input id="filter-input" v-model="filter" type="search"
+                  placeholder="Type to Search"></b-form-input>
+                <b-input-group-append>
+                  <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                </b-input-group-append>
+              </b-input-group>
+            </b-form-group>
+          </b-col>
+          <b-col lg="6" class="my-1 d-flex justify-content-end">
+            <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button>
+            <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
+          </b-col>
+        </b-row>
+      </div>
+    </div>
     <!-- filter end -->
     <b-row>
       <div class="col-12 mt-16">
@@ -152,6 +153,7 @@ export default {
         { key: "email", sortable: true },
         { key: "emergency_name", sortable: true },
         { key: "salary_commission", sortable: true },
+        { key: "joining_date", sortable: true },
         { key: "hourly_enter_amount", sortable: true },
         { key: "ssn", sortable: true },
         { key: "status", sortable: true },
@@ -210,8 +212,8 @@ export default {
           console.error("Error fetching data:", error);
         })
         .finally(() => {
-        this.loading = false; // Set loading to false after fetching data, whether success or error
-      });
+          this.loading = false; // Set loading to false after fetching data, whether success or error
+        });
     },
     onFiltered(filteredItems) {
       this.totalRows = filteredItems.length;
@@ -233,16 +235,16 @@ export default {
     },
 
     updateStatus(user) {
-    user.status = user.status === 'Approved' ? 'Pending' : 'Approved';
-    axios
-      .put(`drivers/${user.id}`, user)
-      .then(response => {
-        console.log('Status updated successfully:', response.data);
-      })
-      .catch(error => {
-        console.error('Error updating status:', error);
-      });
-  },
+      user.status = user.status === 'Approved' ? 'Pending' : 'Approved';
+      axios
+        .put(`drivers/${user.id}`, user)
+        .then(response => {
+          console.log('Status updated successfully:', response.data);
+        })
+        .catch(error => {
+          console.error('Error updating status:', error);
+        });
+    },
 
 
     editUser(userId) {
