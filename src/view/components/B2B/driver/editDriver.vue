@@ -15,13 +15,13 @@
 
                             <b-form-group id="input-group-1" label="Company Name:" label-for="company_name">
                                 <b-form-input id="company_name" type="text" placeholder="Enter comapany name"
-                                    v-model="company_name" required></b-form-input>
+                                    v-model="company_name" ></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-1" label=" Owner Name:" label-for="owner_name">
                                 <b-form-input id="owner_name" type="text" placeholder="Enter owner name"
-                                    v-model="owner_name" required></b-form-input>
+                                    v-model="owner_name" ></b-form-input>
                             </b-form-group>
 
                         </div>
@@ -29,7 +29,7 @@
 
                             <b-form-group id="input-group-1" label=" Owner Number:" label-for="owner_number">
                                 <b-form-input id="owner_number" type="text" placeholder="Enter owner number"
-                                    v-model="owner_number" required></b-form-input>
+                                    v-model="owner_number" ></b-form-input>
                             </b-form-group>
                         </div>
 
@@ -68,14 +68,14 @@
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-1" label="Full Name:" label-for="first_name">
                                     <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off"
-                                        v-model="name" required>
+                                        v-model="name" >
                                     </b-form-input>
                                 </b-form-group>
                             </div>
 
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Email Address:" label-for="email">
-                                    <b-form-input id="email" placeholder="Enter email address" v-model="email" required>
+                                    <b-form-input id="email" placeholder="Enter email address" v-model="email" >
                                     </b-form-input>
                                     <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
                                 </b-form-group>
@@ -84,7 +84,7 @@
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Password:" label-for="">
                                     <b-form-input id="ssn" placeholder="Enter Password" v-model="ssn"
-                                        required></b-form-input>
+                                        ></b-form-input>
                                 </b-form-group>
                             </div>
                         </div>
@@ -93,19 +93,19 @@
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                                     <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
-                                        required></b-form-input>
+                                        ></b-form-input>
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Gender:" label-for="gender">
                                     <b-form-input id="gender" placeholder="Enter gender" v-model="gender"
-                                        required></b-form-input>
+                                        ></b-form-input>
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-1" label="Emergency Name:" label-for="emergency_name">
                                     <b-form-input id="emergency_name" type="text" placeholder="Enter emer name"
-                                        v-model="emergency_name" required></b-form-input>
+                                        v-model="emergency_name" ></b-form-input>
                                 </b-form-group>
                             </div>
                         </div>
@@ -113,20 +113,20 @@
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Emergency Number:" label-for="emergency_number">
                                     <b-form-input id="emergency_number" placeholder="Enter remergency number"
-                                        v-model="emergency_number" required></b-form-input>
+                                        v-model="emergency_number" ></b-form-input>
                                 </b-form-group>
                             </div>
 
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Address:" label-for="address">
-                                    <b-form-input id="address" placeholder="Enter address" v-model="address" required>
+                                    <b-form-input id="address" placeholder="Enter address" v-model="address" >
                                     </b-form-input>
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
                                     <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth"
-                                        v-model="date_of_birth" required></b-form-input>
+                                        v-model="date_of_birth" ></b-form-input>
                                 </b-form-group>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
 
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
-                                    <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" required>
+                                    <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" >
                                     </b-form-input>
                                 </b-form-group>
                             </div>
@@ -275,7 +275,7 @@
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
                                     <b-form-input id="joining_date" type="date"  v-model="joining_date"
-                                        required>
+                                        >
                                     </b-form-input>
                                 </b-form-group>
                             </div>
@@ -298,7 +298,7 @@
                         <div class="row">
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-1" label="Salary:" label-for="salary">
-                                    <b-form-select v-model="selectedOption" required>
+                                    <b-form-select v-model="selectedOption" >
                                         <option value="">Select Salary Type</option>
                                         <option>Fix</option>
                                         <option>Commission</option>
@@ -416,7 +416,7 @@
                                     label-for="bank_emergency_contact_name">
                                     <b-form-input id="bank_emergency_contact_name" type="text"
                                         placeholder="Enter Description" v-model="bank_emergency_contact_name"
-                                        required></b-form-input>
+                                        ></b-form-input>
                                 </b-form-group>
                             </div>
                         </div>
