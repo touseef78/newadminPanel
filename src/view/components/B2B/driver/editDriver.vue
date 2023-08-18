@@ -82,8 +82,9 @@
                             </div>
 
                             <div class="col-4">
-                                <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
-                                    <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" required></b-form-input>
+                                <b-form-group id="input-group-2" label="Password:" label-for="password">
+                                    <b-form-input id="password" placeholder="Enter Password" v-model="password"
+                                        required></b-form-input>
                                 </b-form-group>
                             </div>
                         </div>
@@ -130,22 +131,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            <!-- <div class="col-4">
-                <b-form-group
-                  id="input-group-2"
-                  label="Profile Picture:"
-                  label-for="profile_picture"
-                >
-                  <div style="margin-left: 3px; margin-bottom: 15px">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      id="profile_picture"
-                      @change="onProfilePictureChange"
-                    />
-                  </div>
-                </b-form-group>
-              </div> -->
 
                             <div class="col-4">
                                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
@@ -161,6 +146,12 @@
                                 </b-form-group>
                             </div>
 
+                            <div class="col-4">
+                                <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
+                                    <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" required>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
                             <div class="col-4">
                                 <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
                                     <b-form-select v-model="selectedCarType">
@@ -478,6 +469,7 @@ export default {
             name: "",
             email: "",
             ssn: "",
+            password: '',
             mobile: "",
             gender: "",
             emergency_name: "",
@@ -634,6 +626,7 @@ export default {
             formData.append("name", this.name);
             formData.append("email", this.email);
             formData.append("ssn", this.ssn);
+            formData.append("password", this.password);
             formData.append("mobile", this.mobile);
             formData.append("gender", this.gender);
             formData.append("emergency_name", this.emergency_name);

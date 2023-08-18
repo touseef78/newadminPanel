@@ -94,8 +94,8 @@
                             </div>
 
                             <div class="col-4">
-                                <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
-                                    <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" required></b-form-input>
+                                <b-form-group id="input-group-2" label="Password:" label-for="password">
+                                    <b-form-input id="password" placeholder="Enter SSN" v-model="password" required></b-form-input>
                                 </b-form-group>
                             </div>
                         </div>
@@ -155,6 +155,13 @@
                                 </b-form-group>
                             </div>
                             <!-- new images code  -->
+                            
+                                <div class="col-4">
+                                    <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
+                                        <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" required>
+                                        </b-form-input>
+                                    </b-form-group>
+                                </div>
 
                             <div class="col-4">
                                 <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
@@ -440,6 +447,7 @@ export default {
             name: "",
             email: "",
             ssn: "",
+            password:'',
             mobile: "",
             gender: "",
             emergency_name: "",
@@ -540,6 +548,7 @@ export default {
             formData.append("name", this.name);
             formData.append("email", this.email);
             formData.append("ssn", this.ssn);
+             formData.append("password", this.password);
             formData.append("mobile", this.mobile);
             formData.append("gender", this.gender);
             formData.append("emergency_name", this.emergency_name);

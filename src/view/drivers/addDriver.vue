@@ -1,70 +1,43 @@
 <template>
   <div>
-    <div
-      v-if="successMessage"
-      class="alert alert-success"
-      style="color: rgb(5, 20, 48)"
-    >
+    <div v-if="successMessage" class="alert alert-success" style="color: rgb(5, 20, 48)">
       {{ successMessage }}
     </div>
     <b-card>
       <b-row>
         <div class="col-12 mt-16">
           <b-form @submit.prevent="addUser" v-if="show">
-            <div
-              style="
+            <div style="
                 background-color: rgb(97, 116, 152);
                 height: 32px;
                 border-radius: 4px;
-              "
-            >
-              <h5
-                style="
+              ">
+              <h5 style="
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
-                "
-              >
+                ">
                 Personal Information
               </h5>
             </div>
             <div class="row">
               <div class="col-4">
-                <b-form-group
-                  id="input-group-1"
-                  label="First Name:"
-                  label-for="first_name"
-                >
-                  <b-form-input
-                    id="name"
-                    type="text"
-                    placeholder="Enter first name"
-                    autocomplete="off"
-                    v-model="name"
-                    required
-                  >
+                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
+                  <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
+                    required>
                   </b-form-input>
                 </b-form-group>
               </div>
 
               <div class="col-4">
-                <b-form-group
-                  id="input-group-2"
-                  label="Email Address:"
-                  label-for="email"
-                >
-                  <b-form-input
-                    id="email"
-                    placeholder="Enter email address"
-                    v-model="email"
-                    required
-                  >
+                <b-form-group id="input-group-2" label="Email Address:" label-for="email">
+                  <b-form-input id="email" placeholder="Enter email address" v-model="email" required>
                   </b-form-input>
                   <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
                 </b-form-group>
               </div>
 
-              <div class="col-4">
+              <!-- <div class="col-4">
                 <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
                   <b-form-input
                     id="ssn"
@@ -74,30 +47,23 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
+            </div> -->
+              <div class="col-4">
+                <b-form-group id="input-group-2" label="Password:" label-for="password">
+                  <b-form-input id="password" placeholder="Enter Password" v-model="password" required></b-form-input>
+                </b-form-group>
+              </div>
             </div>
             <!------------------------ Second Row--------------------------- -->
             <div class="row">
               <div class="col-4">
-                <b-form-group
-                  id="input-group-1"
-                  label="Mobile:"
-                  label-for="mobile"
-                >
-                  <b-form-input
-                    id="mobile"
-                    type="text"
-                    placeholder="Enter mobile number"
-                    v-model="mobile"
-                    required
-                  ></b-form-input>
+                <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
+                  <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
+                    required></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-4">
-                <b-form-group
-                  id="input-group-2"
-                  label="Gender:"
-                  label-for="gender"
-                >
+                <b-form-group id="input-group-2" label="Gender:" label-for="gender">
                   <b-form-select v-model="gender" required>
                     <option value="">Select Gender</option>
                     <option>Male</option>
@@ -107,65 +73,30 @@
                 </b-form-group>
               </div>
               <div class="col-4">
-                <b-form-group
-                  id="input-group-1"
-                  label="Emergency Name:"
-                  label-for="emergency_name"
-                >
-                  <b-form-input
-                    id="emergency_name"
-                    type="text"
-                    placeholder="Enter enter name"
-                    v-model="emergency_name"
-                    required
-                  ></b-form-input>
+                <b-form-group id="input-group-1" label="Emergency Name:" label-for="emergency_name">
+                  <b-form-input id="emergency_name" type="text" placeholder="Enter enter name" v-model="emergency_name"
+                    required></b-form-input>
                 </b-form-group>
               </div>
             </div>
             <div class="row">
               <div class="col-4">
-                <b-form-group
-                  id="input-group-2"
-                  label="Emergency Number:"
-                  label-for="emergency_number"
-                >
-                  <b-form-input
-                    id="emergency_number"
-                    placeholder="Enter remergency number"
-                    v-model="emergency_number"
-                    required
-                  ></b-form-input>
+                <b-form-group id="input-group-2" label="Emergency Number:" label-for="emergency_number">
+                  <b-form-input id="emergency_number" placeholder="Enter remergency number" v-model="emergency_number"
+                    required></b-form-input>
                 </b-form-group>
               </div>
 
               <div class="col-4">
-                <b-form-group
-                  id="input-group-2"
-                  label="Address:"
-                  label-for="address"
-                >
-                  <b-form-input
-                    id="address"
-                    placeholder="Enter address"
-                    v-model="address"
-                    required
-                  >
+                <b-form-group id="input-group-2" label="Address:" label-for="address">
+                  <b-form-input id="address" placeholder="Enter address" v-model="address" required>
                   </b-form-input>
                 </b-form-group>
               </div>
               <div class="col-4">
-                <b-form-group
-                  id="input-group-1"
-                  label="Date of Birth:"
-                  label-for="date_of_birth"
-                >
-                  <b-form-input
-                    id="date_of_birth"
-                    type="date"
-                    placeholder="Enter date of birth"
-                    v-model="date_of_birth"
-                    required
-                  ></b-form-input>
+                <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
+                  <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth" v-model="date_of_birth"
+                    required></b-form-input>
                 </b-form-group>
               </div>
             </div>
@@ -178,13 +109,14 @@
                 </b-form-group>
               </div>
               <!-- new images code  -->
+              <div class="col-4">
+                <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
+                  <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" required></b-form-input>
+                </b-form-group>
+              </div>
 
               <div class="col-4">
-                <b-form-group
-                  id="input-group-2"
-                  label="Select Car Type:"
-                  label-for="select_car_type"
-                >
+                <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
                   <b-form-select v-model="selectedCarType">
                     <option value="">Select Car Type</option>
                     <option>Own</option>
@@ -194,23 +126,10 @@
               </div>
 
               <div v-if="selectedCarType === 'Company'" class="col-4">
-                <b-form-group
-                  id="input-group-2"
-                  label="Select Car:"
-                  label-for="vehicle_id"
-                >
-                  <b-form-select
-                    id="vehicle_id"
-                    placeholder="Enter select car"
-                    v-model="vehicle_id"
-                    required
-                  >
+                <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
+                  <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id" required>
                     <option value="">Select Car</option>
-                    <option
-                      v-for="vehicle in vehicles"
-                      :key="vehicle.id"
-                      :value="vehicle.id"
-                    >
+                    <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
                       {{ vehicle.name }}
                     </option>
                   </b-form-select>
@@ -220,20 +139,16 @@
               <div v-if="selectedCarType === 'Own'">
                 <b-row>
                   <div class="col-12 mt-16">
-                    <div
-                      style="
+                    <div style="
                         background-color: rgb(97, 116, 152);
                         height: 32px;
                         border-radius: 4px;
-                      "
-                    >
-                      <h5
-                        style="
+                      ">
+                      <h5 style="
                           color: rgb(223, 227, 238);
                           margin-left: 5px;
                           font-weight: bold;
-                        "
-                      >
+                        ">
                         Add Vehicle
                       </h5>
                     </div>
@@ -241,18 +156,9 @@
                     <!-- <b-form @submit="onSubmit" @reset="onReset" v-if="show"> -->
                     <div class="row">
                       <div class="col-4">
-                        <b-form-group
-                          id="input-group-1"
-                          label="Name:"
-                          label-for="name"
-                        >
-                          <b-form-input
-                            id="name"
-                            type="text"
-                            placeholder="Enter name"
-                            autocomplete="off"
-                            v-model="vehicle_name"
-                          ></b-form-input>
+                        <b-form-group id="input-group-1" label="Name:" label-for="name">
+                          <b-form-input id="name" type="text" placeholder="Enter name" autocomplete="off"
+                            v-model="vehicle_name"></b-form-input>
                         </b-form-group>
                       </div>
                       <!-- <div class="col-4">
@@ -263,91 +169,43 @@
                       </div> -->
 
                       <div class="col-4">
-                        <b-form-group
-                          id="input-group-2"
-                          label="Description:"
-                          label-for="description"
-                        >
-                          <b-form-input
-                            id="description"
-                            placeholder="Enter Description"
-                            v-model="description"
-                          ></b-form-input>
+                        <b-form-group id="input-group-2" label="Description:" label-for="description">
+                          <b-form-input id="description" placeholder="Enter Description"
+                            v-model="description"></b-form-input>
                         </b-form-group>
                       </div>
 
                       <div class="col-4">
-                        <b-form-group
-                          id="input-group-2"
-                          label="Car Make:"
-                          label-for="car_make"
-                        >
-                          <b-form-input
-                            id="car_make"
-                            placeholder="Enter Car Make"
-                            v-model="car_make"
-                          ></b-form-input>
+                        <b-form-group id="input-group-2" label="Car Make:" label-for="car_make">
+                          <b-form-input id="car_make" placeholder="Enter Car Make" v-model="car_make"></b-form-input>
                         </b-form-group>
                       </div>
                       <div class="col-4">
-                        <b-form-group
-                          id="input-group-2"
-                          label="Car Model:"
-                          label-for="car_model"
-                        >
-                          <b-form-input
-                            id="car_model"
-                            placeholder="Enter Car Model"
-                            v-model="car_model"
-                          ></b-form-input>
+                        <b-form-group id="input-group-2" label="Car Model:" label-for="car_model">
+                          <b-form-input id="car_model" placeholder="Enter Car Model" v-model="car_model"></b-form-input>
                         </b-form-group>
                       </div>
                       <div class="col-4">
-                        <b-form-group
-                          id="input-group-2"
-                          label="Car Color:"
-                          label-for="car_color"
-                        >
-                          <b-form-input
-                            id="car_color"
-                            placeholder="Enter Car Color"
-                            v-model="car_color"
-                          ></b-form-input>
+                        <b-form-group id="input-group-2" label="Car Color:" label-for="car_color">
+                          <b-form-input id="car_color" placeholder="Enter Car Color" v-model="car_color"></b-form-input>
                         </b-form-group>
                       </div>
                       <div class="col-4">
-                        <b-form-group
-                          id="input-group-2"
-                          label="Car Number:"
-                          label-for="car_number"
-                        >
-                          <b-form-input
-                            id="car_numbar"
-                            placeholder="Enter Car Number"
-                            v-model="car_number"
-                          ></b-form-input>
+                        <b-form-group id="input-group-2" label="Car Number:" label-for="car_number">
+                          <b-form-input id="car_numbar" placeholder="Enter Car Number"
+                            v-model="car_number"></b-form-input>
                         </b-form-group>
                       </div>
                     </div>
 
                     <!--------------------- Uploading images button----------------------- -->
                     <div style="margin-left: 3px; margin-bottom: 15px">
-                      <input
-                        type="file"
-                        accept="image/*"
-                        id="vehicle_image[]"
-                        multiple
-                        @change="vehicleImageChange"
-                      />
+                      <input type="file" accept="image/*" id="vehicle_image[]" multiple @change="vehicleImageChange" />
                     </div>
                     <!-- </b-form> -->
                   </div>
 
-                  <div
-                    v-if="codeActive"
-                    class="col-12 mt-24 hljs-container"
-                    :class="{ active: codeActiveClass }"
-                  >
+                  <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
                     <pre v-highlightjs>
                                      <code class="hljs html">
                                     {{ codeText }}
@@ -358,31 +216,23 @@
               </div>
             </div>
 
-            <div
-              style="
+            <div style="
                 background-color: rgb(97, 116, 152);
                 height: 32px;
                 border-radius: 4px;
-              "
-            >
-              <h5
-                style="
+              ">
+              <h5 style="
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
-                "
-              >
+                ">
                 Salary Information
               </h5>
             </div>
 
             <div class="row">
               <div class="col-4">
-                <b-form-group
-                  id="input-group-1"
-                  label="Salary:"
-                  label-for="salary"
-                >
+                <b-form-group id="input-group-1" label="Salary:" label-for="salary">
                   <b-form-select v-model="selectedOption" required>
                     <option value="">Select Salary Type</option>
                     <option>Fix</option>
@@ -393,153 +243,76 @@
               </div>
 
               <div v-if="selectedOption === 'Fix'" class="col-4">
-                <b-form-group
-                  label="Fix Salary ($/hr)"
-                  label-for="fix-salary-input"
-                >
-                  <b-form-input
-                    id="salary_fix"
-                    type="text"
-                    v-model="salary_fix"
-                    placeholder="Enter fix salary"
-                  ></b-form-input>
+                <b-form-group label="Fix Salary ($/hr)" label-for="fix-salary-input">
+                  <b-form-input id="salary_fix" type="text" v-model="salary_fix"
+                    placeholder="Enter fix salary"></b-form-input>
                 </b-form-group>
               </div>
 
               <div v-if="selectedOption === 'Commission'" class="col-4">
-                <b-form-group
-                  label="Commission (%/Company)"
-                  label-for="commission-input"
-                >
-                  <b-form-input
-                    id="salary_commission"
-                    type="text"
-                    v-model="salary_commission"
-                    placeholder="Enter commission"
-                  ></b-form-input>
+                <b-form-group label="Commission (%/Company)" label-for="commission-input">
+                  <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                    placeholder="Enter commission"></b-form-input>
                 </b-form-group>
               </div>
-              <div
-                v-if="selectedOption === 'Hourly Enter Amount'"
-                class="col-4"
-              >
-                <b-form-group
-                  label="Hourly Enter Amount ($/hr)"
-                  label-for="hourly_enter_amount"
-                >
-                  <b-form-input
-                    id="hourly_enter_amount"
-                    type="text"
-                    v-model="hourly_enter_amount"
-                    placeholder="Enter Hourly Amount"
-                  ></b-form-input>
+              <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
+                <b-form-group label="Hourly Enter Amount ($/hr)" label-for="hourly_enter_amount">
+                  <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
+                    placeholder="Enter Hourly Amount"></b-form-input>
                 </b-form-group>
               </div>
-              <div
-                v-if="selectedOption === 'Hourly Enter Amount'"
-                class="col-4"
-              >
-                <b-form-group
-                  label="Total Number Of Hours ($/hr)"
-                  label-for="total_number_hour"
-                >
-                  <b-form-input
-                    id="total_number_hour"
-                    type="text"
-                    v-model="total_number_hour"
-                    placeholder="Enter Total Number Hours"
-                  ></b-form-input>
+              <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
+                <b-form-group label="Total Number Of Hours ($/hr)" label-for="total_number_hour">
+                  <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
+                    placeholder="Enter Total Number Hours"></b-form-input>
                 </b-form-group>
               </div>
             </div>
             <!-- Bank Information -->
-            <div
-              style="
+            <div style="
                 background-color: rgb(97, 116, 152);
                 height: 32px;
                 border-radius: 4px;
-              "
-            >
-              <h5
-                style="
+              ">
+              <h5 style="
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
-                "
-              >
+                ">
                 Bank Information
               </h5>
             </div>
             <!-- <h3>Bank Infomation</h3> -->
             <div class="row">
               <div class="col-4">
-                <b-form-group
-                  id="input-group-1"
-                  label="Bank Account Holder Name:"
-                  label-for="bank_account_holder_name"
-                >
-                  <b-form-input
-                    id="bank_name"
-                    type="text"
-                    placeholder="Enter bank account holder name"
-                    v-model="bank_name"
-                    required
-                  ></b-form-input>
+                <b-form-group id="input-group-1" label="Bank Account Holder Name:" label-for="bank_account_holder_name">
+                  <b-form-input id="bank_name" type="text" placeholder="Enter bank account holder name"
+                    v-model="bank_name" required></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-4">
-                <b-form-group
-                  id="input-group-2"
-                  label="Bank Account Number:"
-                  label-for="bank_account_number"
-                >
-                  <b-form-input
-                    id="bank_account_number"
-                    placeholder="Enter bank account number"
-                    v-model="bank_account_number"
-                    required
-                  ></b-form-input>
+                <b-form-group id="input-group-2" label="Bank Account Number:" label-for="bank_account_number">
+                  <b-form-input id="bank_account_number" placeholder="Enter bank account number"
+                    v-model="bank_account_number" required></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-4">
-                <b-form-group
-                  id="input-group-1"
-                  label=" Company Name(own):"
-                  label-for="company_name_own"
-                >
-                  <b-form-input
-                    id="company_name_own"
-                    type="text"
-                    placeholder="Enter company name"
-                    v-model="company_name_own"
-                    required
-                  ></b-form-input>
+                <b-form-group id="input-group-1" label=" Company Name(own):" label-for="company_name_own">
+                  <b-form-input id="company_name_own" type="text" placeholder="Enter company name"
+                    v-model="company_name_own" required></b-form-input>
                 </b-form-group>
               </div>
             </div>
             <div class="row">
               <div class="col-4">
-                <b-form-group
-                  id="input-group-1"
-                  label="Upload Document:"
-                  label-for="bank_upload_document"
-                >
+                <b-form-group id="input-group-1" label="Upload Document:" label-for="bank_upload_document">
                   <div style="margin-left: 3px; margin-bottom: 15px">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      id="bank_upload_document"
-                      @change="BankImageChange"
-                    />
+                    <input type="file" accept="image/*" id="bank_upload_document" @change="BankImageChange" />
                   </div>
                 </b-form-group>
               </div>
               <div class="col-4">
-                <b-form-group
-                  id="input-group-1"
-                  label="Taxi Driving Liscence:"
-                  label-for="taxi_driving_liscence"
-                >
+                <b-form-group id="input-group-1" label="Taxi Driving Liscence:" label-for="taxi_driving_liscence">
                   <b-form-select v-model="taxi_driving_liscence" required>
                     <option value="">Select Liscence</option>
                     <!-- <option>Liscence B</option> -->
@@ -549,43 +322,20 @@
                 </b-form-group>
               </div>
               <div class="col-4">
-                <b-form-group
-                  id="input-group-1"
-                  label=" Description:"
-                  label-for="bank_emergency_contact_name"
-                >
-                  <b-form-input
-                    id="bank_emergency_contact_name"
-                    type="text"
-                    placeholder="Enter Description"
-                    v-model="bank_emergency_contact_name"
-                    required
-                  ></b-form-input>
+                <b-form-group id="input-group-1" label=" Description:" label-for="bank_emergency_contact_name">
+                  <b-form-input id="bank_emergency_contact_name" type="text" placeholder="Enter Description"
+                    v-model="bank_emergency_contact_name" required></b-form-input>
                 </b-form-group>
               </div>
             </div>
             <!-- Bank Information End -->
-            <b-button
-              type="submit"
-              variant="primary"
-              class="mb-8 mr-8"
-              :disabled="isLoading"
-            >
+            <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
               <span v-if="!isLoading">Submit</span>
-              <b-spinner
-                v-else
-                class="mb-8 mr-8"
-                variant="primary"
-                small
-              ></b-spinner>
+              <b-spinner v-else class="mb-8 mr-8" variant="primary" small></b-spinner>
             </b-button>
           </b-form>
         </div>
-        <div
-          v-if="codeActive"
-          class="col-12 mt-24 hljs-container"
-          :class="{ active: codeActiveClass }"
-        >
+        <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
           <pre v-highlightjs>
           <code class="hljs html">
             {{ codeText }}
@@ -635,6 +385,7 @@ export default {
       // Add Driver
       name: "",
       email: "",
+      password:'',
       ssn: "",
       mobile: "",
       gender: "",
@@ -732,6 +483,7 @@ export default {
       formData.append("name", this.name);
       formData.append("email", this.email);
       formData.append("ssn", this.ssn);
+      formData.append("password", this.password);
       formData.append("mobile", this.mobile);
       formData.append("gender", this.gender);
       formData.append("emergency_name", this.emergency_name);
@@ -790,11 +542,11 @@ export default {
         });
     },
     onProfilePictureChange(event) {
-        const file = event.target.files[0];
-        if (file) {
-          this.profile_picture = file;
-        }
-      },
+      const file = event.target.files[0];
+      if (file) {
+        this.profile_picture = file;
+      }
+    },
 
     vehicleImageChange(event) {
       const files = event.target.files;

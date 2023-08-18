@@ -43,8 +43,8 @@
                                 <div style="margin-left: 3px; margin-bottom:15px;">
                                     <img :src="'https://boltapi.fastnetstaffing.in/' + company_document
                                         " alt="Profile Picture" width="100" height="100" />
-                                    <input type="file" accept="image/*" id="company_document"
-                                        @change="onCompanyDocumentChange" />
+                                    <!-- <input type="file" accept="image/*" id="company_document"
+                                        @change="onCompanyDocumentChange" /> -->
 
                                 </div>
                             </b-form-group>
