@@ -589,6 +589,7 @@ export default {
       formData.append("car_model", this.car_model);
       formData.append("car_color", this.car_color);
       formData.append("car_number", this.car_number);
+      formData.append("joining_date", this.joining_date);
       // for (const image of this.vehicle_image) {
       //   formData.append('vehicle_image[]', image);
       // }
