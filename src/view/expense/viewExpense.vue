@@ -18,7 +18,7 @@
                         </h5>
                     </div>
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
                                 <b-form-select id="user_id" v-model="user_id" disabled>
                                     <option value="">Select Driver</option>
@@ -28,28 +28,27 @@
                                 </b-form-select>
                             </b-form-group>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Amount:" label-for="amount">
                                 <b-form-input id="amount" v-model="amount" placeholder="Enter  amount"
                                     disabled></b-form-input>
                             </b-form-group>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Category:" label-for="category">
                                 <b-form-input id="category" v-model="category" placeholder="Enter  amount"
-                                        disabled></b-form-input>
+                                    disabled></b-form-input>
                             </b-form-group>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Card:" label-for="card">
-                              <b-form-input id="card" v-model="card" placeholder="Enter  amount"
-                                disabled></b-form-input>
+                                <b-form-input id="card" v-model="card" placeholder="Enter  amount" disabled></b-form-input>
                             </b-form-group>
                         </div>
 
                         <!-- <h4>Upload Document</h4> -->
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Document Upload:" label-for="profile_picture">
                                 <div style="margin-left: 3px; margin-bottom: 15px">
                                     <!-- Display current profile picture -->
@@ -104,7 +103,7 @@ export default {
             image: null,
             amount: '',
             category: '',
-            card:'',
+            card: '',
             user_id: '',
             drivers: [],
 
@@ -145,7 +144,7 @@ export default {
                 this.image = this.editExpense.image;
                 this.amount = this.editExpense.amount;
                 this.category = this.editExpense.category;
-                 this.card = this.editExpense.card;
+                this.card = this.editExpense.card;
                 this.user_id = this.editExpense.user_id;
 
             })
