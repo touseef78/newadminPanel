@@ -18,7 +18,7 @@
                         </h5>
                     </div>
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
                                 <b-form-select id="user_id" v-model="user_id" required>
                                     <option value="">Select  Driver</option>
@@ -28,13 +28,13 @@
                                 </b-form-select>
                             </b-form-group>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Amount:" label-for="amount">
                                 <b-form-input id="amount" v-model="amount" placeholder="Enter  amount"
                                     required></b-form-input>
                             </b-form-group>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Category:" label-for="category">
                                 <b-form-select id="category" v-model="category" required>
                                     <option value="">Select Category</option>
@@ -50,7 +50,7 @@
                             </b-form-group>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Card:" label-for="card">
                                 <b-form-select id="card" v-model="card" required>
                                     <option value="">Select Card</option>
@@ -61,7 +61,7 @@
                             </b-form-group>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Document Upload:" label-for="profile_picture">
                                 <div style="margin-left: 3px; margin-bottom: 15px">
                                     <!-- Display current profile picture -->

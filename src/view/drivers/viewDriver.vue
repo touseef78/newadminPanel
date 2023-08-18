@@ -29,7 +29,7 @@
               </h5>
             </div>
             <div class="row">
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-1"
                   label="Full Name:"
@@ -47,7 +47,7 @@
                 </b-form-group>
               </div>
 
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
                   label="Email Address:"
@@ -64,7 +64,7 @@
                 </b-form-group>
               </div>
 
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
                   <b-form-input
                     id="ssn"
@@ -77,7 +77,7 @@
             </div>
             <!------------------------ Second Row--------------------------- -->
             <div class="row">
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-1"
                   label="Mobile:"
@@ -92,7 +92,7 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
                   label="Gender:"
@@ -106,7 +106,7 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-1"
                   label="Emergency Name:"
@@ -123,7 +123,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
                   label="Emergency Number:"
@@ -138,7 +138,7 @@
                 </b-form-group>
               </div>
 
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
                   label="Address:"
@@ -153,7 +153,7 @@
                   </b-form-input>
                 </b-form-group>
               </div>
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-1"
                   label="Date of Birth:"
@@ -170,7 +170,7 @@
               </div>
             </div>
             <div class="row">
-             <div class="col-4">
+             <div class="col-md-4 col-12">
                   <b-form-group
                     id="input-group-2"
                     label="Joining Date:"
@@ -185,7 +185,7 @@
                   </b-form-group>
                 </div>
 
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
                   label="Select Car Type:"
@@ -199,7 +199,7 @@
                 </b-form-group>
               </div>
 
-              <div v-if="selectedCarType === 'Company'" class="col-4">
+              <div v-if="selectedCarType === 'Company'" class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
                   label="Select Car:"
@@ -246,7 +246,7 @@
 
                     <!-- <b-form @submit="onSubmit" @reset="onReset" v-if="show"> -->
                     <div class="row">
-                      <div class="col-4">
+                      <div class="col-md-4 col-12">
                         <b-form-group
                           id="input-group-1"
                           label="Name:"
@@ -262,7 +262,7 @@
                           ></b-form-input>
                         </b-form-group>
                       </div>
-                      <!-- <div class="col-4">
+                      <!-- <div class="col-md-4 col-12">
                         <b-form-group id="input-group-2" label="Company Name:" label-for="company_name">
                           <b-form-input id="vehicle_company" placeholder="Enter comapnay name" v-model="vehicle_company"
                             disabled></b-form-input>
@@ -270,7 +270,7 @@
                         </b-form-group>
                       </div> -->
 
-                      <div class="col-4">
+                      <div class="col-md-4 col-12">
                         <b-form-group
                           id="input-group-2"
                           label="Description:"
@@ -285,7 +285,7 @@
                         </b-form-group>
                       </div>
 
-                      <div class="col-4">
+                      <div class="col-md-4 col-12">
                         <b-form-group
                           id="input-group-2"
                           label="Car Make:"
@@ -299,7 +299,7 @@
                           ></b-form-input>
                         </b-form-group>
                       </div>
-                      <div class="col-4">
+                      <div class="col-md-4 col-12">
                         <b-form-group
                           id="input-group-2"
                           label="Car Model:"
@@ -313,7 +313,7 @@
                           ></b-form-input>
                         </b-form-group>
                       </div>
-                      <div class="col-4">
+                      <div class="col-md-4 col-12">
                         <b-form-group
                           id="input-group-2"
                           label="Car Color:"
@@ -327,7 +327,7 @@
                           ></b-form-input>
                         </b-form-group>
                       </div>
-                      <div class="col-4">
+                      <div class="col-md-4 col-12">
                         <b-form-group
                           id="input-group-2"
                           label="Car Number:"
@@ -382,7 +382,7 @@
                   </div>
                 </b-row>
               </div>
-                <div class="col-4">
+                <div class="col-md-4 col-12">
                   <b-form-group
                     id="input-group-2"
                     label="Profile Picture:"
@@ -420,7 +420,7 @@
             </div>
 
             <div class="row">
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-1"
                   label="Salary:"
@@ -435,7 +435,7 @@
                 </b-form-group>
               </div>
 
-              <div v-if="selectedOption === 'Fix'" class="col-4">
+              <div v-if="selectedOption === 'Fix'" class="col-md-4 col-12">
                 <b-form-group
                   label="Fix Salary ($/hr)"
                   label-for="fix-salary-input"
@@ -450,7 +450,7 @@
                 </b-form-group>
               </div>
 
-              <div v-if="selectedOption === 'Commission'" class="col-4">
+              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
                 <b-form-group
                   label="Commission (%/Company)"
                   label-for="commission-input"
@@ -466,7 +466,7 @@
 
               <div
                 v-if="selectedOption === 'Hourly Rate'"
-                class="col-4"
+                class="col-md-4 col-12"
               >
                 <b-form-group
                   label="Hourly Rate (SEK/hr)"
@@ -483,7 +483,7 @@
               </div>
               <div
                 v-if="selectedOption === 'Hourly Rate'"
-                class="col-4"
+                class="col-md-4 col-12"
               >
                 <b-form-group
                   label="Total Number Of Hours"
@@ -519,7 +519,7 @@
             </div>
             <!-- <h3>Bank Infomation</h3> -->
             <div class="row">
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-1"
                   label="Bank Account Holder Name:"
@@ -534,7 +534,7 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
                   label="Bank Account Number:"
@@ -548,7 +548,7 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-1"
                   label=" Company Name(own):"
@@ -565,7 +565,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-1"
                   label-for="bank_upload_document"
@@ -583,7 +583,7 @@
                   </div>
                 </b-form-group>
               </div>
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-1"
                   label="Taxi Driving License:"
@@ -598,7 +598,7 @@
                   </b-form-select>
                 </b-form-group>
               </div>
-              <div class="col-4">
+              <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-1"
                   label=" Description"
