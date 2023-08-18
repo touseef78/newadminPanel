@@ -156,6 +156,7 @@ export default {
                 { key: "email", sortable: true },
                 { key: "emergency_name", sortable: true },
                 { key: "salary_commission", sortable: true },
+                 { key: "joining_date", sortable: true },
                 { key: "hourly_enter_amount", sortable: true },
                 { key: "ssn", sortable: true },
                 { key: "status", sortable: true },

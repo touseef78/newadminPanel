@@ -66,7 +66,7 @@
                         </div>
                         <div class="row">
                             <div class="col-4">
-                                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
+                                <b-form-group id="input-group-1" label="Full Name:" label-for="first_name">
                                     <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off"
                                         v-model="name" required>
                                     </b-form-input>
@@ -82,8 +82,8 @@
                             </div>
 
                             <div class="col-4">
-                                <b-form-group id="input-group-2" label="Password:" label-for="password">
-                                    <b-form-input id="password" placeholder="Enter Password" v-model="password"
+                                <b-form-group id="input-group-2" label="Password:" label-for="">
+                                    <b-form-input id="ssn" placeholder="Enter Password" v-model="ssn"
                                         required></b-form-input>
                                 </b-form-group>
                             </div>
@@ -132,19 +132,7 @@
                         </div>
                         <div class="row">
 
-                            <div class="col-4">
-                                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                                    <div style="margin-left: 3px; margin-bottom: 15px">
-                                        <!-- Display current profile picture -->
-                                        <img v-if="editedUser.profile_picture"
-                                            :src="'https://boltapi.fastnetstaffing.in/' + profile_picture" alt="Picture"
-                                            style="max-width: 100px; max-height: 100px" />
-                                        <!-- Input field to upload new profile picture -->
-                                        <input type="file" accept="image/*" id="profile_picture"
-                                            @change="onProfilePictureChange" />
-                                    </div>
-                                </b-form-group>
-                            </div>
+
 
                             <div class="col-4">
                                 <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
@@ -271,6 +259,26 @@
                                     </div>
                                 </b-row>
                             </div>
+                            <div class="col-4">
+                                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
+                                    <div style="margin-left: 3px; margin-bottom: 15px">
+                                        <!-- Display current profile picture -->
+                                        <img v-if="editedUser.profile_picture"
+                                            :src="'https://boltapi.fastnetstaffing.in/' + profile_picture" alt="Picture"
+                                            style="max-width: 100px; max-height: 100px" />
+                                        <!-- Input field to upload new profile picture -->
+                                        <input type="file" accept="image/*" id="profile_picture"
+                                            @change="onProfilePictureChange" />
+                                    </div>
+                                </b-form-group>
+                            </div>
+                            <div class="col-4">
+                                <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
+                                    <b-form-input id="joining_date" type="date"  v-model="joining_date"
+                                        required>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
                         </div>
 
                         <div style="
@@ -294,7 +302,7 @@
                                         <option value="">Select Salary Type</option>
                                         <option>Fix</option>
                                         <option>Commission</option>
-                                        <option>Hourly Enter Amount</option>
+                                        <option>Hourly Rate</option>
                                     </b-form-select>
                                 </b-form-group>
                             </div>
@@ -328,14 +336,14 @@
                   ></b-form-input>
                 </b-form-group>
               </div> -->
-                            <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                                <b-form-group label="Hourly Enter Amount" label-for="hourly_enter_amount">
+                            <div v-if="selectedOption === 'Hourly Rate'" class="col-4">
+                                <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
                                     <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
-                                        placeholder="Enter Hourly Amount"></b-form-input>
+                                        placeholder="Enter Hourly Rate"></b-form-input>
                                 </b-form-group>
                             </div>
-                            <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                                <b-form-group label="Total Number Of Hours" label-for="total_number_hour">
+                            <div v-if="selectedOption === 'Hourly Rate'" class="col-4">
+                                <b-form-group label="Total Number Of Hours ($/hr)" label-for="total_number_hour">
                                     <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
                                         placeholder="Enter Total Number Hours"></b-form-input>
                                 </b-form-group>
@@ -392,12 +400,12 @@
                                 </b-form-group>
                             </div>
                             <div class="col-4">
-                                <b-form-group id="input-group-1" label="Taxi Driving Liscence:"
+                                <b-form-group id="input-group-1" label="Taxi Driving License:"
                                     label-for="taxi_driving_liscence">
                                     <b-form-select v-model="taxi_driving_liscence">
-                                        <option value="">Select Liscence</option>
-                                        <option>Driving Liscence/Swedish ID</option>
-                                        <option>Taxi Liscence</option>
+                                        <option value="">Select License</option>
+                                        <option>Driving License/Swedish ID</option>
+                                        <option>Taxi License</option>
                                         <!-- <option>Liscence B</option> -->
                                         <!-- <option>Commission</option> -->
                                     </b-form-select>
@@ -469,7 +477,6 @@ export default {
             name: "",
             email: "",
             ssn: "",
-            password: '',
             mobile: "",
             gender: "",
             emergency_name: "",
@@ -477,6 +484,7 @@ export default {
             address: "",
             date_of_birth: "",
             salary: "",
+            joining_date: "",
             bank_name: "",
             bank_title: "",
             bank_account_number: "",
@@ -543,6 +551,7 @@ export default {
                 this.name = this.editedUser.name;
                 this.email = this.editedUser.email;
                 this.ssn = this.editedUser.ssn;
+                this.joining_date = this.editedUser.joining_date;
                 this.mobile = this.editedUser.mobile;
                 this.gender = this.editedUser.gender;
                 this.emergency_name = this.editedUser.emergency_name;
@@ -626,7 +635,7 @@ export default {
             formData.append("name", this.name);
             formData.append("email", this.email);
             formData.append("ssn", this.ssn);
-            formData.append("password", this.password);
+            formData.append("joining_date", this.joining_date);
             formData.append("mobile", this.mobile);
             formData.append("gender", this.gender);
             formData.append("emergency_name", this.emergency_name);

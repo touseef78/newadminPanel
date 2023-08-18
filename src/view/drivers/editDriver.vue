@@ -32,7 +32,7 @@
               <div class="col-4">
                 <b-form-group
                   id="input-group-1"
-                  label="First Name:"
+                  label="Full Name:"
                   label-for="first_name"
                 >
                   <b-form-input
@@ -170,49 +170,7 @@
               </div>
             </div>
             <div class="row">
-              <!-- <div class="col-4">
-                <b-form-group
-                  id="input-group-2"
-                  label="Profile Picture:"
-                  label-for="profile_picture"
-                >
-                  <div style="margin-left: 3px; margin-bottom: 15px">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      id="profile_picture"
-                      @change="onProfilePictureChange"
-                    />
-                  </div>
-                </b-form-group>
-              </div> -->
-
-              <div class="col-4">
-                <b-form-group
-                  id="input-group-2"
-                  label="Profile Picture:"
-                  label-for="profile_picture"
-                >
-                  <div style="margin-left: 3px; margin-bottom: 15px">
-                    <!-- Display current profile picture -->
-                    <img
-                      v-if="editedUser.profile_picture"
-                      :src="
-                        'https://boltapi.fastnetstaffing.in/' + profile_picture
-                      "
-                      alt="Picture"
-                      style="max-width: 100px; max-height: 100px"
-                    />
-                    <!-- Input field to upload new profile picture -->
-                    <input
-                      type="file"
-                      accept="image/*"
-                      id="profile_picture"
-                      @change="onProfilePictureChange"
-                    />
-                  </div>
-                </b-form-group>
-              </div>
+            
    <div class="col-4">
                   <b-form-group
                     id="input-group-2"
@@ -228,6 +186,21 @@
                     </b-form-input>
                   </b-form-group>
                 </div>
+                   <div class="col-4">
+                    <b-form-group
+                      id="input-group-2"
+                      label="Joining Date:"
+                      label-for="joining_date"
+                    >
+                      <b-form-input
+                        id="joining_date"
+                        type="date"
+                        v-model="joining_date"
+                        required
+                      >
+                      </b-form-input>
+                    </b-form-group>
+                  </div>
               <div class="col-4">
                 <b-form-group
                   id="input-group-2"
@@ -434,6 +407,31 @@
                   </div>
                 </b-row>
               </div>
+               <div class="col-4">
+                  <b-form-group
+                    id="input-group-2"
+                    label="Profile Picture:"
+                    label-for="profile_picture"
+                  >
+                    <div style="margin-left: 3px; margin-bottom: 15px">
+                      <!-- Display current profile picture -->
+                      <img
+                        v-if="editedUser.profile_picture"
+                        :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
+                          "
+                        alt="Picture"
+                        style="max-width: 100px; max-height: 100px"
+                      />
+                      <!-- Input field to upload new profile picture -->
+                      <input
+                        type="file"
+                        accept="image/*"
+                        id="profile_picture"
+                        @change="onProfilePictureChange"
+                      />
+                    </div>
+                  </b-form-group>
+                </div>
             </div>
 
             <div
@@ -465,7 +463,7 @@
                     <option value="">Select Salary Type</option>
                     <option>Fix</option>
                     <option>Commission</option>
-                    <option>Hourly Enter Amount</option>
+                    <option>Hourly Rate</option>
                   </b-form-select>
                 </b-form-group>
               </div>
@@ -497,40 +495,25 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
-              <!-- <div
-                v-if="selectedOption === 'Hourly Enter Amount'"
-                class="col-4"
-              >
-                <b-form-group
-                  label="Hourly Enter Amount"
-                  label-for="commission-input"
-                >
-                  <b-form-input
-                    id="hourly_enter_amount"
-                    type="text"
-                    v-model="hourly_enter_amount"
-                    placeholder="Enter commission"
-                  ></b-form-input>
-                </b-form-group>
-              </div> -->
+    
               <div
-                v-if="selectedOption === 'Hourly Enter Amount'"
+                v-if="selectedOption === 'Hourly Rate'"
                 class="col-4"
               >
                 <b-form-group
-                  label="Hourly Enter Amount"
+                  label="Hourly Rate (SEK/hr)"
                   label-for="hourly_enter_amount"
                 >
                   <b-form-input
                     id="hourly_enter_amount"
                     type="text"
                     v-model="hourly_enter_amount"
-                    placeholder="Enter Hourly Amount"
+                    placeholder="Hourly Rate (SEK/hr)"
                   ></b-form-input>
                 </b-form-group>
               </div>
               <div
-                v-if="selectedOption === 'Hourly Enter Amount'"
+                v-if="selectedOption === 'Hourly Rate'"
                 class="col-4"
               >
                 <b-form-group
@@ -638,13 +621,13 @@
               <div class="col-4">
                 <b-form-group
                   id="input-group-1"
-                  label="Taxi Driving Liscence:"
+                  label="Taxi Driving License:"
                   label-for="taxi_driving_liscence"
                 >
                   <b-form-select v-model="taxi_driving_liscence">
-                    <option value="">Select Liscence</option>
-                    <option>Driving Liscence/Swedish ID</option>
-                    <option>Taxi Liscence</option>
+                    <option value="">Select License</option>
+                    <option>Driving License/Swedish ID</option>
+                    <option>Taxi License </option>
                     <!-- <option>Liscence B</option> -->
                     <!-- <option>Commission</option> -->
                   </b-form-select>
@@ -774,6 +757,7 @@ export default {
       car_color: "",
       car_number: "",
       vehicle_image: [],
+      joining_date:'',
       total_number_hour: "",
     };
   },
@@ -813,6 +797,7 @@ export default {
         this.ssn = this.editedUser.ssn;
         this.mobile = this.editedUser.mobile;
         this.gender = this.editedUser.gender;
+         this.joining_date = this.editedUser.joining_date;
         this.emergency_name = this.editedUser.emergency_name;
         this.emergency_number = this.editedUser.emergency_number;
         this.address = this.editedUser.address;

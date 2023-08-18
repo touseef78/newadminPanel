@@ -54,7 +54,7 @@
                             <b-form-group id="input-group-2" label="Card:" label-for="card">
                                 <b-form-select id="card" v-model="card" required>
                                     <option value="">Select Card</option>
-                                    <option>Credid</option>
+                                    <option>Credit</option>
                                     <option>Debit</option>
                                     <option>Normal</option>
                                 </b-form-select>

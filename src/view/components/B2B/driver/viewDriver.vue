@@ -43,8 +43,8 @@
                                 <div style="margin-left: 3px; margin-bottom:15px;">
                                     <img :src="'https://boltapi.fastnetstaffing.in/' + company_document
                                         " alt="Profile Picture" width="100" height="100" />
-                                    <!-- <input type="file" accept="image/*" id="company_document"
-                                        @change="onCompanyDocumentChange" /> -->
+                                    <input type="file" accept="image/*" id="company_document"
+                                        @change="onCompanyDocumentChange" />
 
                                 </div>
                             </b-form-group>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="row">
                             <div class="col-4">
-                                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
+                                <b-form-group id="input-group-1" label="Full Name:" label-for="first_name">
                                     <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off"
                                         v-model="name" disabled>
                                     </b-form-input>
@@ -279,7 +279,7 @@
                                         <option value="">Select Salary Type</option>
                                         <option>Fix</option>
                                         <option>Commission</option>
-                                        <option>Hourly Enter Amount</option>
+                                        <option>Hourly Rate</option>
                                     </b-form-select>
                                 </b-form-group>
                             </div>
@@ -298,14 +298,14 @@
                                 </b-form-group>
                             </div>
 
-                            <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                                <b-form-group label="Hourly Enter Amount" label-for="hourly_enter_amount">
+                            <div v-if="selectedOption === 'Hourly Rate'" class="col-4">
+                                <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
                                     <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
-                                        placeholder="Enter Hourly Amount" disabled></b-form-input>
+                                        placeholder="Enter Hourly Rate" disabled></b-form-input>
                                 </b-form-group>
                             </div>
                             <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                                <b-form-group label="Total Number Of Hours" label-for="total_number_hour">
+                                <b-form-group label="Total Number Of Hours ($/hr)" label-for="total_number_hour">
                                     <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
                                         placeholder="Enter Total Number Hours" disabled></b-form-input>
                                 </b-form-group>
@@ -359,14 +359,14 @@
                                 </b-form-group>
                             </div>
                             <div class="col-4">
-                                <b-form-group id="input-group-1" label="Taxi Driving Liscence:"
+                                <b-form-group id="input-group-1" label="Taxi Driving License:"
                                     label-for="taxi_driving_liscence">
                                     <b-form-select v-model="taxi_driving_liscence" disabled>
-                                        <option value="">Select Liscence</option>
+                                        <option value="">Select License</option>
                                         <!-- <option>Liscence B</option> -->
                                         <!-- <option>Commission</option> -->
-                                        <option>Driving Liscence/Swedish ID</option>
-                                        <option>Taxi Liscence</option>
+                                        <option>Driving License/Swedish ID</option>
+                                        <option>Taxi License</option>
                                     </b-form-select>
                                 </b-form-group>
                             </div>

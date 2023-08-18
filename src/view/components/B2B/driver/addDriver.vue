@@ -45,7 +45,7 @@
 
                                     <input type="file" accept="image/*" id="company_document"
                                         @change="onCompanyDocumentChange" />
-                                
+
                                 </div>
                             </b-form-group>
                         </div>
@@ -78,7 +78,7 @@
                         </div>
                         <div class="row">
                             <div class="col-4">
-                                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
+                                <b-form-group id="input-group-1" label="Full Name:" label-for="first_name">
                                     <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off"
                                         v-model="name" required>
                                     </b-form-input>
@@ -95,7 +95,8 @@
 
                             <div class="col-4">
                                 <b-form-group id="input-group-2" label="Password:" label-for="password">
-                                    <b-form-input id="password" placeholder="Enter SSN" v-model="password" required></b-form-input>
+                                    <b-form-input id="password" placeholder="Enter SSN" v-model="password"
+                                        required></b-form-input>
                                 </b-form-group>
                             </div>
                         </div>
@@ -147,21 +148,17 @@
                         </div>
                         <div class="row">
                             <div class="col-4">
-                                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                                    <div style="margin-left: 3px; margin-bottom: 15px">
-                                        <input type="file" accept="image/*" id="profile_picture"
-                                            @change="onProfilePictureChange" />
-                                    </div>
+                                <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
+                                    <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" required>
+                                    </b-form-input>
                                 </b-form-group>
                             </div>
-                            <!-- new images code  -->
-                            
-                                <div class="col-4">
-                                    <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
-                                        <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" required>
-                                        </b-form-input>
-                                    </b-form-group>
-                                </div>
+                            <div class="col-4">
+                                <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
+                                    <b-form-input id="joining_date" type="date" v-model="joining_date" required>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
 
                             <div class="col-4">
                                 <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
@@ -269,6 +266,14 @@
                                     </div>
                                 </b-row>
                             </div>
+                            <div class="col-4">
+                                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
+                                    <div style="margin-left: 3px; margin-bottom: 15px">
+                                        <input type="file" accept="image/*" id="profile_picture"
+                                            @change="onProfilePictureChange" />
+                                    </div>
+                                </b-form-group>
+                            </div>
                         </div>
 
                         <div style="
@@ -292,7 +297,7 @@
                                         <option value="">Select Salary Type</option>
                                         <option>Fix</option>
                                         <option>Commission</option>
-                                        <option>Hourly Enter Amount</option>
+                                        <option>Hourly Rate</option>
                                     </b-form-select>
                                 </b-form-group>
                             </div>
@@ -310,13 +315,13 @@
                                         placeholder="Enter commission"></b-form-input>
                                 </b-form-group>
                             </div>
-                            <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
-                                <b-form-group label="Hourly Enter Amount ($/hr)" label-for="hourly_enter_amount">
+                            <div v-if="selectedOption === 'Hourly Rate'" class="col-4">
+                                <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
                                     <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
-                                        placeholder="Enter Hourly Amount"></b-form-input>
+                                        placeholder="Enter Hourly Rate"></b-form-input>
                                 </b-form-group>
                             </div>
-                            <div v-if="selectedOption === 'Hourly Enter Amount'" class="col-4">
+                            <div v-if="selectedOption === 'Hourly Rate'" class="col-4">
                                 <b-form-group label="Total Number Of Hours ($/hr)" label-for="total_number_hour">
                                     <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
                                         placeholder="Enter Total Number Hours"></b-form-input>
@@ -370,13 +375,13 @@
                                 </b-form-group>
                             </div>
                             <div class="col-4">
-                                <b-form-group id="input-group-1" label="Taxi Driving Liscence:"
+                                <b-form-group id="input-group-1" label="Taxi Driving License:"
                                     label-for="taxi_driving_liscence">
                                     <b-form-select v-model="taxi_driving_liscence" required>
-                                        <option value="">Select Liscence</option>
+                                        <option value="">Select License</option>
                                         <!-- <option>Liscence B</option> -->
-                                        <option>Driving Liscence/Swedish ID</option>
-                                        <option>Taxi Liscence</option>
+                                        <option>Driving License/Swedish ID</option>
+                                        <option>Taxi License</option>
                                     </b-form-select>
                                 </b-form-group>
                             </div>
@@ -447,7 +452,7 @@ export default {
             name: "",
             email: "",
             ssn: "",
-            password:'',
+            password: '',
             mobile: "",
             gender: "",
             emergency_name: "",
@@ -471,6 +476,7 @@ export default {
             vehicles: [],
             ////
             company_name: "",
+            joining_date: '',
             owner_name: "",
             owner_number: "",
             company_document: "",
@@ -548,7 +554,8 @@ export default {
             formData.append("name", this.name);
             formData.append("email", this.email);
             formData.append("ssn", this.ssn);
-             formData.append("password", this.password);
+            formData.append("joining_date", this.joining_date);
+            formData.append("password", this.password);
             formData.append("mobile", this.mobile);
             formData.append("gender", this.gender);
             formData.append("emergency_name", this.emergency_name);
@@ -580,7 +587,7 @@ export default {
             formData.append("car_color", this.car_color);
             formData.append("car_number", this.car_number);
             formData.append("total_number_hour", this.total_number_hour);
-           formData.append("type", "b2b");
+            formData.append("type", "b2b");
             for (const image of this.vehicle_image) {
                 formData.append('vehicle_image[]', image);
             }
