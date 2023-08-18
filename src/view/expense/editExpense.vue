@@ -19,6 +19,16 @@
                     </div>
                     <div class="row">
                         <div class="col-4">
+                            <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
+                                <b-form-select id="user_id" v-model="user_id" required>
+                                    <option value="">Select  Driver</option>
+                                    <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
+                                        {{ driver.name }}
+                                    </option>
+                                </b-form-select>
+                            </b-form-group>
+                        </div>
+                        <div class="col-4">
                             <b-form-group id="input-group-2" label="Amount:" label-for="amount">
                                 <b-form-input id="amount" v-model="amount" placeholder="Enter  amount"
                                     required></b-form-input>
@@ -33,8 +43,6 @@
                                     <option>Air Pressure</option>
                                     <option>Tyre Change</option>
                                     <option>Challane</option>
-                                    <option>Credid</option>
-                                    <option>Debit</option>
                                     <option>Online Payment</option>
                                     <option>Customer</option>
                                     <option>Other</option>
@@ -43,16 +51,15 @@
                         </div>
 
                         <div class="col-4">
-                            <b-form-group id="input-group-2" label="Add Driver:" label-for="user_id">
-                                <b-form-select id="user_id" v-model="user_id" required>
-                                    <option value="">Select Add Driver</option>
-                                    <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
-                                        {{ driver.name }}
-                                    </option>
+                            <b-form-group id="input-group-2" label="Card:" label-for="card">
+                                <b-form-select id="card" v-model="card" required>
+                                    <option value="">Select Card</option>
+                                    <option>Credid</option>
+                                    <option>Debit</option>
+                                    <option>Normal</option>
                                 </b-form-select>
                             </b-form-group>
                         </div>
-
 
                         <div class="col-4">
                             <b-form-group id="input-group-2" label="Document Upload:" label-for="profile_picture">
@@ -115,9 +122,10 @@ export default {
             image: null,
             amount: '',
             category: '',
+            card:'',
             user_id: '',
             drivers: [],
-            editExpense:{},
+            editExpense: {},
 
 
         };
@@ -156,6 +164,7 @@ export default {
                 this.image = this.editExpense.image;
                 this.amount = this.editExpense.amount;
                 this.category = this.editExpense.category;
+                 this.card = this.editExpense.card;
                 this.user_id = this.editExpense.user_id;
 
             })
@@ -193,6 +202,7 @@ export default {
             formData.append("image", this.image);
             formData.append("amount", this.amount);
             formData.append("category", this.category);
+             formData.append("card", this.card);
             formData.append("user_id", this.user_id);
             axios
                 .post(`expenseUpdate/${this.editExpense.id}`, formData)
