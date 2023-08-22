@@ -57,16 +57,16 @@
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-1" label="Emergency Name:" label-for="emergency_name">
-                  <b-form-input id="emergency_name" type="text" placeholder="Enter emer name" v-model="emergency_name"
+                <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
+                  <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name" v-model="emergency_contact_name"
                     ></b-form-input>
                 </b-form-group>
               </div>
             </div>
             <div class="row">
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Emergency Number:" label-for="emergency_number">
-                  <b-form-input id="emergency_number" placeholder="Enter remergency number" v-model="emergency_number"
+                <b-form-group id="input-group-2" label="Emergency Contact Number:" label-for="emergency_contact_number">
+                  <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number" v-model="emergency_contact_number"
                     ></b-form-input>
                 </b-form-group>
               </div>
@@ -87,8 +87,8 @@
             <div class="row">
 
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
-                  <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" >
+                <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
+                  <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code" >
                   </b-form-input>
                 </b-form-group>
               </div>
@@ -395,12 +395,12 @@ export default {
       // Add Driver
       name: "",
       email: "",
-      ssn: "",
+      security_code: "",
       password: '',
       mobile: "",
       gender: "",
-      emergency_name: "",
-      emergency_number: "",
+      emergency_contact_name: "",
+      emergency_contact_number: "",
       address: "",
       date_of_birth: "",
       salary: "",
@@ -470,12 +470,12 @@ export default {
         this.editedUser = response.data.data;
         this.name = this.editedUser.name;
         this.email = this.editedUser.email;
-        this.ssn = this.editedUser.ssn;
+        this.security_code = this.editedUser.security_code;
         this.mobile = this.editedUser.mobile;
         this.gender = this.editedUser.gender;
         this.joining_date = this.editedUser.joining_date;
-        this.emergency_name = this.editedUser.emergency_name;
-        this.emergency_number = this.editedUser.emergency_number;
+        this.emergency_contact_name = this.editedUser.emergency_contact_name;
+        this.emergency_contact_number = this.editedUser.emergency_contact_number;
         this.address = this.editedUser.address;
         this.date_of_birth = this.editedUser.date_of_birth;
         this.profile_picture = this.editedUser.profile_picture;
@@ -555,12 +555,12 @@ export default {
       const formData = new FormData();
       formData.append("name", this.name);
       formData.append("email", this.email);
-      formData.append("ssn", this.ssn);
+      formData.append("security_code", this.security_code);
       formData.append("password", this.password);
       formData.append("mobile", this.mobile);
       formData.append("gender", this.gender);
-      formData.append("emergency_name", this.emergency_name);
-      formData.append("emergency_number", this.emergency_number);
+      formData.append("emergency_contact_name", this.emergency_contact_name);
+      formData.append("emergency_contact_number", this.emergency_contact_number);
       formData.append("address", this.address);
       formData.append("date_of_birth", this.date_of_birth);
       formData.append("salary", this.salary);
