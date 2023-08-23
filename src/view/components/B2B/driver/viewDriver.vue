@@ -68,12 +68,19 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Full Name:" label-for="first_name">
+                                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
                                     <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off"
                                         v-model="name" disabled>
                                     </b-form-input>
                                 </b-form-group>
                             </div>
+                             <div class="col-md-4 col-12">
+                                    <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
+                                        <b-form-input id="last_name" type="text" placeholder="Enter first name" autocomplete="off"
+                                            v-model="last_name" disabled>
+                                        </b-form-input>
+                                    </b-form-group>
+                                </div>
 
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Email Address:" label-for="email">
@@ -84,13 +91,13 @@
                             </div>
 
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
-                                    <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" disabled></b-form-input>
+                                <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
+                                    <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code" disabled></b-form-input>
                                 </b-form-group>
                             </div>
-                        </div>
+                        
                         <!------------------------ Second Row--------------------------- -->
-                        <div class="row">
+                        
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                                     <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
@@ -104,17 +111,16 @@
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Emergency Name:" label-for="emergency_name">
-                                    <b-form-input id="emergency_name" type="text" placeholder="Enter emer name"
-                                        v-model="emergency_name" disabled></b-form-input>
+                                <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
+                                    <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
+                                        v-model="emergency_contact_name" disabled></b-form-input>
                                 </b-form-group>
                             </div>
-                        </div>
-                        <div class="row">
+                    
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Emergency Number:" label-for="emergency_number">
-                                    <b-form-input id="emergency_number" placeholder="Enter remergency number"
-                                        v-model="emergency_number" disabled></b-form-input>
+                                <b-form-group id="input-group-2" label=" Emergency Contact Number:" label-for="emergency_contact_number">
+                                    <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number"
+                                        v-model="emergency_contact_number" disabled></b-form-input>
                                 </b-form-group>
                             </div>
 
@@ -130,16 +136,8 @@
                                         v-model="date_of_birth" disabled></b-form-input>
                                 </b-form-group>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                                    <div style="margin-left: 3px; margin-bottom: 15px">
-                                        <img :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
-                                            " alt="Profile Picture" width="100" height="100" />
-                                    </div>
-                                </b-form-group>
-                            </div>
+                    
+                          
 
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
@@ -162,6 +160,14 @@
                                     </b-form-select>
                                 </b-form-group>
                             </div>
+                               <div class="col-md-4 col-12">
+                                    <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
+                                        <div style="margin-left: 3px; margin-bottom: 15px">
+                                            <img :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
+                                                " alt="Profile Picture" width="100" height="100" />
+                                        </div>
+                                    </b-form-group>
+                                </div>
                             <!-- Dropdown  of Add Vehicle -->
                             <div v-if="selectedCarType === 'Own'">
                                 <b-row>
@@ -291,12 +297,19 @@
                                 </b-form-group>
                             </div>
 
-                            <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                                <b-form-group label="Commission (%/Company)" label-for="commission-input">
-                                    <b-form-input id="salary_commission" type="text" v-model="salary_commission"
-                                        placeholder="Enter commission"></b-form-input>
-                                </b-form-group>
-                            </div>
+
+                             <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                    <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
+                      <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                        placeholder="Enter commission include vat"></b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                    <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
+                      <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
+                        placeholder="Enter commission exclusive vat"></b-form-input>
+                    </b-form-group>
+                  </div>
 
                             <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
                                 <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
@@ -445,11 +458,11 @@ export default {
             // Add Driver
             name: "",
             email: "",
-            ssn: "",
+            security_code: "",
             mobile: "",
             gender: "",
-            emergency_name: "",
-            emergency_number: "",
+            emergency_contact_name: "",
+            emergency_contact_number: "",
             address: "",
             date_of_birth: "",
             salary: "",
@@ -469,6 +482,8 @@ export default {
             hourly_enter_amount: "",
             profile_picture: "",
             successMessage: "",
+            last_name:'',
+            salary_commission_exclusive:'',
             vehicle_id: "",
             vehicles: [],
             editedUser: {
@@ -517,14 +532,16 @@ export default {
             .get(`drivers/${userId}`)
             .then((response) => {
                 this.editedUser = response.data.data;
-                // Set the data properties with values from editedUser
+                // Set the data properties with values from editedUser   
+                this.salary_commission_exclusive = this.editedUser.salary_commission_exclusive;
                 this.name = this.editedUser.name;
                 this.email = this.editedUser.email;
-                this.ssn = this.editedUser.ssn;
+                this.last_name = this.editedUser.last_name;
+                this.security_code = this.editedUser.security_code;
                 this.mobile = this.editedUser.mobile;
                 this.gender = this.editedUser.gender;
-                this.emergency_name = this.editedUser.emergency_name;
-                this.emergency_number = this.editedUser.emergency_number;
+                this.emergency_contact_name = this.editedUser.emergency_contact_name;
+                this.emergency_contact_number = this.editedUser.emergency_contact_number;
                 this.address = this.editedUser.address;
                 this.date_of_birth = this.editedUser.date_of_birth;
                 this.profile_picture = this.editedUser.profile_picture;

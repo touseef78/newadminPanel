@@ -223,8 +223,8 @@
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Mileage:" label-for="mileage">
-                  <b-form-input id="mileage" v-model="mileage" placeholder="Enter Mileage" required></b-form-input>
+                <b-form-group id="input-group-2" label="Current Mileage:" label-for="mileage">
+                  <b-form-input id="mileage" v-model="mileage" placeholder="Enter current Mileage" required></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">

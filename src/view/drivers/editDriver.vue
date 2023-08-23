@@ -22,16 +22,22 @@
             </div>
             <div class="row">
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-1" label="Full Name:" label-for="first_name">
-                  <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
-                    >
+                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
+                  <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name">
+                  </b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
+                  <b-form-input id="last_name" type="text" placeholder="Enter first name" autocomplete="off"
+                    v-model="last_name">
                   </b-form-input>
                 </b-form-group>
               </div>
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Email Address:" label-for="email">
-                  <b-form-input id="email" placeholder="Enter email address" v-model="email" >
+                  <b-form-input id="email" placeholder="Enter email address" v-model="email">
                   </b-form-input>
                   <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
                 </b-form-group>
@@ -42,59 +48,53 @@
                   <b-form-input id="password" placeholder="Enter Password" v-model="password"></b-form-input>
                 </b-form-group>
               </div>
-            </div>
-            <!------------------------ Second Row--------------------------- -->
-            <div class="row">
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
-                  <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
-                    ></b-form-input>
+                  <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Gender:" label-for="gender">
-                  <b-form-input id="gender" placeholder="Enter gender" v-model="gender" ></b-form-input>
+                  <b-form-input id="gender" placeholder="Enter gender" v-model="gender"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-1" label="Emergency Name:" label-for="emergency_name">
-                  <b-form-input id="emergency_name" type="text" placeholder="Enter emer name" v-model="emergency_name"
-                    ></b-form-input>
+                <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
+                  <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
+                    v-model="emergency_contact_name"></b-form-input>
                 </b-form-group>
               </div>
-            </div>
-            <div class="row">
+
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Emergency Number:" label-for="emergency_number">
-                  <b-form-input id="emergency_number" placeholder="Enter remergency number" v-model="emergency_number"
-                    ></b-form-input>
+                <b-form-group id="input-group-2" label="Emergency Contact Number:" label-for="emergency_contact_number">
+                  <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number"
+                    v-model="emergency_contact_number"></b-form-input>
                 </b-form-group>
               </div>
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Address:" label-for="address">
-                  <b-form-input id="address" placeholder="Enter address" v-model="address" >
+                  <b-form-input id="address" placeholder="Enter address" v-model="address">
                   </b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
-                  <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth" v-model="date_of_birth"
-                    ></b-form-input>
+                  <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth"
+                    v-model="date_of_birth"></b-form-input>
                 </b-form-group>
               </div>
-            </div>
-            <div class="row">
+
 
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
-                  <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" >
+                <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
+                  <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code">
                   </b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
-                  <b-form-input id="joining_date" type="date" v-model="joining_date" >
+                  <b-form-input id="joining_date" type="date" v-model="joining_date">
                   </b-form-input>
                 </b-form-group>
               </div>
@@ -105,6 +105,18 @@
                     <option>Own</option>
                     <option>Company</option>
                   </b-form-select>
+                </b-form-group>
+
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
+                  <div style="margin-left: 3px; margin-bottom: 15px">
+                    <!-- Display current profile picture -->
+                    <img v-if="editedUser.profile_picture" :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
+                      " alt="Picture" style="max-width: 100px; max-height: 100px" />
+                    <!-- Input field to upload new profile picture -->
+                    <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
+                  </div>
                 </b-form-group>
               </div>
 
@@ -208,17 +220,7 @@
                   </div>
                 </b-row>
               </div>
-              <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                  <div style="margin-left: 3px; margin-bottom: 15px">
-                    <!-- Display current profile picture -->
-                    <img v-if="editedUser.profile_picture" :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
-                      " alt="Picture" style="max-width: 100px; max-height: 100px" />
-                    <!-- Input field to upload new profile picture -->
-                    <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
-                  </div>
-                </b-form-group>
-              </div>
+
             </div>
 
             <div style="
@@ -238,7 +240,7 @@
             <div class="row">
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Salary:" label-for="salary">
-                  <b-form-select v-model="selectedOption" >
+                  <b-form-select v-model="selectedOption">
                     <option value="">Select Salary Type</option>
                     <option>Fix</option>
                     <option>Commission</option>
@@ -253,11 +255,23 @@
                     placeholder="Enter fix salary"></b-form-input>
                 </b-form-group>
               </div>
-
+              <!-- 
               <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
                 <b-form-group label="Commission (%/Company)" label-for="commission-input">
                   <b-form-input id="salary_commission" type="text" v-model="salary_commission"
                     placeholder="Enter commission"></b-form-input>
+                </b-form-group>
+              </div> -->
+              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
+                  <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                    placeholder="Enter commission include vat"></b-form-input>
+                </b-form-group>
+              </div>
+              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
+                  <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
+                    placeholder="Enter commission exclusive vat"></b-form-input>
                 </b-form-group>
               </div>
 
@@ -335,7 +349,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label=" Description:" label-for="bank_emergency_contact_name">
                   <b-form-input id="bank_emergency_contact_name" type="text" placeholder="Enter Description"
-                    v-model="bank_emergency_contact_name" ></b-form-input>
+                    v-model="bank_emergency_contact_name"></b-form-input>
                 </b-form-group>
               </div>
             </div>
@@ -386,6 +400,7 @@ export default {
       selectedOption: "",
       fixSalary: "",
       commission: "",
+      salary_commission_exclusive: '',
       selectedCarType: "",
       inputField1: "",
       inputField2: "",
@@ -395,17 +410,18 @@ export default {
       // Add Driver
       name: "",
       email: "",
-      ssn: "",
+      security_code: "",
       password: '',
       mobile: "",
       gender: "",
-      emergency_name: "",
-      emergency_number: "",
+      emergency_contact_name: "",
+      emergency_contact_number: "",
       address: "",
       date_of_birth: "",
       salary: "",
       bank_name: "",
       bank_title: "",
+      last_name: '',
       bank_account_number: "",
       company_name_own: "",
       bank_upload_document: null,
@@ -467,15 +483,18 @@ export default {
     axios
       .get(`drivers/${userId}`)
       .then((response) => {
+
         this.editedUser = response.data.data;
         this.name = this.editedUser.name;
+        this.salary_commission_exclusive = this.editedUser.salary_commission_exclusive;
         this.email = this.editedUser.email;
-        this.ssn = this.editedUser.ssn;
+        this.last_name = this.editedUser.last_name;
+        this.security_code = this.editedUser.security_code;
         this.mobile = this.editedUser.mobile;
         this.gender = this.editedUser.gender;
         this.joining_date = this.editedUser.joining_date;
-        this.emergency_name = this.editedUser.emergency_name;
-        this.emergency_number = this.editedUser.emergency_number;
+        this.emergency_contact_name = this.editedUser.emergency_contact_name;
+        this.emergency_contact_number = this.editedUser.emergency_contact_number;
         this.address = this.editedUser.address;
         this.date_of_birth = this.editedUser.date_of_birth;
         this.profile_picture = this.editedUser.profile_picture;
@@ -552,15 +571,18 @@ export default {
     addUser() {
       this.isLoading = true;
       // Create a FormData object to handle the image file
+
       const formData = new FormData();
       formData.append("name", this.name);
+      formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
       formData.append("email", this.email);
-      formData.append("ssn", this.ssn);
+      formData.append("last_name", this.last_name);
+      formData.append("security_code", this.security_code);
       formData.append("password", this.password);
       formData.append("mobile", this.mobile);
       formData.append("gender", this.gender);
-      formData.append("emergency_name", this.emergency_name);
-      formData.append("emergency_number", this.emergency_number);
+      formData.append("emergency_contact_name", this.emergency_contact_name);
+      formData.append("emergency_contact_number", this.emergency_contact_number);
       formData.append("address", this.address);
       formData.append("date_of_birth", this.date_of_birth);
       formData.append("salary", this.salary);

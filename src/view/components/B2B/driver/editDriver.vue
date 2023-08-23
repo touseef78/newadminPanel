@@ -66,12 +66,19 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Full Name:" label-for="first_name">
+                                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
                                     <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off"
                                         v-model="name" >
                                     </b-form-input>
                                 </b-form-group>
                             </div>
+                            <div class="col-md-4 col-12">
+                                    <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
+                                        <b-form-input id="last_name" type="text" placeholder="Enter first name" autocomplete="off"
+                                            v-model="last_name" >
+                                        </b-form-input>
+                                    </b-form-group>
+                                </div>
 
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Email Address:" label-for="email">
@@ -87,9 +94,9 @@
                                         ></b-form-input>
                                 </b-form-group>
                             </div>
-                        </div>
+                        
                         <!------------------------ Second Row--------------------------- -->
-                        <div class="row">
+                        
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                                     <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
@@ -103,17 +110,17 @@
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Emergency Name:" label-for="emergency_name">
-                                    <b-form-input id="emergency_name" type="text" placeholder="Enter emer name"
-                                        v-model="emergency_name" ></b-form-input>
+                                <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
+                                    <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
+                                        v-model="emergency_contact_name" ></b-form-input>
                                 </b-form-group>
                             </div>
-                        </div>
-                        <div class="row">
+                        
+                        
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Emergency Number:" label-for="emergency_number">
-                                    <b-form-input id="emergency_number" placeholder="Enter remergency number"
-                                        v-model="emergency_number" ></b-form-input>
+                                <b-form-group id="input-group-2" label="Emergency Contact Number:" label-for="emergency_contact_number">
+                                    <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number"
+                                        v-model="emergency_contact_number" ></b-form-input>
                                 </b-form-group>
                             </div>
 
@@ -129,14 +136,13 @@
                                         v-model="date_of_birth" ></b-form-input>
                                 </b-form-group>
                             </div>
-                        </div>
-                        <div class="row">
+                        
 
 
 
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="SSN:" label-for="ssn">
-                                    <b-form-input id="ssn" placeholder="Enter SSN" v-model="ssn" >
+                                <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
+                                    <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code" >
                                     </b-form-input>
                                 </b-form-group>
                             </div>
@@ -259,6 +265,13 @@
                                     </div>
                                 </b-row>
                             </div>
+                             <div class="col-md-4 col-12">
+                                    <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
+                                        <b-form-input id="joining_date" type="date"  v-model="joining_date"
+                                            >
+                                        </b-form-input>
+                                    </b-form-group>
+                                </div>
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
                                     <div style="margin-left: 3px; margin-bottom: 15px">
@@ -272,13 +285,7 @@
                                     </div>
                                 </b-form-group>
                             </div>
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
-                                    <b-form-input id="joining_date" type="date"  v-model="joining_date"
-                                        >
-                                    </b-form-input>
-                                </b-form-group>
-                            </div>
+                           
                         </div>
 
                         <div style="
@@ -314,28 +321,19 @@
                                 </b-form-group>
                             </div>
 
-                            <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                                <b-form-group label="Commission (%/Company)" label-for="commission-input">
-                                    <b-form-input id="salary_commission" type="text" v-model="salary_commission"
-                                        placeholder="Enter commission"></b-form-input>
-                                </b-form-group>
-                            </div>
-                            <!-- <div
-                v-if="selectedOption === 'Hourly Enter Amount'"
-                class="col-md-4 col-12"
-              >
-                <b-form-group
-                  label="Hourly Enter Amount"
-                  label-for="commission-input"
-                >
-                  <b-form-input
-                    id="hourly_enter_amount"
-                    type="text"
-                    v-model="hourly_enter_amount"
-                    placeholder="Enter commission"
-                  ></b-form-input>
-                </b-form-group>
-              </div> -->
+                             <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                    <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
+                      <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                        placeholder="Enter commission include vat"></b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                    <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
+                      <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
+                        placeholder="Enter commission exclusive vat"></b-form-input>
+                    </b-form-group>
+                  </div>
+                          
                             <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
                                 <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
                                     <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
@@ -476,18 +474,20 @@ export default {
             // Add Driver
             name: "",
             email: "",
-            ssn: "",
+            security_code: "",
             mobile: "",
             gender: "",
-            emergency_name: "",
-            emergency_number: "",
+            emergency_contact_name: "",
+            emergency_contact_number: "",
             address: "",
             date_of_birth: "",
             salary: "",
+            last_name:'',
             joining_date: "",
             bank_name: "",
             bank_title: "",
             bank_account_number: "",
+            salary_commission_exclusive:'',
             company_name_own: "",
             bank_upload_document: null,
             taxi_driving_liscence: "",
@@ -548,14 +548,17 @@ export default {
             .get(`drivers/${userId}`)
             .then((response) => {
                 this.editedUser = response.data.data;
-                this.name = this.editedUser.name;
+                
+                this.salary_commission_exclusive = this.editedUser.salary_commission_exclusive;
+                 this.last_name = this.editedUser.last_name;
+                  this.name = this.editedUser.name;
                 this.email = this.editedUser.email;
-                this.ssn = this.editedUser.ssn;
+                this.security_code = this.editedUser.security_code;
                 this.joining_date = this.editedUser.joining_date;
                 this.mobile = this.editedUser.mobile;
                 this.gender = this.editedUser.gender;
-                this.emergency_name = this.editedUser.emergency_name;
-                this.emergency_number = this.editedUser.emergency_number;
+                this.emergency_contact_name = this.editedUser.emergency_contact_name;
+                this.emergency_contact_number = this.editedUser.emergency_contact_number;
                 this.address = this.editedUser.address;
                 this.date_of_birth = this.editedUser.date_of_birth;
                 this.profile_picture = this.editedUser.profile_picture;
@@ -632,14 +635,17 @@ export default {
             this.isLoading = true;
             // Create a FormData object to handle the image file
             const formData = new FormData();
+            
+            formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
             formData.append("name", this.name);
+             formData.append("last_name", this.last_name);
             formData.append("email", this.email);
-            formData.append("ssn", this.ssn);
+            formData.append("security_code", this.ssn);
             formData.append("joining_date", this.joining_date);
             formData.append("mobile", this.mobile);
             formData.append("gender", this.gender);
-            formData.append("emergency_name", this.emergency_name);
-            formData.append("emergency_number", this.emergency_number);
+            formData.append("emergency_contact_name", this.emergency_contact_name);
+            formData.append("emergency_contact_number", this.emergency_contact_number);
             formData.append("address", this.address);
             formData.append("date_of_birth", this.date_of_birth);
             formData.append("salary", this.salary);
