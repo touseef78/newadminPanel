@@ -291,12 +291,19 @@
                                 </b-form-group>
                             </div>
 
-                            <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                                <b-form-group label="Commission (%/Company)" label-for="commission-input">
-                                    <b-form-input id="salary_commission" type="text" v-model="salary_commission"
-                                        placeholder="Enter commission"></b-form-input>
-                                </b-form-group>
-                            </div>
+
+                             <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                    <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
+                      <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                        placeholder="Enter commission include vat"></b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                    <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
+                      <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
+                        placeholder="Enter commission exclusive vat"></b-form-input>
+                    </b-form-group>
+                  </div>
 
                             <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
                                 <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
@@ -469,6 +476,7 @@ export default {
             hourly_enter_amount: "",
             profile_picture: "",
             successMessage: "",
+            salary_commission_exclusive:'',
             vehicle_id: "",
             vehicles: [],
             editedUser: {
@@ -517,7 +525,8 @@ export default {
             .get(`drivers/${userId}`)
             .then((response) => {
                 this.editedUser = response.data.data;
-                // Set the data properties with values from editedUser
+                // Set the data properties with values from editedUser   
+                this.salary_commission_exclusive = this.editedUser.salary_commission_exclusive;
                 this.name = this.editedUser.name;
                 this.email = this.editedUser.email;
                 this.security_code = this.editedUser.security_code;

@@ -267,7 +267,7 @@
               </div>
               <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
                 <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
-                  <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                  <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
                     placeholder="Enter commission exclusive vat"></b-form-input>
                 </b-form-group>
               </div>
@@ -433,6 +433,7 @@ export default {
       ////
 
       vehicle_name: "",
+      salary_commission_exclusive:'',
       vehicle_company: "",
       description: "",
       car_make: "",
@@ -500,6 +501,7 @@ export default {
       formData.append("profile_picture", this.profile_picture);
       formData.append("name", this.name);
       formData.append("email", this.email);
+       formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
       formData.append("security_code", this.security_code);
       formData.append("last_name", this.last_name);
       formData.append("joining_date", this.joining_date);

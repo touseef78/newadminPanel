@@ -253,13 +253,25 @@
                     placeholder="Enter fix salary"></b-form-input>
                 </b-form-group>
               </div>
-
+<!-- 
               <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
                 <b-form-group label="Commission (%/Company)" label-for="commission-input">
                   <b-form-input id="salary_commission" type="text" v-model="salary_commission"
                     placeholder="Enter commission"></b-form-input>
                 </b-form-group>
-              </div>
+              </div> -->
+               <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                  <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
+                    <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                      placeholder="Enter commission include vat"></b-form-input>
+                  </b-form-group>
+                </div>
+                <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                  <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
+                    <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
+                      placeholder="Enter commission exclusive vat"></b-form-input>
+                  </b-form-group>
+                </div>
 
               <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
                 <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
@@ -386,6 +398,7 @@ export default {
       selectedOption: "",
       fixSalary: "",
       commission: "",
+      salary_commission_exclusive:'',
       selectedCarType: "",
       inputField1: "",
       inputField2: "",
@@ -467,8 +480,10 @@ export default {
     axios
       .get(`drivers/${userId}`)
       .then((response) => {
+        
         this.editedUser = response.data.data;
         this.name = this.editedUser.name;
+          this.salary_commission_exclusive = this.editedUser.salary_commission_exclusive;
         this.email = this.editedUser.email;
         this.security_code = this.editedUser.security_code;
         this.mobile = this.editedUser.mobile;
@@ -552,8 +567,10 @@ export default {
     addUser() {
       this.isLoading = true;
       // Create a FormData object to handle the image file
+      
       const formData = new FormData();
       formData.append("name", this.name);
+       formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
       formData.append("email", this.email);
       formData.append("security_code", this.security_code);
       formData.append("password", this.password);

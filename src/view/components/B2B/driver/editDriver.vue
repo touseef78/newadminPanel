@@ -314,28 +314,19 @@
                                 </b-form-group>
                             </div>
 
-                            <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                                <b-form-group label="Commission (%/Company)" label-for="commission-input">
-                                    <b-form-input id="salary_commission" type="text" v-model="salary_commission"
-                                        placeholder="Enter commission"></b-form-input>
-                                </b-form-group>
-                            </div>
-                            <!-- <div
-                v-if="selectedOption === 'Hourly Enter Amount'"
-                class="col-md-4 col-12"
-              >
-                <b-form-group
-                  label="Hourly Enter Amount"
-                  label-for="commission-input"
-                >
-                  <b-form-input
-                    id="hourly_enter_amount"
-                    type="text"
-                    v-model="hourly_enter_amount"
-                    placeholder="Enter commission"
-                  ></b-form-input>
-                </b-form-group>
-              </div> -->
+                             <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                    <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
+                      <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                        placeholder="Enter commission include vat"></b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                    <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
+                      <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
+                        placeholder="Enter commission exclusive vat"></b-form-input>
+                    </b-form-group>
+                  </div>
+                          
                             <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
                                 <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
                                     <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
@@ -488,6 +479,7 @@ export default {
             bank_name: "",
             bank_title: "",
             bank_account_number: "",
+            salary_commission_exclusive:'',
             company_name_own: "",
             bank_upload_document: null,
             taxi_driving_liscence: "",
@@ -548,7 +540,9 @@ export default {
             .get(`drivers/${userId}`)
             .then((response) => {
                 this.editedUser = response.data.data;
-                this.name = this.editedUser.name;
+                
+                this.salary_commission_exclusive = this.editedUser.salary_commission_exclusive;
+                 this.name = this.editedUser.name;
                 this.email = this.editedUser.email;
                 this.security_code = this.editedUser.security_code;
                 this.joining_date = this.editedUser.joining_date;
@@ -632,6 +626,8 @@ export default {
             this.isLoading = true;
             // Create a FormData object to handle the image file
             const formData = new FormData();
+            
+            formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
             formData.append("name", this.name);
             formData.append("email", this.email);
             formData.append("security_code", this.ssn);

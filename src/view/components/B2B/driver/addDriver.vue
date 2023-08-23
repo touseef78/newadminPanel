@@ -340,7 +340,7 @@
               </div>
               <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
                 <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
-                  <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                  <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
                     placeholder="Enter commission exclusive vat"></b-form-input>
                 </b-form-group>
               </div>
@@ -494,6 +494,7 @@ export default {
             bank_title: "",
             bank_account_number: "",
             company_name_own: "",
+            salary_commission_exclusive:'',
             bank_upload_document: null,
             taxi_driving_liscence: "",
             bank_emergency_contact_name: "",
@@ -580,8 +581,11 @@ export default {
             this.isLoading = true;
             // Create a FormData object to handle the image file
             const formData = new FormData();
+            
+
             formData.append("profile_picture", this.profile_picture);
-            formData.append("name", this.name);
+            formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
+             formData.append("name", this.name);
             formData.append("email", this.email);
             formData.append("secuirty_code", this.secuirty_code);
              formData.append("last_name", this.last_name);

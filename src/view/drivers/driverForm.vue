@@ -29,13 +29,13 @@
                 </b-form-group>
               </div>
 
-               <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
-                    <b-form-input id="last_name" type="text" placeholder="Enter last name" autocomplete="off" v-model="last_name"
-                      required>
-                    </b-form-input>
-                  </b-form-group>
-                </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
+                  <b-form-input id="last_name" type="text" placeholder="Enter last name" autocomplete="off"
+                    v-model="last_name" required>
+                  </b-form-input>
+                </b-form-group>
+              </div>
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Email Address:" label-for="email">
@@ -45,15 +45,15 @@
                 </b-form-group>
               </div>
 
-             
+
             </div>
             <!------------------------ Second Row--------------------------- -->
             <div class="row">
-                <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-2" label="Password:" label-for="password">
-                    <b-form-input id="password" placeholder="Enter Password" v-model="password" required></b-form-input>
-                  </b-form-group>
-                </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Password:" label-for="password">
+                  <b-form-input id="password" placeholder="Enter Password" v-model="password" required></b-form-input>
+                </b-form-group>
+              </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                   <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
@@ -72,16 +72,16 @@
               </div>
             </div>
             <div class="row">
-               <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
-                    <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name" v-model="emergency_contact_name"
-                      required></b-form-input>
-                  </b-form-group>
-                </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
+                  <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
+                    v-model="emergency_contact_name" required></b-form-input>
+                </b-form-group>
+              </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Emergency Contact Number:" label-for="emergency_contact_number">
-                  <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number" v-model="emergency_contact_number"
-                    required></b-form-input>
+                  <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number"
+                    v-model="emergency_contact_number" required></b-form-input>
                 </b-form-group>
               </div>
 
@@ -104,20 +104,21 @@
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
-                    <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code" required>
-                    </b-form-input>
-                  </b-form-group>
-                </div>
+                <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
+                  <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code" required>
+                  </b-form-input>
+                </b-form-group>
+              </div>
             </div>
             <div class="row">
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
-                  <b-form-select v-model="selectedCarType">
-                    <option value="">Select Car Type</option>
-                    <option>Own</option>
-                    <option>Company</option>
-                  </b-form-select>
+                  <b-form-input id="select_car_type" type="text" placeholder=" Enter select car type"
+                    v-model="select_car_type" required>
+                    <!-- <option value="">Select Car Type</option> -->
+                    <!-- <option>Own</option>
+                    <option>Company</option> -->
+                  </b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
@@ -162,10 +163,22 @@
                 </b-form-group>
               </div>
 
-              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+              <!-- <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
                 <b-form-group label="Commission (%/Company)" label-for="commission-input">
                   <b-form-input id="salary_commission" type="text" v-model="salary_commission"
                     placeholder="Enter commission"></b-form-input>
+                </b-form-group>
+              </div> -->
+              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
+                  <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                    placeholder="Enter commission include vat"></b-form-input>
+                </b-form-group>
+              </div>
+              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
+                  <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
+                    placeholder="Enter commission exclusive vat"></b-form-input>
                 </b-form-group>
               </div>
               <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
@@ -300,7 +313,7 @@ export default {
       email: "",
       security_code: "",
       password: '',
-      last_name:'',
+      last_name: '',
       mobile: "",
       gender: "",
       emergency_contact_name: "",
@@ -309,6 +322,7 @@ export default {
       date_of_birth: "",
       salary: "",
       bank_name: "",
+      salary_commission_exclusive: '',
       bank_title: "",
       bank_account_number: "",
       company_name_own: "",
@@ -400,7 +414,9 @@ export default {
       this.isLoading = true;
       // Create a FormData object to handle the image file
       const formData = new FormData();
+
       formData.append("profile_picture", this.profile_picture);
+      formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
       formData.append("name", this.name);
       formData.append("email", this.email);
       formData.append("security_code", this.security_code);

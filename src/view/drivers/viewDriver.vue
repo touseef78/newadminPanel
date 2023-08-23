@@ -247,12 +247,24 @@
                 </b-form-group>
               </div>
 
-              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+              <!-- <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
                 <b-form-group label="Commission (%/Company)" label-for="commission-input">
                   <b-form-input id="salary_commission" type="text" v-model="salary_commission"
                     placeholder="Enter commission"></b-form-input>
                 </b-form-group>
-              </div>
+              </div> -->
+               <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                  <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
+                    <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                      placeholder="Enter commission include vat"></b-form-input>
+                  </b-form-group>
+                </div>
+                <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                  <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
+                    <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
+                      placeholder="Enter commission exclusive vat"></b-form-input>
+                  </b-form-group>
+                </div>
 
               <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
                 <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
@@ -330,21 +342,7 @@
                 </b-form-group>
               </div>
             </div>
-            <!-- Bank Information End -->
-            <!-- <b-button
-              type="submit"
-              variant="primary"
-              class="mb-8 mr-8"
-              :disabled="isLoading"
-            >
-              <span v-if="!isLoading">Submit</span>
-              <b-spinner
-                v-else
-                class="mb-8 mr-8"
-                variant="primary"
-                small
-              ></b-spinner>
-            </b-button> -->
+           
           </b-form>
         </div>
         <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
@@ -417,6 +415,7 @@ export default {
       company_document: "",
       salary_commission: "",
       salary_fix: "",
+      salary_commission_exclusive:'',
       hourly_enter_amount: "",
       profile_picture: "",
       successMessage: "",
@@ -470,7 +469,9 @@ export default {
       .then((response) => {
         this.editedUser = response.data.data;
         // Set the data properties with values from editedUser
-        this.name = this.editedUser.name;
+        
+        this.salary_commission_exclusive = this.editedUser.salary_commission_exclusive;
+         this.name = this.editedUser.name;
         this.email = this.editedUser.email;
         this.security_code = this.editedUser.security_code;
         this.mobile = this.editedUser.mobile;
