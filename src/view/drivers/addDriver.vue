@@ -56,17 +56,17 @@
               </div>
 
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_conatct_name">
-                  <b-form-input id="emergency_conatct_name" type="text" placeholder="Enter emergency conatct name"
-                    v-model="emergency_conatct_name" required></b-form-input>
+                <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
+                  <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
+                    v-model="emergency_contact_name" required></b-form-input>
                 </b-form-group>
               </div>
 
 
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-1" label="Emergency Contact Number:" label-for="emergency_conatct_number">
-                  <b-form-input id="emergency_conatct_number" type="text" placeholder="Enter emergency conatct number"
-                    v-model="emergency_conatct_name" required></b-form-input>
+                <b-form-group id="input-group-1" label="Emergency Contact Number:" label-for="emergency_contact_number">
+                  <b-form-input id="emergency_contact_number" type="text" placeholder="Enter emergency contact number"
+                    v-model="emergency_contact_number" required></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
@@ -404,8 +404,8 @@ export default {
       mobile: "",
       gender: "",
       last_name: '',
-      emergency_conatct_name: "",
-      emergency_conatct_number: "",
+      emergency_contact_name: "",
+      emergency_contact_number: "",
       address: "",
       date_of_birth: "",
       salary: "",
