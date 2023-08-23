@@ -42,12 +42,7 @@
                   <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
                 </b-form-group>
               </div>
-
-
-
-            </div>
-            <!------------------------ Second Row--------------------------- -->
-            <div class="row">
+            
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Password:" label-for="password">
                   <b-form-input id="password" placeholder="Enter Password" v-model="password" required></b-form-input>
@@ -59,16 +54,7 @@
                     required></b-form-input>
                 </b-form-group>
               </div>
-              <!-- <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Gender:" label-for="gender">
-                  <b-form-select v-model="gender" required>
-                    <option value="">Select Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
-                  </b-form-select>
-                </b-form-group>
-              </div> -->
+              
                <div class="col-md-4 col-12">
                   <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_conatct_name">
                     <b-form-input id="emergency_conatct_name" type="text" placeholder="Enter emergency conatct name" v-model="emergency_conatct_name"
@@ -76,8 +62,7 @@
                   </b-form-group>
                 </div>
            
-            </div>
-            <div class="row">
+           
                <div class="col-md-4 col-12">
                     <b-form-group id="input-group-1" label="Emergency Contact Number:" label-for="emergency_conatct_number">
                       <b-form-input id="emergency_conatct_number" type="text" placeholder="Enter emergency conatct number" v-model="emergency_conatct_name"
@@ -101,10 +86,7 @@
                   </b-form-input>
                 </b-form-group>
               </div>
-             
-             
-            </div>
-            <div class="row">
+      
                <div class="col-md-4 col-12">
                   <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
                     <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth" v-model="date_of_birth"

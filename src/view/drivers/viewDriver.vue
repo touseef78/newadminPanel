@@ -22,12 +22,19 @@
             </div>
             <div class="row">
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-1" label="Full Name:" label-for="first_name">
+                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
                   <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
                     disabled>
                   </b-form-input>
                 </b-form-group>
               </div>
+              <div class="col-md-4 col-12">
+                  <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
+                    <b-form-input id="last_name" type="text" placeholder="Enter first name" autocomplete="off" v-model="last_name"
+                      disabled>
+                    </b-form-input>
+                  </b-form-group>
+                </div>
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Email Address:" label-for="email">
@@ -42,9 +49,7 @@
                   <b-form-input id="security_code" placeholder="Enter Security code" v-model="security_code" disabled></b-form-input>
                 </b-form-group>
               </div>
-            </div>
-            <!------------------------ Second Row--------------------------- -->
-            <div class="row">
+           
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                   <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
@@ -62,8 +67,7 @@
                     disabled></b-form-input>
                 </b-form-group>
               </div>
-            </div>
-            <div class="row">
+           
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Emergency Contact Number:" label-for="emergency_contact_number">
                   <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number" v-model="emergency_contact_number"
@@ -83,8 +87,7 @@
                     disabled></b-form-input>
                 </b-form-group>
               </div>
-            </div>
-            <div class="row">
+           
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
                   <b-form-input id="joining_date" placeholder="Enter Joining date" v-model="joining_date"
@@ -101,6 +104,14 @@
                   </b-form-select>
                 </b-form-group>
               </div>
+                 <div class="col-md-4 col-12">
+                  <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
+                    <div style="margin-left: 3px; margin-bottom: 15px">
+                      <img :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
+                        " alt="Profile Picture" width="100" height="100" />
+                    </div>
+                  </b-form-group>
+                </div>
 
               <div v-if="selectedCarType === 'Company'" class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
@@ -203,14 +214,6 @@
                                                     </pre>
                   </div>
                 </b-row>
-              </div>
-              <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                  <div style="margin-left: 3px; margin-bottom: 15px">
-                    <img :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
-                      " alt="Profile Picture" width="100" height="100" />
-                  </div>
-                </b-form-group>
               </div>
             </div>
 
@@ -397,6 +400,7 @@ export default {
       security_code: "",
       mobile: "",
       gender: "",
+      last_name:'',
       emergency_contact_name: "",
       emergency_contact_number: "",
       address: "",
@@ -472,6 +476,7 @@ export default {
         
         this.salary_commission_exclusive = this.editedUser.salary_commission_exclusive;
          this.name = this.editedUser.name;
+          this.last_name = this.editedUser.last_name;
         this.email = this.editedUser.email;
         this.security_code = this.editedUser.security_code;
         this.mobile = this.editedUser.mobile;
