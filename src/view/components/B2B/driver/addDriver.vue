@@ -167,8 +167,8 @@
                                 </b-form-group>
                             </div>
                              <div class="col-md-4 col-12">
-                                    <b-form-group id="input-group-2" label="Security Code:" label-for="secuirty_code">
-                                        <b-form-input id="secuirty_code" placeholder="Enter security code" v-model="secuirty_code" required>
+                                    <b-form-group id="input-group-2" label="Social Security Number:" label-for="secuirty_code">
+                                        <b-form-input id="secuirty_code" placeholder="Enter Social Security Number" v-model="secuirty_code" required>
                                         </b-form-input>
                                     </b-form-group>
                                 </div>
@@ -411,6 +411,7 @@
                                         <!-- <option>Liscence B</option> -->
                                         <option>Driving License/Swedish ID</option>
                                         <option>Taxi License</option>
+                                            <option>Other</option>
                                     </b-form-select>
                                 </b-form-group>
                             </div>

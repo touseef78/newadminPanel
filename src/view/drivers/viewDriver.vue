@@ -29,12 +29,12 @@
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
-                    <b-form-input id="last_name" type="text" placeholder="Enter first name" autocomplete="off" v-model="last_name"
-                      disabled>
-                    </b-form-input>
-                  </b-form-group>
-                </div>
+                <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
+                  <b-form-input id="last_name" type="text" placeholder="Enter first name" autocomplete="off"
+                    v-model="last_name" disabled>
+                  </b-form-input>
+                </b-form-group>
+              </div>
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Email Address:" label-for="email">
@@ -45,11 +45,12 @@
               </div>
 
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
-                  <b-form-input id="security_code" placeholder="Enter Security code" v-model="security_code" disabled></b-form-input>
+                <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
+                  <b-form-input id="security_code" placeholder="Enter Social Security Number" v-model="security_code"
+                    disabled></b-form-input>
                 </b-form-group>
               </div>
-           
+
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                   <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
@@ -63,15 +64,15 @@
               </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
-                  <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name" v-model="emergency_contact_name"
-                    disabled></b-form-input>
+                  <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
+                    v-model="emergency_contact_name" disabled></b-form-input>
                 </b-form-group>
               </div>
-           
+
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Emergency Contact Number:" label-for="emergency_contact_number">
-                  <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number" v-model="emergency_contact_number"
-                    disabled></b-form-input>
+                  <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number"
+                    v-model="emergency_contact_number" disabled></b-form-input>
                 </b-form-group>
               </div>
 
@@ -87,7 +88,7 @@
                     disabled></b-form-input>
                 </b-form-group>
               </div>
-           
+
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
                   <b-form-input id="joining_date" placeholder="Enter Joining date" v-model="joining_date"
@@ -104,14 +105,26 @@
                   </b-form-select>
                 </b-form-group>
               </div>
-                 <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                    <div style="margin-left: 3px; margin-bottom: 15px">
-                      <img :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
-                        " alt="Profile Picture" width="100" height="100" />
-                    </div>
-                  </b-form-group>
-                </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Postal Code:" label-for="postal_code">
+                  <b-form-input id="postal_code" placeholder="Enter Postal code" v-model="postal_code" disabled>
+                  </b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="City:" label-for="city">
+                  <b-form-input id="city" placeholder="Enter city" v-model="city" disabled>
+                  </b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
+                  <div style="margin-left: 3px; margin-bottom: 15px">
+                    <img :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
+                      " alt="Profile Picture" width="100" height="100" />
+                  </div>
+                </b-form-group>
+              </div>
 
               <div v-if="selectedCarType === 'Company'" class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
@@ -256,18 +269,18 @@
                     placeholder="Enter commission"></b-form-input>
                 </b-form-group>
               </div> -->
-               <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                  <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
-                    <b-form-input id="salary_commission" type="text" v-model="salary_commission"
-                      placeholder="Enter commission include vat"></b-form-input>
-                  </b-form-group>
-                </div>
-                <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                  <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
-                    <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
-                      placeholder="Enter commission exclusive vat"></b-form-input>
-                  </b-form-group>
-                </div>
+              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
+                  <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                    placeholder="Enter commission include vat"></b-form-input>
+                </b-form-group>
+              </div>
+              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
+                  <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
+                    placeholder="Enter commission exclusive vat"></b-form-input>
+                </b-form-group>
+              </div>
 
               <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
                 <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
@@ -335,6 +348,7 @@
                     <!-- <option>Commission</option> -->
                     <option>Driving License/Swedish ID</option>
                     <option>Taxi License</option>
+                      <option>Other</option>
                   </b-form-select>
                 </b-form-group>
               </div>
@@ -345,7 +359,7 @@
                 </b-form-group>
               </div>
             </div>
-           
+
           </b-form>
         </div>
         <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
@@ -400,7 +414,9 @@ export default {
       security_code: "",
       mobile: "",
       gender: "",
-      last_name:'',
+      last_name: '',
+      postal_code: '',
+      city: '',
       emergency_contact_name: "",
       emergency_contact_number: "",
       address: "",
@@ -419,7 +435,7 @@ export default {
       company_document: "",
       salary_commission: "",
       salary_fix: "",
-      salary_commission_exclusive:'',
+      salary_commission_exclusive: '',
       hourly_enter_amount: "",
       profile_picture: "",
       successMessage: "",
@@ -473,10 +489,12 @@ export default {
       .then((response) => {
         this.editedUser = response.data.data;
         // Set the data properties with values from editedUser
-        
+
         this.salary_commission_exclusive = this.editedUser.salary_commission_exclusive;
-         this.name = this.editedUser.name;
-          this.last_name = this.editedUser.last_name;
+        this.name = this.editedUser.name;
+        this.last_name = this.editedUser.last_name;
+        this.postal_code = this.editedUser.postal_code;
+        this.city = this.editedUser.city;
         this.email = this.editedUser.email;
         this.security_code = this.editedUser.security_code;
         this.mobile = this.editedUser.mobile;

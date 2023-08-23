@@ -42,7 +42,7 @@
                   <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
                 </b-form-group>
               </div>
-            
+
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Password:" label-for="password">
                   <b-form-input id="password" placeholder="Enter Password" v-model="password" required></b-form-input>
@@ -54,31 +54,31 @@
                     required></b-form-input>
                 </b-form-group>
               </div>
-              
-               <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_conatct_name">
-                    <b-form-input id="emergency_conatct_name" type="text" placeholder="Enter emergency conatct name" v-model="emergency_conatct_name"
-                      required></b-form-input>
-                  </b-form-group>
-                </div>
-           
-           
-               <div class="col-md-4 col-12">
-                    <b-form-group id="input-group-1" label="Emergency Contact Number:" label-for="emergency_conatct_number">
-                      <b-form-input id="emergency_conatct_number" type="text" placeholder="Enter emergency conatct number" v-model="emergency_conatct_name"
-                        required></b-form-input>
-                    </b-form-group>
-                  </div>
-               <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-2" label="Gender:" label-for="gender">
-                    <b-form-select v-model="gender" required>
-                      <option value="">Select Gender</option>
-                      <option>Male</option>
-                      <option>Female</option>
-                      <option>Other</option>
-                    </b-form-select>
-                  </b-form-group>
-                </div>
+
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_conatct_name">
+                  <b-form-input id="emergency_conatct_name" type="text" placeholder="Enter emergency conatct name"
+                    v-model="emergency_conatct_name" required></b-form-input>
+                </b-form-group>
+              </div>
+
+
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-1" label="Emergency Contact Number:" label-for="emergency_conatct_number">
+                  <b-form-input id="emergency_conatct_number" type="text" placeholder="Enter emergency conatct number"
+                    v-model="emergency_conatct_name" required></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Gender:" label-for="gender">
+                  <b-form-select v-model="gender" required>
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                  </b-form-select>
+                </b-form-group>
+              </div>
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Address:" label-for="address">
@@ -86,19 +86,20 @@
                   </b-form-input>
                 </b-form-group>
               </div>
-      
-               <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
-                    <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth" v-model="date_of_birth"
-                      required></b-form-input>
-                  </b-form-group>
-                </div>
-               <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
-                    <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code" required></b-form-input>
-                  </b-form-group>
-                </div>
-              
+
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
+                  <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth" v-model="date_of_birth"
+                    required></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
+                  <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code"
+                    required></b-form-input>
+                </b-form-group>
+              </div>
+
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
                   <b-form-input id="joining_date" type="date" v-model="joining_date" required></b-form-input>
@@ -112,6 +113,18 @@
                     <option>Own</option>
                     <option>Company</option>
                   </b-form-select>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Postal Code:" label-for="postal_code">
+                  <b-form-input id="postal_code" placeholder="Enter Postal code" v-model="postal_code">
+                  </b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="City:" label-for="city">
+                  <b-form-input id="city" placeholder="Enter city" v-model="city">
+                  </b-form-input>
                 </b-form-group>
               </div>
 
@@ -151,7 +164,7 @@
                             v-model="vehicle_name"></b-form-input>
                         </b-form-group>
                       </div>
-                    
+
 
                       <div class="col-md-4 col-12">
                         <b-form-group id="input-group-2" label="Description:" label-for="description">
@@ -316,6 +329,7 @@
                     <!-- <option>Liscence B</option> -->
                     <option>Driving License/Swedish ID</option>
                     <option>Taxi License</option>
+                     <option>Other</option>
                   </b-form-select>
                 </b-form-group>
               </div>
@@ -382,6 +396,8 @@ export default {
       isLoading: false,
       // Add Driver
       name: "",
+      postal_code: '',
+      city: '',
       email: "",
       password: '',
       security_code: "",
@@ -415,7 +431,7 @@ export default {
       ////
 
       vehicle_name: "",
-      salary_commission_exclusive:'',
+      salary_commission_exclusive: '',
       vehicle_company: "",
       description: "",
       car_make: "",
@@ -482,8 +498,10 @@ export default {
       const formData = new FormData();
       formData.append("profile_picture", this.profile_picture);
       formData.append("name", this.name);
+      formData.append("postal_code", this.postal_code);
+      formData.append("city", this.city);
       formData.append("email", this.email);
-       formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
+      formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
       formData.append("security_code", this.security_code);
       formData.append("last_name", this.last_name);
       formData.append("joining_date", this.joining_date);
