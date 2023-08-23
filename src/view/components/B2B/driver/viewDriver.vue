@@ -74,13 +74,13 @@
                                     </b-form-input>
                                 </b-form-group>
                             </div>
-                             <div class="col-md-4 col-12">
-                                    <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
-                                        <b-form-input id="last_name" type="text" placeholder="Enter first name" autocomplete="off"
-                                            v-model="last_name" disabled>
-                                        </b-form-input>
-                                    </b-form-group>
-                                </div>
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
+                                    <b-form-input id="last_name" type="text" placeholder="Enter first name"
+                                        autocomplete="off" v-model="last_name" disabled>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
 
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Email Address:" label-for="email">
@@ -91,13 +91,14 @@
                             </div>
 
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
-                                    <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code" disabled></b-form-input>
+                                <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
+                                    <b-form-input id="security_code" placeholder="Enter Social Security Number"
+                                        v-model="security_code" disabled></b-form-input>
                                 </b-form-group>
                             </div>
-                        
-                        <!------------------------ Second Row--------------------------- -->
-                        
+
+                            <!------------------------ Second Row--------------------------- -->
+
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                                     <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
@@ -111,14 +112,17 @@
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
-                                    <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
-                                        v-model="emergency_contact_name" disabled></b-form-input>
+                                <b-form-group id="input-group-1" label="Emergency Contact Name:"
+                                    label-for="emergency_contact_name">
+                                    <b-form-input id="emergency_contact_name" type="text"
+                                        placeholder="Enter emergency contact name" v-model="emergency_contact_name"
+                                        disabled></b-form-input>
                                 </b-form-group>
                             </div>
-                    
+
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label=" Emergency Contact Number:" label-for="emergency_contact_number">
+                                <b-form-group id="input-group-2" label=" Emergency Contact Number:"
+                                    label-for="emergency_contact_number">
                                     <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number"
                                         v-model="emergency_contact_number" disabled></b-form-input>
                                 </b-form-group>
@@ -136,8 +140,8 @@
                                         v-model="date_of_birth" disabled></b-form-input>
                                 </b-form-group>
                             </div>
-                    
-                          
+
+
 
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
@@ -160,14 +164,14 @@
                                     </b-form-select>
                                 </b-form-group>
                             </div>
-                               <div class="col-md-4 col-12">
-                                    <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                                        <div style="margin-left: 3px; margin-bottom: 15px">
-                                            <img :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
-                                                " alt="Profile Picture" width="100" height="100" />
-                                        </div>
-                                    </b-form-group>
-                                </div>
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
+                                    <div style="margin-left: 3px; margin-bottom: 15px">
+                                        <img :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
+                                            " alt="Profile Picture" width="100" height="100" />
+                                    </div>
+                                </b-form-group>
+                            </div>
                             <!-- Dropdown  of Add Vehicle -->
                             <div v-if="selectedCarType === 'Own'">
                                 <b-row>
@@ -298,18 +302,18 @@
                             </div>
 
 
-                             <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                    <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
-                      <b-form-input id="salary_commission" type="text" v-model="salary_commission"
-                        placeholder="Enter commission include vat"></b-form-input>
-                    </b-form-group>
-                  </div>
-                  <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                    <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
-                      <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
-                        placeholder="Enter commission exclusive vat"></b-form-input>
-                    </b-form-group>
-                  </div>
+                            <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                                <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
+                                    <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+                                        placeholder="Enter commission include vat"></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+                                <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
+                                    <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
+                                        placeholder="Enter commission exclusive vat"></b-form-input>
+                                </b-form-group>
+                            </div>
 
                             <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
                                 <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
@@ -380,6 +384,8 @@
                                         <!-- <option>Commission</option> -->
                                         <option>Driving License/Swedish ID</option>
                                         <option>Taxi License</option>
+                                        <option>Other</option>
+
                                     </b-form-select>
                                 </b-form-group>
                             </div>
@@ -482,8 +488,8 @@ export default {
             hourly_enter_amount: "",
             profile_picture: "",
             successMessage: "",
-            last_name:'',
-            salary_commission_exclusive:'',
+            last_name: '',
+            salary_commission_exclusive: '',
             vehicle_id: "",
             vehicles: [],
             editedUser: {

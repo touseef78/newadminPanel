@@ -87,8 +87,8 @@
 
 
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
-                  <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code">
+                <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
+                  <b-form-input id="security_code" placeholder="Enter social security number" v-model="security_code">
                   </b-form-input>
                 </b-form-group>
               </div>
@@ -106,7 +106,19 @@
                     <option>Company</option>
                   </b-form-select>
                 </b-form-group>
+              </div>
 
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Postal Code:" label-for="postal_code">
+                  <b-form-input id="postal_code" placeholder="Enter Postal code" v-model="postal_code">
+                  </b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="City:" label-for="city">
+                  <b-form-input id="city" placeholder="Enter city" v-model="city">
+                  </b-form-input>
+                </b-form-group>
               </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
@@ -341,7 +353,7 @@
                     <option value="">Select License</option>
                     <option>Driving License/Swedish ID</option>
                     <option>Taxi License </option>
-                    <!-- <option>Liscence B</option> -->
+                    <option>Other</option>
                     <!-- <option>Commission</option> -->
                   </b-form-select>
                 </b-form-group>
@@ -420,6 +432,8 @@ export default {
       date_of_birth: "",
       salary: "",
       bank_name: "",
+      postal_code: '',
+      city: '',
       bank_title: "",
       last_name: '',
       bank_account_number: "",
@@ -486,6 +500,8 @@ export default {
 
         this.editedUser = response.data.data;
         this.name = this.editedUser.name;
+        this.postal_code = this.editedUser.postal_code;
+        this.city = this.editedUser.city;
         this.salary_commission_exclusive = this.editedUser.salary_commission_exclusive;
         this.email = this.editedUser.email;
         this.last_name = this.editedUser.last_name;
@@ -574,6 +590,8 @@ export default {
 
       const formData = new FormData();
       formData.append("name", this.name);
+       formData.append("postal_code", this.postal_code);
+        formData.append("name", this.name);
       formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
       formData.append("email", this.email);
       formData.append("last_name", this.last_name);

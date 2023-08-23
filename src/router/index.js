@@ -203,11 +203,7 @@ const router = new VueRouter({
       component: () => import("../view/drivers/viewDriver.vue"),
     },
 
-  // {
-  //     path: "/drivers/upload",
-  //     name: "uploadImage",
-  //     component: () => import("../view/drivers/uploadImage.vue"),
-  //   },
+  
 
   // Expense
 {
@@ -231,6 +227,13 @@ const router = new VueRouter({
       name: "viewExpense",
       component: () => import("../view/expense/viewExpense.vue"),
     },
+    // Report
+    {
+      path: "/report/list",
+      name: "listReport",
+      component: () => import("../view/report/listReport.vue"),
+    },
+
     {
       path: "/main/widgets/crypto-icons",
       name: "crypto-icons",

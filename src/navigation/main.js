@@ -110,5 +110,24 @@ export default {
       ],
     },
       
+    //   {
+    //   id: "Report",
+    //   title: "Report",
+    //   icon: "Curved-Filter",
+      
+    //   children: [
+    //     // {
+    //     //   id: "Report",
+    //     //   title: "Add Expense",
+    //     //   navLink: "/expense/add",
+    //     // },
+    //     {
+    //       id: "Report",
+    //       title: "List Report",
+    //       navLink: "/report/list",
+        
+    //     },
+    //   ],
+    // },
   ]
 }

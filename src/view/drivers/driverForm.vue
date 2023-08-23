@@ -104,8 +104,8 @@
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
-                  <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code" required>
+                <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
+                  <b-form-input id="security_code" placeholder="Enter social security number" v-model="security_code" required>
                   </b-form-input>
                 </b-form-group>
               </div>
@@ -113,14 +113,34 @@
             <div class="row">
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
-                  <b-form-input id="select_car_type" type="text" placeholder=" Enter select car type"
-                    v-model="select_car_type" required>
-                    <!-- <option value="">Select Car Type</option> -->
-                    <!-- <option>Own</option>
-                    <option>Company</option> -->
+                  <b-form-select id="select_car_type" type="text" v-model="select_car_type" required>
+                    <option value="">Select Car</option>
+                    <option>Own</option>
+                    <option>Company</option>
+                  </b-form-select>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Postal Code:" label-for="postal_code">
+                  <b-form-input id="postal_code" placeholder="Enter Postal code" v-model="postal_code" required>
                   </b-form-input>
                 </b-form-group>
               </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="City:" label-for="city">
+                  <b-form-input id="city" placeholder="Enter city" v-model="city" required>
+                  </b-form-input>
+                </b-form-group>
+              </div>
+              <!-- <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
+                  <div style="margin-left: 3px; margin-bottom: 15px">
+                    <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
+                  </div>
+                </b-form-group>
+              </div> -->
+            </div>
+            <div class="row">
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
                   <div style="margin-left: 3px; margin-bottom: 15px">
@@ -130,7 +150,7 @@
               </div>
             </div>
 
-            <div style="
+            <!-- <div style="
                   background-color: rgb(97, 116, 152);
                   height: 32px;
                   border-radius: 4px;
@@ -142,9 +162,9 @@
                   ">
                 Salary Information
               </h5>
-            </div>
+            </div> -->
 
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Salary:" label-for="salary">
                   <b-form-select v-model="selectedOption" required>
@@ -162,13 +182,6 @@
                     placeholder="Enter fix salary"></b-form-input>
                 </b-form-group>
               </div>
-
-              <!-- <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                <b-form-group label="Commission (%/Company)" label-for="commission-input">
-                  <b-form-input id="salary_commission" type="text" v-model="salary_commission"
-                    placeholder="Enter commission"></b-form-input>
-                </b-form-group>
-              </div> -->
               <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
                 <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
                   <b-form-input id="salary_commission" type="text" v-model="salary_commission"
@@ -193,7 +206,7 @@
                     placeholder="Enter Total Number Hours"></b-form-input>
                 </b-form-group>
               </div>
-            </div>
+            </div> -->
             <!-- Bank Information -->
             <div style="
                   background-color: rgb(97, 116, 152);
@@ -244,6 +257,7 @@
                     <!-- <option>Liscence B</option> -->
                     <option>Driving Liscence/Swedish ID</option>
                     <option>Taxi Liscence</option>
+                    <option>Other</option>
                   </b-form-select>
                 </b-form-group>
               </div>
@@ -341,6 +355,8 @@ export default {
       vehicle_id: "",
       vehicles: [],
       joining_date: '',
+      postal_code:'',
+      city:'',
       ////
 
       vehicle_name: "",
@@ -418,6 +434,8 @@ export default {
       formData.append("profile_picture", this.profile_picture);
       formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
       formData.append("name", this.name);
+      formData.append("postal_code", this.postal_code);
+      formData.append("city", this.city);
       formData.append("email", this.email);
       formData.append("security_code", this.security_code);
       formData.append("last_name", this.last_name);
