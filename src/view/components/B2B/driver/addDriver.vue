@@ -192,6 +192,18 @@
                                     </b-form-select>
                                 </b-form-group>
                             </div>
+                            <div class="col-md-4 col-12">
+                    <b-form-group id="input-group-2" label="Postal Code:" label-for="postal_code">
+                      <b-form-input id="postal_code" placeholder="Enter Postal code" v-model="postal_code">
+                      </b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div class="col-md-4 col-12">
+                    <b-form-group id="input-group-2" label="City:" label-for="city">
+                      <b-form-input id="city" placeholder="Enter city" v-model="city">
+                      </b-form-input>
+                    </b-form-group>
+                  </div>
 
                             <div v-if="selectedCarType === 'Company'" class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
@@ -508,6 +520,8 @@ export default {
             vehicles: [],
             ////
             company_name: "",
+            postal_code:'',
+            city:'',
             joining_date: '',
             owner_name: "",
             owner_number: "",
@@ -622,6 +636,8 @@ export default {
             formData.append("car_model", this.car_model);
             formData.append("car_color", this.car_color);
             formData.append("car_number", this.car_number);
+             formData.append("postal_code", this.postal_code);
+              formData.append("city", this.city);
             formData.append("total_number_hour", this.total_number_hour);
             formData.append("type", "b2b");
             for (const image of this.vehicle_image) {

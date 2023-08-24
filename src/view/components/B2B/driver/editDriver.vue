@@ -157,6 +157,18 @@
                                     </b-form-select>
                                 </b-form-group>
                             </div>
+                            <div class="col-md-4 col-12">
+                    <b-form-group id="input-group-2" label="Postal Code:" label-for="postal_code">
+                      <b-form-input id="postal_code" placeholder="Enter Postal code" v-model="postal_code">
+                      </b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div class="col-md-4 col-12">
+                    <b-form-group id="input-group-2" label="City:" label-for="city">
+                      <b-form-input id="city" placeholder="Enter city" v-model="city">
+                      </b-form-input>
+                    </b-form-group>
+                  </div>
 
                             <div v-if="selectedCarType === 'Company'" class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
@@ -509,6 +521,8 @@ export default {
                 vehicle_image: [], // Initialize the array here
             },
             vehicle_name: "",
+            postal_code:'',
+            city:'',
             vehicle_company: "",
             description: "",
             car_make: "",
@@ -587,6 +601,8 @@ export default {
                 this.car_model = this.editedUser.car_model;
                 this.car_color = this.editedUser.car_color;
                 this.car_number = this.editedUser.car_number;
+                 this.postal_code = this.editedUser.postal_code;
+                  this.city = this.editedUser.city;
                 this.vehicle_image = this.editedUser.vehicle_image;
                 this.total_number_hour = this.editedUser.total_number_hour;
                 // Depending on the selected option, set the appropriate salary value
@@ -676,6 +692,8 @@ export default {
             formData.append("car_model", this.car_model);
             formData.append("car_color", this.car_color);
             formData.append("car_number", this.car_number);
+             formData.append("postal_code", this.postal_code);
+              formData.append("city", this.city);
             if (this.vehicle_image) {
                 for (const image of this.vehicle_image) {
                     formData.append("vehicle_image[]", image);
