@@ -373,11 +373,23 @@ export default {
     },
 
     updateCardOption() {
-      if (this.selectedCardOption && this.rowToUpdate) {
-        this.rowToUpdate.card = this.selectedCardOption;
-        this.isCardModalVisible = false; // Hide the modal
-      }
-    },
+    if (this.selectedCardOption && this.rowToUpdate) {
+      this.rowToUpdate.card = this.selectedCardOption;
+      axios
+        .post(`expenseUpdate/${this.rowToUpdate.id}`, {
+          card: this.selectedCardOption
+        })
+        .then(response => {
+          console.log("Card option updated successfully:", response.data);
+        })
+        .catch(error => {
+          console.error("Error updating card option:", error);
+        });
+
+      this.isCardModalVisible = false; // Hide the modal
+    }
+  },
+
 
     editUser(userId) {
       this.$router.push({ name: "editExpense", params: { id: userId } });
