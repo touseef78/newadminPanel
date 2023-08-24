@@ -406,7 +406,7 @@
                 </b-form-group>
               </div>
               <!-- Dropdown  of Add Vehicle -->
-              <div v-if="selectedCarType === 'Own'">
+              <div v-if="selectedCarType === 'Own'" style="padding: 15px;">
                 <b-row>
                   <div class="col-12 mt-16">
                     <div
