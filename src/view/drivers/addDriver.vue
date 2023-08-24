@@ -127,6 +127,13 @@
                   </b-form-input>
                 </b-form-group>
               </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
+                  <div style="margin-left: 3px; margin-bottom: 15px">
+                    <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
+                  </div>
+                </b-form-group>
+              </div>
 
               <div v-if="selectedCarType === 'Company'" class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
@@ -211,13 +218,6 @@
                                                 </pre>
                   </div>
                 </b-row>
-              </div>
-              <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                  <div style="margin-left: 3px; margin-bottom: 15px">
-                    <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
-                  </div>
-                </b-form-group>
               </div>
             </div>
 
