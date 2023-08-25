@@ -43,12 +43,25 @@
                 </b-form-group>
               </div>
 
-              <div class="col-md-4 col-12">
+              <!-- <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Password:" label-for="password">
                   <b-form-input id="password" type="password" placeholder="Enter Password" v-model="password"
                     required></b-form-input>
                 </b-form-group>
-              </div>
+              </div> -->
+              <div class="col-md-4 col-12">
+    <b-form-group id="input-group-2" label="Password:" label-for="password">
+      <b-form-input
+        id="password"
+        type="password"
+        placeholder="Enter Password"
+        v-model="password"
+        minlength="8" 
+        required
+      ></b-form-input>
+    </b-form-group>
+  </div>
+
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                   <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
