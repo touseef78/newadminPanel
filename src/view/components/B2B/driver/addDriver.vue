@@ -29,12 +29,14 @@
             <div class="col-md-4 col-12">
               <b-form-group id="input-group-1" label=" Organization Name:" label-for="owner_name">
                 <b-form-input id="owner_name" type="text" placeholder="Enter organization name" v-model="owner_name"
+                  pattern="[A- Z a-z]+" title="Please enter only alphabetic characters" 
                   required></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-4 col-12">
               <b-form-group id="input-group-1" label=" Organization Number:" label-for="owner_number">
                 <b-form-input id="owner_number" type="text" placeholder="Enter organization number" v-model="owner_number"
+                 pattern="[0-9]+" title="Please enter only numeric characters"
                   required></b-form-input>
               </b-form-group>
             </div>
