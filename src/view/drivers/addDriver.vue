@@ -37,7 +37,7 @@
               </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Email Address:" label-for="email">
-                  <b-form-input id="email" placeholder="Enter email address" v-model="email" required>
+                  <b-form-input id="email" type="email" placeholder="Enter email address" v-model="email" required>
                   </b-form-input>
                   <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
                 </b-form-group>
@@ -45,7 +45,8 @@
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Password:" label-for="password">
-                  <b-form-input id="password" placeholder="Enter Password" v-model="password" required></b-form-input>
+                  <b-form-input id="password" type="password" placeholder="Enter Password" v-model="password"
+                    required></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
@@ -93,12 +94,14 @@
                     required></b-form-input>
                 </b-form-group>
               </div>
+              
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Security Code:" label-for="security_code">
-                  <b-form-input id="security_code" placeholder="Enter security code" v-model="security_code"
-                    required></b-form-input>
+                <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
+                  <b-form-input id="security_code" type="text" placeholder="Enter security code" v-model="security_code"
+                    required minlength="10" maxlength="12"></b-form-input>
                 </b-form-group>
               </div>
+
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
@@ -329,7 +332,7 @@
                     <!-- <option>Liscence B</option> -->
                     <option>Driving License/Swedish ID</option>
                     <option>Taxi License</option>
-                     <option>Other</option>
+                    <option>Other</option>
                   </b-form-select>
                 </b-form-group>
               </div>

@@ -162,6 +162,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
+                  type="email"
                   label="Email Address:"
                   label-for="email"
                 >
@@ -186,6 +187,7 @@
                 >
                   <b-form-input
                     id="password"
+                    type="password"
                     placeholder="Enter password"
                     v-model="password"
                     required
@@ -296,7 +298,7 @@
                   ></b-form-input>
                 </b-form-group>
               </div>
-              <div class="col-md-4 col-12">
+              <!-- <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
                   label="Social Security Number:"
@@ -310,7 +312,13 @@
                   >
                   </b-form-input>
                 </b-form-group>
-              </div>
+              </div> -->
+               <div class="col-md-4 col-12">
+                  <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
+                    <b-form-input id="security_code" type="text" placeholder="Enter security code" v-model="security_code"
+                      required minlength="10" maxlength="12"></b-form-input>
+                  </b-form-group>
+                </div>
               <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
