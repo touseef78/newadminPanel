@@ -102,18 +102,6 @@
                     required></b-form-input>
                 </b-form-group>
               </div>
-              <!-- <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
-                  <b-form-input id="joining_date" type="date" v-model="joining_date" required>
-                  </b-form-input>
-                </b-form-group>
-              </div> -->
-              <!-- <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
-                  <b-form-input id="security_code" placeholder="Enter social security number" v-model="security_code" required>
-                  </b-form-input>
-                </b-form-group>
-              </div> -->
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
                   <b-form-input id="security_code" type="text" placeholder="Enter security code" v-model="security_code"
