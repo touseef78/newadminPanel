@@ -21,26 +21,35 @@
               </h5>
             </div>
             <div class="row">
+             
               <!-- <div class="col-md-4 col-12">
-                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
-                  <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
-                    required>
-                  </b-form-input>
-                </b-form-group>
-              </div> -->
-              <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
                   <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
                     pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required>
                   </b-form-input>
                 </b-form-group>
-              </div>
+              </div> -->
+                <div class="col-md-4 col-12">
+      <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
+        <b-form-input
+          id="name"
+          type="text"
+          placeholder="Enter first name"
+          autocomplete="off"
+          v-model="name"
+          pattern="[A- Z a-z ]+"  
+          title="Please enter only alphabetic characters and space"
+          required
+        >
+        </b-form-input>
+      </b-form-group>
+    </div>
 
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
                   <b-form-input id="last_name" type="text" placeholder="Enter last name" autocomplete="off"
-                    v-model="last_name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required>
+                    v-model="last_name" pattern="[A- Z a-z]+" title="Please enter only alphabetic characters" required>
                   </b-form-input>
                 </b-form-group>
               </div>
@@ -214,7 +223,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
                   <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
-                    v-model="emergency_contact_name"  pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required></b-form-input>
+                    v-model="emergency_contact_name"  pattern="[A- Z a-z]+" title="Please enter only alphabetic characters" required></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
