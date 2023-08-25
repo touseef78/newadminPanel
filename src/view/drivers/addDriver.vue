@@ -21,17 +21,25 @@
               </h5>
             </div>
             <div class="row">
-              <div class="col-md-4 col-12">
+              <!-- <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
                   <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
                     required>
                   </b-form-input>
                 </b-form-group>
+              </div> -->
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
+                  <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
+                    pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required>
+                  </b-form-input>
+                </b-form-group>
               </div>
+
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
                   <b-form-input id="last_name" type="text" placeholder="Enter last name" autocomplete="off"
-                    v-model="last_name" required>
+                    v-model="last_name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required>
                   </b-form-input>
                 </b-form-group>
               </div>
@@ -43,36 +51,27 @@
                 </b-form-group>
               </div>
 
-              <!-- <div class="col-md-4 col-12">
+              <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Password:" label-for="password">
                   <b-form-input id="password" type="password" placeholder="Enter Password" v-model="password"
-                    required></b-form-input>
+                    minlength="8" required></b-form-input>
                 </b-form-group>
-              </div> -->
-              <div class="col-md-4 col-12">
-    <b-form-group id="input-group-2" label="Password:" label-for="password">
-      <b-form-input
-        id="password"
-        type="password"
-        placeholder="Enter Password"
-        v-model="password"
-        minlength="8" 
-        required
-      ></b-form-input>
-    </b-form-group>
-  </div>
+              </div>
+
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                   <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
-                    required></b-form-input>
+                    pattern="[0-9]+" title="Please enter only numeric characters" required>
+                  </b-form-input>
                 </b-form-group>
               </div>
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
                   <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
-                    v-model="emergency_contact_name" required></b-form-input>
+                    v-model="emergency_contact_name"
+                     pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required></b-form-input>
                 </b-form-group>
               </div>
 
@@ -80,7 +79,8 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Emergency Contact Number:" label-for="emergency_contact_number">
                   <b-form-input id="emergency_contact_number" type="text" placeholder="Enter emergency contact number"
-                    v-model="emergency_contact_number" required></b-form-input>
+                    v-model="emergency_contact_number" pattern="[0-9]+" title="Please enter only numeric characters"
+                    required></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
@@ -107,7 +107,7 @@
                     required></b-form-input>
                 </b-form-group>
               </div>
-              
+
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
                   <b-form-input id="security_code" type="text" placeholder="Enter security code" v-model="security_code"
@@ -314,13 +314,15 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Bank Account Holder Name:" label-for="bank_account_holder_name">
                   <b-form-input id="bank_name" type="text" placeholder="Enter bank account holder name"
-                    v-model="bank_name" required></b-form-input>
+                    v-model="bank_name"  pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Bank Account Number:" label-for="bank_account_number">
                   <b-form-input id="bank_account_number" placeholder="Enter bank account number"
-                    v-model="bank_account_number" required></b-form-input>
+                    v-model="bank_account_number"   pattern="[0-9]+" 
+        title="Please enter only numeric characters"
+                     required></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">

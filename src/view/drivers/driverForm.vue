@@ -21,18 +21,26 @@
               </h5>
             </div>
             <div class="row">
-              <div class="col-md-4 col-12">
+              <!-- <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
                   <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
                     required>
                   </b-form-input>
                 </b-form-group>
+              </div> -->
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
+                  <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
+                    pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required>
+                  </b-form-input>
+                </b-form-group>
               </div>
+
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
                   <b-form-input id="last_name" type="text" placeholder="Enter last name" autocomplete="off"
-                    v-model="last_name" required>
+                    v-model="last_name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required>
                   </b-form-input>
                 </b-form-group>
               </div>
@@ -55,24 +63,21 @@
                 </b-form-group>
               </div> -->
               <div class="col-md-4 col-12">
-    <b-form-group id="input-group-2" label="Password:" label-for="password">
-      <b-form-input
-        id="password"
-        type="password"
-        placeholder="Enter Password"
-        v-model="password"
-        minlength="8"  
-        required
-      ></b-form-input>
-    </b-form-group>
-  </div>
+                <b-form-group id="input-group-2" label="Password:" label-for="password">
+                  <b-form-input id="password" type="password" placeholder="Enter Password" v-model="password"
+                    minlength="8" required></b-form-input>
+                </b-form-group>
+              </div>
+
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                   <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
-                    required></b-form-input>
+                    pattern="[0-9]+" title="Please enter only numeric characters" required>
+                  </b-form-input>
                 </b-form-group>
               </div>
+
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Gender:" label-for="gender">
                   <b-form-select v-model="gender" required>
@@ -109,27 +114,27 @@
                   </b-form-input>
                 </b-form-group>
               </div> -->
-                <div class="col-md-4 col-12">
-                    <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
-                      <b-form-input id="security_code" type="text" placeholder="Enter security code" v-model="security_code"
-                        required minlength="10" maxlength="12"></b-form-input>
-                    </b-form-group>
-                  </div>
-              
-                <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-2" label="Postal Code:" label-for="postal_code">
-                    <b-form-input id="postal_code" placeholder="Enter Postal code" v-model="postal_code" required>
-                    </b-form-input>
-                  </b-form-group>
-                </div>
-                 <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-2" label="City:" label-for="city">
-                    <b-form-input id="city" placeholder="Enter city" v-model="city" required>
-                    </b-form-input>
-                  </b-form-group>
-                </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
+                  <b-form-input id="security_code" type="text" placeholder="Enter security code" v-model="security_code"
+                    required minlength="10" maxlength="12"></b-form-input>
+                </b-form-group>
+              </div>
+
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Postal Code:" label-for="postal_code">
+                  <b-form-input id="postal_code" placeholder="Enter Postal code" v-model="postal_code" required>
+                  </b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="City:" label-for="city">
+                  <b-form-input id="city" placeholder="Enter city" v-model="city" required>
+                  </b-form-input>
+                </b-form-group>
+              </div>
             </div>
-           
+
             <div class="row">
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
@@ -140,7 +145,7 @@
               </div>
             </div>
 
-          
+
             <!-- Bank Information -->
             <!-- <div style="
                   background-color: rgb(97, 116, 152);
@@ -204,33 +209,34 @@
 
             <!-- Bank Information End -->
 
-             <div style="
+            <div style="
                   background-color: rgb(97, 116, 152);
                   height: 32px;
                   border-radius: 4px;
                 ">
-                <h5 style="
+              <h5 style="
                     color: rgb(223, 227, 238);
                     margin-left: 5px;
                     font-weight: bold;
                   ">
                 Emergency Information
-                </h5>
+              </h5>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
+                  <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
+                    v-model="emergency_contact_name"  pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required></b-form-input>
+                </b-form-group>
               </div>
-              <div class="row">
-                 <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
-                    <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
-                      v-model="emergency_contact_name" required></b-form-input>
-                  </b-form-group>
-                </div>
-                <div class="col-md-4 col-12">
-                  <b-form-group id="input-group-2" label="Emergency Contact Number:" label-for="emergency_contact_number">
-                    <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number"
-                      v-model="emergency_contact_number" required></b-form-input>
-                  </b-form-group>
-                </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Emergency Contact Number:" label-for="emergency_contact_number">
+                  <b-form-input id="emergency_contact_number" placeholder="Enter emergency contact number"
+                    v-model="emergency_contact_number" pattern="[0-9]+" title="Please enter only numeric characters"
+                    required></b-form-input>
+                </b-form-group>
               </div>
+            </div>
 
 
             <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
@@ -319,8 +325,8 @@ export default {
       vehicle_id: "",
       vehicles: [],
       joining_date: '',
-      postal_code:'',
-      city:'',
+      postal_code: '',
+      city: '',
       ////
 
       vehicle_name: "",
