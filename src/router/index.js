@@ -147,6 +147,13 @@ const router = new VueRouter({
       component: () => import("@/view/drivers/listDriver"),
      
     },
+    // new list driver 
+    //  {
+    //   path: "/drivers/new",
+    //   name: "drivers",
+    //   component: () => import("@/view/drivers/newListDriver"),
+     
+    // },
     //  B2B Driver 
      {
       path: "/B2B/driver/lists",
