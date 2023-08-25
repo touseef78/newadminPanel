@@ -82,7 +82,7 @@
 
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Email Address:" label-for="email">
-                                    <b-form-input id="email" placeholder="Enter email address" v-model="email">
+                                    <b-form-input id="email" type="email" placeholder="Enter email address" v-model="email">
                                     </b-form-input>
                                     <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
                                 </b-form-group>
@@ -90,7 +90,7 @@
 
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Password:" label-for="">
-                                    <b-form-input id="ssn" placeholder="Enter Password" v-model="ssn"></b-form-input>
+                                    <b-form-input id="ssn" type="password" placeholder="Enter Password" v-model="ssn"></b-form-input>
                                 </b-form-group>
                             </div>
 
@@ -148,6 +148,12 @@
                                     </b-form-input>
                                 </b-form-group>
                             </div>
+                             <!-- <div class="col-md-4 col-12">
+                    <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
+                      <b-form-input id="security_code" type="text" placeholder="Enter security code" v-model="security_code"
+                        required minlength="10" maxlength="12"></b-form-input>
+                    </b-form-group>
+                  </div> -->
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Select Car Type:" label-for="select_car_type">
                                     <b-form-select v-model="selectedCarType">

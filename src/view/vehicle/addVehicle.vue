@@ -20,13 +20,15 @@
           <div class="row">
             <div class="col-md-4 col-12">
               <b-form-group id="input-group-2" label="Company Name:" label-for="vehicle_company">
-                <b-form-input id="vehicle_company" v-model="vehicle_company" placeholder="Enter company name"
+                <b-form-input id="vehicle_company" v-model="vehicle_company" pattern="[A-Za-z]+"
+                  title="Please enter only alphabetic characters" placeholder="Enter company name"
                   required></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-4 col-12">
               <b-form-group id="input-group-1" label="Name:" label-for="name">
-                <b-form-input id="name" type="text" v-model="name" placeholder="Enter name" autocomplete="off"
+                <b-form-input id="name" type="text" v-model="name" pattern="[A-Za-z]+"
+                  title="Please enter only alphabetic characters" placeholder="Enter name" autocomplete="off"
                   required></b-form-input>
               </b-form-group>
             </div>
@@ -112,7 +114,8 @@
             </div>
             <div class="col-md-4 col-12">
               <b-form-group id="input-group-2" label="Insurance:" label-for="insurance">
-                <b-form-input id="insurance" v-model="insurance" placeholder="Enter Insurance" required></b-form-input>
+                <b-form-input id="insurance" v-model="insurance" pattern="[0-9]+"
+                  title="Please enter only numeric characters" placeholder="Enter Insurance" required></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-4 col-12">
@@ -146,7 +149,8 @@
             </div>
             <div class="col-md-4 col-12">
               <b-form-group id="input-group-2" label="Vendor Name:" label-for="vendor_name">
-                <b-form-select v-model="vendor_name" required>
+                <b-form-select v-model="vendor_name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters"
+                  required>
                   <option value="">Select Vendor Name</option>
                   <option>Uber</option>
                   <option>Bolt</option>
