@@ -21,7 +21,7 @@
             </b-form-group>
           </b-col>
           <b-col lg="6" class="my-1 d-flex justify-content-end">
-            <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button>
+            <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button> -->
             <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
           </b-col>
         </b-row>
