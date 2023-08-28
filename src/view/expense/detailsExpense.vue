@@ -69,12 +69,21 @@
           </template>
           <!-- Action Button Code -->
           <template #cell(image)="row">
-            <img
-              :src="'https://boltapi.fastnetstaffing.in/' + row.item.image"
-              alt="Image"
-              class="img-fluid"
-              style="max-width: 100px; max-height: 100px"
-            />
+            <div>
+              <img
+                :src="'https://boltapi.fastnetstaffing.in/' + row.item.image"
+                alt="Image"
+                class="img-fluid"
+                style="max-width: 100px; max-height: 100px"
+              />
+              <b-button
+                @click="downloadImage(row.item.image)"
+                variant="success"
+                class="mt-2"
+              >
+                View Image
+              </b-button>
+            </div>
           </template>
           <template #cell(actions)="row">
             <b-button
@@ -418,6 +427,14 @@ export default {
           // Handle error
           console.error("Error deleting item:", error);
         });
+    },
+
+    downloadImage(imageUrl) {
+      const link = document.createElement("a");
+      link.href = "https://boltapi.fastnetstaffing.in/" + imageUrl;
+      link.download = "image.jpg"; // You can set the desired filename here
+      link.target = "_blank"; // Open the link in a new tab
+      link.click();
     },
   },
 };
