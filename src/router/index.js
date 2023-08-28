@@ -234,6 +234,13 @@ const router = new VueRouter({
       name: "viewExpense",
       component: () => import("../view/expense/viewExpense.vue"),
     },
+
+    {
+      path: "/expense/Details/:id",
+      name: "expenseDetails",
+      component: () => import("../view/expense/detailsExpense.vue"),
+    },
+
     // Report
     {
       path: "/report/list",
