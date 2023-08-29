@@ -201,8 +201,8 @@
                 </b-form-group>
               </div> -->
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
-                  <b-form-input id="security_code" type="text" placeholder="Enter security code" v-model="security_code"
+                <b-form-group id="input-group-2" label="Person Number:" label-for="security_code">
+                  <b-form-input id="security_code" type="text" placeholder="Enter person number" v-model="security_code"
                     required minlength="10" maxlength="12"></b-form-input>
                 </b-form-group>
               </div>
