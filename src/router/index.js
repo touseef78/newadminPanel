@@ -212,7 +212,7 @@ const router = new VueRouter({
 
   
 
-  // Expense
+  // Expensep
 {
       path: "/expense/add",
       name: "addExpense",
