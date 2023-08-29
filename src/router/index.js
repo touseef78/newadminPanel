@@ -248,6 +248,16 @@ const router = new VueRouter({
       component: () => import("../view/report/listReport.vue"),
     },
 
+
+    // import file
+
+
+    {
+      path: "/Import/importFile",
+      name: "importFile",
+      component: () => import("../view/report/importFile.vue"),
+    },
+
     {
       path: "/main/widgets/crypto-icons",
       name: "crypto-icons",

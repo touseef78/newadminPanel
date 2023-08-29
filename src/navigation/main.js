@@ -109,6 +109,21 @@ export default {
         },
       ],
     },
+
+// import file
+    {
+      id: "Import",
+      title: "Import File",
+      icon: "Curved-EditSquare",
+      
+      children: [
+        {
+          id: "Import",
+          title: "Add File",
+          navLink: "/Import/importFile",
+        },
+      ],
+    },
       
     //   {
     //   id: "Report",
