@@ -1,7 +1,6 @@
 <template>
     <b-card>
         <b-row>
-    
             <div class="col-12 mt-16">
                 <b-form @submit.prevent="addUser" v-if="show">
                     <!-- <h2>Car Information</h2> -->
