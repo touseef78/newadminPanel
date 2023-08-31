@@ -37,6 +37,18 @@
    {
     "title": "Dashboard",
     "url": "/dashboard"
+  },
+  {
+    "title": "View Report",
+    "url": "/report/view"
+  },
+  {
+    "title": "Invoice Table",
+    "url": "/table/invoice"
+  },
+    {
+    "title": "Add File",
+    "url": "/Import/importFile"
   }
 
 ]

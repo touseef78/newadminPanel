@@ -1,18 +1,7 @@
 <template>
   <div class="hp-header-logo d-flex align-items-end">
     <b-link to="/">
-      <!-- <img
-        v-if="this.$store.state.themeConfig.theme == 'light'"
-        class="hp-logo"
-        v-bind:src="require('@/assets/img/logo/logo.svg')"
-        alt="logo"
-      />
-      <img
-        v-else-if="this.$store.state.themeConfig.theme == 'dark'"
-        class="hp-logo"
-        v-bind:src="require('@/assets/img/logo/logo-dark.svg')"
-        alt="logo"
-      /> -->
+     
       <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-car-front-fill"
         viewBox="0 0 16 16">
         <path
@@ -22,12 +11,7 @@
 
     <a href="https://hypeople-studio.gitbook.io/yoda/change-log" target="_blank" class="d-flex">
       <span class="h3 font-weight-bold hp-text-color-1 mb-6">Vehicle</span>
-      <!-- <span
-        class="hp-p1-body font-weight-medium hp-text-color-black-40 mb-16 ml-4"
-        style="letter-spacing: -0.5px"
-      >
-        v.{{ this.$store.state.themeConfig.version }}
-      </span> -->
+     
     </a>
   </div>
 </template>

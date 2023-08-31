@@ -172,7 +172,7 @@ export default {
       fields: [
         { key: "srNo", label: "Sr No" },
         { key: "id", sortable: true },
-        { key: "driver.name", sortable: true },
+        { key: "driver_name", sortable: true },
         { key: "total_payable", sortable: true },
         { key: "total_receivable", sortable: true },
         { key: "total_pending", sortable: true },
