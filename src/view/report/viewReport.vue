@@ -34,7 +34,7 @@
                 <b-table id="dataTable" :items="users" :fields="fields" :current-page="currentPage" :per-page="perPage"
                     :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
                     :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
-                    <template #cell(driver.name)="row">
+                    <template #cell(driver_name)="row">
                         {{ `${row.item.driver.name} ${row.item.driver.last_name}` }}
                     </template>
                     <!-- Action Button Code -->

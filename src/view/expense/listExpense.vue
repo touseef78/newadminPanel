@@ -64,7 +64,7 @@
           y
           responsive
         >
-          <template #cell(driver.name)="row">
+          <template #cell(driver_name)="row">
             {{ `${row.item.driver.name} ${row.item.driver.last_name}` }}
           </template>
           <!-- Action Button Code -->
