@@ -285,6 +285,8 @@ export default {
         { key: "amount", sortable: true },
         { key: "card", sortable: true },
         { key: "category", sortable: true },
+        { key: "total_life_kilometer", sortable: true },
+        { key: "meter_reading", sortable: true },
         { key: "image", sortable: true },
         { key: "status", sortable: true },
         { key: "actions", label: "Actions" },
