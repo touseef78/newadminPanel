@@ -87,8 +87,8 @@
 
 
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Social Security Number:" label-for="security_code">
-                  <b-form-input id="security_code" placeholder="Enter social security number" v-model="security_code">
+                <b-form-group id="input-group-2" label="Person Number:" label-for="security_code">
+                  <b-form-input id="security_code" placeholder="Enter person number" v-model="security_code">
                   </b-form-input>
                 </b-form-group>
               </div>

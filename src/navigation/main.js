@@ -46,6 +46,11 @@ export default {
           title: "List Vehicle",
           navLink: "/vehicle/listVehicle",
         },
+        //    {
+        //   id: "Service",
+        //   title: "Vehicle Service",
+        //   navLink: "/service/vehicle",
+        // },
       ],
     },
      {
@@ -86,11 +91,12 @@ export default {
           title: "List Vehicle",
           navLink: "/B2B/Vehicle/lists",
         },
+       
       ],
     },
       ],
     },
-    //  Report 
+    //  Expense
      {
       id: "Expense",
       title: "Expense",
@@ -124,24 +130,54 @@ export default {
         },
       ],
     },
+      // Report
+      {
+      id: "Report",
+      title: "Report",
+      icon: "Curved-Filter",
       
-    //   {
-    //   id: "Report",
-    //   title: "Report",
+      children: [
+       
+        {
+          id: "Report",
+          title: "View Report",
+          navLink: "/report/view",
+        
+        },
+      ],
+    },
+    // Invoice
+     {
+      id: "Invoice",
+      title: "Invoice",
+      icon: "Curved-Filter",
+      
+      children: [
+        {
+          id: "Invoice",
+          title: "Invoice Table",
+          navLink: "/table/invoice",
+        },
+        // {
+        //   id: "Report",
+        //   title: "View Report",
+        //   navLink: "/report/view",
+        
+        // },
+      ],
+    },
+    // {
+    //   id: "Service",
+    //   title: "Service",
     //   icon: "Curved-Filter",
       
     //   children: [
-    //     // {
-    //     //   id: "Report",
-    //     //   title: "Add Expense",
-    //     //   navLink: "/expense/add",
-    //     // },
     //     {
-    //       id: "Report",
-    //       title: "List Report",
-    //       navLink: "/report/list",
-        
+    //       id: "Service",
+    //       title: "Vehicle Service",
+    //       navLink: "/service/vehicle",
     //     },
+      
     //   ],
     // },
   ]

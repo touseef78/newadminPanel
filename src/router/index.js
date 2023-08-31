@@ -243,10 +243,25 @@ const router = new VueRouter({
 
     // Report
     {
-      path: "/report/list",
-      name: "listReport",
-      component: () => import("../view/report/listReport.vue"),
+      path: "/file/upload",
+      name: "uploadFile",
+      component: () => import("../view/report/uploadFile.vue"),
     },
+      {
+      path: "/report/view",
+      name: "viewReport",
+      component: () => import("../view/report/viewReport.vue"),
+    },
+       {
+      path: "/report/Adds/:userId",
+      name: "addReport",
+      component: () => import("../view/report/addReport.vue"),
+    },
+    {
+  path: "/report/show/:id",
+  name: "invoiceShow",
+  component: () => import("../view/report/invoiceShow.vue"),
+},
 
 
     // import file
@@ -256,6 +271,18 @@ const router = new VueRouter({
       path: "/Import/importFile",
       name: "importFile",
       component: () => import("../view/report/importFile.vue"),
+    },
+    // invoice
+      {
+      path: "/table/invoice",
+      name: "invoiceTable",
+      component: () => import("../view/invoice/invoiceTable.vue"),
+    },
+    // Service 
+       {
+      path: "/service/vehicle",
+      name: "carService",
+      component: () => import("../view/car/carService.vue"),
     },
 
     {
