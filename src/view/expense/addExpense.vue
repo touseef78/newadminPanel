@@ -1,6 +1,7 @@
 <template>
     <b-card>
         <b-row>
+    
             <div class="col-12 mt-16">
                 <b-form @submit.prevent="addUser" v-if="show">
                     <!-- <h2>Car Information</h2> -->
@@ -28,7 +29,20 @@
                                 </b-form-select>
                             </b-form-group>
                         </div>
-                        <div class="col-md-4 col-12">
+
+
+                        <!-- <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
+                                <b-form-select id="user_id" v-model="user_id" required :filter="true"
+                                    filter-placeholder="Search for a driver">
+                                    <option value="">Select Driver</option>
+                                    <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
+                                        {{ driver.name }}
+                                    </option>
+                                </b-form-select>
+                            </b-form-group>
+                        </div> -->
+                   <div class="col-md-4 col-12"> 
                             <b-form-group id="input-group-2" label="Amount:" label-for="amount">
                                 <b-form-input id="amount" v-model="amount" placeholder="Enter  amount"
                                     required></b-form-input>
@@ -42,7 +56,7 @@
                                     <option>Puncher</option>
                                     <option>Air Pressure</option>
                                     <option>Tyre Change</option>
-                                    <option>Challane</option>
+                                    <option>Challan</option>
                                     <option>Online Payment</option>
                                     <option>Customer</option>
                                     <option>Other</option>
@@ -58,6 +72,18 @@
                                     <option>Receiveable</option>
                                     <option>Normal</option>
                                 </b-form-select>
+                            </b-form-group>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Total Life In Km(If have):" label-for="total_life_kilometer">
+                                <b-form-input id="total_life_kilometer" v-model="total_life_kilometer"
+                                    placeholder="Enter  total life in km" required></b-form-input>
+                            </b-form-group>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Meter Reading:" label-for="meter_reading">
+                                <b-form-input id="meter_reading" v-model="meter_reading" placeholder="Enter  meter reading"
+                                    required></b-form-input>
                             </b-form-group>
                         </div>
 
@@ -90,6 +116,7 @@
     </b-card>
 </template>
 
+
 <script>
 import {
     BRow,
@@ -111,6 +138,13 @@ import { BToast } from "bootstrap-vue";
 export default {
     data() {
         return {
+            // user_id: '', // Selected user_id
+            // drivers: [
+            //     { id: 1, name: 'Driver 1' },
+            //     { id: 2, name: 'Driver 2' },
+            //     { id: 3, name: 'Driver 3' },
+            //     // Add more drivers as needed
+            // ],
             selectedType: "",
             show: true,
             codeText: code.introduction,
@@ -123,6 +157,8 @@ export default {
             card: '',
             user_id: '',
             drivers: [],
+            meter_reading: '',
+            total_life_kilometer: '',
 
 
         };
@@ -185,6 +221,8 @@ export default {
             formData.append("category", this.category);
             formData.append("card", this.card);
             formData.append("user_id", this.user_id);
+            formData.append("meter_reading", this.meter_reading);
+            formData.append("total_life_kilometer", this.total_life_kilometer);
             axios
                 .post("expense", formData)
                 .then((response) => {

@@ -26,42 +26,10 @@
                     </p>
                 </b-col>
 
-                <!-- <b-col cols="12">
-                    <p>Company name</p>
-                    <p>1065 Mandan Road, Columbia MO, Missouri. (123)-65202</p>
-                    <p>demo@gmail.com</p>
-                    <p>+91 919-91-91-919</p>
-                </b-col> -->
+            
             </b-row>
 
 
-
-            <!-- <b-row align-h="between">
-                <b-col cols="12" md="4" class="pb-16 hp-print-info">
-                    <p class="hp-text-color-black-100 hp-text-color-dark-0 hp-input-label">
-                        CLIENT INFORMATION:
-                    </p>
-                    <p>Edward Yildirim</p>
-                    <p>1065 Atasehir/Istanbul</p>
-                    <p>(123)-65202</p>
-                    <p>(1234) - 567891</p>
-                    <p>demo@gmail.com</p>
-                </b-col>
-
-                <b-col cols="12" md="4" class="pb-16 hp-print-info">
-                    <p class="hp-text-color-black-100 hp-text-color-dark-0 hp-input-label">
-                        ORDER INFORMATION:
-                    </p>
-                    <p>Date: November 14</p>
-                    <p>Status: Pending</p>
-                    <p>Id : #146859</p>
-                </b-col>
-
-                <b-col cols="12" md="4" class="text-left text-sm-right hp-print-info">
-                    <p>Date Issue: 08/10/2019</p>
-                    <p>Date Due: 08/10/2019</p>
-                </b-col>
-            </b-row> -->
 
             <div class="divider"></div>
 
@@ -76,12 +44,7 @@
                                 <b-th scope="col" class="pt-0 pb-18 bg-transparent hp-invoice-table-desc">
                                     Description
                                 </b-th>
-                                <!-- <b-th scope="col" class="pt-0 pl-0 pb-18 bg-transparent hp-invoice-table-th">
-                                    Cost
-                                </b-th> -->
-                                <!-- <b-th scope="col" class="pt-0 px-0 pb-18 bg-transparent hp-invoice-table-th text-center">
-                                    QTY
-                                </b-th> -->
+                               
                                 <b-th scope="col" class="pt-0 pr-0 pb-18 bg-transparent hp-invoice-table-th text-right">
                                     Price
                                 </b-th>
@@ -160,6 +123,25 @@
                     </b-row>
                 </b-col>
             </b-row>
+            
+            
+            
+<!--             
+     <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
+        <b-card id="invoice" class="card border-0 hp-invoice-card" ref="invoiceSection">
+          <button class="print-button"  @click="printInvoice">Print</button>
+        </b-card>
+      </b-col> -->
+      <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
+        <b-card id="invoice" class="card border-0 hp-invoice-card" ref="invoiceSection">
+          <!-- ... Your existing invoice card content ... -->
+        </b-card>
+        <b-row align-v="center" align-h="start">
+          <b-button @click="downloadInvoice" type="submit" variant="primary">Download Invoice</b-button>
+        </b-row>
+      </b-col>
+
+
         </b-card>
     </b-col>
 </template>
@@ -175,6 +157,7 @@ import {
     BTh,
     BTd,
     BCard,
+    BButton
 } from "bootstrap-vue";
 
 export default {
@@ -188,6 +171,34 @@ export default {
         BTh,
         BTd,
         BCard,
+        BButton
     },
+    //   methods: {
+    //     // ... Your other methods ...
+
+    //     printInvoice() {
+    //         // Print the invoice content
+    //         window.print();
+    //     }
+    // },
+
+        methods: {
+        downloadInvoice() {
+            const invoiceSection = this.$refs.invoiceSection;
+            const invoiceContent = invoiceSection.innerHTML;
+            const blob = new Blob([invoiceContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+
+            // Create a temporary anchor element for downloading
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'invoice.html';
+            a.click();
+
+            // Clean up
+            a.remove();
+            URL.revokeObjectURL(url);
+        }
+    }
 };
 </script>

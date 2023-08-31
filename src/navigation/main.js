@@ -113,6 +113,11 @@ export default {
           title: "List Expense",
           navLink: "/expense/list",
         },
+         {
+          id: "Service",
+          title: "Vehicle Service",
+          navLink: "/service/vehicle",
+        },
       ],
     },
 
@@ -150,7 +155,7 @@ export default {
      {
       id: "Invoice",
       title: "Invoice",
-      icon: "Curved-Filter",
+      icon: "Curved-Wallet",
       
       children: [
         {

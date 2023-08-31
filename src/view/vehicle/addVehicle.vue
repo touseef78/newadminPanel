@@ -220,43 +220,7 @@
           <div style="margin-left: 3px; margin-bottom: 15px">
             <input type="file" accept="image/*" id="image[]" multiple @change="vehicleImageChange" required />
           </div>
-            <div style="
-              background-color: rgb(97, 116, 152);
-              height: 32px;
-              border-radius: 4px;
-            ">
-                          <h5 style="
-                color: rgb(223, 227, 238);
-                margin-left: 5px;
-                font-weight: bold;
-              ">
-                            Vehicle Service 
-                          </h5>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Select Car:" label-for="select_car">
-                                    <b-form-input id="select_car" v-model="select_car" placeholder="Enter  select car"
-                                        required></b-form-input>
-                                </b-form-group>
-                            </div>
-                         
-                          <div class="col-md-4 col-12">
-                              <b-form-group id="input-group-2" label="Meter Reading:" label-for="meter_reading">
-                                  <b-form-input id="meter_reading" v-model="meter_reading" placeholder="Enter  meter reading"
-                                      required></b-form-input>
-                              </b-form-group>
-                          </div>
-                          <!-- <div class="col-md-4 col-12">
-                              <b-form-group id="input-group-2" label="Picture Upload:" label-for="profile_picture">
-                                  <div style="margin-left: 3px; margin-bottom: 15px">
-                                      <input type="file" accept="image/*" id="image[]" @change="onProfilePictureChange" />
-                                  </div>
-                              </b-form-group>
-                          </div> -->
-
-
-                      </div>
+          
           <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
             <span v-if="!isLoading">Submit</span>
             <b-spinner v-else class="mb-8 mr-8" variant="primary" small></b-spinner>
