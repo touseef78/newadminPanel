@@ -94,8 +94,6 @@
                                 </div>
                             </b-form-group>
                         </div>
-
-
                     </div>
                     <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
                         <span v-if="!isLoading">Submit</span>
@@ -103,7 +101,6 @@
                     </b-button>
                 </b-form>
             </div>
-
             <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
                 <pre v-highlightjs>
           <code class="hljs html">
