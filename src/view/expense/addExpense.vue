@@ -1,7 +1,6 @@
 <template>
     <b-card>
         <b-row>
-
             <div class="col-12 mt-16">
                 <b-form @submit.prevent="addUser" v-if="show">
                     <!-- <h2>Car Information</h2> -->
@@ -19,7 +18,7 @@
                         </h5>
                     </div>
                     <div class="row">
-                        <!-- <div class="col-md-4 col-12">
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
                                 <b-form-select  id="user_id" v-model="user_id" required>
                                     <option value="">Select Driver</option>
@@ -28,23 +27,21 @@
                                     </option>
                                 </b-form-select>
                             </b-form-group>
-                        </div> -->
-                        <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
-                                <b-form-select id="user_id" v-model="user_id" required>
-                                    <option value="">Select Driver</option>
-                                    <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
-                                        {{ driver.name }} - {{ driver.carNumber }}
-                                    </option>
-                                </b-form-select>
-                            </b-form-group>
                         </div>
 
 
-
-
-
-                        <div class="col-md-4 col-12">
+                        <!-- <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
+                                <b-form-select id="user_id" v-model="user_id" required :filter="true"
+                                    filter-placeholder="Search for a driver">
+                                    <option value="">Select Driver</option>
+                                    <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
+                                        {{ driver.name }}
+                                    </option>
+                                </b-form-select>
+                            </b-form-group>
+                        </div> -->
+                   <div class="col-md-4 col-12"> 
                             <b-form-group id="input-group-2" label="Amount:" label-for="amount">
                                 <b-form-input id="amount" v-model="amount" placeholder="Enter  amount"
                                     required></b-form-input>
@@ -98,8 +95,6 @@
                                 </div>
                             </b-form-group>
                         </div>
-
-
                     </div>
                     <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
                         <span v-if="!isLoading">Submit</span>
@@ -107,7 +102,6 @@
                     </b-button>
                 </b-form>
             </div>
-
             <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
                 <pre v-highlightjs>
           <code class="hljs html">
