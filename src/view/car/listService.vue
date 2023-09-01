@@ -37,8 +37,11 @@
                         {{ `${row.item.vehicle.name}` }}
                     </template>
                      <template #cell(car_color)="row">
-                            {{ `${row.item.color}` }}
+                            {{ `${row.item.vehicle.car_color}` }}
                         </template>
+                         <template #cell(car_number)="row">
+                                {{ `${row.item.vehicle.car_number}` }}
+                            </template>
                     <!-- Action Button Code -->
                     <template #cell(image)="row">
                         <div>
@@ -165,8 +168,8 @@ export default {
 
                 { key: "id", sortable: true },
                 { key: "vehicle_name", sortable: true },
-                { key: "vehicle.car_number", sortable: true },
-                { key: "vehicle.car_color", sortable: true },
+                { key: "car_number", sortable: true },
+                { key: "car_color", sortable: true },
                 { key: "service_meter_reading", sortable: true },
                 { key: "image", sortable: true },
                 { key: "actions", label: "Actions" },
