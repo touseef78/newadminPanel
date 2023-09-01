@@ -205,10 +205,6 @@ export default {
             a.click();
             URL.revokeObjectURL(url);
         },
-
-        // detailsDrivers(userId) {
-        //     this.$router.push({ name: "expenseDetails", params: { id: userId } });
-        // },
           navigateToAddReport(userId) {
             // Use Vue Router to navigate to the "addReport" route with the selected user's ID
             this.$router.push({ name: 'addReport', params: { userId } });

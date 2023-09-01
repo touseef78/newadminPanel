@@ -33,9 +33,12 @@
                 <b-table id="dataTable" :items="users" :fields="fields" :current-page="currentPage" :per-page="perPage"
                     :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
                     :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
-                    <template #cell(driver.name)="row">
-                        {{ `${row.item.driver.name} ${row.item.driver.last_name}` }}
+                    <template #cell(vehicle_name)="row">
+                        {{ `${row.item.vehicle.name}` }}
                     </template>
+                     <template #cell(car_color)="row">
+                            {{ `${row.item.color}` }}
+                        </template>
                     <!-- Action Button Code -->
                     <template #cell(image)="row">
                         <div>
@@ -63,7 +66,7 @@
 
                         <b-button @click="showDeleteConfirmation = true" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
-                  color: rgba(0, 255, 195, 0.87);
+                  color: red;
                   margin-left: 6px;
                   margin-bottom: 10px;
                 " class="bi bi-eye" viewBox="0 0 16 16">
@@ -161,9 +164,9 @@ export default {
             fields: [
 
                 { key: "id", sortable: true },
-                { key: "name", sortable: true },
-                { key: "car_number", sortable: true },
-                { key: "car_color", sortable: true },
+                { key: "vehicle_name", sortable: true },
+                { key: "vehicle.car_number", sortable: true },
+                { key: "vehicle.car_color", sortable: true },
                 { key: "service_meter_reading", sortable: true },
                 { key: "image", sortable: true },
                 { key: "actions", label: "Actions" },
@@ -243,17 +246,7 @@ export default {
             URL.revokeObjectURL(url);
         },
 
-        updateStatus(user) {
-            user.status = user.status === 'Approved' ? 'Pending' : 'Approved';
-            axios
-                .put(`service${user.id}`, user)
-                .then(response => {
-                    console.log('Status updated successfully:', response.data);
-                })
-                .catch(error => {
-                    console.error('Error updating status:', error);
-                });
-        },
+     
 
 
         editUser(userId) {
