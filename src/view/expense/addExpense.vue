@@ -1,7 +1,7 @@
 <template>
     <b-card>
         <b-row>
-    
+
             <div class="col-12 mt-16">
                 <b-form @submit.prevent="addUser" v-if="show">
                     <!-- <h2>Car Information</h2> -->
@@ -19,22 +19,9 @@
                         </h5>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
-                                <b-form-select id="user_id" v-model="user_id" required>
-                                    <option value="">Select Driver</option>
-                                    <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
-                                        {{ driver.name }}
-                                    </option>
-                                </b-form-select>
-                            </b-form-group>
-                        </div>
-
-
                         <!-- <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
-                                <b-form-select id="user_id" v-model="user_id" required :filter="true"
-                                    filter-placeholder="Search for a driver">
+                                <b-form-select  id="user_id" v-model="user_id" required>
                                     <option value="">Select Driver</option>
                                     <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
                                         {{ driver.name }}
@@ -42,7 +29,22 @@
                                 </b-form-select>
                             </b-form-group>
                         </div> -->
-                   <div class="col-md-4 col-12"> 
+                        <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
+                                <b-form-select id="user_id" v-model="user_id" required>
+                                    <option value="">Select Driver</option>
+                                    <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
+                                        {{ driver.name }} - {{ driver.carNumber }}
+                                    </option>
+                                </b-form-select>
+                            </b-form-group>
+                        </div>
+
+
+
+
+
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Amount:" label-for="amount">
                                 <b-form-input id="amount" v-model="amount" placeholder="Enter  amount"
                                     required></b-form-input>
@@ -75,7 +77,8 @@
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Total Life In Km(If have):" label-for="total_life_kilometer">
+                            <b-form-group id="input-group-2" label="Total Life In Km(If have):"
+                                label-for="total_life_kilometer">
                                 <b-form-input id="total_life_kilometer" v-model="total_life_kilometer"
                                     placeholder="Enter  total life in km" required></b-form-input>
                             </b-form-group>
@@ -138,13 +141,8 @@ import { BToast } from "bootstrap-vue";
 export default {
     data() {
         return {
-            // user_id: '', // Selected user_id
-            // drivers: [
-            //     { id: 1, name: 'Driver 1' },
-            //     { id: 2, name: 'Driver 2' },
-            //     { id: 3, name: 'Driver 3' },
-            //     // Add more drivers as needed
-            // ],
+
+            filterText: '',
             selectedType: "",
             show: true,
             codeText: code.introduction,
@@ -266,6 +264,7 @@ export default {
                 this.image = Array.from(files);
             }
         },
+
     },
 };
 </script>
