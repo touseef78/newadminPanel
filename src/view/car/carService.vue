@@ -19,25 +19,27 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Select Car:" label-for="car_id">
-                                <b-form-select id="user_id" v-model="user_id" required>
-                                    <option value="">Select Driver</option>
-                                    <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
-                                        {{ driver.name }}
+                            <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
+                                <b-form-select id="user_id" v-model="vehicle_id" required>
+                                    <option value="">Select Car</option>
+                                    <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
+                                        {{ vehicle.name }}
+                                        &nbsp;
+                                        {{ vehicle.car_number }}  
                                     </option>
                                 </b-form-select>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Meter Reading:" label-for="meter_reading">
-                                <b-form-input id="meter_reading" v-model="meter_reading" placeholder="Enter  meter reading"
+                            <b-form-group id="input-group-2" label="Meter Reading:" label-for="service_meter_reading">
+                                <b-form-input id="service_meter_reading" v-model="service_meter_reading" placeholder="Enter  meter reading"
                                     required></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Picture Upload:" label-for="profile_picture">
+                            <b-form-group id="input-group-2" label="Picture Upload:" label-for="Service Image">
                                 <div style="margin-left: 3px; margin-bottom: 15px">
-                                    <input type="file" accept="image/*" id="image[]" @change="onProfilePictureChange" />
+                                    <input type="file" accept="image/*" id="image" @change="onProfilePictureChange" />
                                 </div>
                             </b-form-group>
                         </div>
@@ -90,13 +92,9 @@ export default {
             codeActiveClass: false,
             image: null,
             isLoading: false,
-            amount: '',
-            category: '',
-            card: '',
-            user_id: '',
-            drivers: [],
-            car_id:'',
-            meter_reading:'',
+            vehicles: [],
+            vehicle_id:'',
+            service_meter_reading:'',
 
 
         };
@@ -119,9 +117,9 @@ export default {
     created() {
         // Load the clients data when the component is created
         axios
-            .get("drivers")
+            .get("vehicle")
             .then((response) => {
-                this.drivers = response.data.data;
+                this.vehicles = response.data.data;
             })
             .catch((error) => {
                 console.log(error);
@@ -151,13 +149,13 @@ export default {
             // Create a FormData object to handle the image file
             const formData = new FormData();
             formData.append("image", this.image);
-            formData.append("meter_reading", this.meter_reading);
-            formData.append("car_id", this.car_id);
+            formData.append("service_meter_reading", this.service_meter_reading);
+            formData.append("vehicle_id", this.vehicle_id);
             axios
-                .post("expense", formData)
+                .post("service", formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("Expense added successfully!", {
+                    this.$bvToast.toast("Service added successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,
