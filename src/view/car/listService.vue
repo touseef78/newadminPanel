@@ -1,3 +1,4 @@
+
 <template>
     <b-card>
         <!-- filter  -->
@@ -20,9 +21,7 @@
                         </b-form-group>
                     </b-col>
                     <b-col lg="6" class="my-1 d-flex justify-content-end">
-                        <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
-              >Import</b-button
-            > -->
+                        <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button> -->
                         <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
                     </b-col>
                 </b-row>
@@ -47,13 +46,14 @@
                             </b-button>
                         </div>
                     </template>
+                    <!-- Action Button Code -->
                     <template #cell(actions)="row">
                         <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
-                  color: rgba(0, 255, 195, 0.87);
-                  margin-left: 6px;
-                  margin-bottom: 10px;
-                " class="bi bi-eye" viewBox="0 0 16 16">
+                color: rgba(0, 255, 195, 0.87);
+                margin-left: 6px;
+                margin-bottom: 10px;
+              " class="bi bi-eye" viewBox="0 0 16 16">
                                 <path
                                     d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
                                 <path
@@ -61,19 +61,12 @@
                             </svg>
                         </b-button>
 
-                        <b-button @click="editUser(row.item.id)" variant="link" class="p-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-                                style="color: orange; margin-left: 10px; margin-bottom: 10px" class="bi bi-pencil"
-                                viewBox="0 0 16 16">
-                                <!-- ... your existing SVG path ... -->
-                                <path
-                                    d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-                            </svg>
-                        </b-button>
                         <b-button @click="showDeleteConfirmation = true" variant="link" class="p-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-                                style="color: red; margin-left: 6px; margin-bottom: 10px" class="bi bi-eye"
-                                viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
+                  color: rgba(0, 255, 195, 0.87);
+                  margin-left: 6px;
+                  margin-bottom: 10px;
+                " class="bi bi-eye" viewBox="0 0 16 16">
                                 <!-- ... your SVG path ... -->
                                 <path
                                     d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
@@ -87,28 +80,15 @@
                                 <b-button variant="secondary" @click="showDeleteConfirmation = false">Cancel</b-button>
                             </template>
                         </b-modal>
-                        <b-button @click="handleButtonClick(row.item)"
-                            :variant="row.item.status === 'Approved' ? 'warning' : 'primary'" class="mb-8 mr-8">
-                            {{ row.item.status === "Approved" ? "Pending" : "Approved" }}
-                        </b-button>
-                        <!-- <b-button
-              @click="toggleCardModal(row.item)"
-              variant="link"
-              class="p-0"
-            >
-            </b-button> -->
-                        <b-modal v-model="isCardModalVisible" title="Select Card Option">
-                            <div>
-                                <b-form-group label="Select Card Option">
-                                    <b-form-radio-group v-model="selectedCardOption">
-                                        <b-form-radio value="Payable">Payable</b-form-radio>
-                                        <b-form-radio value="Receivable">Receivable</b-form-radio>
-                                        <b-form-radio value="Normal">Normal</b-form-radio>
-                                    </b-form-radio-group>
-                                </b-form-group>
-                                <b-button @click="updateCardOption" variant="primary">Save</b-button>
-                            </div>
-                        </b-modal>
+                        <!-- <b-button @click="editUser(row.item.id)" variant="link" class="p-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                style="color: orange; margin-left: 10px; margin-bottom: 10px" class="bi bi-pencil"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                            </svg>
+                        </b-button> -->
+
                     </template>
 
                     <b-form-group label="Filter" label-for="filter-input" label-cols-sm="3" label-align-sm="right"
@@ -128,7 +108,10 @@
                         aria-controls="my-table"></b-pagination>
                 </div>
                 <b-row class="mt-16 align-items-center justify-content-end">
+
                     <b-row>
+
+
                         <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
                             <pre v-highlightjs>
           <code class="hljs html">
@@ -157,34 +140,32 @@ import {
     BPagination,
     BInputGroupAppend,
     BSpinner,
-    BFormRadio,
-    BFormRadioGroup,
 } from "bootstrap-vue";
 import axios from "axios";
 import Papa from "papaparse";
 
+// new code 
+// import code from "./code";   
+// new code end
 export default {
     data() {
         return {
-            perPage: 5,
+            perPage: 8,
             currentPage: 1,
             sortBy: "age",
             sortDesc: false,
-            isCardModalVisible: false, // Initialize to false
             selectedCardOption: "",
-            rowToUpdate: null, // Initialize to false
-
-            users: [], // Instead of 'items', use 'users' array to store fetched data
+            rowToUpdate: null,
+            users: [
+            ], // Instead of 'items', use 'users' array to store fetched data
             fields: [
+
                 { key: "id", sortable: true },
-                { key: "vehicle_name", sortable: true },
+                { key: "name", sortable: true },
                 { key: "car_number", sortable: true },
                 { key: "car_color", sortable: true },
                 { key: "service_meter_reading", sortable: true },
-                // { key: "total_life_kilometer", sortable: true },
-                // { key: "meter_reading", sortable: true },
                 { key: "image", sortable: true },
-                // { key: "status", sortable: true },
                 { key: "actions", label: "Actions" },
             ],
 
@@ -193,6 +174,7 @@ export default {
             showDeleteConfirmation: false,
             itemIdToDelete: null,
             loading: false,
+
         };
     },
     components: {
@@ -208,8 +190,7 @@ export default {
         BPagination,
         BInputGroupAppend,
         BSpinner,
-        BFormRadio,
-        BFormRadioGroup,
+
     },
     computed: {
         sortOptions() {
@@ -224,18 +205,14 @@ export default {
         },
     },
     mounted() {
-        this.fetchData(userId);
-    },
-    created() {
-        const userId = this.$route.params.id;
-        this.fetchData(userId);
+        this.fetchData();
+
     },
     methods: {
-        // const userId = this.$route.params.id;
-        fetchData(userId) {
+        fetchData() {
             this.loading = true; // Set loading to true before fetching data
             axios
-                .get(`service/${userId}`) // Replace with your actual API URL
+                .get("service") // Replace 'your_api_endpoint_url_here' with your actual API URL
                 .then((response) => {
                     this.users = response.data.data;
                     this.totalRows = this.users.length;
@@ -266,57 +243,31 @@ export default {
             URL.revokeObjectURL(url);
         },
 
-        handleButtonClick(item) {
-            this.updateStatus(item);
-            this.toggleCardModal(item);
-        },
         updateStatus(user) {
-            user.status = user.status === "Approved" ? "Pending" : "Approved";
+            user.status = user.status === 'Approved' ? 'Pending' : 'Approved';
             axios
-                .post(`expenseUpdate/${user.id}`, user)
-                .then((response) => {
-                    console.log("Status updated successfully:", response.data);
+                .put(`service${user.id}`, user)
+                .then(response => {
+                    console.log('Status updated successfully:', response.data);
                 })
-                .catch((error) => {
-                    console.error("Error updating status:", error);
+                .catch(error => {
+                    console.error('Error updating status:', error);
                 });
         },
-        toggleCardModal(item) {
-            this.selectedCardOption = ""; // Reset the selected card option
-            this.rowToUpdate = item; // Set the row to be updated
-            this.isCardModalVisible = true; // Show the modal
-        },
 
-        updateCardOption() {
-            if (this.selectedCardOption && this.rowToUpdate) {
-                this.rowToUpdate.card = this.selectedCardOption;
-                axios
-                    .post(`expenseUpdate/${this.rowToUpdate.id}`, {
-                        card: this.selectedCardOption,
-                    })
-                    .then((response) => {
-                        console.log("Card option updated successfully:", response.data);
-                    })
-                    .catch((error) => {
-                        console.error("Error updating card option:", error);
-                    });
-
-                this.isCardModalVisible = false; // Hide the modal
-            }
-        },
 
         editUser(userId) {
-            this.$router.push({ name: "editExpense", params: { id: userId } });
+            this.$router.push({ name: "editDrivers", params: { id: userId } });
         },
 
         showDrivers(userId) {
-            this.$router.push({ name: "viewExpense", params: { id: userId } });
+            this.$router.push({ name: "viewDrivers", params: { id: userId } });
         },
 
         deleteItem(itemId) {
             this.itemIdToDelete = itemId; // Set the item ID to be deleted
             axios
-                .delete(`expense/${itemId}`)
+                .delete(`drivers/${itemId}`)
                 .then((response) => {
                     this.showDeleteConfirmation = false;
                     this.fetchData(); // Refresh the data after deletion
@@ -326,7 +277,6 @@ export default {
                     console.error("Error deleting item:", error);
                 });
         },
-
         downloadImage(imageUrl) {
             const link = document.createElement("a");
             link.href = "https://boltapi.fastnetstaffing.in/" + imageUrl;
@@ -334,6 +284,11 @@ export default {
             link.target = "_blank"; // Open the link in a new tab
             link.click();
         },
+
+        detailsDrivers(userId) {
+            this.$router.push({ name: "expenseDetails", params: { id: userId } });
+        },
+
     },
 };
 </script>
