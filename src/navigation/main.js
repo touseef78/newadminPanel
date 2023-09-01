@@ -113,11 +113,31 @@ export default {
           title: "List Expense",
           navLink: "/expense/list",
         },
+        //  {
+        //   id: "Service",
+        //   title: "Vehicle Service",
+        //   navLink: "/service/vehicle",
+        // },
+          {
+      id: "Service",
+      title: "Service",
+      icon: "Curved-Filter",
+      
+      children: [
+       
+       
          {
           id: "Service",
-          title: "Vehicle Service",
+          title: "Add Vehicle Service",
           navLink: "/service/vehicle",
         },
+         {
+          id: "Service",
+          title: "List Vehicle Service",
+          navLink: "/service/list",
+        },
+      ],
+    },
       ],
     },
 

@@ -285,6 +285,16 @@ const router = new VueRouter({
       component: () => import("../view/car/carService.vue"),
     },
 
+
+
+
+    
+       {
+      path: "/service/list",
+      name: "listService",
+      component: () => import("../view/car/listService.vue"),
+    },
+
     {
       path: "/main/widgets/crypto-icons",
       name: "crypto-icons",

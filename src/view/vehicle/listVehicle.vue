@@ -247,7 +247,7 @@ export default {
         { key: "vehicle_type", sortable: true },
         { key: "last_inspection", sortable: true },
         { key: "next_inspection", sortable: true },
-        { key: "isurance", sortable: true },
+        // { key: "isurance", sortable: true },
         { key: "texameter_inspection_date", sortable: true },
         { key: "car_make", sortable: true },
         { key: "car_model", sortable: true },
