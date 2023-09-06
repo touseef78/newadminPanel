@@ -23,12 +23,30 @@
                                 <b-form-select  id="user_id" v-model="user_id" required>
                                     <option value="">Select Driver</option>
                                     <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
-                                        {{ driver.name }} &nbsp; &nbsp; |  &nbsp; &nbsp; {{ driver.id }}
+                                        {{ driver.name }} &nbsp;{{ driver.last_name }} &nbsp; &nbsp; |  &nbsp; &nbsp; {{ driver.id }}
 
                                     </option>
                                 </b-form-select>
                             </b-form-group>
                         </div>
+                      
+                        <!-- <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
+                                <div class="searchable-dropdown">
+                                    <input id="user_id" v-model="user_id" class="search-input" @input="filterDrivers"
+                                        placeholder="Select Driver" required />
+                                    <div class="search-icon">
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                    <ul v-if="isDropdownOpen" class="dropdown-content">
+                                        <li v-for="driver in filteredDrivers" :key="driver.id"
+                                            @click="selectDriver(driver)">
+                                            {{ driver.name }} | {{ driver.id }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </b-form-group>
+                        </div> -->
 
 
                         <!-- <div class="col-md-4 col-12">
@@ -42,7 +60,7 @@
                                 </b-form-select>
                             </b-form-group>
                         </div> -->
-                   <div class="col-md-4 col-12"> 
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Amount:" label-for="amount">
                                 <b-form-input id="amount" v-model="amount" placeholder="Enter  amount"
                                     required></b-form-input>
@@ -137,6 +155,12 @@ export default {
     data() {
         return {
 
+
+            user_id: '',
+            drivers: [], // Your list of drivers
+            filteredDrivers: [],
+            isDropdownOpen: false,
+
             filterText: '',
             selectedType: "",
             show: true,
@@ -170,6 +194,14 @@ export default {
         BToast,
         BSpinner,
     },
+    // computed: {
+    //     filteredDrivers() {
+    //         // Filter drivers based on the search term
+    //         return this.drivers.filter((driver) =>
+    //             driver.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    //         );
+    //     },
+    // },
 
     created() {
         // Load the clients data when the component is created
@@ -185,7 +217,23 @@ export default {
 
 
 
-    methods: {
+    methods: { 
+        // search able  code 
+        // filterDrivers() {
+        //     // Implement filtering logic based on user input
+        //     const searchText = this.user_id.toLowerCase();
+        //     this.filteredDrivers = this.drivers.filter((driver) =>
+        //         driver.name.toLowerCase().includes(searchText)
+        //     );
+        //     this.isDropdownOpen = true; // Show the dropdown
+        // },
+        // selectDriver(driver) {
+        //     // Implement the selection logic here
+        //     this.user_id = driver.name; // Set the input field value to the selected driver's name
+        //     this.isDropdownOpen = false; // Hide the dropdown
+        // },
+
+      // search able  code end
         onSubmit(event) {
             event.preventDefault();
             alert(JSON.stringify(this.form));
@@ -263,3 +311,62 @@ export default {
     },
 };
 </script>
+
+<!-- <style scoped>
+/* Style for the searchable dropdown container */
+.searchable-dropdown {
+    position: relative;
+}
+
+/* Style for the search input */
+.search-input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    /* Add space for the search icon */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Style for the search icon */
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Style for the dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+/* Style for dropdown items */
+.dropdown-content li {
+    padding: 12px 16px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+/* Highlight the selected item */
+.dropdown-content li:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown when it's open */
+.dropdown-content.show {
+    display: block;
+}
+</style> -->
+
+
+
