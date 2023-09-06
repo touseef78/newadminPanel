@@ -166,7 +166,7 @@ export default {
         {
           id: "Report",
           title: "View Report",
-          navLink: "/report/view",
+          navLink: "/report/view/:id",
         
         },
       ],

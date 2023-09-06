@@ -44,7 +44,12 @@
                                 <b-th scope="col" class="pt-0 pb-18 bg-transparent hp-invoice-table-desc">
                                     Description
                                 </b-th>
-                               
+                                <b-th scope="col" class="pt-0 pb-18 bg-transparent hp-invoice-table-desc">
+                                        First Name
+                                    </b-th>
+                                     <b-th scope="col" class="pt-0 pb-18 bg-transparent hp-invoice-table-desc">
+                                        Last Name
+                                    </b-th>
                                 <b-th scope="col" class="pt-0 pr-0 pb-18 bg-transparent hp-invoice-table-th text-right">
                                     Price
                                 </b-th>
@@ -59,6 +64,12 @@
                                 <b-td class="py-6">
                                     <p>Total Amount</p>
                                 </b-td>
+                                 <b-td class="py-6">
+                                        <p></p>
+                                    </b-td>
+                                     <b-td class="py-6">
+                                        <p></p>
+                                    </b-td>
 
                                 <b-td class="py-6 pr-0 text-right">
                                     <h5>$ 28</h5>
@@ -72,6 +83,12 @@
                                 <b-td class="py-6">
                                     <p>Expense Deduct From Salary</p>
                                 </b-td>
+                                 <b-td class="py-6">
+                                        <p></p>
+                                    </b-td>
+                                     <b-td class="py-6">
+                                        <p></p>
+                                    </b-td>
 
                                 <b-td class="py-6 pr-0 text-right">
                                     <h5>$ 220</h5>
@@ -84,6 +101,12 @@
                                 <b-td class="py-6">
                                     <p>Total Payable</p>
                                 </b-td>
+                                 <b-td class="py-6">
+                                        <p></p>
+                                    </b-td>
+                                     <b-td class="py-6">
+                                        <p></p>
+                                    </b-td>
 
                                 <b-td class="py-6 pr-0 text-right">
                                     <h5>$ 1000</h5>
