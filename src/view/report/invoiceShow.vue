@@ -1,6 +1,7 @@
 <template>
     <b-col cols="12" xl="8">
         <b-card id="invoice" class="card border-0 hp-invoice-card">
+
             <b-row align-h="between">
                 <b-col cols="12" lg="6">
                     <div class="hp-header-logo d-flex align-items-end">
@@ -22,21 +23,27 @@
 
                 <b-col cols="12" lg="6">
                     <p class="hp-p1-body mb-16 text-right">
-                        Date:30/08/2023
+                        Invoice Number:000000123
                     </p>
+                     <p class="hp-p1-body mb-16 text-right">
+                            Date:30/08/2023
+                        </p>
+                </b-col>
+                 <b-col cols="12">
+                  <p>Driver Name</p>
+                  <p>Address:Mega Tower 69-A 4th Floor.</p>
+                  <p>Email: admin@gmail.com</p>
+                  <p>Phone Number:234567890</p>
                 </b-col>
 
-            
-            </b-row>
-
-
-
-            <div class="divider"></div>
-
+      <div class="divider"></div>
+          </b-row>
             <b-row>
                 <b-col cols="12">
                     <b-table-simple small caption-top responsive borderless>
+                       
                         <b-thead>
+
                             <b-tr>
                                 <b-th scope="col" class="pt-0 pl-0 pb-18 bg-transparent">
                                     Number
@@ -44,12 +51,12 @@
                                 <b-th scope="col" class="pt-0 pb-18 bg-transparent hp-invoice-table-desc">
                                     Description
                                 </b-th>
-                                <b-th scope="col" class="pt-0 pb-18 bg-transparent hp-invoice-table-desc">
+                                <!-- <b-th scope="col" class="pt-0 pb-18 bg-transparent hp-invoice-table-desc">
                                         First Name
-                                    </b-th>
-                                     <b-th scope="col" class="pt-0 pb-18 bg-transparent hp-invoice-table-desc">
+                                    </b-th> -->
+                                <!-- <b-th scope="col" class="pt-0 pb-18 bg-transparent hp-invoice-table-desc">
                                         Last Name
-                                    </b-th>
+                                    </b-th> -->
                                 <b-th scope="col" class="pt-0 pr-0 pb-18 bg-transparent hp-invoice-table-th text-right">
                                     Price
                                 </b-th>
@@ -64,12 +71,12 @@
                                 <b-td class="py-6">
                                     <p>Total Amount</p>
                                 </b-td>
-                                 <b-td class="py-6">
+                                <!-- <b-td class="py-6">
                                         <p></p>
                                     </b-td>
                                      <b-td class="py-6">
                                         <p></p>
-                                    </b-td>
+                                    </b-td> -->
 
                                 <b-td class="py-6 pr-0 text-right">
                                     <h5>$ 28</h5>
@@ -83,12 +90,12 @@
                                 <b-td class="py-6">
                                     <p>Expense Deduct From Salary</p>
                                 </b-td>
-                                 <b-td class="py-6">
+                                <!-- <b-td class="py-6">
                                         <p></p>
                                     </b-td>
                                      <b-td class="py-6">
                                         <p></p>
-                                    </b-td>
+                                    </b-td> -->
 
                                 <b-td class="py-6 pr-0 text-right">
                                     <h5>$ 220</h5>
@@ -101,12 +108,12 @@
                                 <b-td class="py-6">
                                     <p>Total Payable</p>
                                 </b-td>
-                                 <b-td class="py-6">
+                                <!-- <b-td class="py-6">
                                         <p></p>
                                     </b-td>
                                      <b-td class="py-6">
                                         <p></p>
-                                    </b-td>
+                                    </b-td> -->
 
                                 <b-td class="py-6 pr-0 text-right">
                                     <h5>$ 1000</h5>
@@ -146,23 +153,23 @@
                     </b-row>
                 </b-col>
             </b-row>
-            
-            
-            
-<!--             
+
+
+
+            <!--             
      <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
         <b-card id="invoice" class="card border-0 hp-invoice-card" ref="invoiceSection">
           <button class="print-button"  @click="printInvoice">Print</button>
         </b-card>
       </b-col> -->
-      <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
-        <b-card id="invoice" class="card border-0 hp-invoice-card" ref="invoiceSection">
-          <!-- ... Your existing invoice card content ... -->
-        </b-card>
-        <b-row align-v="center" align-h="start">
-          <b-button @click="downloadInvoice" type="submit" variant="primary">Download Invoice</b-button>
-        </b-row>
-      </b-col>
+            <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
+                <b-card id="invoice" class="card border-0 hp-invoice-card" ref="invoiceSection">
+                    <!-- ... Your existing invoice card content ... -->
+                </b-card>
+                <b-row align-v="center" align-h="start">
+                    <!-- <b-button @click="downloadInvoice" type="submit" variant="primary">Download Invoice</b-button> -->
+                </b-row>
+            </b-col>
 
 
         </b-card>
@@ -205,7 +212,7 @@ export default {
     //     }
     // },
 
-        methods: {
+    methods: {
         downloadInvoice() {
             const invoiceSection = this.$refs.invoiceSection;
             const invoiceContent = invoiceSection.innerHTML;
@@ -222,6 +229,7 @@ export default {
             a.remove();
             URL.revokeObjectURL(url);
         }
+
     }
 };
 </script>

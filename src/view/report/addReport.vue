@@ -21,7 +21,9 @@
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Driver Name:" label-for="driver_name">
                                 <b-form-input id="driver_name" v-model="driver_name" placeholder="Enter  driver name"
-                                    disabled></b-form-input>
+                                    disabled>
+                                    
+                                </b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
