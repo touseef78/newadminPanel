@@ -54,7 +54,7 @@
                     </template>
                     <!-- Action Button Code -->
                     <template #cell(actions)="row">
-                        <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
+                        <!-- <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
                 color: rgba(0, 255, 195, 0.87);
                 margin-left: 6px;
@@ -65,7 +65,7 @@
                                 <path
                                     d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                             </svg>
-                        </b-button>
+                        </b-button> -->
 
                         <b-button @click="showDeleteConfirmation = true" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
@@ -263,7 +263,7 @@ export default {
         deleteItem(itemId) {
             this.itemIdToDelete = itemId; // Set the item ID to be deleted
             axios
-                .delete(`drivers/${itemId}`)
+                .delete(`service/${itemId}`)
                 .then((response) => {
                     this.showDeleteConfirmation = false;
                     this.fetchData(); // Refresh the data after deletion
