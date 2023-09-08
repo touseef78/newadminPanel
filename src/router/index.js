@@ -248,7 +248,7 @@ const router = new VueRouter({
       component: () => import("../view/report/uploadFile.vue"),
     },
       {
-      path: "/report/view/:id",
+      path: "/report/view",
       name: "viewReport",
       component: () => import("../view/report/viewReport.vue"),
     },
@@ -258,7 +258,7 @@ const router = new VueRouter({
       component: () => import("../view/report/addReport.vue"),
     },
     {
-  path: "/report/show/:id",
+  path: "/report/show/:userId",
   name: "invoiceShow",
   component: () => import("../view/report/invoiceShow.vue"),
 },

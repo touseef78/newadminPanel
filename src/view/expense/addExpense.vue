@@ -20,16 +20,17 @@
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
-                                <b-form-select  id="user_id" v-model="user_id" required>
+                                <b-form-select id="user_id" v-model="user_id" required>
                                     <option value="">Select Driver</option>
                                     <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
-                                        {{ driver.name }} &nbsp;{{ driver.last_name }} &nbsp; &nbsp; |  &nbsp; &nbsp; {{ driver.id }}
+                                        {{ driver.name }} &nbsp;{{ driver.last_name }} &nbsp; &nbsp; | &nbsp; &nbsp; {{
+                                            driver.id }}
 
                                     </option>
                                 </b-form-select>
                             </b-form-group>
                         </div>
-                      
+
                         <!-- <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
                                 <div class="searchable-dropdown">
@@ -45,19 +46,6 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </b-form-group>
-                        </div> -->
-
-
-                        <!-- <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
-                                <b-form-select id="user_id" v-model="user_id" required :filter="true"
-                                    filter-placeholder="Search for a driver">
-                                    <option value="">Select Driver</option>
-                                    <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
-                                        {{ driver.name }}
-                                    </option>
-                                </b-form-select>
                             </b-form-group>
                         </div> -->
                         <div class="col-md-4 col-12">
@@ -87,7 +75,7 @@
                                 <b-form-select id="card" v-model="card" required>
                                     <option value="">Select Card</option>
                                     <option>Payable</option>
-                                    <option>Receiveable</option>
+                                    <option>Receivable</option>
                                     <option>Normal</option>
                                 </b-form-select>
                             </b-form-group>
@@ -217,7 +205,7 @@ export default {
 
 
 
-    methods: { 
+    methods: {
         // search able  code 
         // filterDrivers() {
         //     // Implement filtering logic based on user input
@@ -233,7 +221,7 @@ export default {
         //     this.isDropdownOpen = false; // Hide the dropdown
         // },
 
-      // search able  code end
+        // search able  code end
         onSubmit(event) {
             event.preventDefault();
             alert(JSON.stringify(this.form));

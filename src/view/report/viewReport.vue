@@ -35,7 +35,7 @@
                     :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
                     :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
                     <template #cell(driver_name)="row">
-                        {{ `${row.item.driver.name} ${row.item.driver.last_name}` }}
+                        {{ `${row.item.driver.name} ${row.item.driver.last_name} ` }}
                     </template>
                     <!-- Action Button Code -->
                     <template #cell(image)="row">
@@ -205,7 +205,7 @@ export default {
             a.click();
             URL.revokeObjectURL(url);
         },
-          navigateToAddReport(userId) {
+        navigateToAddReport(userId) {
             // Use Vue Router to navigate to the "addReport" route with the selected user's ID
             this.$router.push({ name: 'addReport', params: { userId } });
         },
