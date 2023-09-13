@@ -30,7 +30,7 @@
                         </p>
                 </b-col>
                  <b-col cols="12">
-                  <p>Driver Name</p>
+                  <p>Driver Name:</p>
                   <p>Address:Mega Tower 69-A 4th Floor.</p>
                   <p>Email: admin@gmail.com</p>
                   <p>Phone Number:234567890</p>
