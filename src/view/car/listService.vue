@@ -171,6 +171,7 @@ export default {
                 { key: "car_number", sortable: true },
                 { key: "car_color", sortable: true },
                 { key: "service_meter_reading", sortable: true },
+                { key: "category", sortable: true },
                 { key: "image", sortable: true },
                 { key: "actions", label: "Actions" },
             ],

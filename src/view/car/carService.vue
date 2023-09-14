@@ -14,7 +14,7 @@
                 margin-left: 5px;
                 font-weight: bold;
               ">
-                          Vehicle Service 
+                          Vehicle Maintenance 
                         </h5>
                     </div>
                     <div class="row">
@@ -37,14 +37,27 @@
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Category:" label-for="category">
+                                <b-form-select id="category" v-model="category" required>
+                                    <option value="">Select Category</option>
+                                    <option>Petrol</option>
+                                    <option>Puncher</option>
+                                    <option>Air Pressure</option>
+                                    <option>Tyre Change</option>
+                                    <option>Challan</option>
+                                    <option>Online Payment</option>
+                                    <option>Customer</option>
+                                    <option>Other</option>
+                                </b-form-select>
+                            </b-form-group>
+                        </div>
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Picture Upload:" label-for="Service Image">
                                 <div style="margin-left: 3px; margin-bottom: 15px">
                                     <input type="file" accept="image/*" id="image" @change="onProfilePictureChange" />
                                 </div>
                             </b-form-group>
                         </div>
-
-
                     </div>
                     <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
                         <span v-if="!isLoading">Submit</span>
@@ -94,6 +107,7 @@ export default {
             isLoading: false,
             vehicles: [],
             vehicle_id:'',
+            category:'',
             service_meter_reading:'',
 
 
@@ -150,12 +164,13 @@ export default {
             const formData = new FormData();
             formData.append("image", this.image);
             formData.append("service_meter_reading", this.service_meter_reading);
+            formData.append("category", this.category);
             formData.append("vehicle_id", this.vehicle_id);
             axios
                 .post("service", formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("Service added successfully!", {
+                    this.$bvToast.toast("Maintenance added successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,

@@ -120,7 +120,7 @@ export default {
         // },
           {
       id: "Service",
-      title: "Service",
+      title: "Maintenance",
       icon: "Curved-Filter",
       
       children: [
@@ -128,12 +128,12 @@ export default {
        
          {
           id: "Service",
-          title: "Add Vehicle Service",
+          title: "Add Vehicle Maintenance",
           navLink: "/service/vehicle",
         },
          {
           id: "Service",
-          title: "List Vehicle Service",
+          title: "List Vehicle Maintenance",
           navLink: "/service/list",
         },
       ],
