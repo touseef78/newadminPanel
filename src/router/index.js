@@ -295,6 +295,14 @@ const router = new VueRouter({
       component: () => import("../view/car/listService.vue"),
     },
 
+   // uberfile
+
+    {
+      path: "/uberfile/listUberFile",
+      name: "listUberFile",
+      component: () => import("../view/uberfile/listUberFile.vue"),
+    },
+
     {
       path: "/main/widgets/crypto-icons",
       name: "crypto-icons",

@@ -191,19 +191,26 @@ export default {
         // },
       ],
     },
-    // {
-    //   id: "Service",
-    //   title: "Service",
-    //   icon: "Curved-Filter",
+
+    //  UberFile
+    {
+      id: "uberFile",
+      title: "UberFile",
+      icon: "Curved-Wallet",
       
-    //   children: [
-    //     {
-    //       id: "Service",
-    //       title: "Vehicle Service",
-    //       navLink: "/service/vehicle",
-    //     },
-      
-    //   ],
-    // },
+      children: [
+        {
+          id: "uberFile",
+          title: "File Table",
+          navLink: "/uberfile/listUberFile",
+        },
+        // {
+        //   id: "Report",
+        //   title: "View Report",
+        //   navLink: "/report/view",
+        
+        // },
+      ],
+    },
   ]
 }
