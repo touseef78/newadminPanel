@@ -314,7 +314,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Bank Account Holder Name:" label-for="bank_account_holder_name">
                   <b-form-input id="bank_name" type="text" placeholder="Enter bank account holder name"
-                    v-model="bank_name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters"
+                    v-model="bank_name"  pattern="[A- Z a-z]+" title="Please enter only alphabetic characters"
                     required></b-form-input>
                 </b-form-group>
               </div>
