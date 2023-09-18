@@ -144,7 +144,7 @@
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Select Type:" label-for="type">
+                <b-form-group id="input-group-2" label="Select Driver:" label-for="type">
                   <b-form-select v-model="type" required>
                     <!-- <option value="">Select Type</option> -->
                     <option value="uber" >Uber</option>
