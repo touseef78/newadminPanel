@@ -7,8 +7,8 @@
             <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Select Driver:" label-for="Select Driver">
                                 <b-form-select id="type" v-model="type" required>
-                                    <option value="b2b">Bolt</option>
-                                    <option value="driver">Uber</option>
+                                    <option value="bolt">Bolt</option>
+                                    <option value="uber">Uber</option>
                                 </b-form-select>
                             </b-form-group>
                         </div>
