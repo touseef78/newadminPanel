@@ -511,7 +511,7 @@ export default {
       // Add Driver
       name: "",
       email: "",
-      secuirty_code: "",
+      security_code: "",
       password: "",
       last_name: "",
       mobile: "",
@@ -617,7 +617,7 @@ export default {
       );
       formData.append("name", this.name);
       formData.append("email", this.email);
-      formData.append("secuirty_code", this.secuirty_code);
+      formData.append("security_code", this.security_code);
       formData.append("last_name", this.last_name);
       formData.append("joining_date", this.joining_date);
       formData.append("password", this.password);
