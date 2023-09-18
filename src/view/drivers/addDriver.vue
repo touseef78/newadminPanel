@@ -143,6 +143,22 @@
                   </b-form-input>
                 </b-form-group>
               </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Select Type:" label-for="type">
+                  <b-form-select v-model="type" required>
+                    <!-- <option value="">Select Type</option> -->
+                    <option value="uber" >Uber</option>
+                    <option value="bolt">Bolt</option>
+                  </b-form-select>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
+                  <div style="margin-left: 3px; margin-bottom: 15px">
+                    <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
+                  </div>
+                </b-form-group>
+              </div>
 
               <div v-if="selectedCarType === 'Company'" class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
@@ -227,13 +243,6 @@
                                                 </pre>
                   </div>
                 </b-row>
-              </div>
-              <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                  <div style="margin-left: 3px; margin-bottom: 15px">
-                    <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
-                  </div>
-                </b-form-group>
               </div>
             </div>
 
@@ -459,6 +468,7 @@ export default {
       vehicle_image: [],
       hourly_enter_amount: "",
       total_number_hour: "",
+      type: "",
     };
   },
   components: {
@@ -555,7 +565,8 @@ export default {
       formData.append("car_color", this.car_color);
       formData.append("car_number", this.car_number);
       formData.append("total_number_hour", this.total_number_hour);
-      formData.append("type", "uber");
+      formData.append("type", this.type);
+      // formData.append("type", "uber");
       formData.append("joining_date", this.joining_date);
       for (const image of this.vehicle_image) {
         formData.append("vehicle_image[]", image);
