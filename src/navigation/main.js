@@ -155,6 +155,7 @@ export default {
         },
       ],
     },
+
       // Report
       {
       id: "Report",
@@ -212,5 +213,23 @@ export default {
         // },
       ],
     },
+
+ // uber and bolt data
+      {
+        id: "uber",
+        title: "Uber Data",
+        navLink: "/uberdata",
+        icon: "Curved-Wallet",
+      },
+
+
+      {
+        id: "bolt",
+        title: "Bolt Data",
+        navLink: "/boltdata",
+        icon: "Curved-Wallet",
+
+      },
+
   ]
 }

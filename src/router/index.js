@@ -339,15 +339,20 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
-
-
-
-
     
        {
       path: "/service/list",
       name: "listService",
       component: () => import("../view/car/listService.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
+    {
+      path: "/maintenance/edit/:id",
+      name: "maintenanceEdit",
+      component: () => import("../view/car/editService.vue"),
       meta: {
         requiresAuth: true, // This route requires authentication
       },
@@ -359,6 +364,22 @@ const router = new VueRouter({
       path: "/uberfile/listUberFile",
       name: "listUberFile",
       component: () => import("../view/uberfile/listUberFile.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    {
+      path: "/uberdata",
+      name: "uberdata",
+      component: () => import("../view/uberfile/uberdata.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    {
+      path: "/boltdata",
+      name: "boltdata",
+      component: () => import("../view/uberfile/boltdata.vue"),
       meta: {
         requiresAuth: true, // This route requires authentication
       },

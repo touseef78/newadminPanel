@@ -32,9 +32,7 @@
             </b-form-group>
           </b-col>
           <b-col lg="6" class="my-1 d-flex justify-content-end">
-            <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
-              >Import</b-button
-            > -->
+            <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button> -->
             <b-button
               @click="exportDataToCSV"
               variant="primary"
@@ -64,44 +62,12 @@
           y
           responsive
         >
-          <template #cell(driver_name)="row">
-            {{ `${row.item.driver.name} ${row.item.driver.last_name} ` }}
-          </template>
-          <template #cell(uber_earning)="row">
-            {{
-              row.item.driver.uber_earning
-                ? row.item.driver.uber_earning
-                : NonNullable
-            }}
-          </template>
-          <template #cell(bolt_earning)="row">
-            {{
-              row.item.driver.bolt_earning
-                ? row.item.driver.bolt_earning
-                : NonNullable
-            }}
-          </template>
           <!-- Action Button Code -->
-          <template #cell(image)="row">
-            <img
-              :src="'https://boltapi.fastnetstaffing.in/' + row.item.image"
-              alt="Image"
-              class="img-fluid"
-              style="max-width: 100px; max-height: 100px"
-            />
-          </template>
           <!-- <template #cell(actions)="row">
-                        <b-button @click="detailsDrivers(row.item.id)" variant="primary" class="mb-8 mr-8">Pay Now
-                        </b-button>
-                    </template> -->
-          <template #cell(actions)="row">
-            <b-button
-              @click="navigateToAddReport(row.item.id)"
-              variant="primary"
-              class="mb-8 mr-8"
-              >Pay Now</b-button
+            <b-button @click="downloadFile(row.item.file)" variant="primary"
+              >Download</b-button
             >
-          </template>
+          </template> -->
 
           <b-form-group
             label="Filter"
@@ -169,36 +135,30 @@ import {
   BPagination,
   BInputGroupAppend,
   BSpinner,
-  BFormRadio,
-  BFormRadioGroup,
 } from "bootstrap-vue";
 import axios from "axios";
 import Papa from "papaparse";
 
+// new code
+// import code from "./code";
+// new code end
 export default {
   data() {
     return {
-      perPage: 5,
+      perPage: 8,
       currentPage: 1,
       sortBy: "age",
       sortDesc: false,
-      isCardModalVisible: false, // Initialize to false
       selectedCardOption: "",
-      rowToUpdate: null, // Initialize to false
-
+      rowToUpdate: null,
       users: [], // Instead of 'items', use 'users' array to store fetched data
       fields: [
-        { key: "srNo", label: "Sr No" },
         { key: "id", sortable: true },
-        { key: "driver_name", sortable: true },
-        { key: "salary_fix", sortable: true },
-        { key: "total_payable", sortable: true },
-        { key: "total_receivable", sortable: true },
+        { key: "name", sortable: true },
+        { key: "last_name", sortable: true },
         { key: "uber_earning", sortable: true },
-        { key: "bolt_earning", sortable: true },
-        // { key: "image", sortable: true },
-        // { key: "status", sortable: true },
-        { key: "actions", label: "Actions" },
+        { key: "created_at", sortable: true },
+        // { key: "actions", label: "Actions" },
       ],
 
       filter: "", // Define filter property for search functionality
@@ -221,8 +181,6 @@ export default {
     BPagination,
     BInputGroupAppend,
     BSpinner,
-    BFormRadio,
-    BFormRadioGroup,
   },
   computed: {
     sortOptions() {
@@ -243,15 +201,9 @@ export default {
     fetchData() {
       this.loading = true; // Set loading to true before fetching data
       axios
-        .get("expense") // Replace 'your_api_endpoint_url_here' with your actual API URL
+        .get("uberdata") // Replace 'your_api_endpoint_url_here' with your actual API URL
         .then((response) => {
           this.users = response.data.data;
-          this.users.forEach((item, index) => {
-            item.srNo = index + 1;
-          });
-          this.users.forEach((item) => {
-            item.id = item.user_id; // Use user's ID as the serial number
-          });
           this.totalRows = this.users.length;
         })
         .catch((error) => {
@@ -279,9 +231,27 @@ export default {
       a.click();
       URL.revokeObjectURL(url);
     },
-    navigateToAddReport(userId) {
-      // Use Vue Router to navigate to the "addReport" route with the selected user's ID
-      this.$router.push({ name: "addReport", params: { userId } });
+
+    deleteItem(itemId) {
+      this.itemIdToDelete = itemId; // Set the item ID to be deleted
+      axios
+        .delete(`fileDelete/${itemId}`)
+        .then((response) => {
+          this.showDeleteConfirmation = false;
+          this.fetchData(); // Refresh the data after deletion
+        })
+        .catch((error) => {
+          // Handle error
+          console.error("Error deleting item:", error);
+        });
+    },
+    downloadFile(fileUrl) {
+      // Construct a download link for the file
+      const link = document.createElement("a");
+      link.href = "https://boltapi.fastnetstaffing.in/" + fileUrl;
+      link.download = "downloaded_file"; // Specify the default filename for the downloaded file
+      link.target = "_blank"; // Open the link in a new tab
+      link.click();
     },
   },
 };
