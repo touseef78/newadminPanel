@@ -120,7 +120,7 @@ export default {
         // },
           {
       id: "Service",
-      title: "Service",
+      title: "Maintenance",
       icon: "Curved-Filter",
       
       children: [
@@ -128,12 +128,12 @@ export default {
        
          {
           id: "Service",
-          title: "Add Vehicle Service",
+          title: "Add Vehicle Maintenance",
           navLink: "/service/vehicle",
         },
          {
           id: "Service",
-          title: "List Vehicle Service",
+          title: "List Vehicle Maintenance",
           navLink: "/service/list",
         },
       ],
@@ -155,6 +155,7 @@ export default {
         },
       ],
     },
+
       // Report
       {
       id: "Report",
@@ -191,19 +192,44 @@ export default {
         // },
       ],
     },
-    // {
-    //   id: "Service",
-    //   title: "Service",
-    //   icon: "Curved-Filter",
+
+    //  UberFile
+    {
+      id: "uberFile",
+      title: "UberFile",
+      icon: "Curved-Wallet",
       
-    //   children: [
-    //     {
-    //       id: "Service",
-    //       title: "Vehicle Service",
-    //       navLink: "/service/vehicle",
-    //     },
-      
-    //   ],
-    // },
+      children: [
+        {
+          id: "uberFile",
+          title: "File Table",
+          navLink: "/uberfile/listUberFile",
+        },
+        // {
+        //   id: "Report",
+        //   title: "View Report",
+        //   navLink: "/report/view",
+        
+        // },
+      ],
+    },
+
+ // uber and bolt data
+      {
+        id: "uber",
+        title: "Uber Data",
+        navLink: "/uberdata",
+        icon: "Curved-Wallet",
+      },
+
+
+      {
+        id: "bolt",
+        title: "Bolt Data",
+        navLink: "/boltdata",
+        icon: "Curved-Wallet",
+
+      },
+
   ]
 }

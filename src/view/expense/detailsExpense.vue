@@ -64,8 +64,11 @@
           y
           responsive
         >
-          <template #cell(driver.name)="row">
+          <template #cell(driver_name)="row">
             {{ `${row.item.driver.name} ${row.item.driver.last_name}` }}
+          </template>
+          <template #cell(type)="row">
+            {{ `${row.item.card}` }}
           </template>
           <!-- Action Button Code -->
           <template #cell(image)="row">
@@ -244,6 +247,167 @@
         </b-row>
       </div>
     </b-row>
+    <br />
+    <div
+      style="
+        background-color: rgb(97, 116, 152);
+        height: 32px;
+        border-radius: 4px;
+      "
+    >
+      <h5
+        style="color: rgb(223, 227, 238); margin-left: 5px; font-weight: bold"
+      >
+        Vehicle Expense
+      </h5>
+    </div>
+    <br />
+    <div v-if="loading" class="text-center mt-4">
+      <b-spinner label="Loading..."></b-spinner>
+    </div>
+    <div class="col-12 mt-16">
+      <div>
+        <b-row class="align-items-center">
+          <b-col lg="6" class="my-1">
+            <b-form-group
+              label="Filter"
+              label-for="filter-input"
+              label-cols-sm="1"
+              label-align-sm="right"
+              label-size="sm"
+              class="mb-0"
+            >
+              <b-input-group size="sm">
+                <b-form-input
+                  id="filter-input"
+                  v-model="filter"
+                  type="search"
+                  placeholder="Type to Search"
+                ></b-form-input>
+                <b-input-group-append>
+                  <b-button :disabled="!filter" @click="filter = ''"
+                    >Clear</b-button
+                  >
+                </b-input-group-append>
+              </b-input-group>
+            </b-form-group>
+          </b-col>
+          <b-col lg="6" class="my-1 d-flex justify-content-end">
+            <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button> -->
+            <b-button
+              @click="exportDataToCSV"
+              variant="primary"
+              class="mb-8 mr-8"
+              >Export</b-button
+            >
+          </b-col>
+        </b-row>
+      </div>
+    </div>
+    <!-- filter end -->
+    <b-row>
+      <div class="col-12 mt-16">
+        <b-table
+          id="vehicleTable"
+          :items="vehicles"
+          :fields="vehicleFields"
+          :current-page="currentPage"
+          :per-page="perPage"
+          :filter="filter"
+          :filter-included-fields="filterOn"
+          :sort-by.sync="sortBy"
+          :sort-desc.sync="sortDesc"
+          :sort-direction="sortDirection"
+          show-empty
+          @filtered="onFiltered"
+          responsive
+        >
+          <template #cell(vehicle_name)="row">
+            {{ `${row.item.vehicle.name}` }}
+          </template>
+          <template #cell(car_color)="row">
+            {{ `${row.item.vehicle.car_color}` }}
+          </template>
+          <template #cell(car_number)="row">
+            {{ `${row.item.vehicle.car_number}` }}
+          </template>
+          <template #cell(service_meter_reading)="row">
+            {{ `${row.item.vehicle.service_meter_reading}` }}
+          </template>
+          <template #cell(total_life_kilometer)="row">
+            {{ `${row.item.vehicle.total_life_kilometer}` }}
+          </template>
+          
+          <!-- Action Button Code -->
+          <template #cell(image)="row">
+            <div>
+              <img
+                :src="'https://boltapi.fastnetstaffing.in/' + row.item.image"
+                alt="Image"
+                class="img-fluid"
+                style="max-width: 100px; max-height: 100px"
+              />
+              <b-button
+                @click="downloadImage(row.item.image)"
+                variant="success"
+                class="mt-2"
+              >
+                View Image
+              </b-button>
+            </div>
+          </template>
+          <!-- Action Button Code -->
+          <template #cell(actions)="row"> </template>
+
+          <b-form-group
+            label="Filter"
+            label-for="filter-input"
+            label-cols-sm="3"
+            label-align-sm="right"
+            label-size="sm"
+            class="mb-0"
+          >
+            <b-input-group size="sm">
+              <b-form-input
+                id="filter-input"
+                v-model="filter"
+                type="search"
+                placeholder="Type to Search"
+              ></b-form-input>
+
+              <b-input-group-append>
+                <b-button :disabled="!filter" @click="filter = ''"
+                  >Clear</b-button
+                >
+              </b-input-group-append>
+            </b-input-group>
+          </b-form-group>
+        </b-table>
+        <div class="mx-8 d-flex justify-content-end">
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="rows"
+            :per-page="perPage"
+            aria-controls="my-table"
+          ></b-pagination>
+        </div>
+        <b-row class="mt-16 align-items-center justify-content-end">
+          <b-row>
+            <div
+              v-if="codeActive"
+              class="col-12 mt-24 hljs-container"
+              :class="{ active: codeActiveClass }"
+            >
+              <pre v-highlightjs>
+          <code class="hljs html">
+            {{ codeText }}
+          </code>
+        </pre>
+            </div>
+          </b-row>
+        </b-row>
+      </div> </b-row
+    >``
   </b-card>
 </template>
 
@@ -278,18 +442,29 @@ export default {
       selectedCardOption: "",
       rowToUpdate: null, // Initialize to false
 
-      users: [], // Instead of 'items', use 'users' array to store fetched data
+      users: [],
+      vehicles: [], // Add a new property to store vehicle data
       fields: [
         { key: "id", sortable: true },
-        { key: "driver.name", sortable: true },
+        { key: "driver_name", sortable: true },
         { key: "amount", sortable: true },
-        { key: "card", sortable: true },
+        { key: "type", sortable: true },
         { key: "category", sortable: true },
-        { key: "total_life_kilometer", sortable: true },
-        { key: "meter_reading", sortable: true },
         { key: "image", sortable: true },
+        { key: "created_at", sortable: true },
         { key: "status", sortable: true },
         { key: "actions", label: "Actions" },
+      ],
+      vehicleFields: [
+        { key: "id", sortable: true },
+        { key: "vehicle_name", sortable: true },
+        { key: "car_number", sortable: true },
+        { key: "car_color", sortable: true },
+        { key: "service_meter_reading", sortable: true },
+        { key: "total_life_kilometer", sortable: true },
+        { key: "category", sortable: true },
+        { key: "created_at", sortable: true },
+        { key: "image", sortable: true },
       ],
 
       filter: "", // Define filter property for search functionality
@@ -329,10 +504,12 @@ export default {
   },
   mounted() {
     this.fetchData(userId);
+    this.fetchVehicleExpense(userId);
   },
   created() {
     const userId = this.$route.params.id;
     this.fetchData(userId);
+    this.fetchVehicleExpense(userId);
   },
   methods: {
     // const userId = this.$route.params.id;
@@ -351,6 +528,22 @@ export default {
           this.loading = false; // Set loading to false after fetching data, whether success or error
         });
     },
+    fetchVehicleExpense(userId) {
+      this.loading = true;
+      axios
+        .get(`VehicleExpense/${userId}`)
+        .then((response) => {
+          this.vehicles = response.data.data; // Store the fetched vehicle data
+          this.totalRows = this.vehicles.length;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    },
+
     onFiltered(filteredItems) {
       this.totalRows = filteredItems.length;
       this.currentPage = 1;

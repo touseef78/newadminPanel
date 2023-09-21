@@ -59,6 +59,15 @@
           y
           responsive
         >
+
+        <template #cell(meter_reading)="row">
+            <!-- {{ `${row.item.service_meter_reading}` }} -->
+            {{
+              row.item.service_meter_reading
+                ? row.item.service_meter_reading
+                : NonNullable
+            }}
+          </template>
           <!-- Action Button Code -->
           <template #cell(actions)="row">
             <b-button
@@ -253,6 +262,7 @@ export default {
         { key: "car_model", sortable: true },
         { key: "car_color", sortable: true },
         { key: "car_number", sortable: true },
+        { key: "meter_reading", sortable: true },
         { key: "actions", label: "Actions" },
       ],
 

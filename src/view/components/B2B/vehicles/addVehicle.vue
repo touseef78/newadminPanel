@@ -5,6 +5,64 @@
         <b-form @submit.prevent="addUser" v-if="show">
           <!-- <h2>Car Information</h2> -->
           <div style="
+              background-color: rgb(97, 116, 152);
+              height: 32px;
+              border-radius: 4px;
+            ">
+            <h5 style="
+                color: rgb(223, 227, 238);
+                margin-left: 5px;
+                font-weight: bold;
+              ">
+              Company Information
+            </h5>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-12">
+              <b-form-group id="input-group-1" label="Company Name:" label-for="company_name">
+                <b-form-input id="company_name" type="text" placeholder="Enter comapany name" v-model="company_name"
+                  required></b-form-input>
+              </b-form-group>
+            </div>
+            <div class="col-md-4 col-12">
+              <b-form-group id="input-group-1" label=" Organization Name:" label-for="owner_name">
+                <b-form-input id="owner_name" type="text" placeholder="Enter organization name" v-model="owner_name"
+                  pattern="[A- Z a-z]+" title="Please enter only alphabetic characters" 
+                  required></b-form-input>
+              </b-form-group>
+            </div>
+            <div class="col-md-4 col-12">
+              <b-form-group id="input-group-1" label=" Organization Number:" label-for="owner_number">
+                <b-form-input id="owner_number" type="text" placeholder="Enter organization number" v-model="owner_number"
+                 pattern="[0-9]+" title="Please enter only numeric characters"
+                  required></b-form-input>
+              </b-form-group>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 col-12">
+              <b-form-group id="input-group-1" label="Company Document:" label-for="company_document">
+                <div style="margin-left: 3px; margin-bottom: 15px">
+                  <input type="file" accept="image/*" id="company_document" @change="onCompanyDocumentChange" />
+                </div>
+              </b-form-group>
+            </div>
+
+            <!-- new code  -->
+            <!-- <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
+                                <div style="margin-left: 3px; margin-bottom: 15px">
+                                    <input type="file" accept="image/*" id="profile_picture"
+                                        @change="onProfilePictureChange" />
+                                </div>
+                            </b-form-group>
+                        </div> -->
+            <!-- new code end  -->
+          </div>
+
+
+          <div style="
                 background-color: rgb(97, 116, 152);
                 height: 32px;
                 border-radius: 4px;
@@ -293,6 +351,10 @@ export default {
       mileage: "",
       accidental_claim: "",
       other_expense: "",
+      owner_name: "",
+      owner_number: "",
+      company_document: "",
+      company_name: "",
     };
   },
   components: {
@@ -363,6 +425,10 @@ export default {
       formData.append("mileage", this.mileage);
       formData.append("accidental_claim", this.accidental_claim);
       formData.append("other_expense", this.other_expense);
+      formData.append("owner_name", this.owner_name);
+      formData.append("owner_number", this.owner_number);
+      formData.append("company_document", this.company_document);
+      formData.append("company_name", this.company_name);
       formData.append("type", "b2b");
       axios
         .post("vehicle", formData)

@@ -103,49 +103,51 @@ const router = new VueRouter({
       path: "/drivers/add",
       name: "drivers",
       component: () => import("@/view/drivers/addDriver"),
-      //       meta: {
-      //   title: "Crypto Icons",
-      //   breadcrumb: [
-      //     {
-      //       text: "Main"
-      //     },
-      //     {
-      //       text: "Widgets"
-      //     }
-      //   ]
-      // },
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
 
   {
       path: "/vehicle/addVehicle",
       name: "vehicle",
       component: () => import("@/view/vehicle/addVehicle"),
-     
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
     {
       path: "/vehicle/viewVehicle/:id",
       name: "viewVehicle",
       component: () => import("@/view/vehicle/viewVehicle"),
-     
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
     {
       path: "/vehicle/editVehicle/:id",
       name: "editVehicle",
       component: () => import("@/view/vehicle/editVehicle"),
-     
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
     {
       path: "/vehicle/listVehicle",
       name: "vehicle",
       component: () => import("@/view/vehicle/listVehicle"),
-      
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
    
     {
       path: "/drivers/list",
       name: "drivers",
       component: () => import("@/view/drivers/listDriver"),
-     
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
     // new list driver 
     //  {
@@ -159,25 +161,33 @@ const router = new VueRouter({
       path: "/B2B/driver/lists",
       name: "driver",
       component: () => import("../view/components/B2B/driver/listDriver.vue"),
-     
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
       {
       path: "/B2B/driver/add",
       name: "driver",
       component: () => import("../view/components/B2B/driver/addDriver.vue"),
-     
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
         {
       path: "/B2B/driver/edit/:id",
       name: "B2B/driver/edit",
       component: () => import("../view/components/B2B/driver/editDriver.vue"),
-     
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
         {
       path: "/B2B/driver/view/:id",
       name: "B2B/driver/view",
       component: () => import("../view/components/B2B/driver/viewDriver.vue"),
-     
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
    // B2B Vehicle
 
@@ -185,13 +195,17 @@ const router = new VueRouter({
       path: "/B2B/Vehicle/lists",
       name: "/B2B/Vehicle/lists",
       component: () => import("../view/components/B2B/vehicles/listVehicle.vue"),
-     
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
       {
       path: "/B2B/Vehicle/add",
       name: "/B2B/Vehicle/add",
       component: () => import("../view/components/B2B/vehicles/addVehicle.vue"),
-     
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
 
 
@@ -200,7 +214,9 @@ const router = new VueRouter({
       path: "/drivers/edit/:id",
       name: "editDrivers",
       component: () => import("../view/drivers/editDriver.vue"),
-     
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
    
     
@@ -208,6 +224,9 @@ const router = new VueRouter({
       path: "/drivers/view/:id",
       name: "viewDrivers",
       component: () => import("../view/drivers/viewDriver.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
 
   
@@ -217,28 +236,43 @@ const router = new VueRouter({
       path: "/expense/add",
       name: "addExpense",
       component: () => import("../view/expense/addExpense.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
    {
       path: "/expense/list",
       name: "listExpense",
       component: () => import("../view/expense/listExpense.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
     
      {
       path: "/expense/edit/:id",
       name: "editExpense",
       component: () => import("../view/expense/editExpense.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
      {
       path: "/expense/view/:id",
       name: "viewExpense",
       component: () => import("../view/expense/viewExpense.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
 
     {
       path: "/expense/Details/:id",
       name: "expenseDetails",
       component: () => import("../view/expense/detailsExpense.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
 
     // Report
@@ -246,21 +280,33 @@ const router = new VueRouter({
       path: "/file/upload",
       name: "uploadFile",
       component: () => import("../view/report/uploadFile.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
       {
       path: "/report/view",
       name: "viewReport",
       component: () => import("../view/report/viewReport.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
        {
       path: "/report/Adds/:userId",
       name: "addReport",
       component: () => import("../view/report/addReport.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
     {
   path: "/report/show/:userId",
   name: "invoiceShow",
   component: () => import("../view/report/invoiceShow.vue"),
+  meta: {
+    requiresAuth: true, // This route requires authentication
+  },
 },
 
 
@@ -271,28 +317,72 @@ const router = new VueRouter({
       path: "/Import/importFile",
       name: "importFile",
       component: () => import("../view/report/importFile.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
     // invoice
       {
       path: "/table/invoice",
       name: "invoiceTable",
       component: () => import("../view/invoice/invoiceTable.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
     // Service 
        {
       path: "/service/vehicle",
       name: "carService",
       component: () => import("../view/car/carService.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
-
-
-
-
     
        {
       path: "/service/list",
       name: "listService",
       component: () => import("../view/car/listService.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
+    {
+      path: "/maintenance/edit/:id",
+      name: "maintenanceEdit",
+      component: () => import("../view/car/editService.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
+   // uberfile
+
+    {
+      path: "/uberfile/listUberFile",
+      name: "listUberFile",
+      component: () => import("../view/uberfile/listUberFile.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    {
+      path: "/uberdata",
+      name: "uberdata",
+      component: () => import("../view/uberfile/uberdata.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    {
+      path: "/boltdata",
+      name: "boltdata",
+      component: () => import("../view/uberfile/boltdata.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
     },
 
     {
@@ -349,6 +439,7 @@ const router = new VueRouter({
       component: () => import("@/view/main/layouts/divider"),
       meta: {
         title: "Divider",
+        requiresAuth: true, // This route requires authentication
         breadcrumb: [
           {
             text: "Main"

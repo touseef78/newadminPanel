@@ -157,7 +157,7 @@ export default {
                 { key: "salary_commission", sortable: true },
                  { key: "joining_date", sortable: true },
                 { key: "hourly_enter_amount", sortable: true },
-                { key: "secuirty_code", sortable: true },
+                { key: "security_code", sortable: true },
                 { key: "status", sortable: true },
                 // { key: "status", sortable: true },
                 { key: "actions", label: "Actions" },

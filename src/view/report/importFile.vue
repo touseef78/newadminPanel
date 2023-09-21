@@ -4,8 +4,18 @@
       <div class="col-12 mt-16">
         <div>
           <b-row class="align-items-center">
-            <b-col lg="6" class="my-1 d-flex justify-content-end">
+            <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Select Driver:" label-for="Select Driver">
+                                <b-form-select id="type" v-model="type" required>
+                                    <option value="bolt">Bolt</option>
+                                    <option value="uber">Uber</option>
+                                </b-form-select>
+                            </b-form-group>
+                        </div>
+             <b-col lg="6" class="my-1 d-flex justify-content-end">
+              <b-form-group id="input-group-2" label="File:" label-for="card">
               <input type="file" ref="fileInput" @change="handleFileUpload" />
+            </b-form-group>
               <b-button variant="primary" class="mb-8 mr-8" :disabled="loading" @click="submitFile">
                 <span v-if="!loading">Import File</span>
                 <b-spinner v-if="loading" small></b-spinner>
@@ -51,6 +61,7 @@ export default {
             showDeleteConfirmation: false,
             itemIdToDelete: null,
             loading: false,
+            type:'',
             
 
         };
@@ -85,6 +96,7 @@ export default {
 
         const formData = new FormData();
         formData.append("csv_file", this.fileToUpload);
+        formData.append("type", this.type);
         axios
           .post("/processCSV", formData)
         .then((response) => {

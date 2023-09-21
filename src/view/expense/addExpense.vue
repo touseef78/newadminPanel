@@ -88,8 +88,8 @@
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Meter Reading:" label-for="meter_reading">
-                                <b-form-input id="meter_reading" v-model="meter_reading" placeholder="Enter  meter reading"
+                            <b-form-group id="input-group-2" label="Meter Reading:" label-for="service_meter_reading">
+                                <b-form-input id="service_meter_reading" v-model="service_meter_reading" placeholder="Enter  meter reading"
                                     required></b-form-input>
                             </b-form-group>
                         </div>
@@ -162,7 +162,7 @@ export default {
             card: '',
             user_id: '',
             drivers: [],
-            meter_reading: '',
+            service_meter_reading: '',
             total_life_kilometer: '',
 
 
@@ -250,7 +250,7 @@ export default {
             formData.append("category", this.category);
             formData.append("card", this.card);
             formData.append("user_id", this.user_id);
-            formData.append("meter_reading", this.meter_reading);
+            formData.append("service_meter_reading", this.service_meter_reading);
             formData.append("total_life_kilometer", this.total_life_kilometer);
             axios
                 .post("expense", formData)

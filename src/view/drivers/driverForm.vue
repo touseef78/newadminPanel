@@ -130,6 +130,15 @@
                   </b-form-input>
                 </b-form-group>
               </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Select Driver:" label-for="type">
+                  <b-form-select v-model="type" required>
+                    <!-- <option value="">Select Type</option> -->
+                    <option value="uber" >Uber</option>
+                    <option value="bolt">Bolt</option>
+                  </b-form-select>
+                </b-form-group>
+              </div>
             </div>
 
             <div class="row">
@@ -337,6 +346,7 @@ export default {
       hourly_enter_amount: '',
       total_number_hour: '',
       select_car_type: '',
+      type: '',
 
 
 
@@ -440,7 +450,7 @@ export default {
       formData.append("car_number", this.car_number);
       formData.append("total_number_hour", this.total_number_hour);
       formData.append("selectedCarType", this.selectedCarType);
-
+      formData.append("type", this.type);
       for (const image of this.vehicle_image) {
         formData.append('vehicle_image[]', image);
       }
