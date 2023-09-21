@@ -46,9 +46,20 @@
     "title": "Invoice Table",
     "url": "/table/invoice"
   },
+  
     {
     "title": "Add File",
     "url": "/Import/importFile"
+  },
+    {
+    "title": "Uber Data",
+    "url": "/uberdata"
+  },  {
+    "title": "Bolt Data",
+    "url": "/boltdata"
+  },  {
+    "title": "Uber File",
+    "url": "/uberfile/listUberFile"
   }
 
 ]
