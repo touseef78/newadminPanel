@@ -16,7 +16,7 @@
         </h3>
 
         <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
-          New Customer
+          Total Driver
         </p>
       </b-col>
     </b-row>

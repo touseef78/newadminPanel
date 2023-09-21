@@ -122,7 +122,7 @@ export default {
                 { key: "total_payable", sortable: true },
                 { key: "total_receivable", sortable: true },
                 { key: "uber_earning", sortable: true },
-                // { key: "image", sortable: true },
+                { key: "view_stats", sortable: true },
                 // { key: "status", sortable: true },
                 { key: "actions", label: "Actions" },
             ],
