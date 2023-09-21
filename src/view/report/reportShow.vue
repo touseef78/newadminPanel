@@ -133,13 +133,13 @@
                         <h5 class="mb-4 hp-flex-none w-auto">$ 248.00</h5>
                     </b-row>
 
-                    <b-row align-v="center" align-h="between">
+                    <!-- <b-row align-v="center" align-h="between">
                         <p class="hp-badge-text hp-flex-none w-auto">Discount %10</p>
                         <h5 class="mb-4 hp-flex-none w-auto">-$ 24.80</h5>
-                    </b-row>
+                    </b-row> -->
 
                     <b-row align-v="center" align-h="between">
-                        <p class="hp-badge-text hp-flex-none w-auto">Tax %20</p>
+                        <p class="hp-badge-text hp-flex-none w-auto">Tax %6</p>
                         <h5 class="hp-flex-none w-auto">$ 49.60</h5>
                     </b-row>
 
@@ -203,32 +203,71 @@ export default {
         BCard,
         BButton
     },
-    //   methods: {
-    //     // ... Your other methods ...
 
-    //     printInvoice() {
-    //         // Print the invoice content
-    //         window.print();
-    //     }
-    // },
+    data() {
+    return {
+      selectedType: "",
+      show: true,
+      codeText: code.introduction,
+      codeActive: false,
+      codeActiveClass: false,
+      image: null,
+      isLoading: false,
+      amount: "",
+      category: "",
+      card: "",
+      user_id: "",
+      drivers: [],
+      editedUser: {
+        // ... other properties ...
+        vehicle_image: [], // Initialize the array here
+      },
+      users: [], // Instead of 'items', use 'users' array to store fetched data
+      driver_first_name: "",
+      driver_last_name: "",
+      receiveable: "",
+      payable: "",
+      uber_amount: "",
+      expense_deduct_from_salary: "",
+      total_salary: "",
+      salary_fix: "",
+    };
+  },
+   
+    created() {
+    // Load the clients data when the component is created
+    axios
+      .get("drivers")
+      .then((response) => {
+        this.drivers = response.data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    const userId = this.$route.params.userId;
+    axios
+      .get(`paymentShow/${userId}`)
+      .then((response) => {
+        this.editedUser = response.data.data;
+        // Set the data properties with values from editedUser
+        this.total_payable = this.editedUser.total_payable;
+        this.total_receivable = this.editedUser.total_receivable;
+        this.uber_earning = this.editedUser.driver.uber_earning;
+        this.bolt_earning = this.editedUser.driver.bolt_earning;
+        this.salary_fix = this.editedUser.driver.salary_fix;
+        this.driver_first_name = this.editedUser.driver.name;
+        this.driver_last_name = this.editedUser.driver.last_name;
+
+        // ... and so on for other properties ...
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  },
 
     methods: {
-        downloadInvoice() {
-            const invoiceSection = this.$refs.invoiceSection;
-            const invoiceContent = invoiceSection.innerHTML;
-            const blob = new Blob([invoiceContent], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-
-            // Create a temporary anchor element for downloading
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'invoice.html';
-            a.click();
-
-            // Clean up
-            a.remove();
-            URL.revokeObjectURL(url);
-        }
+       
 
     }
 };

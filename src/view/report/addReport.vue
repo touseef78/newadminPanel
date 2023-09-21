@@ -40,12 +40,12 @@
               <b-form-group
                 id="input-group-2"
                 label="Receiveable:"
-                label-for="receiveable"
+                label-for="total_receivable"
               >
                 <b-form-input
-                  id="receiveable"
+                  id="total_receivable"
                   v-model="total_receivable"
-                  placeholder="Enter  receiveable"
+                  placeholder="Enter receiveable"
                   disabled
                 ></b-form-input>
               </b-form-group>
@@ -77,36 +77,36 @@
                 ></b-form-input>
               </b-form-group>
             </div>
-           
-            <div class="col-md-4 col-12">
-  <b-form-group
-    id="input-group-2"
-    label="Expense Deduct From Salary:"
-    label-for="expense_deduct_from_salary"
-  >
-    <b-form-input
-      id="expense_deduct_from_salary"
-      v-model="expense_deduct_from_salary"
-      placeholder="Enter expense deduct from salary"
-      required
-    ></b-form-input>
-  </b-form-group>
-</div>
-<div class="col-md-4 col-12">
-  <b-form-group
-    id="input-group-2"
-    label="Total Payable Exclusive Tex:"
-    label-for="total_salary"
-  >
-    <b-form-input
-      id="total_salary"
-      :value="total_salaryComputed"
-      placeholder="Total Salary"
-      disabled
-    ></b-form-input>
-  </b-form-group>
-</div>
 
+            <div class="col-md-4 col-12">
+              <b-form-group
+                id="input-group-2"
+                label="Expense Deduct From Salary:"
+                label-for="expense_deduct_from_salary"
+              >
+                <b-form-input
+                  id="expense_deduct_from_salary"
+                  v-model="expense_deduct_from_salary"
+                  placeholder="Enter expense deduct from salary"
+                  required
+                ></b-form-input>
+              </b-form-group>
+            </div>
+            <div class="col-md-4 col-12">
+              <b-form-group
+                id="input-group-2"
+                label="Total Payable Exclusive Tex:"
+                label-for="total_salary"
+              >
+                <b-form-input
+                  id="total_salary"
+                  :value="total_salaryComputed"
+                  v-model="total_salaryComputed"
+                  placeholder="Total Salary"
+                  disabled
+                ></b-form-input>
+              </b-form-group>
+            </div>
           </div>
           <b-button
             type="submit"
@@ -186,6 +186,7 @@ export default {
       expense_deduct_from_salary: "",
       total_salary: "",
       salary_fix: "",
+      remaining_reciveable: "",
     };
   },
   components: {
@@ -236,16 +237,14 @@ export default {
   },
 
   computed: {
-  total_salaryComputed() {
-    const salaryFix = parseFloat(this.salary_fix) || 0;
-    const totalPayable = parseFloat(this.total_payable) || 0;
-    const expenseDeduct = parseFloat(this.expense_deduct_from_salary) || 0;
+    total_salaryComputed() {
+      const salaryFix = parseFloat(this.salary_fix) || 0;
+      const totalPayable = parseFloat(this.total_payable) || 0;
+      const expenseDeduct = parseFloat(this.expense_deduct_from_salary) || 0;
 
-    return salaryFix + totalPayable - expenseDeduct;
+      return salaryFix + totalPayable - expenseDeduct;
+    },
   },
-},
-
-
 
   methods: {
     onSubmit(event) {
@@ -266,28 +265,21 @@ export default {
 
     //    Add Vehicle
     addUser() {
+      const userId = this.$route.params.userId;
+      axios;
       this.isLoading = true;
-      // Create a FormData object to handle the image file
       const formData = new FormData();
-      formData.append("image", this.image);
-      formData.append("amount", this.amount);
-      formData.append("category", this.category);
-      formData.append("card", this.card);
-      formData.append("user_id", this.user_id);
-      formData.append("driver_name", this.driver_name);
-      formData.append("receiveable", this.receiveable);
-      formData.append("payable", this.payable);
-      formData.append("uber_amount", this.uber_amount);
-      formData.append(
-        "expense_deduct_from_salary",
-        this.expense_deduct_from_salary
-      );
-      formData.append("total_salary", this.total_salary);
+      formData.append("user_id", this.$route.params.userId); // Use the userId from route params
+      formData.append("total_receivable", this.total_receivable);
+      formData.append("total_payable", this.total_payable);
+      formData.append("deduct_from_salary", this.expense_deduct_from_salary);
+      formData.append("total_payable_exclusive_tex", this.total_salaryComputed);
+      formData.append("remaining_reciveable", parseFloat(this.total_receivable) - parseFloat(this.expense_deduct_from_salary));
       axios
-        .post("expense", formData)
+        .post("reportAdd", formData)
         .then((response) => {
           console.log(response.data);
-          this.$bvToast.toast("Expense added successfully!", {
+          this.$bvToast.toast("Report added successfully!", {
             title: "Success",
             variant: "success",
             solid: true,
@@ -329,12 +321,7 @@ export default {
     payAndNavigate() {
       // Assuming `this.user_id` is the ID you want to pass to the invoiceShow route
       this.$router.push({ name: "invoiceShow", params: { id: this.user_id } });
-    },
-
-    addUser() {
-      // ... your existing addUser logic ...
-    },
-    // ... other methods ...
+    },  
   },
 };
 </script>

@@ -303,7 +303,7 @@ const router = new VueRouter({
     {
   path: "/report/show/:userId",
   name: "invoiceShow",
-  component: () => import("../view/report/invoiceShow.vue"),
+  component: () => import("../view/report/reportShow.vue"),
   meta: {
     requiresAuth: true, // This route requires authentication
   },
