@@ -64,8 +64,11 @@
           y
           responsive
         >
-          <template #cell(driver.name)="row">
+          <template #cell(driver_name)="row">
             {{ `${row.item.driver.name} ${row.item.driver.last_name}` }}
+          </template>
+          <template #cell(type)="row">
+            {{ `${row.item.card}` }}
           </template>
           <!-- Action Button Code -->
           <template #cell(image)="row">
@@ -328,6 +331,13 @@
           <template #cell(car_number)="row">
             {{ `${row.item.vehicle.car_number}` }}
           </template>
+          <template #cell(service_meter_reading)="row">
+            {{ `${row.item.vehicle.service_meter_reading}` }}
+          </template>
+          <template #cell(total_life_kilometer)="row">
+            {{ `${row.item.vehicle.total_life_kilometer}` }}
+          </template>
+          
           <!-- Action Button Code -->
           <template #cell(image)="row">
             <div>
@@ -436,11 +446,12 @@ export default {
       vehicles: [], // Add a new property to store vehicle data
       fields: [
         { key: "id", sortable: true },
-        { key: "driver.name", sortable: true },
+        { key: "driver_name", sortable: true },
         { key: "amount", sortable: true },
-        { key: "card", sortable: true },
+        { key: "type", sortable: true },
         { key: "category", sortable: true },
         { key: "image", sortable: true },
+        { key: "created_at", sortable: true },
         { key: "status", sortable: true },
         { key: "actions", label: "Actions" },
       ],
@@ -450,7 +461,9 @@ export default {
         { key: "car_number", sortable: true },
         { key: "car_color", sortable: true },
         { key: "service_meter_reading", sortable: true },
+        { key: "total_life_kilometer", sortable: true },
         { key: "category", sortable: true },
+        { key: "created_at", sortable: true },
         { key: "image", sortable: true },
       ],
 

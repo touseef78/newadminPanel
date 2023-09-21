@@ -59,7 +59,7 @@
                 <b-form-input
                   id="payable"
                   v-model="total_payable"
-                  placeholder="Enter  payable"
+                  placeholder="Enter payable"
                   disabled
                 ></b-form-input>
               </b-form-group>
@@ -67,62 +67,47 @@
             <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
-                label="Uber Amount:"
-                label-for="uber_earning"
+                label="Total Fix salary:"
+                label-for="salary_fix"
               >
                 <b-form-input
-                  id="uber_amount"
-                  v-model="uber_earning"
+                  id="salary_fix"
+                  v-model="salary_fix"
                   disabled
                 ></b-form-input>
               </b-form-group>
             </div>
+           
             <div class="col-md-4 col-12">
-              <b-form-group
-                id="input-group-2"
-                label="Bolt Amount:"
-                label-for="bolt_earning"
-              >
-                <b-form-input
-                  id="bolt_earning"
-                  v-model="bolt_earning"
-                  disabled
-                ></b-form-input>
-              </b-form-group>
-            </div>
-            <div class="col-md-4 col-12">
-              <b-form-group
-                id="input-group-2"
-                label="Expense Deduct From Salary:"
-                label-for="expense_deduct_from_salary"
-              >
-                <b-form-input
-                  id="expense_deduct_from_salary"
-                  v-model="expense_deduct_from_salary"
-                  placeholder="Enter  expense deduct from salary"
-                  required
-                ></b-form-input>
-              </b-form-group>
-            </div>
-            <div class="col-md-4 col-12">
-              <b-form-group
-                id="input-group-2"
-                label="Total Salary:"
-                label-for="total_salary"
-              >
-                <b-form-input
-                  id="total_salary"
-                  v-model="total_salary"
-                  placeholder="Enter total salary"
-                  disabled
-                ></b-form-input>
-              </b-form-group>
-            </div>
+  <b-form-group
+    id="input-group-2"
+    label="Expense Deduct From Salary:"
+    label-for="expense_deduct_from_salary"
+  >
+    <b-form-input
+      id="expense_deduct_from_salary"
+      v-model="expense_deduct_from_salary"
+      placeholder="Enter expense deduct from salary"
+      required
+    ></b-form-input>
+  </b-form-group>
+</div>
+<div class="col-md-4 col-12">
+  <b-form-group
+    id="input-group-2"
+    label="Total Payable Exclusive Tex:"
+    label-for="total_salary"
+  >
+    <b-form-input
+      id="total_salary"
+      :value="total_salaryComputed"
+      placeholder="Total Salary"
+      disabled
+    ></b-form-input>
+  </b-form-group>
+</div>
+
           </div>
-          <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
-                        <span v-if="!isLoading">Pay</span>
-                        <b-spinner v-else class="mb-8 mr-8" variant="primary" small></b-spinner>
-                    </b-button> -->
           <b-button
             type="submit"
             variant="primary"
@@ -200,6 +185,7 @@ export default {
       uber_amount: "",
       expense_deduct_from_salary: "",
       total_salary: "",
+      salary_fix: "",
     };
   },
   components: {
@@ -238,6 +224,7 @@ export default {
         this.total_receivable = this.editedUser.total_receivable;
         this.uber_earning = this.editedUser.driver.uber_earning;
         this.bolt_earning = this.editedUser.driver.bolt_earning;
+        this.salary_fix = this.editedUser.driver.salary_fix;
         this.driver_first_name = this.editedUser.driver.name;
         this.driver_last_name = this.editedUser.driver.last_name;
 
@@ -247,6 +234,18 @@ export default {
         console.error("Error fetching user data:", error);
       });
   },
+
+  computed: {
+  total_salaryComputed() {
+    const salaryFix = parseFloat(this.salary_fix) || 0;
+    const totalPayable = parseFloat(this.total_payable) || 0;
+    const expenseDeduct = parseFloat(this.expense_deduct_from_salary) || 0;
+
+    return salaryFix + totalPayable - expenseDeduct;
+  },
+},
+
+
 
   methods: {
     onSubmit(event) {

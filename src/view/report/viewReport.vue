@@ -81,6 +81,13 @@
                 : NonNullable
             }}
           </template>
+          <template #cell(salary_fix)="row">
+            {{
+              row.item.driver.salary_fix
+                ? row.item.driver.salary_fix
+                : NonNullable
+            }}
+          </template>
           <!-- Action Button Code -->
           <template #cell(image)="row">
             <img

@@ -67,6 +67,12 @@
           <template #cell(driver_name)="row">
             {{ `${row.item.driver.name} ${row.item.driver.last_name}` }}
           </template>
+          <template #cell(total_pending)="row">
+          <span :class="{ 'text-danger': row.value > 0, 'text-black': row.value === 0 }">
+             {{ row.value }}
+          </span>
+          </template>
+
           <!-- Action Button Code -->
           <template #cell(image)="row">
             <img
