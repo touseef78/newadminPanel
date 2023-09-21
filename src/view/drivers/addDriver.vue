@@ -298,7 +298,7 @@
                 </b-form-group>
               </div>
               <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
-                <b-form-group label="Total Number Of Hours ($/hr)" label-for="total_number_hour">
+                <b-form-group label="Total Number of Hours (SEK/hr)" label-for="total_number_hour">
                   <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
                     placeholder="Enter Total Number Hours"></b-form-input>
                 </b-form-group>
