@@ -76,15 +76,15 @@
             </h5>
           </div>
           <div class="row">
-            <div class="col-md-4 col-12">
+            <!-- <div class="col-md-4 col-12">
               <b-form-group id="input-group-2" label="Company Name:" label-for="vehicle_company">
                 <b-form-input id="vehicle_company" v-model="vehicle_company" placeholder="Enter company name"
                   pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required></b-form-input>
               </b-form-group>
-            </div>
+            </div> -->
             <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label="Name:" label-for="name">
-                <b-form-input id="name" type="text" v-model="name" placeholder="Enter name" autocomplete="off"
+              <b-form-group id="input-group-1" label="Vehicle Name:" label-for="name">
+                <b-form-input id="name" type="text" v-model="name" placeholder="Enter vehicle name" autocomplete="off"
                   pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required></b-form-input>
               </b-form-group>
             </div>

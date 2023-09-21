@@ -27,10 +27,51 @@
                         <b-col cols="12" md="6" xl="3" class="mb-32">
                             <profit-feature-card />
                         </b-col>
+
+
+                        <!-- new code  -->
+                        <b-col cols="12" md="6" xl="3" class="mb-32">
+                            <vehicle-feature-card />
+                        </b-col>
+
+                        <b-col cols="12" md="6" xl="3" class="mb-32">
+                            <earning-feature-card />
+                        </b-col>
+
+                        <b-col cols="12" md="6" xl="3" class="mb-32">
+                            <total-profit-card />
+                        </b-col>
+
+                        <b-col cols="12" md="6" xl="3" class="mb-32">
+                            <total-expense-card />
+                        </b-col>
                     </b-row>
                 </b-col>
 
+
             </b-row>
+            <b-row>
+                <!-- new code  -->
+                 <b-col cols="12" xl="8">
+                  <b-row>
+                    <b-col cols="12" class="mb-32">
+                      <new-revenue-colum />
+                    </b-col>
+        
+                  </b-row>
+              
+                </b-col>
+                <b-col cols="12" xl="4">
+                  <b-row>
+                    <b-col cols="12" class="mb-32">
+                      <new-earning-card />
+                    </b-col>
+                  </b-row>
+                </b-col>
+            </b-row>
+            
+            
+             
 
         </b-col>
     </b-row>
@@ -54,8 +95,26 @@ import ProjectTableCard from "./ProjectTableCard.vue";
 import ExpensesCard from "../../widgets/cards/advance/ExpensesCard.vue";
 import DownloadCard from "../../widgets/cards/advance/DownloadCard.vue";
 import RevenueRadarCard from '../../widgets/cards/analytics/RevenueRadarCard.vue';
-
+//  new code 
+import VehicleFeatureCard from "../../widgets/cards/advance/VehicleFeatureCard.vue";
+import EarningFeatureCard from "../../widgets/cards/advance/EarningFeatureCard.vue";
+import TotalProfitCard from "../../widgets/cards/advance/TotalProfitCard.vue";
+import TotalExpenseCard from "../../widgets/cards/advance/TotalExpenseCard.vue";
+import NewEarningCard from "../../widgets/cards/advance/NewEarningCard.vue";
+import NewRevenueColum from "../../widgets/cards/advance/NewRevenueColum.vue";
 export default {
+    // data() {
+    //     const cards = [
+    //         {
+    //             title: "hello",
+    //             count: "23",
+    //             icon:
+    //         }
+    //     ]
+    // },
+
+
+
     components: {
         BRow,
         BCol,
@@ -75,6 +134,14 @@ export default {
         OrdersFeatureCard,
         SaleFeatureCard,
         ProfitFeatureCard,
+        // new code 
+        VehicleFeatureCard,
+        EarningFeatureCard,
+        TotalProfitCard,
+        TotalExpenseCard,
+        // NewRevenuCard,
+        NewRevenueColum,
+        NewEarningCard,
     },
 };
 </script>
