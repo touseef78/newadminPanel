@@ -4,9 +4,9 @@
       <b-col class="hp-flex-none w-auto">
         <b-avatar class="bg-danger-4 hp-bg-color-dark-danger" size="48px">
           <i
-            class="iconly-Light-Discount text-danger"
-            style="font-size: 24px"
-          ></i>
+              class="iconly-Light-Discount text-danger"
+              style="font-size: 24px"
+            ></i>
         </b-avatar>
       </b-col>
 
@@ -16,7 +16,7 @@
         </h3>
 
         <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
-          Gross Profit
+        B2B Driver
         </p>
       </b-col>
     </b-row>

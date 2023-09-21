@@ -18,17 +18,17 @@
             </h5>
           </div>
           <div class="row">
-            <div class="col-md-4 col-12">
+            <!-- <div class="col-md-4 col-12">
               <b-form-group id="input-group-2" label="Company Name:" label-for="vehicle_company">
                 <b-form-input id="vehicle_company" v-model="vehicle_company" pattern="[A-Za-z]+"
                   title="Please enter only alphabetic characters" placeholder="Enter company name"
                   required></b-form-input>
               </b-form-group>
-            </div>
+            </div> -->
             <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label="Name:" label-for="name">
+              <b-form-group id="input-group-1" label="Vehicle Name:" label-for="name">
                 <b-form-input id="name" type="text" v-model="name" pattern="[A-Za-z]+"
-                  title="Please enter only alphabetic characters" placeholder="Enter name" autocomplete="off"
+                  title="Please enter only alphabetic characters" placeholder="Enter vehicle name" autocomplete="off"
                   required></b-form-input>
               </b-form-group>
             </div>
