@@ -23,11 +23,11 @@
 
                 <b-col cols="12" lg="6">
                     <p class="hp-p1-body mb-16 text-right">
-                        Invoice Number:000000{{id }}
+                        Invoice Number:00000{{id }}
                     </p>
-                     <p class="hp-p1-body mb-16 text-right">
-                            Date:30/08/2023
-                        </p>
+                    <p class="hp-p1-body mb-16 text-right">
+                        Date: {{ formatDate(created_at) }}
+                        </p> 
                 </b-col>
                  <b-col cols="12">
                   <p>Driver Name: {{ driver_first_name }} {{ driver_last_name }} </p> 
@@ -127,9 +127,9 @@
             <div class="divider"></div>
 
             <b-row align-h="end" class="mr-0">
-                <b-col cols="12" xl="5" class="pb-16 hp-print-checkout">
+                <b-col cols="12" xl="6" class="pb-16 hp-print-checkout">
                     <b-row align-v="center" align-h="between">
-                        <p class="hp-badge-text hp-flex-none w-auto">Total Payable Inclusive Tax</p>
+                        <p class="hp-badge-text hp-flex-none w-auto">Total Payable Exclusive Tax</p>
                         <h5 class="mb-4 hp-flex-none w-auto">SEK {{ total_payable_exclusive_tex }}</h5>
                     </b-row>
                   
@@ -140,7 +140,7 @@
 
                     <b-row align-v="center" align-h="between">
                         <p class="hp-badge-text hp-flex-none w-auto">Tax %6</p>
-                        <h5 class="hp-flex-none w-auto">SEK 49.60</h5>
+                        <h5 class="hp-flex-none w-auto">SEK{{ tax.toFixed(2) }}</h5>
                     </b-row>
 
                     <b-row>
@@ -148,8 +148,8 @@
                     </b-row>
 
                     <b-row align-v="center" align-h="between">
-                        <h5 class="text-primary hp-flex-none w-auto">Total</h5>
-                        <h5 class="text-primary hp-flex-none w-auto">SEK {{ total_payable_exclusive_tex }}</h5>
+                        <h5 class="text-primary hp-flex-none w-auto">Total Payable Inclusive Tax</h5>
+                        <h5 class="text-primary hp-flex-none w-auto">SEK {{ total_inclusive_tex }}</h5>
                     </b-row>
                 </b-col>
             </b-row>
@@ -238,6 +238,9 @@ export default {
       remaining_reciveable: "",
       mobile: "",
       address: "",
+      total_inclusive_tex: "",
+      tax: "",
+      created_at: new Date(), // Replace with your actual date data
     };
   },
    
@@ -272,6 +275,9 @@ export default {
         this.deduct_from_salary = this.editedUser.deduct_from_salary;
         this.total_payable_exclusive_tex = this.editedUser.total_payable_exclusive_tex;
         this.remaining_reciveable = this.editedUser.remaining_reciveable;
+        this.created_at = this.editedUser.created_at;
+        this.total_inclusive_tex = this.editedUser.total_inclusive_tex;
+        this.tax = parseFloat(this.editedUser.tax); // Parse 'tax' as a number
         // ... and so on for other properties ...
         
       })
@@ -282,7 +288,10 @@ export default {
 
     methods: {
        
-
+        formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString();
+        },
     }
 };
 </script>

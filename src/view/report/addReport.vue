@@ -188,6 +188,8 @@ export default {
       total_salary: "",
       salary_fix: "",
       remaining_reciveable: "",
+      total_inclusive_tex: "",
+      tax: "",
     };
   },
   components: {
@@ -270,12 +272,27 @@ export default {
       axios;
       this.isLoading = true;
       const formData = new FormData();
+      // formData.append("user_id", this.$route.params.userId); // Use the userId from route params
+      // formData.append("total_receivable", this.total_receivable);
+      // formData.append("total_payable", this.total_payable);
+      // formData.append("deduct_from_salary", this.expense_deduct_from_salary);
+      // formData.append("total_payable_exclusive_tex", this.total_salaryComputed);
+      // formData.append("remaining_reciveable", parseFloat(this.total_receivable) - parseFloat(this.expense_deduct_from_salary));
+      // formData.append("tax", this.total_salaryComputed % 100 * 6);
+      // formData.append("total_inclusive_tex",   parseFloat(this.tax) -  parseFloat(this.total_inclusive_tex) );
+
       formData.append("user_id", this.$route.params.userId); // Use the userId from route params
-      formData.append("total_receivable", this.total_receivable);
-      formData.append("total_payable", this.total_payable);
-      formData.append("deduct_from_salary", this.expense_deduct_from_salary);
-      formData.append("total_payable_exclusive_tex", this.total_salaryComputed);
-      formData.append("remaining_reciveable", parseFloat(this.total_receivable) - parseFloat(this.expense_deduct_from_salary));
+  formData.append("total_receivable", this.total_receivable);
+  formData.append("total_payable", this.total_payable);
+  formData.append("deduct_from_salary", this.expense_deduct_from_salary);
+  const tax = parseFloat(this.total_salaryComputed) * 0.06; // Calculate 6% tax
+  formData.append("tax", tax); // Add the tax to formData
+  const totalInclusiveTax = parseFloat(this.total_salaryComputed) - tax; // Calculate total_inclusive_tex
+  formData.append("total_payable_exclusive_tex", this.total_salaryComputed);
+  formData.append("remaining_reciveable", parseFloat(this.total_receivable) - parseFloat(this.expense_deduct_from_salary));
+  formData.append("total_inclusive_tex", totalInclusiveTax); // Update total_inclusive_tex
+
+
       axios
         .post("reportAdd", formData)
         .then((response) => {
