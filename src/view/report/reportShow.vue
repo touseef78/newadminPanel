@@ -23,17 +23,17 @@
 
                 <b-col cols="12" lg="6">
                     <p class="hp-p1-body mb-16 text-right">
-                        Invoice Number:000000123
+                        Invoice Number:000000{{id }}
                     </p>
                      <p class="hp-p1-body mb-16 text-right">
                             Date:30/08/2023
                         </p>
                 </b-col>
                  <b-col cols="12">
-                  <p>Driver Name:</p>
-                  <p>Address:Mega Tower 69-A 4th Floor.</p>
-                  <p>Email: admin@gmail.com</p>
-                  <p>Phone Number:234567890</p>
+                  <p>Driver Name: {{ driver_first_name }} {{ driver_last_name }} </p> 
+                  <p>Address: {{ address }}</p>
+                  <p>Email: {{ email }}</p>
+                  <p>Phone Number:{{ mobile }}</p>
                 </b-col>
 
       <div class="divider"></div>
@@ -79,7 +79,7 @@
                                     </b-td> -->
 
                                 <b-td class="py-6 pr-0 text-right">
-                                    <h5>$ 28</h5>
+                                    <h5>SEK {{ salary_fix }}</h5>
                                 </b-td>
                             </b-tr>
 
@@ -98,7 +98,7 @@
                                     </b-td> -->
 
                                 <b-td class="py-6 pr-0 text-right">
-                                    <h5>$ 220</h5>
+                                    <h5>SEK {{ deduct_from_salary }}</h5>
                                 </b-td>
                             </b-tr>
                             <b-tr>
@@ -116,7 +116,7 @@
                                     </b-td> -->
 
                                 <b-td class="py-6 pr-0 text-right">
-                                    <h5>$ 1000</h5>
+                                    <h5>SEk {{ total_payable }}</h5>
                                 </b-td>
                             </b-tr>
                         </b-tbody>
@@ -129,8 +129,8 @@
             <b-row align-h="end" class="mr-0">
                 <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
                     <b-row align-v="center" align-h="between">
-                        <p class="hp-badge-text hp-flex-none w-auto">Subtotal</p>
-                        <h5 class="mb-4 hp-flex-none w-auto">$ 248.00</h5>
+                        <p class="hp-badge-text hp-flex-none w-auto">Total Payable Exclusive Tex</p>
+                        <h5 class="mb-4 hp-flex-none w-auto">SEK {{ total_payable_exclusive_tex }}</h5>
                     </b-row>
 
                     <!-- <b-row align-v="center" align-h="between">
@@ -149,7 +149,7 @@
 
                     <b-row align-v="center" align-h="between">
                         <h5 class="text-primary hp-flex-none w-auto">Total</h5>
-                        <h5 class="text-primary hp-flex-none w-auto">$ 272.80</h5>
+                        <h5 class="text-primary hp-flex-none w-auto">SEk {{ total_payable_exclusive_tex }}</h5>
                     </b-row>
                 </b-col>
             </b-row>
@@ -177,6 +177,8 @@
 </template>
 
 <script>
+import axios from "axios";
+import code from "../components/data-entry/form/code";
 import {
     BRow,
     BCol,
@@ -189,6 +191,7 @@ import {
     BCard,
     BButton
 } from "bootstrap-vue";
+
 
 export default {
     components: {
@@ -228,16 +231,20 @@ export default {
       receiveable: "",
       payable: "",
       uber_amount: "",
-      expense_deduct_from_salary: "",
       total_salary: "",
       salary_fix: "",
+      total_payable_exclusive_tex: "",
+      deduct_from_salary: "",
+      remaining_reciveable: "",
+      mobile: "",
+      address: "",
     };
   },
    
     created() {
     // Load the clients data when the component is created
     axios
-      .get("drivers")
+      .get("invoice")
       .then((response) => {
         this.drivers = response.data.data;
       })
@@ -247,10 +254,11 @@ export default {
 
     const userId = this.$route.params.userId;
     axios
-      .get(`paymentShow/${userId}`)
+      .get(`reportshow/${userId}`)
       .then((response) => {
         this.editedUser = response.data.data;
         // Set the data properties with values from editedUser
+        this.id = this.editedUser.id;
         this.total_payable = this.editedUser.total_payable;
         this.total_receivable = this.editedUser.total_receivable;
         this.uber_earning = this.editedUser.driver.uber_earning;
@@ -258,8 +266,13 @@ export default {
         this.salary_fix = this.editedUser.driver.salary_fix;
         this.driver_first_name = this.editedUser.driver.name;
         this.driver_last_name = this.editedUser.driver.last_name;
-
+        this.mobile = this.editedUser.driver.mobile;
+        this.address = this.editedUser.driver.address;
+        this.deduct_from_salary = this.editedUser.deduct_from_salary;
+        this.total_payable_exclusive_tex = this.editedUser.total_payable_exclusive_tex;
+        this.remaining_reciveable = this.editedUser.remaining_reciveable;
         // ... and so on for other properties ...
+        
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);

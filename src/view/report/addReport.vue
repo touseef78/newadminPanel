@@ -109,20 +109,21 @@
             </div>
           </div>
           <b-button
-            type="submit"
-            variant="primary"
-            class="mb-8 mr-8"
-            :disabled="isLoading"
-            @click="payAndNavigate"
-          >
-            <span v-if="!isLoading">Pay</span>
-            <b-spinner
-              v-else
-              class="mb-8 mr-8"
-              variant="primary"
-              small
-            ></b-spinner>
-          </b-button>
+    type="submit"
+    variant="primary"
+    class="mb-8 mr-8"
+    :disabled="isLoading"
+    @click="payAndNavigate"
+  >
+    <span v-if="!isLoading">Pay</span>
+    <b-spinner
+      v-else
+      class="mb-8 mr-8"
+      variant="primary"
+      small
+    ></b-spinner>
+  </b-button>
+
         </b-form>
       </div>
 
@@ -168,6 +169,7 @@ export default {
       codeActiveClass: false,
       image: null,
       isLoading: false,
+      
       amount: "",
       category: "",
       card: "",
@@ -320,8 +322,11 @@ export default {
     },
     payAndNavigate() {
       // Assuming `this.user_id` is the ID you want to pass to the invoiceShow route
+      this.isLoading = true;
       this.$router.push({ name: "invoiceShow", params: { id: this.user_id } });
     },  
+
+    
   },
 };
 </script>
