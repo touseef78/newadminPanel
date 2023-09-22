@@ -95,7 +95,7 @@
             <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
-                label="Total Payable Exclusive Tex:"
+                label="Total Payable Exclusive Tax:"
                 label-for="total_salary"
               >
                 <b-form-input
