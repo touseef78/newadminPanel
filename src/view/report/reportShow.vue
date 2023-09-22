@@ -127,12 +127,12 @@
             <div class="divider"></div>
 
             <b-row align-h="end" class="mr-0">
-                <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
+                <b-col cols="12" xl="5" class="pb-16 hp-print-checkout">
                     <b-row align-v="center" align-h="between">
-                        <p class="hp-badge-text hp-flex-none w-auto">Total Payable Exclusive Tex</p>
+                        <p class="hp-badge-text hp-flex-none w-auto">Total Payable Exclusive Tax</p>
                         <h5 class="mb-4 hp-flex-none w-auto">SEK {{ total_payable_exclusive_tex }}</h5>
                     </b-row>
-
+                  
                     <!-- <b-row align-v="center" align-h="between">
                         <p class="hp-badge-text hp-flex-none w-auto">Discount %10</p>
                         <h5 class="mb-4 hp-flex-none w-auto">-$ 24.80</h5>
@@ -140,7 +140,7 @@
 
                     <b-row align-v="center" align-h="between">
                         <p class="hp-badge-text hp-flex-none w-auto">Tax %6</p>
-                        <h5 class="hp-flex-none w-auto">$ 49.60</h5>
+                        <h5 class="hp-flex-none w-auto">SEK 49.60</h5>
                     </b-row>
 
                     <b-row>
@@ -149,7 +149,7 @@
 
                     <b-row align-v="center" align-h="between">
                         <h5 class="text-primary hp-flex-none w-auto">Total</h5>
-                        <h5 class="text-primary hp-flex-none w-auto">SEk {{ total_payable_exclusive_tex }}</h5>
+                        <h5 class="text-primary hp-flex-none w-auto">SEK {{ total_payable_exclusive_tex }}</h5>
                     </b-row>
                 </b-col>
             </b-row>
