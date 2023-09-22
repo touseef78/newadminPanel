@@ -321,10 +321,15 @@ export default {
       }
     },
     payAndNavigate() {
-      // Assuming `this.user_id` is the ID you want to pass to the invoiceShow route
-      this.isLoading = true;
-      this.$router.push({ name: "invoiceShow", params: { id: this.user_id } });
-    },  
+  // Show a success toast message
+
+  // Delay the navigation by a few milliseconds to ensure the toast message is visible
+  setTimeout(() => {
+    // Assuming `this.user_id` is the ID you want to pass to the invoiceShow route
+    this.$router.push({ name: "invoiceShow", params: { id: this.user_id } });
+  }, 2000);
+}
+
 
     
   },
