@@ -129,7 +129,7 @@
             <b-row align-h="end" class="mr-0">
                 <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
                     <b-row align-v="center" align-h="between">
-                        <p class="hp-badge-text hp-flex-none w-auto">Total Payable Exclusive Tex</p>
+                        <p class="hp-badge-text hp-flex-none w-auto">Total Payable Inclusive Tex</p>
                         <h5 class="mb-4 hp-flex-none w-auto">SEK {{ total_payable_exclusive_tex }}</h5>
                     </b-row>
 
@@ -268,6 +268,7 @@ export default {
         this.driver_last_name = this.editedUser.driver.last_name;
         this.mobile = this.editedUser.driver.mobile;
         this.address = this.editedUser.driver.address;
+        this.email = this.editedUser.driver.email;
         this.deduct_from_salary = this.editedUser.deduct_from_salary;
         this.total_payable_exclusive_tex = this.editedUser.total_payable_exclusive_tex;
         this.remaining_reciveable = this.editedUser.remaining_reciveable;
