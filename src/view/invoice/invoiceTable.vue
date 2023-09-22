@@ -34,8 +34,14 @@
                 <b-table id="dataTable" :items="users" :fields="fields" :current-page="currentPage" :per-page="perPage"
                     :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
                     :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
-                    <template #cell(driver.name)="row">
-                        {{ `${row.item.driver.name} ${row.item.driver.last_name}` }}
+                    <template #cell(invoice_number)="row">
+                        {{ `00000${row.item.id} ` }}
+                    </template>
+                    <template #cell(driver_name)="row">
+                      {{ `${row.item.driver.name} ${row.item.driver.last_name} ` }}
+                    </template>
+                    <template #cell(total_deduct_from_salary)="row">
+                        {{ `${row.item.deduct_from_salary} ` }}
                     </template>
                     <!-- Action Button Code -->
                     <template #cell(image)="row">
@@ -114,10 +120,9 @@ export default {
             fields: [
                 { key: "srNo", label: "Sr No" },
                 { key: "invoice_number", sortable: true },
-                { key: "total_expense", sortable: true },
-                { key: "total_paid", sortable: true },
-                { key: "total_receivable", sortable: true },
-                { key: "date", sortable: true },
+                { key: "driver_name", sortable: true },
+                { key: "total_deduct_from_salary", sortable: true },
+                { key: "total_inclusive_tex", sortable: true },
                 // { key: "image", sortable: true },
                 // { key: "status", sortable: true },
                 { key: "actions", label: "Actions" },
@@ -165,7 +170,7 @@ export default {
         fetchData() {
             this.loading = true; // Set loading to true before fetching data
             axios
-                .get("expense") // Replace 'your_api_endpoint_url_here' with your actual API URL
+                .get("invoice") // Replace 'your_api_endpoint_url_here' with your actual API URL
                 .then((response) => {
                     this.users = response.data.data;
                     this.users.forEach((item, index) => {
