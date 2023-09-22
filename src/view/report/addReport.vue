@@ -88,7 +88,6 @@
                   id="expense_deduct_from_salary"
                   v-model="expense_deduct_from_salary"
                   placeholder="Enter expense deduct from salary"
-                  required
                 ></b-form-input>
               </b-form-group>
             </div>
