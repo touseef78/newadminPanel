@@ -55,12 +55,11 @@
                                 <b-form-select id="card" v-model="card" >
                                     <option value="">Select Card</option>
                                     <option>Payable</option>
-                                    <option>Receiveable</option>
+                                    <option>Receivable</option>
                                     <option>Normal</option>
                                 </b-form-select>
                             </b-form-group>
                         </div>
-
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Document Upload:" label-for="profile_picture">
                                 <div style="margin-left: 3px; margin-bottom: 15px">
