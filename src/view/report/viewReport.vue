@@ -8,25 +8,13 @@
       <div>
         <b-row class="align-items-center">
           <b-col lg="6" class="my-1">
-            <b-form-group
-              label="Filter"
-              label-for="filter-input"
-              label-cols-sm="1"
-              label-align-sm="right"
-              label-size="sm"
-              class="mb-0"
-            >
+            <b-form-group label="Filter" label-for="filter-input" label-cols-sm="1" label-align-sm="right" label-size="sm"
+              class="mb-0">
               <b-input-group size="sm">
-                <b-form-input
-                  id="filter-input"
-                  v-model="filter"
-                  type="search"
-                  placeholder="Type to Search"
-                ></b-form-input>
+                <b-form-input id="filter-input" v-model="filter" type="search"
+                  placeholder="Type to Search"></b-form-input>
                 <b-input-group-append>
-                  <b-button :disabled="!filter" @click="filter = ''"
-                    >Clear</b-button
-                  >
+                  <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
                 </b-input-group-append>
               </b-input-group>
             </b-form-group>
@@ -35,12 +23,7 @@
             <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
               >Import</b-button
             > -->
-            <b-button
-              @click="exportDataToCSV"
-              variant="primary"
-              class="mb-8 mr-8"
-              >Export</b-button
-            >
+            <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
           </b-col>
         </b-row>
       </div>
@@ -48,107 +31,64 @@
     <!-- filter end -->
     <b-row>
       <div class="col-12 mt-16">
-        <b-table
-          id="dataTable"
-          :items="users"
-          :fields="fields"
-          :current-page="currentPage"
-          :per-page="perPage"
-          :filter="filter"
-          :filter-included-fields="filterOn"
-          :sort-by.sync="sortBy"
-          :sort-desc.sync="sortDesc"
-          :sort-direction="sortDirection"
-          show-empty
-          @filtered="onFiltered"
-          y
-          responsive
-        >
+        <b-table id="dataTable" :items="users" :fields="fields" :current-page="currentPage" :per-page="perPage"
+          :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
+          :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
           <template #cell(driver_name)="row">
             {{ `${row.item.driver.name} ${row.item.driver.last_name} ` }}
           </template>
           <template #cell(uber_earning)="row">
             {{
               row.item.driver.uber_earning
-                ? row.item.driver.uber_earning
-                : NonNullable
+              ? row.item.driver.uber_earning
+              : NonNullable
             }}
           </template>
           <template #cell(bolt_earning)="row">
             {{
               row.item.driver.bolt_earning
-                ? row.item.driver.bolt_earning
-                : NonNullable
+              ? row.item.driver.bolt_earning
+              : NonNullable
             }}
           </template>
           <template #cell(salary_fix)="row">
             {{
               row.item.driver.salary_fix
-                ? row.item.driver.salary_fix
-                : NonNullable
+              ? row.item.driver.salary_fix
+              : NonNullable
             }}
           </template>
           <!-- Action Button Code -->
           <template #cell(image)="row">
-            <img
-              :src="'https://boltapi.fastnetstaffing.in/' + row.item.image"
-              alt="Image"
-              class="img-fluid"
-              style="max-width: 100px; max-height: 100px"
-            />
+            <img :src="'https://boltapi.fastnetstaffing.in/' + row.item.image" alt="Image" class="img-fluid"
+              style="max-width: 100px; max-height: 100px" />
           </template>
           <!-- <template #cell(actions)="row">
                         <b-button @click="detailsDrivers(row.item.id)" variant="primary" class="mb-8 mr-8">Pay Now
                         </b-button>
                     </template> -->
           <template #cell(actions)="row">
-            <b-button
-              @click="navigateToAddReport(row.item.id)"
-              variant="primary"
-              class="mb-8 mr-8"
-              >Pay Now</b-button
-            >
+            <b-button @click="navigateToAddReport(row.item.id)" variant="primary" class="mb-8 mr-8">Pay Now</b-button>
           </template>
 
-          <b-form-group
-            label="Filter"
-            label-for="filter-input"
-            label-cols-sm="3"
-            label-align-sm="right"
-            label-size="sm"
-            class="mb-0"
-          >
+          <b-form-group label="Filter" label-for="filter-input" label-cols-sm="3" label-align-sm="right" label-size="sm"
+            class="mb-0">
             <b-input-group size="sm">
-              <b-form-input
-                id="filter-input"
-                v-model="filter"
-                type="search"
-                placeholder="Type to Search"
-              ></b-form-input>
+              <b-form-input id="filter-input" v-model="filter" type="search" placeholder="Type to Search"></b-form-input>
 
               <b-input-group-append>
-                <b-button :disabled="!filter" @click="filter = ''"
-                  >Clear</b-button
-                >
+                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
               </b-input-group-append>
             </b-input-group>
           </b-form-group>
         </b-table>
         <div class="mx-8 d-flex justify-content-end">
-          <b-pagination
-            v-model="currentPage"
-            :total-rows="rows"
-            :per-page="perPage"
-            aria-controls="my-table"
-          ></b-pagination>
+          <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"
+            aria-controls="my-table"></b-pagination>
         </div>
         <b-row class="mt-16 align-items-center justify-content-end">
           <b-row>
-            <div
-              v-if="codeActive"
-              class="col-12 mt-24 hljs-container"
-              :class="{ active: codeActiveClass }"
-            >
+            <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
               <pre v-highlightjs>
           <code class="hljs html">
             {{ codeText }}

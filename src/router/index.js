@@ -330,6 +330,15 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
+  {
+      path: "/invoice/view/:id",
+      name: "invoiceReport",
+      component: () => import("../view/invoice/invoiceReport.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
     // Service 
        {
       path: "/service/vehicle",

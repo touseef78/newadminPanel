@@ -38,19 +38,32 @@
                         {{ `00000${row.item.id} ` }}
                     </template>
                     <template #cell(driver_name)="row">
-                      {{ `${row.item.driver.name} ${row.item.driver.last_name} ` }}
+                        {{ `${row.item.driver.name} ${row.item.driver.last_name} ` }}
                     </template>
                     <template #cell(total_deduct_from_salary)="row">
-                        {{ `${row.item.deduct_from_salary} ` }}
+                        {{
+                            row.item.deduct_from_salary
+                            ? row.item.deduct_from_salary
+                            : NonNullable
+                        }}
                     </template>
+                    <template #cell(total_inclusive_tax)="row">
+                        {{ `${row.item.total_inclusive_tex} ` }}
+                    </template>
+
+                    <!-- <template #cell(driver_name)="row">
+                          {{ `${row.item.driver.name} ${row.item.driver.last_name} ` }}
+                        </template> -->
+
                     <!-- Action Button Code -->
                     <template #cell(image)="row">
                         <img :src="'https://boltapi.fastnetstaffing.in/' + row.item.image" alt="Image" class="img-fluid"
                             style="max-width: 100px; max-height: 100px" />
                     </template>
                     <template #cell(actions)="row">
-                        <b-button @click="detailsDrivers(row.item.id)" variant="primary" class="mb-8 mr-8">View Invoice
+                        <b-button @click="invoiceReport(row.item.id)" variant="primary" class="mb-8 mr-8">View Invoice
                         </b-button>
+
                     </template>
 
                     <b-form-group label="Filter" label-for="filter-input" label-cols-sm="3" label-align-sm="right"
@@ -122,7 +135,7 @@ export default {
                 { key: "invoice_number", sortable: true },
                 { key: "driver_name", sortable: true },
                 { key: "total_deduct_from_salary", sortable: true },
-                { key: "total_inclusive_tex", sortable: true },
+                { key: "total_inclusive_tax", sortable: true },
                 // { key: "image", sortable: true },
                 // { key: "status", sortable: true },
                 { key: "actions", label: "Actions" },
@@ -207,9 +220,9 @@ export default {
             URL.revokeObjectURL(url);
         },
 
-        // detailsDrivers(userId) {
-        //     this.$router.push({ name: "expenseDetails", params: { id: userId } });
-        // },
+        invoiceReport(userId) {
+            this.$router.push({ name: "invoiceReport", params: { id: userId } });
+        },
     },
 };
 </script>
