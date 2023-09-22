@@ -12,7 +12,7 @@
 
       <b-col class="pl-0">
         <h3 class="mb-4 mt-8">
-          1,243<span class="hp-badge-text ml-8 text-secondary">+43%</span>
+          241<span class="hp-badge-text ml-8 text-secondary"></span>
         </h3>
 
         <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
