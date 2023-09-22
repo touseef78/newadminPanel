@@ -129,7 +129,7 @@
             <b-row align-h="end" class="mr-0">
                 <b-col cols="12" xl="5" class="pb-16 hp-print-checkout">
                     <b-row align-v="center" align-h="between">
-                        <p class="hp-badge-text hp-flex-none w-auto">Total Payable Inclusive Tex</p>
+                        <p class="hp-badge-text hp-flex-none w-auto">Total Payable Inclusive Tax</p>
                         <h5 class="mb-4 hp-flex-none w-auto">SEK {{ total_payable_exclusive_tex }}</h5>
                     </b-row>
                   
