@@ -7,9 +7,8 @@
     <div class="col-12 mt-16">
       <div>
         <b-row class="align-items-center">
-          <b-col lg="6" class="my-1">
+          <b-col lg="3" class="my-1">
             <b-form-group
-              label="Filter"
               label-for="filter-input"
               label-cols-sm="1"
               label-align-sm="right"
@@ -31,8 +30,41 @@
               </b-input-group>
             </b-form-group>
           </b-col>
-          <b-col lg="6" class="my-1 d-flex justify-content-end">
-            <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button> -->
+          <b-col lg="3" class="my-1">
+            <b-form-group
+              label="Start Date"
+              label-for="start-date"
+              label-cols-sm="5"
+              label-align-sm="right"
+              label-size="sm"
+              class="mb-0"
+            >
+              <b-form-input
+                id="start-date"
+                v-model="start_date"
+                type="date"
+                placeholder="Select start date"
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col lg="3" class="my-1">
+            <b-form-group
+              label="End Date"
+              label-for="end-date"
+              label-cols-sm="4"
+              label-align-sm="right"
+              label-size="sm"
+              class="mb-0"
+            >
+              <b-form-input
+                id="end-date"
+                v-model="end_date"
+                type="date"
+                placeholder="Select end date"
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col lg="3" class="my-1 d-flex justify-content-end">
             <b-button
               @click="exportDataToCSV"
               variant="primary"
@@ -62,6 +94,9 @@
           y
           responsive
         >
+          <template #cell(date)="row">
+            {{ formatDate(row.item.created_at) }}
+          </template>
           <!-- Action Button Code -->
           <template #cell(actions)="row">
             <b-button @click="downloadFile(row.item.file)" variant="primary"
@@ -155,7 +190,7 @@ export default {
       fields: [
         { key: "id", sortable: true },
         { key: "file", sortable: true },
-        { key: "created_at", sortable: true },
+        { key: "date", sortable: true },
         { key: "actions", label: "Actions" },
       ],
 
@@ -164,8 +199,16 @@ export default {
       showDeleteConfirmation: false,
       itemIdToDelete: null,
       loading: false,
+      created_at: new Date(), // Replace with your actual date data
+      start_date: null,
+      end_date: null,
     };
   },
+  watch: {
+    start_date: "fetchData",
+    end_date: "fetchData",
+  },
+
   components: {
     BRow,
     BCol,
@@ -197,18 +240,36 @@ export default {
   },
   methods: {
     fetchData() {
-      this.loading = true; // Set loading to true before fetching data
+      this.loading = true;
+      // Define your API endpoint URL
+      const apiUrl = "fileGet";
+
+      // Create an object to hold the query parameters
+      const queryParams = {
+        start_date: this.start_date,
+        end_date: this.end_date,
+      };
+
       axios
-        .get("fileGet") // Replace 'your_api_endpoint_url_here' with your actual API URL
+        .get(apiUrl, { params: queryParams })
         .then((response) => {
-          this.users = response.data.data;
+          this.users = response.data.data.filter((item) => {
+            const createdDate = new Date(item.created_at);
+            return (
+              (!this.start_date || createdDate >= new Date(this.start_date)) &&
+              (!this.end_date || createdDate <= new Date(this.end_date))
+            );
+          });
+          this.users.forEach((item, index) => {
+            item.srNo = index + 1;
+          });
           this.totalRows = this.users.length;
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
         })
         .finally(() => {
-          this.loading = false; // Set loading to false after fetching data, whether success or error
+          this.loading = false;
         });
     },
     onFiltered(filteredItems) {
@@ -250,6 +311,11 @@ export default {
       link.download = "downloaded_file"; // Specify the default filename for the downloaded file
       link.target = "_blank"; // Open the link in a new tab
       link.click();
+    },
+
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString();
     },
   },
 };

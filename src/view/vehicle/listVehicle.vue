@@ -6,8 +6,8 @@
     </div>
     <div>
       <b-row class="align-items-center">
-        <b-col lg="6" class="my-1">
-          <b-form-group label="Filter" label-for="filter-input" label-cols-sm="1" label-align-sm="right" label-size="sm"
+        <b-col lg="3" class="my-1">
+          <b-form-group label-for="filter-input" label-cols-sm="1" label-align-sm="right" label-size="sm"
             class="mb-0">
             <b-input-group size="sm">
               <b-form-input id="filter-input" v-model="filter" type="search" placeholder="Type to Search"></b-form-input>
@@ -17,7 +17,19 @@
             </b-input-group>
           </b-form-group>
         </b-col>
-        <b-col lg="6" class="my-1 d-flex justify-content-end">
+        <b-col lg="3" class="my-1">
+            <b-form-group label="Start Date" label-for="start-date" label-cols-sm="5" label-align-sm="right"
+                label-size="sm" class="mb-0">
+                <b-form-input id="start-date" v-model="start_date" type="date" placeholder="Select start date"></b-form-input>
+            </b-form-group>
+        </b-col>
+        <b-col lg="3" class="my-1">
+            <b-form-group label="End Date" label-for="end-date" label-cols-sm="4" label-align-sm="right"
+                label-size="sm" class="mb-0">
+                <b-form-input id="end-date" v-model="end_date" type="date" placeholder="Select end date"></b-form-input>
+            </b-form-group>
+        </b-col>
+        <b-col lg="3" class="my-1 d-flex justify-content-end">
           <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
             >Import</b-button
           > -->
@@ -35,6 +47,9 @@
            <template #cell(vehicle_name)="row">
             {{ `${row.item.name} ` }}
           </template>
+          <template #cell(assign_driver)="row">
+            {{ `${row.item.driver.name} ${row.item.driver.last_name}  ` }}
+          </template>
           <template #cell(total_pending)="row">
             <span :class="{ 'text-danger': row.value > 0, 'text-black': row.value === 0 }">
               {{ row.value }}
@@ -48,6 +63,9 @@
               ? row.item.service_meter_reading
               : NonNullable
             }}
+          </template>
+          <template #cell(date)="row">
+            {{ formatDate(row.item.created_at) }}
           </template>
           <!-- Action Button Code -->
           <template #cell(actions)="row">
@@ -161,12 +179,11 @@ export default {
       fields: [
         { key: "id", sortable: true },
         { key: "vehicle_name", sortable: true },
+        { key: "assign_driver", sortable: true },
         { key: "vehicle_company", sortable: true },
         { key: "description", sortable: true },
         { key: "registration_number", sortable: true },
         { key: "vehicle_type", sortable: true },
-        { key: "last_inspection", sortable: true },
-        { key: "next_inspection", sortable: true },
         // { key: "isurance", sortable: true },
         { key: "texameter_inspection_date", sortable: true },
         { key: "car_make", sortable: true },
@@ -174,6 +191,7 @@ export default {
         { key: "car_color", sortable: true },
         { key: "car_number", sortable: true },
         { key: "meter_reading", sortable: true },
+        { key: "date", sortable: true },
         { key: "actions", label: "Actions" },
       ],
 
@@ -182,7 +200,15 @@ export default {
       showDeleteConfirmation: false,
       itemIdToDelete: null,
       loading: false,
+      created_at: new Date(), // Replace with your actual date data
+      start_date: null,
+      end_date: null,
     };
+  },
+
+  watch: {
+    start_date: "fetchData",
+    end_date: "fetchData",
   },
   components: {
     BRow,
@@ -215,19 +241,37 @@ export default {
   },
   methods: {
     fetchData() {
-      this.loading = true; // Set loading to true before fetching data
-      axios
-        .get("vehicle") // Replace 'your_api_endpoint_url_here' with your actual API URL
-        .then((response) => {
-          this.users = response.data.data;
-          this.totalRows = this.users.length;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        })
-        .finally(() => {
-          this.loading = false; // Set loading to false after fetching data, whether success or error
-        });
+        this.loading = true;
+        // Define your API endpoint URL
+        const apiUrl = "vehicle";
+
+        // Create an object to hold the query parameters
+        const queryParams = {
+            start_date: this.start_date,
+            end_date: this.end_date,
+        };
+
+        axios
+            .get(apiUrl, { params: queryParams })
+            .then((response) => {
+                this.users = response.data.data.filter((item) => {
+                    const createdDate = new Date(item.created_at);
+                    return (
+                        (!this.start_date || createdDate >= new Date(this.start_date)) &&
+                        (!this.end_date || createdDate <= new Date(this.end_date))
+                    );
+                });
+                this.users.forEach((item, index) => {
+                    item.srNo = index + 1;
+                });
+                this.totalRows = this.users.length;
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            })
+            .finally(() => {
+                this.loading = false;
+            });
     },
     onFiltered(filteredItems) {
       this.totalRows = filteredItems.length;
@@ -269,6 +313,12 @@ export default {
           console.error("Error deleting item:", error);
         });
     },
+
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString();
+
+  },
   },
 };
 </script>

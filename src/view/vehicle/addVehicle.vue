@@ -27,7 +27,7 @@
             </div> -->
             <div class="col-md-4 col-12">
               <b-form-group id="input-group-1" label="Vehicle Name:" label-for="name">
-                <b-form-input id="name" type="text" v-model="name" pattern="[A-Za-z]+"
+                <b-form-input id="name" type="text" v-model="name" pattern="[A- Z a-z]+"
                   title="Please enter only alphabetic characters" placeholder="Enter vehicle name" autocomplete="off"
                   required></b-form-input>
               </b-form-group>
@@ -296,8 +296,6 @@ export default {
       mileage: "",
       accidental_claim: "",
       other_expense: "",
-      select_car:'',
-      meter_reading:'',
     };
   },
   components: {
@@ -364,8 +362,6 @@ export default {
       formData.append("mileage", this.mileage);
       formData.append("accidental_claim", this.accidental_claim);
       formData.append("other_expense", this.other_expense);
-      formData.append("select_car", this.select_car);
-      formData.append("meter_reading", this.meter_reading);
       formData.append("other_expense", this.other_expense);
       axios
         .post("vehicle", formData)

@@ -489,7 +489,7 @@ export default {
   created() {
     // Load the clients data when the component is created
     axios
-      .get("vehicle")
+      .get("notAssign")
       .then((response) => {
         this.vehicles = response.data.data;
       })

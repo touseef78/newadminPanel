@@ -8,8 +8,8 @@
     <div class="col-12 mt-16">
       <div>
         <b-row class="align-items-center">
-          <b-col lg="6" class="my-1">
-            <b-form-group label="Filter" label-for="filter-input" label-cols-sm="1" label-align-sm="right" label-size="sm"
+          <b-col lg="3" class="my-1">
+            <b-form-group label-for="filter-input" label-cols-sm="1" label-align-sm="right" label-size="sm"
               class="mb-0">
               <b-input-group size="sm">
                 <b-form-input id="filter-input" v-model="filter" type="search"
@@ -20,7 +20,19 @@
               </b-input-group>
             </b-form-group>
           </b-col>
-          <b-col lg="6" class="my-1 d-flex justify-content-end">
+          <b-col lg="3" class="my-1">
+            <b-form-group label="Start Date" label-for="start-date" label-cols-sm="5" label-align-sm="right"
+                label-size="sm" class="mb-0">
+                <b-form-input id="start-date" v-model="start_date" type="date" placeholder="Select start date"></b-form-input>
+            </b-form-group>
+        </b-col>
+        <b-col lg="3" class="my-1">
+            <b-form-group label="End Date" label-for="end-date" label-cols-sm="4" label-align-sm="right"
+                label-size="sm" class="mb-0">
+                <b-form-input id="end-date" v-model="end_date" type="date" placeholder="Select end date"></b-form-input>
+            </b-form-group>
+        </b-col>
+          <b-col lg="3" class="my-1 d-flex justify-content-end">
             <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button> -->
             <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
           </b-col>
@@ -34,6 +46,9 @@
           :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
           :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
           <!-- Action Button Code -->
+          <template #cell(date)="row">
+            {{ formatDate(row.item.created_at) }}
+          </template>
           <template #cell(actions)="row">
             <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
@@ -152,10 +167,11 @@ export default {
         { key: "mobile", sortable: true },
         { key: "email", sortable: true },
         { key: "emergency_contact_name", sortable: true },
-        { key: "salary_commission", sortable: true },
+        // { key: "salary_commission", sortable: true },
         { key: "joining_date", sortable: true },
-        { key: "hourly_enter_amount", sortable: true },
+        // { key: "hourly_enter_amount", sortable: true },
         { key: "security_code", sortable: true },
+        { key: "date", sortable: true },
         { key: "status", sortable: true },
         { key: "actions", label: "Actions" },
       ],
@@ -165,9 +181,17 @@ export default {
       showDeleteConfirmation: false,
       itemIdToDelete: null,
       loading: false,
+      created_at: new Date(), // Replace with your actual date data
+      start_date: null,
+      end_date: null,
 
     };
+
   },
+  watch: {
+    start_date: 'fetchData',
+    end_date: 'fetchData',
+    },
   components: {
     BRow,
     BCol,
@@ -201,19 +225,37 @@ export default {
   },
   methods: {
     fetchData() {
-      this.loading = true; // Set loading to true before fetching data
-      axios
-        .get("drivers") // Replace 'your_api_endpoint_url_here' with your actual API URL
-        .then((response) => {
-          this.users = response.data.data;
-          this.totalRows = this.users.length;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        })
-        .finally(() => {
-          this.loading = false; // Set loading to false after fetching data, whether success or error
-        });
+        this.loading = true;
+        // Define your API endpoint URL
+        const apiUrl = "drivers";
+
+        // Create an object to hold the query parameters
+        const queryParams = {
+            start_date: this.start_date,
+            end_date: this.end_date,
+        };
+
+        axios
+            .get(apiUrl, { params: queryParams })
+            .then((response) => {
+                this.users = response.data.data.filter((item) => {
+                    const createdDate = new Date(item.created_at);
+                    return (
+                        (!this.start_date || createdDate >= new Date(this.start_date)) &&
+                        (!this.end_date || createdDate <= new Date(this.end_date))
+                    );
+                });
+                this.users.forEach((item, index) => {
+                    item.srNo = index + 1;
+                });
+                this.totalRows = this.users.length;
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            })
+            .finally(() => {
+                this.loading = false;
+            });
     },
     onFiltered(filteredItems) {
       this.totalRows = filteredItems.length;
@@ -267,7 +309,14 @@ export default {
           // Handle error
           console.error("Error deleting item:", error);
         });
+
+        
     },
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString();
+
+  },
   },
 };
 </script>

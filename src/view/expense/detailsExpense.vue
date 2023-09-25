@@ -7,9 +7,9 @@
     <div class="col-12 mt-16">
       <div>
         <b-row class="align-items-center">
-          <b-col lg="6" class="my-1">
+          <b-col lg="3" class="my-1">
             <b-form-group
-              label="Filter"
+              label=""
               label-for="filter-input"
               label-cols-sm="1"
               label-align-sm="right"
@@ -31,7 +31,19 @@
               </b-input-group>
             </b-form-group>
           </b-col>
-          <b-col lg="6" class="my-1 d-flex justify-content-end">
+          <b-col lg="3" class="my-1">
+            <b-form-group label="Start Date" label-for="start-date" label-cols-sm="5" label-align-sm="right"
+                label-size="sm" class="mb-0">
+                <b-form-input id="start-date" v-model="start_date" type="date" placeholder="Select start date"></b-form-input>
+            </b-form-group>
+        </b-col>
+        <b-col lg="3" class="my-1">
+            <b-form-group label="End Date" label-for="end-date" label-cols-sm="4" label-align-sm="right"
+                label-size="sm" class="mb-0">
+                <b-form-input id="end-date" v-model="end_date" type="date" placeholder="Select end date"></b-form-input>
+            </b-form-group>
+        </b-col>
+          <b-col lg="3" class="my-1 d-flex justify-content-end">
             <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
               >Import</b-button
             > -->
@@ -69,6 +81,9 @@
           </template>
           <template #cell(type)="row">
             {{ `${row.item.card}` }}
+          </template>
+          <template #cell(date)="row">
+            {{ formatDate(row.item.created_at) }}
           </template>
           <!-- Action Button Code -->
           <template #cell(image)="row">
@@ -268,9 +283,9 @@
     <div class="col-12 mt-16">
       <div>
         <b-row class="align-items-center">
-          <b-col lg="6" class="my-1">
+          <b-col lg="3" class="my-1">
             <b-form-group
-              label="Filter"
+              label=""
               label-for="filter-input"
               label-cols-sm="1"
               label-align-sm="right"
@@ -292,8 +307,22 @@
               </b-input-group>
             </b-form-group>
           </b-col>
-          <b-col lg="6" class="my-1 d-flex justify-content-end">
-            <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button> -->
+          <b-col lg="3" class="my-1">
+            <b-form-group label="Start Date" label-for="start-date" label-cols-sm="5" label-align-sm="right"
+                label-size="sm" class="mb-0">
+                <b-form-input id="start_dates" v-model="start_dates" type="date" placeholder="Select start date"></b-form-input>
+            </b-form-group>
+        </b-col>
+        <b-col lg="3" class="my-1">
+            <b-form-group label="End Date" label-for="end-date" label-cols-sm="4" label-align-sm="right"
+                label-size="sm" class="mb-0">
+                <b-form-input id="end_dates" v-model="end_dates" type="date" placeholder="Select end date"></b-form-input>
+            </b-form-group>
+        </b-col>
+          <b-col lg="3" class="my-1 d-flex justify-content-end">
+            <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
+              >Import</b-button
+            > -->
             <b-button
               @click="exportDataToCSV"
               variant="primary"
@@ -335,7 +364,14 @@
             {{ `${row.item.vehicle.service_meter_reading}` }}
           </template>
           <template #cell(total_life_kilometer)="row">
-            {{ `${row.item.vehicle.total_life_kilometer}` }}
+            {{
+              row.item.vehicle.total_life_kilometer
+              ? row.item.vehicle.total_life_kilometer
+              : NonNullable
+            }}
+          </template>
+          <template #cell(date)="row">
+            {{ formatDate(row.item.created_at) }}
           </template>
           
           <!-- Action Button Code -->
@@ -451,7 +487,7 @@ export default {
         { key: "type", sortable: true },
         { key: "category", sortable: true },
         { key: "image", sortable: true },
-        { key: "created_at", sortable: true },
+        { key: "date", sortable: true },
         { key: "status", sortable: true },
         { key: "actions", label: "Actions" },
       ],
@@ -463,7 +499,7 @@ export default {
         { key: "service_meter_reading", sortable: true },
         { key: "total_life_kilometer", sortable: true },
         { key: "category", sortable: true },
-        { key: "created_at", sortable: true },
+        { key: "date", sortable: true },
         { key: "image", sortable: true },
       ],
 
@@ -472,7 +508,18 @@ export default {
       showDeleteConfirmation: false,
       itemIdToDelete: null,
       loading: false,
+      created_at: new Date(), // Replace with your actual date data
+      start_date: null,
+      end_date: null,
+      start_dates: null,
+      end_dates: null,
     };
+  },
+  watch: {
+    start_date: 'fetchData',
+    end_date: 'fetchData',
+    start_dates: 'fetchVehicleExpense',
+    end_dates: 'fetchVehicleExpense',
   },
   components: {
     BRow,
@@ -514,35 +561,103 @@ export default {
   methods: {
     // const userId = this.$route.params.id;
     fetchData(userId) {
-      this.loading = true; // Set loading to true before fetching data
-      axios
-        .get(`detailsExpensive/${userId}`) // Replace with your actual API URL
-        .then((response) => {
-          this.users = response.data.data;
-          this.totalRows = this.users.length;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        })
-        .finally(() => {
-          this.loading = false; // Set loading to false after fetching data, whether success or error
-        });
+        this.loading = true;
+        // Define your API endpoint URL
+        // const apiUrl = "vehicle";
+
+        // Create an object to hold the query parameters
+        const queryParams = {
+            start_date: this.start_date,
+            end_date: this.end_date,
+        };
+
+        axios
+            .get(`detailsExpensive/${userId}`,{ params: queryParams })
+            .then((response) => {
+                this.users = response.data.data.filter((item) => {
+                    const createdDate = new Date(item.created_at);
+                    return (
+                        (!this.start_date || createdDate >= new Date(this.start_date)) &&
+                        (!this.end_date || createdDate <= new Date(this.end_date))
+                    );
+                });
+                this.users.forEach((item, index) => {
+                    item.srNo = index + 1;
+                });
+                this.totalRows = this.users.length;
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            })
+            .finally(() => {
+                this.loading = false;
+            });
     },
+
+    // fetchData(userId) {
+    //   this.loading = true; // Set loading to true before fetching data
+    //   axios
+    //     .get(`detailsExpensive/${userId}`) // Replace with your actual API URL
+    //     .then((response) => {
+    //       this.users = response.data.data;
+    //       this.totalRows = this.users.length;
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error fetching data:", error);
+    //     })
+    //     .finally(() => {
+    //       this.loading = false; // Set loading to false after fetching data, whether success or error
+    //     });
+    // },
     fetchVehicleExpense(userId) {
-      this.loading = true;
-      axios
-        .get(`VehicleExpense/${userId}`)
-        .then((response) => {
-          this.vehicles = response.data.data; // Store the fetched vehicle data
-          this.totalRows = this.vehicles.length;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        })
-        .finally(() => {
-          this.loading = false;
-        });
+        this.loading = true;
+        // Define your API endpoint URL
+        // const apiUrl = "vehicle";
+
+        // Create an object to hold the query parameters
+        const queryParams = {
+            start_dates: this.start_dates,
+            end_dates: this.end_dates,
+        };
+
+        axios
+            .get(`VehicleExpense/${userId}`,{ params: queryParams })
+            .then((response) => {
+                this.vehicles = response.data.data.filter((item) => {
+                    const createdDates = new Date(item.created_at);
+                    return (
+                        (!this.start_dates || createdDates >= new Date(this.start_dates)) &&
+                        (!this.end_dates || createdDates <= new Date(this.end_dates))
+                    );
+                });
+                this.vehicles.forEach((item, index) => {
+                    item.srNo = index + 1;
+                });
+                this.totalRows = this.vehicles.length;
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            })
+            .finally(() => {
+                this.loading = false;
+            });
     },
+
+    // fetchVehicleExpense(userId) {
+    //   this.loading = true;
+    //   axios
+    //     .get(`VehicleExpense/${userId}`)
+    //     .then((response) => {
+    //       this.vehicles = response.data.data; // Store the fetched vehicle data
+    //       this.totalRows = this.vehicles.length;
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error fetching data:", error);
+    //     })
+    //     .finally(() => {
+    //       this.loading = false;
+    //     });
+    // },
 
     onFiltered(filteredItems) {
       this.totalRows = filteredItems.length;
@@ -631,6 +746,11 @@ export default {
       link.target = "_blank"; // Open the link in a new tab
       link.click();
     },
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString();
+
+  },
   },
 };
 </script>
