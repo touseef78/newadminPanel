@@ -118,7 +118,6 @@ export default {
 
       users: [], // Instead of 'items', use 'users' array to store fetched data
       fields: [
-        { key: "srNo", label: "Sr No" },
         { key: "id", sortable: true },
         { key: "driver_name", sortable: true },
         { key: "total_payable", sortable: true },

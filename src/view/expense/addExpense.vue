@@ -194,7 +194,7 @@ export default {
     created() {
         // Load the clients data when the component is created
         axios
-            .get("drivers")
+            .get("ApproedDriver")
             .then((response) => {
                 this.drivers = response.data.data;
             })
@@ -202,9 +202,6 @@ export default {
                 console.log(error);
             });
     },
-
-
-
     methods: {
         // search able  code 
         // filterDrivers() {

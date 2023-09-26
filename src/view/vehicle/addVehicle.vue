@@ -362,7 +362,6 @@ export default {
       formData.append("mileage", this.mileage);
       formData.append("accidental_claim", this.accidental_claim);
       formData.append("other_expense", this.other_expense);
-      formData.append("other_expense", this.other_expense);
       axios
         .post("vehicle", formData)
         .then((response) => {
