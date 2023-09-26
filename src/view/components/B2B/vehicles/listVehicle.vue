@@ -85,6 +85,9 @@
           <template #cell(date)="row">
             {{ formatDate(row.item.created_at) }}
           </template>
+          <template #cell(vehicle_name)="row">
+            {{ `${row.item.name} ` }}
+          </template>
 
           <template #cell(actions)="row">
             <b-button @click="showVehicle(row.item.id)" variant="link" class="p-0">
@@ -196,9 +199,9 @@ export default {
       users: [], // Instead of 'items', use 'users' array to store fetched data
       fields: [
         { key: "id", sortable: true },
-        { key: "name", sortable: true },
-        { key: "vehicle_company", sortable: true },
-        { key: "description", sortable: true },
+        { key: "vehicle_name", sortable: true },
+        { key: "company_name", sortable: true },
+        { key: "owner_name", sortable: true },
         { key: "registration_number", sortable: true },
         { key: "vehicle_type", sortable: true },
         { key: "texameter_inspection_date", sortable: true },
@@ -328,6 +331,10 @@ export default {
 
     showVehicle(userId) {
       this.$router.push({ name: "viewVehicle", params: { id: userId } });
+    },
+        formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString();
     },
 
     deleteItem(itemId) {

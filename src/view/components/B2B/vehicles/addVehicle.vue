@@ -27,14 +27,12 @@
             <div class="col-md-4 col-12">
               <b-form-group id="input-group-1" label=" Organization Name:" label-for="owner_name">
                 <b-form-input id="owner_name" type="text" placeholder="Enter organization name" v-model="owner_name"
-                  pattern="[A- Z a-z]+" title="Please enter only alphabetic characters" 
                   required></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-4 col-12">
               <b-form-group id="input-group-1" label=" Organization Number:" label-for="owner_number">
                 <b-form-input id="owner_number" type="text" placeholder="Enter organization number" v-model="owner_number"
-                 pattern="[0-9]+" title="Please enter only numeric characters"
                   required></b-form-input>
               </b-form-group>
             </div>
@@ -48,20 +46,7 @@
                 </div>
               </b-form-group>
             </div>
-
-            <!-- new code  -->
-            <!-- <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                                <div style="margin-left: 3px; margin-bottom: 15px">
-                                    <input type="file" accept="image/*" id="profile_picture"
-                                        @change="onProfilePictureChange" />
-                                </div>
-                            </b-form-group>
-                        </div> -->
-            <!-- new code end  -->
           </div>
-
-
           <div style="
                 background-color: rgb(97, 116, 152);
                 height: 32px;
@@ -395,7 +380,7 @@ export default {
       this.isLoading = true;
       // Create a FormData object to handle the image file
       const formData = new FormData();
-      formData.append(" name", this.name);
+      formData.append("name", this.name);
       formData.append("vehicle_company", this.vehicle_company);
       formData.append("description", this.description);
       formData.append("car_make", this.car_make);
@@ -465,6 +450,12 @@ export default {
       if (files && files.length > 0) {
         // Convert FileList to an array
         this.image = Array.from(files);
+      }
+    },
+    onCompanyDocumentChange(event) {
+      const file = event.target.files[0];
+      if (file) {
+        this.company_document = file;
       }
     },
   },

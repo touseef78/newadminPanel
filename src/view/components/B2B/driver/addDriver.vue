@@ -574,7 +574,7 @@ export default {
   created() {
     // Load the clients data when the component is created
     axios
-      .get("vehicle")
+      .get("B2BIndex")
       .then((response) => {
         this.vehicles = response.data.data;
       })
