@@ -88,6 +88,13 @@
           <template #cell(vehicle_name)="row">
             {{ `${row.item.name} ` }}
           </template>
+          <!-- <template #cell(company_name)="row">
+            {{ `${row.item.company.company_name} ` }}
+          </template>
+          <template #cell(owner_name)="row">
+            {{ `${row.item.company.owner_name} ` }}
+          </template> -->
+          
 
           <template #cell(actions)="row">
             <b-button @click="showVehicle(row.item.id)" variant="link" class="p-0">
@@ -200,8 +207,6 @@ export default {
       fields: [
         { key: "id", sortable: true },
         { key: "vehicle_name", sortable: true },
-        { key: "company_name", sortable: true },
-        { key: "owner_name", sortable: true },
         { key: "registration_number", sortable: true },
         { key: "vehicle_type", sortable: true },
         { key: "texameter_inspection_date", sortable: true },

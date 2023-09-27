@@ -58,6 +58,20 @@ export default {
       title: "B2B",
       icon: "Curved-People",
       children: [
+        {
+          id: "/company",
+          title: "Add B2B",
+          icon: "Curved-Work",
+          navLink: "/company/add",
+        },
+    
+        {
+          id: "/company",
+          title: "List B2B",
+          icon: "Curved-Work",
+          navLink: "/company/list",
+        },
+
           {
       id: "driver",
       title: "Drivers",
@@ -94,6 +108,8 @@ export default {
        
       ],
     },
+
+
       ],
     },
     //  Expense

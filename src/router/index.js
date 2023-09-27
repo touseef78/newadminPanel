@@ -208,6 +208,34 @@ const router = new VueRouter({
       },
     },
 
+     // company 
+     {
+      path: "/company/add",
+      name: "companAdd",
+      component: () => import("../view/company/addCompany.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    
+       {
+      path: "/company/list",
+      name: "listCompany",
+      component: () => import("../view/company/listCompany.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
+    {
+      path: "/company/edit/:id",
+      name: "editCompany",
+      component: () => import("../view/company/editCompany.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
 
     // Eidt 
        {

@@ -19,34 +19,16 @@
           </div>
           <div class="row">
             <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label="Company Name:" label-for="company_name">
-                <b-form-input id="company_name" type="text" placeholder="Enter comapany name" v-model="company_name"
-                  required></b-form-input>
-              </b-form-group>
+                <b-form-group id="input-group-2" label="Select Company:" label-for="company_id">
+                  <b-form-select id="company_id" placeholder="Enter select Company" v-model="company_id" required>
+                    <option value="">Select Company</option>
+                    <option v-for="company in companyes" :key="company.id" :value="company.id">
+                      {{ company.company_name }}
+                    </option>
+                  </b-form-select>
+                </b-form-group>
+              </div>
             </div>
-            <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label=" Organization Name:" label-for="owner_name">
-                <b-form-input id="owner_name" type="text" placeholder="Enter organization name" v-model="owner_name"
-                  required></b-form-input>
-              </b-form-group>
-            </div>
-            <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label=" Organization Number:" label-for="owner_number">
-                <b-form-input id="owner_number" type="text" placeholder="Enter organization number" v-model="owner_number"
-                  required></b-form-input>
-              </b-form-group>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label="Company Document:" label-for="company_document">
-                <div style="margin-left: 3px; margin-bottom: 15px">
-                  <input type="file" accept="image/*" id="company_document" @change="onCompanyDocumentChange" />
-                </div>
-              </b-form-group>
-            </div>
-          </div>
           <div style="
                 background-color: rgb(97, 116, 152);
                 height: 32px;
@@ -336,10 +318,8 @@ export default {
       mileage: "",
       accidental_claim: "",
       other_expense: "",
-      owner_name: "",
-      owner_number: "",
-      company_document: "",
-      company_name: "",
+      company_id: "",
+      companyes: [],
     };
   },
   components: {
@@ -355,6 +335,18 @@ export default {
     BFormInput,
     BToast,
     BSpinner,
+  },
+
+  created() {
+    // Load the clients data when the component is created
+    axios
+      .get("company")
+      .then((response) => {
+        this.companyes = response.data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
   methods: {
     onSubmit(event) {
@@ -410,10 +402,8 @@ export default {
       formData.append("mileage", this.mileage);
       formData.append("accidental_claim", this.accidental_claim);
       formData.append("other_expense", this.other_expense);
-      formData.append("owner_name", this.owner_name);
-      formData.append("owner_number", this.owner_number);
-      formData.append("company_document", this.company_document);
-      formData.append("company_name", this.company_name);
+      formData.append("company_id", this.company_id);
+
       formData.append("type", "b2b");
       axios
         .post("vehicle", formData)
@@ -450,12 +440,6 @@ export default {
       if (files && files.length > 0) {
         // Convert FileList to an array
         this.image = Array.from(files);
-      }
-    },
-    onCompanyDocumentChange(event) {
-      const file = event.target.files[0];
-      if (file) {
-        this.company_document = file;
       }
     },
   },
