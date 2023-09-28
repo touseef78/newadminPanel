@@ -331,11 +331,11 @@ export default {
     },
 
     editVehicle(userId) {
-      this.$router.push({ name: "editVehicle", params: { id: userId } });
+      this.$router.push({ name: "B2B/Vehicle/edit", params: { id: userId } });
     },
 
     showVehicle(userId) {
-      this.$router.push({ name: "viewVehicle", params: { id: userId } });
+      this.$router.push({ name: "B2B/Vehicle/view", params: { id: userId } });
     },
         formatDate(dateString) {
       const date = new Date(dateString);

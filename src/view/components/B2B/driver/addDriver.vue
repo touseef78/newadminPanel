@@ -1,11 +1,33 @@
 <template>
   <div>
-    <div v-if="successMessage" class="alert alert-success" style="color: rgb(5, 20, 48)">
-      {{ successMessage }}
-    </div>
     <b-card>
       <b-row>
         <div class="col-12 mt-16">
+          <div style="
+              background-color: rgb(97, 116, 152);
+              height: 32px;
+              border-radius: 4px;
+            ">
+            <h5 style="
+                color: rgb(223, 227, 238);
+                margin-left: 5px;
+                font-weight: bold;
+              ">
+              Company Information
+            </h5>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Select Company:" label-for="company_id">
+                  <b-form-select id="company_id" placeholder="Enter select Company" v-model="company_id" required>
+                    <option value="">Select Company</option>
+                    <option v-for="company in companyes" :key="company.id" :value="company.id">
+                      {{ company.company_name }}
+                    </option>
+                  </b-form-select>
+                </b-form-group>
+              </div>
+            </div>
           <div style="
               background-color: rgb(97, 116, 152);
               height: 32px;
@@ -573,6 +595,16 @@ export default {
 
   created() {
     // Load the clients data when the component is created
+    axios
+      .get("company")
+      .then((response) => {
+        this.companyes = response.data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
     axios
       .get("B2BIndex")
       .then((response) => {

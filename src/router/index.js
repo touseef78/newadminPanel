@@ -208,6 +208,24 @@ const router = new VueRouter({
       },
     },
 
+    {
+      path: "/B2B/Vehicle/edit/:id",
+      name: "B2B/Vehicle/edit",
+      component: () => import("../view/components/B2B/vehicles/editVehicleB2B.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
+    {
+      path: "/B2B/Vehicle/view/:id",
+      name: "B2B/Vehicle/view",
+      component: () => import("../view/components/B2B/vehicles/viewVehicleB2B.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
      // company 
      {
       path: "/company/add",
