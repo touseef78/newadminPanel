@@ -143,7 +143,7 @@
                   <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id">
                     <option value="">Select Car</option>
                     <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
-                      {{ vehicle.name }}
+                      {{ vehicle.name }} | {{ vehicle.car_number }} 
                     </option>
                   </b-form-select>
                 </b-form-group>

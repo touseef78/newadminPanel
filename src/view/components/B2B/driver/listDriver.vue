@@ -129,6 +129,7 @@ import {
     BFormSelect,
     BPagination,
     BInputGroupAppend,
+    BSpinner,
 } from "bootstrap-vue";
 import axios from "axios";
 import Papa from "papaparse";
@@ -157,7 +158,6 @@ export default {
                 { key: "salary_commission", sortable: true },
                  { key: "joining_date", sortable: true },
                 { key: "hourly_enter_amount", sortable: true },
-                { key: "security_code", sortable: true },
                 { key: "status", sortable: true },
                 // { key: "status", sortable: true },
                 { key: "actions", label: "Actions" },
@@ -183,6 +183,7 @@ export default {
         BFormSelect,
         BPagination,
         BInputGroupAppend,
+        BSpinner,
     },
     computed: {
         sortOptions() {

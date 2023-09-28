@@ -42,11 +42,8 @@
                             <b-form-group id="input-group-1" label="Company Document:" label-for="company_document">
                                 <div style="margin-left: 3px; margin-bottom:15px;">
                                     <img :src="'https://boltapi.fastnetstaffing.in/' + company_document
-                                        " alt="Profile Picture" width="100" height="100" />
-                                    <input type="file" accept="image/*" id="company_document"
-                                        @change="onCompanyDocumentChange" />
-
-                                </div>
+                                        " alt="Document" width="100" height="100" />
+                                 </div>
                             </b-form-group>
                         </div>
                     </div>
@@ -555,7 +552,7 @@ export default {
 
         const userId = this.$route.params.id;
         axios
-            .get(`drivers/${userId}`)
+            .get(`B2Bshowdriver/${userId}`)
             .then((response) => {
                 this.editedUser = response.data.data;
                 // Set the data properties with values from editedUser   
@@ -581,10 +578,6 @@ export default {
                 this.bank_upload_document = this.editedUser.bank_upload_document;
                 this.bank_emergency_contact_name =
                     this.editedUser.bank_emergency_contact_name;
-                this.company_name = this.editedUser.company_name;
-                this.owner_name = this.editedUser.owner_name;
-                this.owner_number = this.editedUser.owner_number;
-                this.company_document = this.editedUser.company_document;
                 this.vehicle_id = this.editedUser.vehicle_id;
                 this.taxi_driving_liscence = this.editedUser.taxi_driving_liscence;
                 this.vehicle_name = this.editedUser.vehicle_name;
@@ -598,6 +591,10 @@ export default {
                 this.city = this.editedUser.city;
                 this.vehicle_image = this.editedUser.vehicle_image;
                 this.total_number_hour = this.editedUser.total_number_hour;
+                this.company_document = this.editedUser.company.company_document;
+        this.owner_name = this.editedUser.company.owner_name;
+        this.owner_number = this.editedUser.company.owner_number;
+        this.company_name = this.editedUser.company.company_name;
                 // Depending on the selected option, set the appropriate salary value
                 if (this.editedUser.salary_fix !== null) {
                     this.selectedOption = "Fix";

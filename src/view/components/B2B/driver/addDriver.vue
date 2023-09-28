@@ -3,7 +3,8 @@
     <b-card>
       <b-row>
         <div class="col-12 mt-16">
-          <div style="
+          <b-form @submit.prevent="addUser" v-if="show">
+            <div style="
               background-color: rgb(97, 116, 152);
               height: 32px;
               border-radius: 4px;
@@ -28,64 +29,6 @@
                 </b-form-group>
               </div>
             </div>
-          <div style="
-              background-color: rgb(97, 116, 152);
-              height: 32px;
-              border-radius: 4px;
-            ">
-            <h5 style="
-                color: rgb(223, 227, 238);
-                margin-left: 5px;
-                font-weight: bold;
-              ">
-              Company Information
-            </h5>
-          </div>
-          <div class="row">
-            <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label="Company Name:" label-for="company_name">
-                <b-form-input id="company_name" type="text" placeholder="Enter comapany name" v-model="company_name"
-                  required></b-form-input>
-              </b-form-group>
-            </div>
-            <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label=" Organization Name:" label-for="owner_name">
-                <b-form-input id="owner_name" type="text" placeholder="Enter organization name" v-model="owner_name"
-                  pattern="[A- Z a-z]+" title="Please enter only alphabetic characters" 
-                  required></b-form-input>
-              </b-form-group>
-            </div>
-            <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label=" Organization Number:" label-for="owner_number">
-                <b-form-input id="owner_number" type="text" placeholder="Enter organization number" v-model="owner_number"
-                 pattern="[0-9]+" title="Please enter only numeric characters"
-                  required></b-form-input>
-              </b-form-group>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label="Company Document:" label-for="company_document">
-                <div style="margin-left: 3px; margin-bottom: 15px">
-                  <input type="file" accept="image/*" id="company_document" @change="onCompanyDocumentChange" />
-                </div>
-              </b-form-group>
-            </div>
-
-            <!-- new code  -->
-            <!-- <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                                <div style="margin-left: 3px; margin-bottom: 15px">
-                                    <input type="file" accept="image/*" id="profile_picture"
-                                        @change="onProfilePictureChange" />
-                                </div>
-                            </b-form-group>
-                        </div> -->
-            <!-- new code end  -->
-          </div>
-
-          <b-form @submit.prevent="addUser" v-if="show">
             <div style="
                 background-color: rgb(97, 116, 152);
                 height: 32px;
@@ -270,7 +213,7 @@
                   <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id" required>
                     <option value="">Select Car</option>
                     <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
-                      {{ vehicle.name }}
+                      {{ vehicle.name }} | {{ vehicle.car_number }} 
                     </option>
                   </b-form-select>
                 </b-form-group>
@@ -558,14 +501,11 @@ export default {
       successMessage: "",
       vehicle_id: "",
       vehicles: [],
+      companyes: [],
       ////
-      company_name: "",
       postal_code: "",
       city: "",
       joining_date: "",
-      owner_name: "",
-      owner_number: "",
-      company_document: "",
       vehicle_name: "",
       vehicle_company: "",
       description: "",
@@ -576,6 +516,7 @@ export default {
       vehicle_image: [],
       hourly_enter_amount: "",
       total_number_hour: "",
+      company_id: "",
     };
   },
   components: {
@@ -595,6 +536,7 @@ export default {
 
   created() {
     // Load the clients data when the component is created
+    {
     axios
       .get("company")
       .then((response) => {
@@ -603,8 +545,7 @@ export default {
       .catch((error) => {
         console.log(error);
       });
-  },
-
+  }
     axios
       .get("B2BIndex")
       .then((response) => {
@@ -689,6 +630,7 @@ export default {
       formData.append("postal_code", this.postal_code);
       formData.append("city", this.city);
       formData.append("total_number_hour", this.total_number_hour);
+      formData.append("company_id", this.company_id);
       formData.append("type", "b2b");
       for (const image of this.vehicle_image) {
         formData.append("vehicle_image[]", image);

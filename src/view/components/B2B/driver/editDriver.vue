@@ -10,95 +10,50 @@
     <b-card>
       <b-row>
         <div class="col-12 mt-16">
-          <div
-            style="
-              background-color: rgb(97, 116, 152);
-              height: 32px;
-              border-radius: 4px;
-            "
-          >
-            <h5
+          <b-form @submit.prevent="addUser" v-if="show">
+            <div
               style="
-                color: rgb(223, 227, 238);
-                margin-left: 5px;
-                font-weight: bold;
+                background-color: rgb(97, 116, 152);
+                height: 32px;
+                border-radius: 4px;
               "
             >
-              Company Information
-            </h5>
-          </div>
-          <div class="row">
-            <div class="col-md-4 col-12">
-              <b-form-group
-                id="input-group-1"
-                label="Company Name:"
-                label-for="company_name"
+              <h5
+                style="
+                  color: rgb(223, 227, 238);
+                  margin-left: 5px;
+                  font-weight: bold;
+                "
               >
-                <b-form-input
-                  id="company_name"
-                  type="text"
-                  placeholder="Enter comapany name"
-                  v-model="company_name"
-                ></b-form-input>
-              </b-form-group>
+                Company Information
+              </h5>
             </div>
-            <div class="col-md-4 col-12">
-              <b-form-group
-                id="input-group-1"
-                label=" Owner Name:"
-                label-for="owner_name"
-              >
-                <b-form-input
-                  id="owner_name"
-                  type="text"
-                  placeholder="Enter owner name"
-                  v-model="owner_name"
-                ></b-form-input>
-              </b-form-group>
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <b-form-group
+                  id="input-group-2"
+                  label="Select Company:"
+                  label-for="company_id"
+                >
+                  <b-form-select
+                    id="company_id"
+                    placeholder="Select Company"
+                    v-model="company_id"
+                  >
+                    <option value="">Select Company</option>
+                    <option
+                      v-for="company in companyes"
+                      :key="company.id"
+                      :value="company.id"
+                    >
+                      {{ company.company_name }}
+                      <!-- Bind company_name here -->
+                    </option>
+                  </b-form-select>
+                </b-form-group>
+              </div>
             </div>
-            <div class="col-md-4 col-12">
-              <b-form-group
-                id="input-group-1"
-                label=" Owner Number:"
-                label-for="owner_number"
-              >
-                <b-form-input
-                  id="owner_number"
-                  type="text"
-                  placeholder="Enter owner number"
-                  v-model="owner_number"
-                ></b-form-input>
-              </b-form-group>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-4 col-12">
-              <b-form-group
-                id="input-group-1"
-                label="Company Document:"
-                label-for="company_document"
-              >
-                <div style="margin-left: 3px; margin-bottom: 15px">
-                  <img
-                    v-if="editedUser.company_document"
-                    :src="
-                      'https://boltapi.fastnetstaffing.in/' + company_document
-                    "
-                    alt="Picture"
-                    style="max-width: 100px; max-height: 100px"
-                  />
-                  <input
-                    type="file"
-                    accept="image/*"
-                    id="company_document"
-                    @change="onCompanyDocumentChange"
-                  />
-                </div>
-              </b-form-group>
-            </div>
-          </div>
-          <b-form @submit.prevent="addUser" v-if="show">
             <div
               style="
                 background-color: rgb(97, 116, 152);
@@ -339,7 +294,7 @@
                       :key="vehicle.id"
                       :value="vehicle.id"
                     >
-                      {{ vehicle.name }}
+                    {{ vehicle.name }} | {{ vehicle.car_number }} 
                     </option>
                   </b-form-select>
                 </b-form-group>
@@ -878,10 +833,6 @@ export default {
       bank_upload_document: null,
       taxi_driving_liscence: "",
       bank_emergency_contact_name: "",
-      company_name: "",
-      owner_name: "",
-      owner_number: "",
-      company_document: "",
       salary_commission: "",
       salary_fix: "",
       hourly_enter_amount: "",
@@ -903,6 +854,10 @@ export default {
       car_number: "",
       vehicle_image: [],
       total_number_hour: "",
+      company_id: "",
+      company_name: "",
+      companyes: [],
+
     };
   },
   components: {
@@ -931,9 +886,18 @@ export default {
         console.log(error);
       });
 
+      axios
+      .get("company")
+      .then((response) => {
+        this.companyes = response.data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     const userId = this.$route.params.id;
     axios
-      .get(`drivers/${userId}`)
+      .get(`B2Bshowdriver/${userId}`)
       .then((response) => {
         this.editedUser = response.data.data;
 
@@ -962,10 +926,6 @@ export default {
         this.bank_upload_document = this.editedUser.bank_upload_document;
         this.bank_emergency_contact_name =
           this.editedUser.bank_emergency_contact_name;
-        this.company_name = this.editedUser.company_name;
-        this.owner_name = this.editedUser.owner_name;
-        this.owner_number = this.editedUser.owner_number;
-        this.company_document = this.editedUser.company_document;
         this.vehicle_id = this.editedUser.vehicle_id;
         this.taxi_driving_liscence = this.editedUser.taxi_driving_liscence;
         this.vehicle_name = this.editedUser.vehicle_name;
@@ -979,7 +939,9 @@ export default {
         this.city = this.editedUser.city;
         this.vehicle_image = this.editedUser.vehicle_image;
         this.total_number_hour = this.editedUser.total_number_hour;
-        // Depending on the selected option, set the appropriate salary value
+        this.company_id = this.editVehicle.company_id;
+        this.company.company_name = this.editVehicle.company.company_name;
+            // Depending on the selected option, set the appropriate salary value
         if (this.editedUser.salary_fix !== null) {
           this.selectedOption = "Fix";
         } else if (this.editedUser.salary_commission !== null) {
@@ -1050,15 +1012,11 @@ export default {
       formData.append("bank_name", this.bank_name);
       formData.append("bank_account_number", this.bank_account_number);
       formData.append("company_name_own", this.company_name_own);
-      formData.append("company_name", this.company_name);
       formData.append("taxi_driving_liscence", this.taxi_driving_liscence);
       formData.append(
         "bank_emergency_contact_name",
         this.bank_emergency_contact_name
       );
-      formData.append("owner_name", this.owner_name);
-      formData.append("owner_number", this.owner_number);
-      formData.append("company_document", this.company_document);
       formData.append("salary_commission", this.salary_commission);
       formData.append("salary_fix", this.salary_fix);
       formData.append("hourly_enter_amount", this.hourly_enter_amount);
@@ -1074,6 +1032,7 @@ export default {
       formData.append("car_number", this.car_number);
       formData.append("postal_code", this.postal_code);
       formData.append("city", this.city);
+      formData.append("company_id", this.company_id);
       if (this.vehicle_image) {
         for (const image of this.vehicle_image) {
           formData.append("vehicle_image[]", image);
