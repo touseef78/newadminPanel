@@ -106,6 +106,7 @@
                 class="img-fluid"
                 style="max-width: 100px; max-height: 100px"
               />
+              <br>
               <b-button
                 @click="downloadImage(row.item.company_document)"
                 variant="success"
