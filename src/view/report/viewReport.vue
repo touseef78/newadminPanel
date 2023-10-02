@@ -37,6 +37,9 @@
           <template #cell(driver_name)="row">
             {{ `${row.item.driver.name} ${row.item.driver.last_name} ` }}
           </template>
+          <template #cell(company_name_own)="row">
+            {{ `${row.item.driver.company_name_own}` }}
+          </template>
           <template #cell(uber_earning)="row">
             {{
               row.item.driver.uber_earning
@@ -138,6 +141,7 @@ export default {
         // { key: "srNo", label: "Sr No" },
         { key: "id", sortable: true },
         { key: "driver_name", sortable: true },
+        { key: "company_name_own", sortable: true },
         { key: "salary_fix", sortable: true },
         { key: "total_payable", sortable: true },
         { key: "total_receivable", sortable: true },
