@@ -8,7 +8,7 @@
             <b-row class="align-items-center">
                 <b-col lg="6" class="my-1">
                     <b-form-group label="Filter" label-for="filter-input" label-cols-sm="1" label-align-sm="right"
-                        label-size="sm" class="mb-0">
+                        label-size="sm" class="mb-0" custom-label-style>
                         <b-input-group size="sm">
                             <b-form-input id="filter-input" v-model="filter" type="search"
                                 placeholder="Type to Search"></b-form-input>
@@ -23,6 +23,7 @@
                     <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
                 </b-col>
             </b-row>
+
         </div>
         <!-- filter end -->
         <b-row>
@@ -132,7 +133,14 @@
         </b-row>
     </b-card>
 </template>
-
+<style>
+[dir=ltr] .form-row>.col,
+[dir=ltr] .form-row>[class*=col-] {
+    padding-left: 0px !important;
+    ;
+    padding-right: 2px !important;
+}
+</style>
 <script>
 import {
     BRow,
