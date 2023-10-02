@@ -49,6 +49,9 @@
           <template #cell(date)="row">
             {{ formatDate(row.item.created_at) }}
           </template>
+          <template #cell(person_number)="row">
+            {{ `${row.item.security_code} ` }}
+          </template>
           <template #cell(actions)="row">
             <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
@@ -166,11 +169,11 @@ export default {
         { key: "name", sortable: true },
         { key: "mobile", sortable: true },
         { key: "email", sortable: true },
-        { key: "emergency_contact_name", sortable: true },
+        { key: "company_name_own", sortable: true },
         // { key: "salary_commission", sortable: true },
         { key: "joining_date", sortable: true },
         // { key: "hourly_enter_amount", sortable: true },
-        { key: "security_code", sortable: true },
+        { key: "person_number", sortable: true },
         { key: "date", sortable: true },
         { key: "status", sortable: true },
         { key: "actions", label: "Actions" },

@@ -31,6 +31,23 @@
                     :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
                     :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
                     <!-- Action Button Code -->
+
+          <template #cell(company_name)="row">
+            <span
+              v-if="
+                row.item.company &&
+                row.item.company.company_name
+              "
+            >
+              {{ `${row.item.company.company_name}` }}
+            </span>
+            <span v-else>
+              <!-- N/A -->
+            </span>
+          </template>
+          <template #cell(person_number)="row">
+            {{ `${row.item.security_code} ` }}
+          </template>
                     <template #cell(actions)="row">
                         <b-button @click="showDriver(row.item.id)" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
@@ -154,10 +171,10 @@ export default {
                 { key: "name", sortable: true },
                 { key: "mobile", sortable: true },
                 { key: "email", sortable: true },
-                { key: "emergency_contact_name", sortable: true },
+                { key: "company_name", sortable: true },
                 { key: "salary_commission", sortable: true },
                  { key: "joining_date", sortable: true },
-                { key: "hourly_enter_amount", sortable: true },
+                { key: "person_number", sortable: true },
                 { key: "status", sortable: true },
                 // { key: "status", sortable: true },
                 { key: "actions", label: "Actions" },

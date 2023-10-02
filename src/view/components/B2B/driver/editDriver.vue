@@ -997,7 +997,7 @@ export default {
       formData.append("name", this.name);
       formData.append("last_name", this.last_name);
       formData.append("email", this.email);
-      formData.append("security_code", this.ssn);
+      formData.append("security_code", this.security_code);
       formData.append("joining_date", this.joining_date);
       formData.append("mobile", this.mobile);
       formData.append("gender", this.gender);
