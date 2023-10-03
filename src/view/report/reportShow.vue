@@ -30,6 +30,7 @@
                         </p> 
                 </b-col>
                  <b-col cols="12">
+                    <p>Company Name: {{ company_name_own }}</p>
                   <p>Driver Name: {{ driver_first_name }} {{ driver_last_name }} </p> 
                   <p>Address: {{ address }}</p>
                   <p>Email: {{ email }}</p>
@@ -241,6 +242,7 @@ export default {
       total_inclusive_tex: "",
       tax: "",
       created_at: new Date(), // Replace with your actual date data
+      company_name_own: "",
     };
   },
    
@@ -269,6 +271,7 @@ export default {
         this.salary_fix = this.editedUser.driver.salary_fix;
         this.driver_first_name = this.editedUser.driver.name;
         this.driver_last_name = this.editedUser.driver.last_name;
+        this.company_name_own = this.editedUser.driver.company_name_own;
         this.mobile = this.editedUser.driver.mobile;
         this.address = this.editedUser.driver.address;
         this.email = this.editedUser.driver.email;

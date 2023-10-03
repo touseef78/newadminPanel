@@ -95,24 +95,27 @@
           responsive
         >
           <!-- Action Button Code -->
-            <template #cell(date)="row">
+          <template #cell(date)="row">
             {{ formatDate(row.item.created_at) }}
           </template>
           <template #cell(image)="row">
             <div>
               <img
-                :src="'https://boltapi.fastnetstaffing.in/' + row.item.company_document"
+                :src="
+                  'https://boltapi.fastnetstaffing.in/' +
+                  row.item.company_document
+                "
                 alt="Image"
                 class="img-fluid"
                 style="max-width: 100px; max-height: 100px"
               />
-              <br>
+              <br />
               <b-button
                 @click="downloadImage(row.item.company_document)"
                 variant="success"
                 class="mt-2"
               >
-                View Image
+                Download File
               </b-button>
             </div>
           </template>
@@ -276,9 +279,9 @@ export default {
     };
   },
   watch: {
-    start_date: 'fetchData',
-    end_date: 'fetchData',
-      },
+    start_date: "fetchData",
+    end_date: "fetchData",
+  },
   components: {
     BRow,
     BCol,
@@ -310,37 +313,37 @@ export default {
   },
   methods: {
     fetchData() {
-        this.loading = true;
-        // Define your API endpoint URL
-        const apiUrl = "company";
+      this.loading = true;
+      // Define your API endpoint URL
+      const apiUrl = "company";
 
-        // Create an object to hold the query parameters
-        const queryParams = {
-            start_date: this.start_date,
-            end_date: this.end_date,
-        };
+      // Create an object to hold the query parameters
+      const queryParams = {
+        start_date: this.start_date,
+        end_date: this.end_date,
+      };
 
-        axios
-            .get(apiUrl, { params: queryParams })
-            .then((response) => {
-                this.users = response.data.data.filter((item) => {
-                    const createdDate = new Date(item.created_at);
-                    return (
-                        (!this.start_date || createdDate >= new Date(this.start_date)) &&
-                        (!this.end_date || createdDate <= new Date(this.end_date))
-                    );
-                });
-                this.users.forEach((item, index) => {
-                    item.srNo = index + 1;
-                });
-                this.totalRows = this.users.length;
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            })
-            .finally(() => {
-                this.loading = false;
-            });
+      axios
+        .get(apiUrl, { params: queryParams })
+        .then((response) => {
+          this.users = response.data.data.filter((item) => {
+            const createdDate = new Date(item.created_at);
+            return (
+              (!this.start_date || createdDate >= new Date(this.start_date)) &&
+              (!this.end_date || createdDate <= new Date(this.end_date))
+            );
+          });
+          this.users.forEach((item, index) => {
+            item.srNo = index + 1;
+          });
+          this.totalRows = this.users.length;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     },
     onFiltered(filteredItems) {
       this.totalRows = filteredItems.length;
@@ -378,19 +381,18 @@ export default {
           console.error("Error deleting item:", error);
         });
     },
-    downloadImage(imageUrl) {
+    downloadImage(fileUrl) {
       const link = document.createElement("a");
-      link.href = "https://boltapi.fastnetstaffing.in/" + imageUrl;
-      link.download = "image.jpg"; // You can set the desired filename here
+      link.href = "https://boltapi.fastnetstaffing.in/" + fileUrl;
+      link.download = "file.pdf"; // Set the desired file name
       link.target = "_blank"; // Open the link in a new tab
       link.click();
     },
-    
+
     formatDate(dateString) {
       const date = new Date(dateString);
       return date.toLocaleDateString();
     },
-
   },
 };
 </script>
