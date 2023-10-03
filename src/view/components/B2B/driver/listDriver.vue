@@ -46,7 +46,7 @@
               <!-- N/A -->
             </span>
           </template>
-          <template #cell(person_number)="row">
+          <template #cell(personal_number)="row">
             {{ `${row.item.security_code} ` }}
           </template>
                     <template #cell(actions)="row">
