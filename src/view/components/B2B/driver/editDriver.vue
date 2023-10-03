@@ -222,7 +222,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
-                  label="Person Number:"
+                  label="Personal Number:"
                   label-for="security_code"
                 >
                   <b-form-input

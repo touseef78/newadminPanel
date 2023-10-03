@@ -173,7 +173,7 @@ export default {
         // { key: "salary_commission", sortable: true },
         { key: "joining_date", sortable: true },
         // { key: "hourly_enter_amount", sortable: true },
-        { key: "person_number", sortable: true },
+        { key: "personal_number", sortable: true },
         { key: "date", sortable: true },
         { key: "status", sortable: true },
         { key: "actions", label: "Actions" },
