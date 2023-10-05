@@ -155,7 +155,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
                   <div style="margin-left: 3px; margin-bottom: 15px">
-                    <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
+                    <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" required/>
                   </div>
                 </b-form-group>
               </div>
