@@ -78,6 +78,7 @@
                 <b-form-select v-model="vehicle_type" required>
                   <option value="">Select Vehicle Type</option>
                   <option>Taxi</option>
+                  <option>Non-Taxi</option>
                   <option>Delivery Service</option>
                   <option>Office Use</option>
                   <option>Extra</option>

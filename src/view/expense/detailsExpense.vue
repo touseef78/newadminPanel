@@ -32,17 +32,39 @@
             </b-form-group>
           </b-col>
           <b-col lg="3" class="my-1">
-            <b-form-group label="Start Date" label-for="start-date" label-cols-sm="5" label-align-sm="right"
-                label-size="sm" class="mb-0">
-                <b-form-input id="start-date" v-model="start_date" type="date" placeholder="Select start date"></b-form-input>
+            <b-form-group
+              label="Start Date"
+              label-for="start-date"
+              label-cols-sm="5"
+              label-align-sm="right"
+              label-size="sm"
+              class="mb-0"
+            >
+              <b-form-input
+                id="start-date"
+                v-model="start_date"
+                type="date"
+                placeholder="Select start date"
+              ></b-form-input>
             </b-form-group>
-        </b-col>
-        <b-col lg="3" class="my-1">
-            <b-form-group label="End Date" label-for="end-date" label-cols-sm="4" label-align-sm="right"
-                label-size="sm" class="mb-0">
-                <b-form-input id="end-date" v-model="end_date" type="date" placeholder="Select end date"></b-form-input>
+          </b-col>
+          <b-col lg="3" class="my-1">
+            <b-form-group
+              label="End Date"
+              label-for="end-date"
+              label-cols-sm="4"
+              label-align-sm="right"
+              label-size="sm"
+              class="mb-0"
+            >
+              <b-form-input
+                id="end-date"
+                v-model="end_date"
+                type="date"
+                placeholder="Select end date"
+              ></b-form-input>
             </b-form-group>
-        </b-col>
+          </b-col>
           <b-col lg="3" class="my-1 d-flex justify-content-end">
             <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
               >Import</b-button
@@ -85,6 +107,16 @@
           <template #cell(date)="row">
             {{ formatDate(row.item.created_at) }}
           </template>
+          <template #cell(status)="row">
+            <b-button
+              @click="handleButtonClick(row.item)"
+              :variant="row.item.status === 'Pending' ? 'warning' : 'primary'"
+              class="mb-8 mr-8"
+            >
+              <!-- {{ row.item.status === "Approved" ? "Pending" : "Approved" }} -->
+              {{ row.item.status }}
+            </b-button>
+          </template>
           <!-- Action Button Code -->
           <template #cell(image)="row">
             <div>
@@ -93,14 +125,15 @@
                 alt="Image"
                 class="img-fluid"
                 style="max-width: 100px; max-height: 100px"
+                @click="downloadImage(row.item.image)"
               />
-              <b-button
+              <!-- <b-button
                 @click="downloadImage(row.item.image)"
                 variant="success"
                 class="mt-2"
               >
                 View Image
-              </b-button>
+              </b-button> -->
             </div>
           </template>
           <template #cell(actions)="row">
@@ -184,13 +217,7 @@
                 >
               </template>
             </b-modal>
-            <b-button
-              @click="handleButtonClick(row.item)"
-              :variant="row.item.status === 'Approved' ? 'warning' : 'primary'"
-              class="mb-8 mr-8"
-            >
-              {{ row.item.status === "Approved" ? "Pending" : "Approved" }}
-            </b-button>
+
             <!-- <b-button
               @click="toggleCardModal(row.item)"
               variant="link"
@@ -206,10 +233,22 @@
                     <b-form-radio value="Normal">Normal</b-form-radio>
                   </b-form-radio-group>
                 </b-form-group>
-                <b-button @click="updateCardOption" variant="primary"
-                  >Save</b-button
-                >
               </div>
+              <!-- Custom modal footer with only the "Save" button -->
+              <template #modal-footer="{ hide }">
+                <div>
+                  <b-button @click="updateCardOption" variant="primary"
+                    >Save</b-button
+                  >
+                </div>
+                <div>
+                  <b-button
+                    @click="isCardModalVisible = false"
+                    variant="secondary"
+                    >Cancel</b-button
+                  >
+                </div>
+              </template>
             </b-modal>
           </template>
 
@@ -308,17 +347,39 @@
             </b-form-group>
           </b-col>
           <b-col lg="3" class="my-1">
-            <b-form-group label="Start Date" label-for="start-date" label-cols-sm="5" label-align-sm="right"
-                label-size="sm" class="mb-0">
-                <b-form-input id="start_dates" v-model="start_dates" type="date" placeholder="Select start date"></b-form-input>
+            <b-form-group
+              label="Start Date"
+              label-for="start-date"
+              label-cols-sm="5"
+              label-align-sm="right"
+              label-size="sm"
+              class="mb-0"
+            >
+              <b-form-input
+                id="start_dates"
+                v-model="start_dates"
+                type="date"
+                placeholder="Select start date"
+              ></b-form-input>
             </b-form-group>
-        </b-col>
-        <b-col lg="3" class="my-1">
-            <b-form-group label="End Date" label-for="end-date" label-cols-sm="4" label-align-sm="right"
-                label-size="sm" class="mb-0">
-                <b-form-input id="end_dates" v-model="end_dates" type="date" placeholder="Select end date"></b-form-input>
+          </b-col>
+          <b-col lg="3" class="my-1">
+            <b-form-group
+              label="End Date"
+              label-for="end-date"
+              label-cols-sm="4"
+              label-align-sm="right"
+              label-size="sm"
+              class="mb-0"
+            >
+              <b-form-input
+                id="end_dates"
+                v-model="end_dates"
+                type="date"
+                placeholder="Select end date"
+              ></b-form-input>
             </b-form-group>
-        </b-col>
+          </b-col>
           <b-col lg="3" class="my-1 d-flex justify-content-end">
             <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
               >Import</b-button
@@ -366,14 +427,14 @@
           <template #cell(total_life_kilometer)="row">
             {{
               row.item.vehicle.total_life_kilometer
-              ? row.item.vehicle.total_life_kilometer
-              : NonNullable
+                ? row.item.vehicle.total_life_kilometer
+                : NonNullable
             }}
           </template>
           <template #cell(date)="row">
             {{ formatDate(row.item.created_at) }}
           </template>
-          
+
           <!-- Action Button Code -->
           <template #cell(image)="row">
             <div>
@@ -516,10 +577,10 @@ export default {
     };
   },
   watch: {
-    start_date: 'fetchData',
-    end_date: 'fetchData',
-    start_dates: 'fetchVehicleExpense',
-    end_dates: 'fetchVehicleExpense',
+    start_date: "fetchData",
+    end_date: "fetchData",
+    start_dates: "fetchVehicleExpense",
+    end_dates: "fetchVehicleExpense",
   },
   components: {
     BRow,
@@ -561,37 +622,37 @@ export default {
   methods: {
     // const userId = this.$route.params.id;
     fetchData(userId) {
-        this.loading = true;
-        // Define your API endpoint URL
-        // const apiUrl = "vehicle";
+      this.loading = true;
+      // Define your API endpoint URL
+      // const apiUrl = "vehicle";
 
-        // Create an object to hold the query parameters
-        const queryParams = {
-            start_date: this.start_date,
-            end_date: this.end_date,
-        };
+      // Create an object to hold the query parameters
+      const queryParams = {
+        start_date: this.start_date,
+        end_date: this.end_date,
+      };
 
-        axios
-            .get(`detailsExpensive/${userId}`,{ params: queryParams })
-            .then((response) => {
-                this.users = response.data.data.filter((item) => {
-                    const createdDate = new Date(item.created_at);
-                    return (
-                        (!this.start_date || createdDate >= new Date(this.start_date)) &&
-                        (!this.end_date || createdDate <= new Date(this.end_date))
-                    );
-                });
-                this.users.forEach((item, index) => {
-                    item.srNo = index + 1;
-                });
-                this.totalRows = this.users.length;
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            })
-            .finally(() => {
-                this.loading = false;
-            });
+      axios
+        .get(`detailsExpensive/${userId}`, { params: queryParams })
+        .then((response) => {
+          this.users = response.data.data.filter((item) => {
+            const createdDate = new Date(item.created_at);
+            return (
+              (!this.start_date || createdDate >= new Date(this.start_date)) &&
+              (!this.end_date || createdDate <= new Date(this.end_date))
+            );
+          });
+          this.users.forEach((item, index) => {
+            item.srNo = index + 1;
+          });
+          this.totalRows = this.users.length;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     },
 
     // fetchData(userId) {
@@ -610,37 +671,38 @@ export default {
     //     });
     // },
     fetchVehicleExpense(userId) {
-        this.loading = true;
-        // Define your API endpoint URL
-        // const apiUrl = "vehicle";
+      this.loading = true;
+      // Define your API endpoint URL
+      // const apiUrl = "vehicle";
 
-        // Create an object to hold the query parameters
-        const queryParams = {
-            start_dates: this.start_dates,
-            end_dates: this.end_dates,
-        };
+      // Create an object to hold the query parameters
+      const queryParams = {
+        start_dates: this.start_dates,
+        end_dates: this.end_dates,
+      };
 
-        axios
-            .get(`VehicleExpense/${userId}`,{ params: queryParams })
-            .then((response) => {
-                this.vehicles = response.data.data.filter((item) => {
-                    const createdDates = new Date(item.created_at);
-                    return (
-                        (!this.start_dates || createdDates >= new Date(this.start_dates)) &&
-                        (!this.end_dates || createdDates <= new Date(this.end_dates))
-                    );
-                });
-                this.vehicles.forEach((item, index) => {
-                    item.srNo = index + 1;
-                });
-                this.totalRows = this.vehicles.length;
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            })
-            .finally(() => {
-                this.loading = false;
-            });
+      axios
+        .get(`VehicleExpense/${userId}`, { params: queryParams })
+        .then((response) => {
+          this.vehicles = response.data.data.filter((item) => {
+            const createdDates = new Date(item.created_at);
+            return (
+              (!this.start_dates ||
+                createdDates >= new Date(this.start_dates)) &&
+              (!this.end_dates || createdDates <= new Date(this.end_dates))
+            );
+          });
+          this.vehicles.forEach((item, index) => {
+            item.srNo = index + 1;
+          });
+          this.totalRows = this.vehicles.length;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     },
 
     // fetchVehicleExpense(userId) {
@@ -749,8 +811,7 @@ export default {
     formatDate(dateString) {
       const date = new Date(dateString);
       return date.toLocaleDateString();
-
-  },
+    },
   },
 };
 </script>

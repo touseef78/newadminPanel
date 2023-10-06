@@ -22,6 +22,7 @@
                             <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
                                 <b-form-select id="user_id" v-model="user_id" required>
                                     <option value="">Select Driver</option>
+                                    <!-- <option value="">Driver Loop</option> -->
                                     <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
                                         {{ driver.name }} &nbsp;{{ driver.last_name }} &nbsp; &nbsp; | &nbsp; &nbsp; {{
                                             driver.id }}
@@ -30,28 +31,19 @@
                                 </b-form-select>
                             </b-form-group>
                         </div>
-
-                        <!-- <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
-                                <div class="searchable-dropdown">
-                                    <input id="user_id" v-model="user_id" class="search-input" @input="filterDrivers"
-                                        placeholder="Select Driver" required />
-                                    <div class="search-icon">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                    <ul v-if="isDropdownOpen" class="dropdown-content">
-                                        <li v-for="driver in filteredDrivers" :key="driver.id"
-                                            @click="selectDriver(driver)">
-                                            {{ driver.name }} | {{ driver.id }}
-                                        </li>
-                                    </ul>
-                                </div>
-                            </b-form-group>
-                        </div> -->
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Amount:" label-for="amount">
                                 <b-form-input id="amount" v-model="amount" placeholder="Enter  amount"
                                     required></b-form-input>
+                            </b-form-group>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Amount Type:" label-for="amount_type">
+                                <b-form-select id="amount_type" v-model="amount_type" required>
+                                    <option value="">Select Type</option>
+                                    <option>Inclusive Amount</option>
+                                    <option>Exclusive Amount</option>
+                                </b-form-select>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
@@ -65,6 +57,9 @@
                                     <option>Challan</option>
                                     <option>Online Payment</option>
                                     <option>Customer</option>
+                                    <option>Oil Change</option>
+                                    <option>Swish earning</option>
+                                    <option>Izettle earning</option>
                                     <option>Other</option>
                                 </b-form-select>
                             </b-form-group>
@@ -81,27 +76,18 @@
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Total Life In Km(If have):"
-                                label-for="total_life_kilometer">
-                                <b-form-input id="total_life_kilometer" v-model="total_life_kilometer"
-                                    placeholder="Enter  total life in km" required></b-form-input>
-                            </b-form-group>
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Meter Reading:" label-for="service_meter_reading">
-                                <b-form-input id="service_meter_reading" v-model="service_meter_reading" placeholder="Enter  meter reading"
-                                    required></b-form-input>
-                            </b-form-group>
-                        </div>
-
-
-                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Document Upload:" label-for="profile_picture">
                                 <div style="margin-left: 3px; margin-bottom: 15px">
                                     <input type="file" accept="image/*" id="image[]" @change="onProfilePictureChange" />
                                 </div>
                             </b-form-group>
                         </div>
+                        <div v-if="card === 'Normal'" class="col-md-4 col-12">
+                <b-form-group label="Commnent" label-for="fix-salary-input">
+                  <b-form-input id="comment" type="text" v-model="comment"
+                    placeholder="Enter comment"></b-form-input>
+                </b-form-group>
+              </div>
                     </div>
                     <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
                         <span v-if="!isLoading">Submit</span>
@@ -162,8 +148,8 @@ export default {
             card: '',
             user_id: '',
             drivers: [],
-            service_meter_reading: '',
-            total_life_kilometer: '',
+            comment:'',
+            amount_type: '',
 
 
         };
@@ -247,8 +233,8 @@ export default {
             formData.append("category", this.category);
             formData.append("card", this.card);
             formData.append("user_id", this.user_id);
-            formData.append("service_meter_reading", this.service_meter_reading);
-            formData.append("total_life_kilometer", this.total_life_kilometer);
+            formData.append("comment", this.comment);
+            formData.append("amount_type", this.amount_type); 
             axios
                 .post("expense", formData)
                 .then((response) => {

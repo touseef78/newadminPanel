@@ -45,6 +45,9 @@
                                     <option>Challane</option>
                                     <option>Online Payment</option>
                                     <option>Customer</option>
+                                    <option>Oil Change</option>
+                                    <option>Swish earning</option>
+                                    <option>Izettle earning</option>
                                     <option>Other</option>
                                 </b-form-select>
                             </b-form-group>

@@ -52,6 +52,13 @@
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Total Life In Km(If have):"
+                                label-for="total_life_kilometer">
+                                <b-form-input id="total_life_kilometer" v-model="total_life_kilometer"
+                                    placeholder="Enter  total life in km"></b-form-input>
+                            </b-form-group>
+                        </div>
+                        <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Picture Upload:" label-for="Service Image">
                                 <div style="margin-left: 3px; margin-bottom: 15px">
                                     <input type="file" accept="image/*" id="image" @change="onProfilePictureChange" />
@@ -109,6 +116,7 @@ export default {
             vehicle_id:'',
             category:'',
             service_meter_reading:'',
+            total_life_kilometer:'',
 
 
         };
@@ -166,6 +174,7 @@ export default {
             formData.append("service_meter_reading", this.service_meter_reading);
             formData.append("category", this.category);
             formData.append("vehicle_id", this.vehicle_id);
+            formData.append("total_life_kilometer", this.total_life_kilometer);
             axios
                 .post("service", formData)
                 .then((response) => {
