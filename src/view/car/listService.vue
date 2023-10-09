@@ -114,14 +114,9 @@
                 alt="Image"
                 class="img-fluid"
                 style="max-width: 100px; max-height: 100px"
-              />
-              <b-button
                 @click="downloadImage(row.item.image)"
-                variant="success"
-                class="mt-2"
-              >
-                View Image
-              </b-button>
+
+              />
             </div>
           </template>
           <!-- Action Button Code -->
@@ -282,6 +277,7 @@ export default {
         { key: "car_number", sortable: true },
         { key: "car_color", sortable: true },
         { key: "service_meter_reading", sortable: true },
+        { key: "total_life_kilometer", sortable: true },
         { key: "category", sortable: true },
         { key: "date", sortable: true },
         { key: "image", sortable: true },

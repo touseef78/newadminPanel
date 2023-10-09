@@ -22,7 +22,7 @@
                             <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
                                 <b-form-select id="user_id" v-model="user_id" required>
                                     <option value="">Select Driver</option>
-                                    <!-- <option value="">Driver Loop</option> -->
+                                    <option value="39">Driver Loop</option>
                                     <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
                                         {{ driver.name }} &nbsp;{{ driver.last_name }} &nbsp; &nbsp; | &nbsp; &nbsp; {{
                                             driver.id }}

@@ -421,7 +421,7 @@
           <template #cell(car_number)="row">
             {{ `${row.item.vehicle.car_number}` }}
           </template>
-          <template #cell(service_meter_reading)="row">
+          <!-- <template #cell(service_meter_reading)="row">
             {{ `${row.item.vehicle.service_meter_reading}` }}
           </template>
           <template #cell(total_life_kilometer)="row">
@@ -430,7 +430,7 @@
                 ? row.item.vehicle.total_life_kilometer
                 : NonNullable
             }}
-          </template>
+          </template> -->
           <template #cell(date)="row">
             {{ formatDate(row.item.created_at) }}
           </template>
@@ -443,14 +443,8 @@
                 alt="Image"
                 class="img-fluid"
                 style="max-width: 100px; max-height: 100px"
-              />
-              <b-button
                 @click="downloadImage(row.item.image)"
-                variant="success"
-                class="mt-2"
-              >
-                View Image
-              </b-button>
+              />
             </div>
           </template>
           <!-- Action Button Code -->
