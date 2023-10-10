@@ -49,6 +49,9 @@
           <template #cell(date)="row">
             {{ formatDate(row.item.created_at) }}
           </template>
+          <template #cell(name)="row">
+            {{ `${row.item.name} ${row.item.last_name}` }}
+          </template>
           <template #cell(personal_number)="row">
             {{ `${row.item.security_code} ` }}
           </template>

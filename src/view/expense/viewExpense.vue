@@ -23,14 +23,21 @@
                                 <b-form-select id="user_id" v-model="user_id" disabled>
                                     <option value="">Select Driver</option>
                                     <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
-                                        {{ driver.name }}
-                                    </option>
+                                        {{ driver.name }} &nbsp;{{ driver.last_name }} &nbsp; &nbsp; | &nbsp; &nbsp; {{
+                                            driver.id }}                                    
+                                            </option>
                                 </b-form-select>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Amount:" label-for="amount">
                                 <b-form-input id="amount" v-model="amount" placeholder="Enter  amount"
+                                    disabled></b-form-input>
+                            </b-form-group>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Amount Type:" label-for="amount_type">
+                                <b-form-input id="amount_type" v-model="amount_type"
                                     disabled></b-form-input>
                             </b-form-group>
                         </div>
@@ -58,6 +65,12 @@
                                 </div>
                             </b-form-group>
                         </div>
+                        <div v-if="card === 'Normal'" class="col-md-4 col-12">
+                <b-form-group label="Commnent" label-for="fix-salary-input">
+                  <b-form-input id="comment" type="text" v-model="comment"
+                    placeholder="Enter comment" disabled></b-form-input>
+                </b-form-group>
+              </div>
 
                     </div>
                 </b-form>
@@ -106,6 +119,9 @@ export default {
             card: '',
             user_id: '',
             drivers: [],
+            comment:'',
+            amount_type: '',
+
 
 
         };
@@ -146,6 +162,8 @@ export default {
                 this.category = this.editExpense.category;
                 this.card = this.editExpense.card;
                 this.user_id = this.editExpense.user_id;
+                this.comment = this.editExpense.comment;
+                this.amount_type = this.editExpense.amount_type;
 
             })
             .catch((error) => {

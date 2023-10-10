@@ -32,7 +32,9 @@
                     :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
                     :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
                     <!-- Action Button Code -->
-
+            <template #cell(name)="row">
+            {{ `${row.item.name} ${row.item.last_name} ` }}
+          </template>
           <template #cell(company_name)="row">
             <span
               v-if="

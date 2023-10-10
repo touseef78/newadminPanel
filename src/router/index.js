@@ -424,9 +424,9 @@ const router = new VueRouter({
       },
     },
     {
-      path: "/uberdata",
-      name: "uberdata",
-      component: () => import("../view/uberfile/uberdata.vue"),
+      path: "/earningReportlist",
+      name: "earningReportlist",
+      component: () => import("../view/earning/earningReportList.vue"),
       meta: {
         requiresAuth: true, // This route requires authentication
       },

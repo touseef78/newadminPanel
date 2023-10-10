@@ -123,6 +123,12 @@
                   </b-form-input>
                 </b-form-group>
               </div>
+                  <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Select Driver:" label-for="type">
+                  <b-form-input id="type" v-model="type" disabled>
+                  </b-form-input>
+                </b-form-group>
+              </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
                   <div style="margin-left: 3px; margin-bottom: 15px">
@@ -460,6 +466,8 @@ export default {
       car_color: "",
       car_number: "",
       total_number_hour: "",
+      type:'',
+      
       // vehicle_image: null,
     };
   },
@@ -536,6 +544,7 @@ export default {
         this.car_number = this.editedUser.car_number;
         this.vehicle_image = this.editedUser.vehicle_image;
         this.total_number_hour = this.editedUser.total_number_hour;
+        this.type = this.editedUser.type;
         // Depending on the selected option, set the appropriate salary value
         if (this.editedUser.salary_fix !== null) {
           this.selectedOption = "Fix";

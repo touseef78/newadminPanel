@@ -23,8 +23,9 @@
                                 <b-form-select id="user_id" v-model="user_id" >
                                     <option value="">Select  Driver</option>
                                     <option v-for="driver in drivers" :key="driver.id" :value="driver.id">
-                                        {{ driver.name }}
-                                    </option>
+                                        {{ driver.name }} &nbsp;{{ driver.last_name }} &nbsp; &nbsp; | &nbsp; &nbsp; {{
+                                            driver.id }}                                    
+                                            </option>
                                 </b-form-select>
                             </b-form-group>
                         </div>
@@ -32,6 +33,15 @@
                             <b-form-group id="input-group-2" label="Amount:" label-for="amount">
                                 <b-form-input id="amount" v-model="amount" placeholder="Enter  amount"
                                     ></b-form-input>
+                            </b-form-group>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <b-form-group id="input-group-2" label="Amount Type:" label-for="amount_type">
+                                <b-form-select id="amount_type" v-model="amount_type" required>
+                                    <option value="">Select Type</option>
+                                    <option>Inclusive Amount</option>
+                                    <option>Exclusive Amount</option>
+                                </b-form-select>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
@@ -73,7 +83,12 @@
                                 </div>
                             </b-form-group>
                         </div>
-
+                        <div v-if="card === 'Normal'" class="col-md-4 col-12">
+                <b-form-group label="Commnent" label-for="fix-salary-input">
+                  <b-form-input id="comment" type="text" v-model="comment"
+                    placeholder="Enter comment"></b-form-input>
+                </b-form-group>
+              </div>
 
                     </div>
                     <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
@@ -128,6 +143,8 @@ export default {
             user_id: '',
             drivers: [],
             editExpense: {},
+            comment:'',
+            amount_type: '',
 
 
         };
@@ -168,6 +185,8 @@ export default {
                 this.category = this.editExpense.category;
                  this.card = this.editExpense.card;
                 this.user_id = this.editExpense.user_id;
+                this.comment = this.editExpense.comment;
+                this.amount_type = this.editExpense.amount_type;
 
             })
             .catch((error) => {
@@ -206,6 +225,8 @@ export default {
             formData.append("category", this.category);
              formData.append("card", this.card);
             formData.append("user_id", this.user_id);
+            formData.append("comment", this.comment);
+            formData.append("amount_type", this.amount_type); 
             axios
                 .post(`expenseUpdate/${this.editExpense.id}`, formData)
                 .then((response) => {

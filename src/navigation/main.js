@@ -209,6 +209,27 @@ export default {
       ],
     },
 
+       ///  Earning Report
+       {
+        id: "earningReport",
+        title: "Earning Report",
+        icon: "Curved-Wallet",
+        
+        children: [
+          {
+            id: "earningReport",
+            title: "view Report",
+            navLink: "/earningReportlist",
+          },
+          // {
+          //   id: "Report",
+          //   title: "View Report",
+          //   navLink: "/report/view",
+          
+          // },
+        ],
+      },
+
     //  UberFile
     {
       id: "uberFile",
@@ -229,23 +250,24 @@ export default {
         // },
       ],
     },
+   
 
  // uber and bolt data
-      {
-        id: "uber",
-        title: "Uber Data",
-        navLink: "/uberdata",
-        icon: "Curved-Wallet",
-      },
+      // {
+      //   id: "uber",
+      //   title: "Import Data",
+      //   navLink: "/uberdata",
+      //   icon: "Curved-Wallet",
+      // },
 
 
-      {
-        id: "bolt",
-        title: "Bolt Data",
-        navLink: "/boltdata",
-        icon: "Curved-Wallet",
+      // {
+      //   id: "bolt",
+      //   title: "Bolt Data",
+      //   navLink: "/boltdata",
+      //   icon: "Curved-Wallet",
 
-      },
+      // },
 
   ]
 }

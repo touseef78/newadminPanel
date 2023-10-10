@@ -389,7 +389,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label=" Company Name(own):" label-for="company_name_own">
                   <b-form-input id="company_name_own" type="text" placeholder="Enter company name"
-                    v-model="company_name_own" required></b-form-input>
+                    v-model="company_name_own"></b-form-input>
                 </b-form-group>
               </div>
             </div>

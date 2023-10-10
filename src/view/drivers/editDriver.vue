@@ -127,6 +127,27 @@
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Select Driver:" label-for="type">
+                  <b-form-select v-model="type" required>
+                    <!-- <option value="">Select Type</option> -->
+                    <option value="uber" >Uber</option>
+                    <option value="bolt">Bolt</option>
+                  </b-form-select>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Uber Earning:" label-for="uber_earning">
+                  <b-form-input id="uber_earning" placeholder="Enter uber earning" v-model="uber_earning">
+                  </b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Bolt Earning:" label-for="bolt_earning">
+                  <b-form-input id="bolt_earning" placeholder="Enter bolt earning" v-model="bolt_earning">
+                  </b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
                   <div style="margin-left: 3px; margin-bottom: 15px">
                     <!-- Display current profile picture -->
@@ -471,6 +492,10 @@ export default {
       vehicle_image: [],
       joining_date: '',
       total_number_hour: "",
+      type: "",
+      bolt_earning:'',
+      uber_earning:'',
+
     };
   },
   components: {
@@ -546,6 +571,9 @@ export default {
         this.vehicle_image = this.editedUser.vehicle_image;
         this.total_number_hour = this.editedUser.total_number_hour;
         this.selectedCarType = this.editedUser.selectedCarType;
+        this.type = this.editedUser.type;
+        this.uber_earning = this.editedUser.uber_earning;
+        this.bolt_earning = this.editedUser.bolt_earning;
         // Depending on the selected option, set the appropriate salary value
         if (this.editedUser.salary_fix !== null) {
           this.selectedOption = "Fix";
@@ -647,6 +675,9 @@ export default {
       formData.append("bank_upload_document", this.bank_upload_document);
       formData.append("total_number_hour", this.total_number_hour);
       formData.append("selectedCarType", this.selectedCarType);
+      formData.append("type", this.type);
+      formData.append("bolt_earning", this.bolt_earning);
+      formData.append("uber_earning", this.uber_earning);
       axios
         .post(`driversUpdate/${this.editedUser.id}`, formData)
         .then((response) => {

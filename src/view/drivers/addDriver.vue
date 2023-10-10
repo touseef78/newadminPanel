@@ -469,6 +469,7 @@ export default {
       hourly_enter_amount: "",
       total_number_hour: "",
       type: "",
+    
     };
   },
   components: {
