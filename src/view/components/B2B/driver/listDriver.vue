@@ -182,7 +182,7 @@ export default {
                 { key: "mobile", sortable: true },
                 { key: "email", sortable: true },
                 { key: "company_name", sortable: true },
-                { key: "salary_commission", sortable: true },
+                // { key: "salary_commission", sortable: true },
                  { key: "joining_date", sortable: true },
                 { key: "personal_number", sortable: true },
                 { key: "status", sortable: true },

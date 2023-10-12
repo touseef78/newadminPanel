@@ -403,6 +403,15 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
+    {
+      path: "/service/details/:id",
+      name: "Servicedetails",
+      component: () => import("../view/car/detailsService.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
 
     {
       path: "/maintenance/edit/:id",

@@ -7,9 +7,9 @@
     <div class="col-12 mt-16">
       <div>
         <b-row class="align-items-center">
-          <b-col lg="6" class="my-1">
+          <b-col lg="3" class="my-1">
             <b-form-group
-              label="Filter"
+              label=""
               label-for="filter-input"
               label-cols-sm="1"
               label-align-sm="right"
@@ -31,8 +31,44 @@
               </b-input-group>
             </b-form-group>
           </b-col>
-          <b-col lg="6" class="my-1 d-flex justify-content-end">
-            <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button> -->
+          <b-col lg="3" class="my-1">
+            <b-form-group
+              label="Start Date"
+              label-for="start-date"
+              label-cols-sm="5"
+              label-align-sm="right"
+              label-size="sm"
+              class="mb-0"
+            >
+              <b-form-input
+              id="start-date-input"
+                v-model="startDateFilter"
+                type="date"
+                placeholder="Select start date"
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col lg="3" class="my-1">
+            <b-form-group
+              label="End Date"
+              label-for="end-date"
+              label-cols-sm="4"
+              label-align-sm="right"
+              label-size="sm"
+              class="mb-0"
+            >
+              <b-form-input
+              id="end-date-input"
+                v-model="endDateFilter"
+                type="date"
+                placeholder="Select end date"
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col lg="3" class="my-1 d-flex justify-content-end">
+            <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
+              >Import</b-button
+            > -->
             <b-button
               @click="exportDataToCSV"
               variant="primary"
@@ -48,7 +84,7 @@
       <div class="col-12 mt-16">
         <b-table
           id="dataTable"
-          :items="users"
+          :items="filteredUsers" 
           :fields="fields"
           :current-page="currentPage"
           :per-page="perPage"
@@ -161,10 +197,18 @@ export default {
       users: [], // Instead of 'items', use 'users' array to store fetched data
       fields: [
         { key: "id", sortable: true },
+        { key: "start_date", sortable: true },
+        { key: "end_date", sortable: true },
         { key: "Driver_name", sortable: true },
         { key: "uber_earning", sortable: true },
         { key: "bolt_earning", sortable: true },
         { key: "total", sortable: true },
+        { key: "moms_6_tax", sortable: true },
+        { key: "net", sortable: true },
+        { key: "admin", sortable: true },
+        { key: "net_payable", sortable: true },
+        { key: "moms_25_tax", sortable: true },
+        { key: "net_total", sortable: true },
         // { key: "actions", label: "Actions" },
       ],
 
@@ -173,6 +217,8 @@ export default {
       showDeleteConfirmation: false,
       itemIdToDelete: null,
       loading: false,
+      startDateFilter: "",
+      endDateFilter: "",
     };
   },
   components: {
@@ -190,6 +236,27 @@ export default {
     BSpinner,
   },
   computed: {
+    filteredUsers() {
+      const filteredUsers = this.users.filter((user) => {
+        const startDate = new Date(user.start_date);
+        const endDate = new Date(user.end_date);
+        const filterStartDate = this.startDateFilter ? new Date(this.startDateFilter) : null;
+        const filterEndDate = this.endDateFilter ? new Date(this.endDateFilter) : null;
+        if (filterStartDate && startDate < filterStartDate) {
+          return false;
+        }
+
+        if (filterEndDate && endDate > filterEndDate) {
+          return false;
+        }
+
+        return true;
+      });
+
+      return filteredUsers;
+    },
+
+
     sortOptions() {
       return this.fields
         .filter((f) => f.sortable)

@@ -115,16 +115,76 @@
                 class="img-fluid"
                 style="max-width: 100px; max-height: 100px"
                 @click="downloadImage(row.item.image)"
+
               />
             </div>
           </template>
           <!-- Action Button Code -->
           <template #cell(actions)="row">
+            <!-- <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
+                color: rgba(0, 255, 195, 0.87);
+                margin-left: 6px;
+                margin-bottom: 10px;
+              " class="bi bi-eye" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                <path
+                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                            </svg>
+                        </b-button> -->
+
             <b-button
-              @click="detailsServices(row.item.id)"
-              variant="primary"
-              class="mb-8 mr-8"
-              >Details
+              @click="showDeleteConfirmation = true"
+              variant="link"
+              class="p-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                fill="currentColor"
+                style="color: red; margin-left: 6px; margin-bottom: 10px"
+                class="bi bi-eye"
+                viewBox="0 0 16 16"
+              >
+                <!-- ... your SVG path ... -->
+                <path
+                  d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"
+                />
+              </svg>
+            </b-button>
+
+            <b-modal
+              v-model="showDeleteConfirmation"
+              title="Delete Confirmation"
+            >
+              <p>Are you sure you want to delete this item?</p>
+              <template #modal-footer>
+                <b-button variant="danger" @click="deleteItem(row.item.id)"
+                  >Delete</b-button
+                >
+                <b-button
+                  variant="secondary"
+                  @click="showDeleteConfirmation = false"
+                  >Cancel</b-button
+                >
+              </template>
+            </b-modal>
+            <b-button @click="editUser(row.item.id)" variant="link" class="p-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                fill="currentColor"
+                style="color: orange; margin-left: 10px; margin-bottom: 10px"
+                class="bi bi-pencil"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"
+                />
+              </svg>
             </b-button>
           </template>
 
@@ -235,9 +295,9 @@ export default {
     };
   },
   watch: {
-    start_date: "fetchData",
-    end_date: "fetchData",
-  },
+    start_date: 'fetchData',
+    end_date: 'fetchData',
+      },
   components: {
     BRow,
     BCol,
@@ -264,45 +324,46 @@ export default {
       return this.users.length;
     },
   },
+  created() {
+    const userId = this.$route.params.id;
+    this.fetchData(userId);
+  },
   mounted() {
-    this.fetchData();
+    this.fetchData(userId);
   },
   methods: {
-    fetchData() {
-      this.loading = true;
-      // Define your API endpoint URL
-      const apiUrl = "service";
+    fetchData(userId) {
+        this.loading = true;
+        // Define your API endpoint URL
+        const apiUrl = "showAll";
 
-      // Create an object to hold the query parameters
-      const queryParams = {
-        start_date: this.start_date,
-        end_date: this.end_date,
-      };
+        // Create an object to hold the query parameters
+        const queryParams = {
+            start_date: this.start_date,
+            end_date: this.end_date,
+        };
 
-      axios
-        .get(apiUrl, { params: queryParams })
-        .then((response) => {
-          this.users = response.data.data.filter((item) => {
-            const createdDate = new Date(item.created_at);
-            return (
-              (!this.start_date || createdDate >= new Date(this.start_date)) &&
-              (!this.end_date || createdDate <= new Date(this.end_date))
-            );
-          });
-          this.users.forEach((item, index) => {
-            item.srNo = index + 1;
-          });
-          this.users.forEach((item) => {
-            item.id = item.vehicle_id; // Use user's ID as the serial number
-          });
-          this.totalRows = this.users.length;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        })
-        .finally(() => {
-          this.loading = false;
-        });
+        axios
+            .get(`showAll/${userId}`,{ params: queryParams })
+            .then((response) => {
+                this.users = response.data.data.filter((item) => {
+                    const createdDate = new Date(item.created_at);
+                    return (
+                        (!this.start_date || createdDate >= new Date(this.start_date)) &&
+                        (!this.end_date || createdDate <= new Date(this.end_date))
+                    );
+                });
+                this.users.forEach((item, index) => {
+                    item.srNo = index + 1;
+                });
+                this.totalRows = this.users.length;
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            })
+            .finally(() => {
+                this.loading = false;
+            });
     },
     onFiltered(filteredItems) {
       this.totalRows = filteredItems.length;
@@ -323,6 +384,27 @@ export default {
       URL.revokeObjectURL(url);
     },
 
+    editUser(userId) {
+      this.$router.push({ name: "editDrivers", params: { id: userId } });
+    },
+
+    showDrivers(userId) {
+      this.$router.push({ name: "viewDrivers", params: { id: userId } });
+    },
+
+    deleteItem(itemId) {
+      this.itemIdToDelete = itemId; // Set the item ID to be deleted
+      axios
+        .delete(`service/${itemId}`)
+        .then((response) => {
+          this.showDeleteConfirmation = false;
+          this.fetchData(); // Refresh the data after deletion
+        })
+        .catch((error) => {
+          // Handle error
+          console.error("Error deleting item:", error);
+        });
+    },
     downloadImage(imageUrl) {
       const link = document.createElement("a");
       link.href = "https://boltapi.fastnetstaffing.in/" + imageUrl;
@@ -330,14 +412,14 @@ export default {
       link.target = "_blank"; // Open the link in a new tab
       link.click();
     },
-
+    
     formatDate(dateString) {
       const date = new Date(dateString);
       return date.toLocaleDateString();
     },
 
-    detailsServices(userId) {
-      this.$router.push({ name: "Servicedetails", params: { id: userId } });
+    editUser(userId) {
+      this.$router.push({ name: "maintenanceEdit", params: { id: userId } });
     },
   },
 };

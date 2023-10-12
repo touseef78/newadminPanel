@@ -264,6 +264,7 @@ export default {
         { key: "owner_number", sortable: true },
         { key: "owner_name", sortable: true },
         { key: "date", sortable: true },
+        { key: "category", sortable: true },
         { key: "image", sortable: true },
         { key: "actions", label: "Actions" },
       ],

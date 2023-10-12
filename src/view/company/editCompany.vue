@@ -39,6 +39,19 @@
             </div>
   
             <div class="row">
+              <div class="col-md-4 col-12">
+              <b-form-group
+                id="input-group-2"
+                label="Category:"
+                label-for="category"
+              >
+                <b-form-select id="category" v-model="category" required>
+                  <option value="">Select category</option>
+                  <option>Fleet</option>
+                  <option>Other</option>
+                </b-form-select>
+              </b-form-group>
+            </div>
                 <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
@@ -118,6 +131,8 @@
         owner_number: "",
         company_document: null,
         company_name: "",
+        category: "",
+
       };
     },
     components: {
@@ -147,6 +162,7 @@
         this.owner_number = this.editedUser.owner_number;
         this.company_document = this.editedUser.company_document;
         this.company_name = this.editedUser.company_name;
+        this.category = this.editedUser.category;
         // ... and so on for other properties ...
       })
       .catch((error) => {
@@ -183,6 +199,8 @@
         formData.append("owner_number", this.owner_number);
         formData.append("company_document", this.company_document);
         formData.append("company_name", this.company_name);
+        formData.append("category", this.category);
+
         axios
         .post(`companyUpdate/${this.editedUser.id}`, formData)
           .then((response) => {
