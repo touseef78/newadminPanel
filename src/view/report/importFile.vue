@@ -19,7 +19,7 @@
           <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
-                label="Start_date:"
+                label="Start Date:"
                 label-for="start_date"
               >
                 <b-form-input
