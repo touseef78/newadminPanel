@@ -102,6 +102,18 @@
         <template #cell(driver_name)="row">
             {{ `${row.item.name} ${row.item.last_name} ` }}
           </template>
+          <template #cell(total_net)="row">
+            {{ `${row.item.net}` }}
+          </template>
+          <template #cell(5%_admin_fee)="row">
+            {{ `${row.item.admin} ` }}
+          </template>
+          <template #cell(total_net_payable)="row">
+            {{ `${row.item.net_total}` }}
+          </template>
+          <template #cell(moms_6%_tax)="row">
+            {{ `${row.item.moms_6_tax}` }}
+          </template>
           <template #cell(total)="row">
       {{ parseFloat(row.item.uber_earning || 0) + parseFloat(row.item.bolt_earning || 0) }}
     </template>
@@ -203,12 +215,12 @@ export default {
         { key: "uber_earning", sortable: true },
         { key: "bolt_earning", sortable: true },
         { key: "total", sortable: true },
-        { key: "moms_6_tax", sortable: true },
-        { key: "net", sortable: true },
-        { key: "admin", sortable: true },
+        { key: "moms_6%_tax", sortable: true },
+        { key: "total_net", sortable: true },
+        { key: "5%_admin_fee", sortable: true },
         { key: "net_payable", sortable: true },
         { key: "moms_25_tax", sortable: true },
-        { key: "net_total", sortable: true },
+        { key: "total_net_payable", sortable: true },
         // { key: "actions", label: "Actions" },
       ],
 
