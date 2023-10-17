@@ -294,7 +294,7 @@
                       :key="vehicle.id"
                       :value="vehicle.id"
                     >
-                    {{ vehicle.name }} | {{ vehicle.car_number }} 
+                    {{ vehicle.name }} | {{ vehicle.car_number }} | {{ vehicle.company ? vehicle.company.company_name : 'driver loop' }}
                     </option>
                   </b-form-select>
                 </b-form-group>
@@ -878,7 +878,7 @@ export default {
   created() {
     // Load the clients data when the component is created
     axios
-      .get("vehicle")
+      .get("notAssign")
       .then((response) => {
         this.vehicles = response.data.data;
       })

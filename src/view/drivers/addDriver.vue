@@ -165,7 +165,7 @@
                   <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id" required>
                     <option value="">Select Car</option>
                     <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
-                      {{ vehicle.name }}
+                      {{ vehicle.name }} | {{ vehicle.car_number }} | {{ vehicle.company ? vehicle.company.company_name : 'driver loop' }}
                     </option>
                   </b-form-select>
                 </b-form-group>
@@ -469,6 +469,7 @@ export default {
       hourly_enter_amount: "",
       total_number_hour: "",
       type: "",
+      company_name: "",
     
     };
   },

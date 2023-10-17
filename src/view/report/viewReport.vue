@@ -94,6 +94,13 @@
                 : NonNullable
             }}
           </template>
+          <template #cell(commission)="row">
+            {{
+              row.item.driver.salary_commission
+                ? row.item.driver.salary_commission
+                : NonNullable
+            }}
+          </template>
           <!-- Action Button Code -->
           <template #cell(image)="row">
             <img
@@ -206,6 +213,7 @@ export default {
         { key: "driver_name", sortable: true },
         { key: "company_name", sortable: true },
         { key: "salary_fix", sortable: true },
+        { key: "commission", sortable: true },
         { key: "total_payable", sortable: true },
         { key: "total_receivable", sortable: true },
         { key: "uber_earning", sortable: true },

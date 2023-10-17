@@ -65,22 +65,26 @@
                         </b-thead>
 
                         <b-tbody>
-                            <b-tr>
+                            <b-tr v-if="salary_fix !== null">
                                 <b-td class="py-6 pl-0">
                                     <p>1</p>
                                 </b-td>
                                 <b-td class="py-6">
                                     <p>Total Amount</p>
                                 </b-td>
-                                <!-- <b-td class="py-6">
-                                        <p></p>
-                                    </b-td>
-                                     <b-td class="py-6">
-                                        <p></p>
-                                    </b-td> -->
-
                                 <b-td class="py-6 pr-0 text-right">
                                     <h5>SEK {{ salary_fix }}</h5>
+                                </b-td>
+                            </b-tr>
+                            <b-tr v-else >
+                                <b-td class="py-6 pl-0">
+                                    <p>1</p>
+                                </b-td>
+                                <b-td class="py-6">
+                                    <p>Total Commission</p>
+                                </b-td>
+                                <b-td class="py-6 pr-0 text-right">
+                                    <h5>SEK {{ commission_salaryComputed }}</h5>
                                 </b-td>
                             </b-tr>
 
@@ -91,13 +95,6 @@
                                 <b-td class="py-6">
                                     <p>Expense Deduct From Salary</p>
                                 </b-td>
-                                <!-- <b-td class="py-6">
-                                        <p></p>
-                                    </b-td>
-                                     <b-td class="py-6">
-                                        <p></p>
-                                    </b-td> -->
-
                                 <b-td class="py-6 pr-0 text-right">
                                     <h5>SEK {{ deduct_from_salary }}</h5>
                                 </b-td>
@@ -109,13 +106,6 @@
                                 <b-td class="py-6">
                                     <p>Total Payable</p>
                                 </b-td>
-                                <!-- <b-td class="py-6">
-                                        <p></p>
-                                    </b-td>
-                                     <b-td class="py-6">
-                                        <p></p>
-                                    </b-td> -->
-
                                 <b-td class="py-6 pr-0 text-right">
                                     <h5>SEk {{ total_payable }}</h5>
                                 </b-td>
@@ -281,6 +271,7 @@ export default {
                 this.remaining_reciveable = this.editedUser.remaining_reciveable;
                 this.created_at = this.editedUser.created_at;
                 this.total_inclusive_tex = this.editedUser.total_inclusive_tex;
+                this.commission_salaryComputed = this.editedUser.commission_salaryComputed;
                 this.tax = parseFloat(this.editedUser.tax); // Parse 'tax' as a number
                 // ... and so on for other properties ...
 

@@ -42,9 +42,7 @@
             <b-row>
                 <b-col cols="12">
                     <b-table-simple small caption-top responsive borderless>
-                       
                         <b-thead>
-
                             <b-tr>
                                 <b-th scope="col" class="pt-0 pl-0 pb-18 bg-transparent">
                                     Number
@@ -65,7 +63,7 @@
                         </b-thead>
 
                         <b-tbody>
-                            <b-tr>
+                            <b-tr v-if="salary_fix !== null">
                                 <b-td class="py-6 pl-0">
                                     <p>1</p>
                                 </b-td>
@@ -83,7 +81,17 @@
                                     <h5>SEK {{ salary_fix }}</h5>
                                 </b-td>
                             </b-tr>
-
+                            <b-tr v-else >
+                                <b-td class="py-6 pl-0">
+                                    <p>1</p>
+                                </b-td>
+                                <b-td class="py-6">
+                                    <p>Total Commission</p>
+                                </b-td>
+                                <b-td class="py-6 pr-0 text-right">
+                                    <h5>SEK {{ commission_salaryComputed }}</h5>
+                                </b-td>
+                            </b-tr>
                             <b-tr>
                                 <b-td class="py-6 pl-0">
                                     <p>2</p>
@@ -280,6 +288,7 @@ export default {
         this.remaining_reciveable = this.editedUser.remaining_reciveable;
         this.created_at = this.editedUser.created_at;
         this.total_inclusive_tex = this.editedUser.total_inclusive_tex;
+        this.commission_salaryComputed = this.editedUser.commission_salaryComputed;
         this.tax = parseFloat(this.editedUser.tax); // Parse 'tax' as a number
         // ... and so on for other properties ...
         

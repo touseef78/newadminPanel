@@ -64,7 +64,7 @@
                 ></b-form-input>
               </b-form-group>
             </div>
-            <div class="col-md-4 col-12">
+            <div class="col-md-4 col-12" v-if="salary_fix !== null">
               <b-form-group
                 id="input-group-2"
                 label="Total Fix salary:"
@@ -73,6 +73,20 @@
                 <b-form-input
                   id="salary_fix"
                   v-model="salary_fix"
+                  disabled
+                ></b-form-input>
+              </b-form-group>
+            </div>
+            <div class="col-md-4 col-12" v-else>
+              <b-form-group
+                id="input-group-2"
+                label="Total Commission:"
+                label-for="commission_salaryComputed"
+              >
+                <b-form-input
+                  id="commission_salaryComputed"
+                  :value="commission_salaryComputed"
+                  v-model="commission_salaryComputed"
                   disabled
                 ></b-form-input>
               </b-form-group>
@@ -108,21 +122,20 @@
             </div>
           </div>
           <b-button
-    type="submit"
-    variant="primary"
-    class="mb-8 mr-8"
-    :disabled="isLoading"
-    @click="payAndNavigate"
-  >
-    <span v-if="!isLoading">Pay</span>
-    <b-spinner
-      v-else
-      class="mb-8 mr-8"
-      variant="primary"
-      small
-    ></b-spinner>
-  </b-button>
-
+            type="submit"
+            variant="primary"
+            class="mb-8 mr-8"
+            :disabled="isLoading"
+            @click="payAndNavigate"
+          >
+            <span v-if="!isLoading">Pay</span>
+            <b-spinner
+              v-else
+              class="mb-8 mr-8"
+              variant="primary"
+              small
+            ></b-spinner>
+          </b-button>
         </b-form>
       </div>
 
@@ -168,7 +181,7 @@ export default {
       codeActiveClass: false,
       image: null,
       isLoading: false,
-      
+
       amount: "",
       category: "",
       card: "",
@@ -189,6 +202,9 @@ export default {
       salary_fix: "",
       remaining_reciveable: "",
       total_inclusive_tex: "",
+      total_payable: "",
+      total_receivable: "",
+      // total_commission: "",
       tax: "",
     };
   },
@@ -231,6 +247,8 @@ export default {
         this.salary_fix = this.editedUser.driver.salary_fix;
         this.driver_first_name = this.editedUser.driver.name;
         this.driver_last_name = this.editedUser.driver.last_name;
+        this.driver_last_name = this.editedUser.driver.last_name;
+        this.salary_commission = this.editedUser.driver.salary_commission;
 
         // ... and so on for other properties ...
       })
@@ -244,8 +262,26 @@ export default {
       const salaryFix = parseFloat(this.salary_fix) || 0;
       const totalPayable = parseFloat(this.total_payable) || 0;
       const expenseDeduct = parseFloat(this.expense_deduct_from_salary) || 0;
+      // return salaryFix + totalPayable - expenseDeduct;
+      if (this.salary_fix !== null) {
+        return salaryFix + totalPayable - expenseDeduct;
+      } else {
+        const uberEarning = parseFloat(this.uber_earning) || 0;
+        const boltEarning = parseFloat(this.bolt_earning) || 0;
+        const salary_commission = parseFloat(this.salary_commission) || 0;
+        return (
+          (salary_commission / 100) * (uberEarning + boltEarning) +
+          totalPayable -
+          expenseDeduct
+        );
+      }
+    },
 
-      return salaryFix + totalPayable - expenseDeduct;
+    commission_salaryComputed() {
+      const uberEarning = parseFloat(this.uber_earning) || 0;
+      const boltEarning = parseFloat(this.bolt_earning) || 0;
+      const salary_commission = parseFloat(this.salary_commission) || 0;
+      return (salary_commission / 100) * (uberEarning + boltEarning);
     },
   },
 
@@ -272,26 +308,24 @@ export default {
       axios;
       this.isLoading = true;
       const formData = new FormData();
-      // formData.append("user_id", this.$route.params.userId); // Use the userId from route params
-      // formData.append("total_receivable", this.total_receivable);
-      // formData.append("total_payable", this.total_payable);
-      // formData.append("deduct_from_salary", this.expense_deduct_from_salary);
-      // formData.append("total_payable_exclusive_tex", this.total_salaryComputed);
-      // formData.append("remaining_reciveable", parseFloat(this.total_receivable) - parseFloat(this.expense_deduct_from_salary));
-      // formData.append("tax", this.total_salaryComputed % 100 * 6);
-      // formData.append("total_inclusive_tex",   parseFloat(this.tax) -  parseFloat(this.total_inclusive_tex) );
-
       formData.append("user_id", this.$route.params.userId); // Use the userId from route params
-  formData.append("total_receivable", this.total_receivable);
-  formData.append("total_payable", this.total_payable);
-  formData.append("deduct_from_salary", this.expense_deduct_from_salary);
-  const tax = parseFloat(this.total_salaryComputed) * 0.06; // Calculate 6% tax
-  formData.append("tax", tax); // Add the tax to formData
-  const totalInclusiveTax = parseFloat(this.total_salaryComputed) - tax; // Calculate total_inclusive_tex
-  formData.append("total_payable_exclusive_tex", this.total_salaryComputed);
-  formData.append("remaining_reciveable", parseFloat(this.total_receivable) - parseFloat(this.expense_deduct_from_salary));
-  formData.append("total_inclusive_tex", totalInclusiveTax); // Update total_inclusive_tex
-
+      formData.append("total_receivable", this.total_receivable);
+      formData.append("total_payable", this.total_payable);
+      formData.append(
+        "commission_salaryComputed",
+        this.commission_salaryComputed
+      );
+      formData.append("deduct_from_salary", this.expense_deduct_from_salary);
+      const tax = parseFloat(this.total_salaryComputed) * 0.06; // Calculate 6% tax
+      formData.append("tax", tax); // Add the tax to formData
+      const totalInclusiveTax = parseFloat(this.total_salaryComputed) - tax; // Calculate total_inclusive_tex
+      formData.append("total_payable_exclusive_tex", this.total_salaryComputed);
+      formData.append(
+        "remaining_reciveable",
+        parseFloat(this.total_receivable) -
+          parseFloat(this.expense_deduct_from_salary)
+      );
+      formData.append("total_inclusive_tex", totalInclusiveTax); // Update total_inclusive_tex
 
       axios
         .post("reportAdd", formData)
@@ -337,17 +371,17 @@ export default {
       }
     },
     payAndNavigate() {
-  // Show a success toast message
+      // Show a success toast message
 
-  // Delay the navigation by a few milliseconds to ensure the toast message is visible
-  setTimeout(() => {
-    // Assuming `this.user_id` is the ID you want to pass to the invoiceShow route
-    this.$router.push({ name: "invoiceShow", params: { id: this.user_id } });
-  }, 2000);
-}
-
-
-    
+      // Delay the navigation by a few milliseconds to ensure the toast message is visible
+      setTimeout(() => {
+        // Assuming `this.user_id` is the ID you want to pass to the invoiceShow route
+        this.$router.push({
+          name: "invoiceShow",
+          params: { id: this.user_id },
+        });
+      }, 2000);
+    },
   },
 };
 </script>

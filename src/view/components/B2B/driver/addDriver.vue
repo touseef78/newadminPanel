@@ -213,7 +213,7 @@
                   <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id" required>
                     <option value="">Select Car</option>
                     <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
-                      {{ vehicle.name }} | {{ vehicle.car_number }} 
+                      {{ vehicle.name }} | {{ vehicle.car_number }} | {{ vehicle.company ? vehicle.company.company_name : 'driver loop' }}
                     </option>
                   </b-form-select>
                 </b-form-group>
@@ -340,7 +340,7 @@
               </div>
               <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
                 <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
-                  <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
+                  <b-form-input id="salary_commission_exclusive" type="text" v-model="salary_commission_exclusive"
                     placeholder="Enter commission exclusive vat"></b-form-input>
                 </b-form-group>
               </div>
@@ -547,7 +547,7 @@ export default {
       });
   }
     axios
-      .get("B2BIndex")
+      .get("notAssign")
       .then((response) => {
         this.vehicles = response.data.data;
       })
