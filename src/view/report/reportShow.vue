@@ -81,6 +81,24 @@
                                     <h5>SEK {{ salary_fix }}</h5>
                                 </b-td>
                             </b-tr>
+                            <b-tr v-else-if="hourly_salaryComputed !== null">
+                                <b-td class="py-6 pl-0">
+                                    <p>1</p>
+                                </b-td>
+                                <b-td class="py-6">
+                                    <p>Total Hourly Rate</p>
+                                </b-td>
+                                <!-- <b-td class="py-6">
+                                        <p></p>
+                                    </b-td>
+                                     <b-td class="py-6">
+                                        <p></p>
+                                    </b-td> -->
+
+                                <b-td class="py-6 pr-0 text-right">
+                                    <h5>SEK {{ hourly_salaryComputed }}</h5>
+                                </b-td>
+                            </b-tr>
                             <b-tr v-else >
                                 <b-td class="py-6 pl-0">
                                     <p>1</p>
@@ -188,6 +206,8 @@
 <script>
 import axios from "axios";
 import code from "../components/data-entry/form/code";
+import html2pdf from 'html2pdf.js';
+
 import {
     BRow,
     BCol,
@@ -289,6 +309,7 @@ export default {
         this.created_at = this.editedUser.created_at;
         this.total_inclusive_tex = this.editedUser.total_inclusive_tex;
         this.commission_salaryComputed = this.editedUser.commission_salaryComputed;
+        this.hourly_salaryComputed = this.editedUser.hourly_salaryComputed;
         this.tax = parseFloat(this.editedUser.tax); // Parse 'tax' as a number
         // ... and so on for other properties ...
         
@@ -299,6 +320,34 @@ export default {
   },
 
     methods: {
+        downloadInvoice() {
+      // Specify the element to convert to PDF
+      const element = this.$refs.invoiceSection;
+
+      // Configuration for the PDF conversion
+      const pdfOptions = {
+        margin: 10,
+        filename: 'invoice.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      };
+
+      // Create the PDF and offer it for download
+      html2pdf()
+        .from(element)
+        .set(pdfOptions)
+        .outputPdf()
+        .then((pdf) => {
+          const blob = new Blob([pdf], { type: 'application/pdf' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'invoice.pdf';
+          a.click();
+        });
+    },
+
        
         formatDate(dateString) {
             const date = new Date(dateString);

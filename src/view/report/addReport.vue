@@ -77,7 +77,7 @@
                 ></b-form-input>
               </b-form-group>
             </div>
-            <div class="col-md-4 col-12" v-else>
+            <div class="col-md-4 col-12" v-else-if="salary_commission !== null">
               <b-form-group
                 id="input-group-2"
                 label="Total Commission:"
@@ -87,6 +87,20 @@
                   id="commission_salaryComputed"
                   :value="commission_salaryComputed"
                   v-model="commission_salaryComputed"
+                  disabled
+                ></b-form-input>
+              </b-form-group>
+            </div>
+            <div class="col-md-4 col-12" v-else>
+              <b-form-group
+                id="input-group-2"
+                label="Total Hourly Rate:"
+                label-for="hourly_salaryComputed"
+              >
+                <b-form-input
+                  id="hourly_salaryComputed"
+                  :value="hourly_salaryComputed"
+                  v-model="hourly_salaryComputed"
                   disabled
                 ></b-form-input>
               </b-form-group>
@@ -181,7 +195,6 @@ export default {
       codeActiveClass: false,
       image: null,
       isLoading: false,
-
       amount: "",
       category: "",
       card: "",
@@ -249,6 +262,8 @@ export default {
         this.driver_last_name = this.editedUser.driver.last_name;
         this.driver_last_name = this.editedUser.driver.last_name;
         this.salary_commission = this.editedUser.driver.salary_commission;
+        this.driver_hourly_rate = this.editedUser.driver.driver_hourly_rate;
+        this.hourly_enter_amount = this.editedUser.driver.hourly_enter_amount;
 
         // ... and so on for other properties ...
       })
@@ -265,12 +280,22 @@ export default {
       // return salaryFix + totalPayable - expenseDeduct;
       if (this.salary_fix !== null) {
         return salaryFix + totalPayable - expenseDeduct;
-      } else {
+      } 
+      else if (this.salary_commission !== null) {
         const uberEarning = parseFloat(this.uber_earning) || 0;
         const boltEarning = parseFloat(this.bolt_earning) || 0;
         const salary_commission = parseFloat(this.salary_commission) || 0;
         return (
           (salary_commission / 100) * (uberEarning + boltEarning) +
+          totalPayable -
+          expenseDeduct
+        );
+      } 
+      else {
+        const driver_hourly_rate = parseFloat(this.driver_hourly_rate) || 0;
+        const hourly_enter_amount = parseFloat(this.hourly_enter_amount) || 0;
+        return (
+          hourly_enter_amount * driver_hourly_rate +
           totalPayable -
           expenseDeduct
         );
@@ -282,6 +307,11 @@ export default {
       const boltEarning = parseFloat(this.bolt_earning) || 0;
       const salary_commission = parseFloat(this.salary_commission) || 0;
       return (salary_commission / 100) * (uberEarning + boltEarning);
+    },
+    hourly_salaryComputed() {
+      const driver_hourly_rate = parseFloat(this.driver_hourly_rate) || 0;
+      const hourly_enter_amount = parseFloat(this.hourly_enter_amount) || 0;
+      return hourly_enter_amount * driver_hourly_rate;
     },
   },
 
@@ -311,6 +341,7 @@ export default {
       formData.append("user_id", this.$route.params.userId); // Use the userId from route params
       formData.append("total_receivable", this.total_receivable);
       formData.append("total_payable", this.total_payable);
+      formData.append("hourly_salaryComputed", this.hourly_salaryComputed);
       formData.append(
         "commission_salaryComputed",
         this.commission_salaryComputed

@@ -101,6 +101,20 @@
                 : NonNullable
             }}
           </template>
+          <template #cell(hourly_rate)="row">
+            {{
+              row.item.driver.hourly_enter_amount
+                ? row.item.driver.hourly_enter_amount
+                : NonNullable
+            }}
+          </template>
+          <template #cell(driver_hourly_rate)="row">
+            {{
+              row.item.driver.driver_hourly_rate
+                ? row.item.driver.driver_hourly_rate
+                : NonNullable
+            }}
+          </template>
           <!-- Action Button Code -->
           <template #cell(image)="row">
             <img
@@ -214,6 +228,8 @@ export default {
         { key: "company_name", sortable: true },
         { key: "salary_fix", sortable: true },
         { key: "commission", sortable: true },
+        { key: "hourly_rate", sortable: true },
+        { key: "driver_hourly_rate", sortable: true },
         { key: "total_payable", sortable: true },
         { key: "total_receivable", sortable: true },
         { key: "uber_earning", sortable: true },

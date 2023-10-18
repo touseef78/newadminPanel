@@ -18,14 +18,14 @@
             </h5>
           </div>
           <div class="row">
-            <div class="col-md-4 col-12">
+            <!-- <div class="col-md-4 col-12">
               <b-form-group id="input-group-2" label="Company Name:" label-for="vehicle_company">
                 <b-form-input id="vehicle_company" v-model="vehicle_company" placeholder="Enter company name"
                   disabled></b-form-input>
               </b-form-group>
-            </div>
+            </div> -->
             <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label="Name:" label-for="name">
+              <b-form-group id="input-group-1" label="Vehicle Name:" label-for="name">
                 <b-form-input id="name" type="text" v-model="name" placeholder="Enter name" autocomplete="off"
                   disabled></b-form-input>
               </b-form-group>
@@ -82,6 +82,16 @@
                   <option>Extra</option>
                 </b-form-select>
               </b-form-group>
+            </div>
+            <div class="col-md-4 col-12">
+              <h4>Document</h4>
+          <div style="display: flex">
+            <!-- Display current vehicle images -->
+            <div v-for="(image, index) in editedUser.image" :key="index" style="margin-left: 3px; margin-bottom: 15px">
+              <img :src="'https://boltapi.fastnetstaffing.in/' + image" alt="Vehicle Image"
+                style="max-width: 100px; max-height: 100px" />
+            </div>
+          </div>
             </div>
           </div>
           <!-- <h2>Car Expense Information</h2> -->
@@ -165,7 +175,7 @@
             </div>
 
           </div>
-          <div style="
+          <!-- <div style="
               background-color: rgb(97, 116, 152);
               height: 32px;
               border-radius: 4px;
@@ -206,19 +216,7 @@
                   disabled></b-form-input>
               </b-form-group>
             </div>
-          </div>
-          <!-- Equipment -->
-          <h4>Upload Document</h4>
-          <!-- <div style="margin-left: 3px; margin-bottom: 15px">
-                        <input type="file" accept="image/*" id="image" @change="vehicleImageChange" />
-                    </div> -->
-          <div style="display: flex">
-            <!-- Display current vehicle images -->
-            <div v-for="(image, index) in editedUser.image" :key="index" style="margin-left: 3px; margin-bottom: 15px">
-              <img :src="'https://boltapi.fastnetstaffing.in/' + image" alt="Vehicle Image"
-                style="max-width: 100px; max-height: 100px" />
-            </div>
-          </div>
+          </div> -->
         </b-form>
       </div>
 

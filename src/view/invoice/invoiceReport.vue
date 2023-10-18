@@ -76,6 +76,17 @@
                                     <h5>SEK {{ salary_fix }}</h5>
                                 </b-td>
                             </b-tr>
+                            <b-tr v-else-if="hourly_salaryComputed !== null">
+                                <b-td class="py-6 pl-0">
+                                    <p>1</p>
+                                </b-td>
+                                <b-td class="py-6">
+                                    <p>Total Hourly Rate</p>
+                                </b-td>
+                                <b-td class="py-6 pr-0 text-right">
+                                    <h5>SEK {{ hourly_salaryComputed }}</h5>
+                                </b-td>
+                            </b-tr>
                             <b-tr v-else >
                                 <b-td class="py-6 pl-0">
                                     <p>1</p>
@@ -123,12 +134,6 @@
                         <p class="hp-badge-text hp-flex-none w-auto">Total Payable Inclusive Tax</p>
                         <h5 class="mb-4 hp-flex-none w-auto">SEK {{ total_payable_exclusive_tex }}</h5>
                     </b-row>
-
-                    <!-- <b-row align-v="center" align-h="between">
-                        <p class="hp-badge-text hp-flex-none w-auto">Discount %10</p>
-                        <h5 class="mb-4 hp-flex-none w-auto">-$ 24.80</h5>
-                    </b-row> -->
-
                     <b-row align-v="center" align-h="between">
                         <p class="hp-badge-text hp-flex-none w-auto">Tax %6</p>
                         <h5 class="hp-flex-none w-auto">SEK{{ tax.toFixed(2) }}</h5>
@@ -144,23 +149,14 @@
                     </b-row>
                 </b-col>
             </b-row>
-
-
-
-            <!--             
-     <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
-        <b-card id="invoice" class="card border-0 hp-invoice-card" ref="invoiceSection">
-          <button class="print-button"  @click="printInvoice">Print</button>
-        </b-card>
-      </b-col> -->
-            <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
-                <b-card id="invoice" class="card border-0 hp-invoice-card" ref="invoiceSection">
-                    <!-- ... Your existing invoice card content ... -->
-                </b-card>
-                <b-row align-v="center" align-h="start">
-                    <!-- <b-button @click="downloadInvoice" type="submit" variant="primary">Download Invoice</b-button> -->
-                </b-row>
-            </b-col>
+           
+            <!-- <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
+    <b-card id="invoice" class="card border-0 hp-invoice-card" ref="invoiceSection">
+    </b-card>
+    <b-row align-v="center" align-h="start">
+      <b-button @click="downloadInvoice" type="submit" variant="primary">Download Invoice</b-button>
+    </b-row>
+  </b-col> -->
 
 
         </b-card>
@@ -170,6 +166,8 @@
 <script>
 import axios from "axios";
 import code from "../components/data-entry/form/code";
+// import html2pdf from 'html2pdf.js';
+
 import {
     BRow,
     BCol,
@@ -272,6 +270,7 @@ export default {
                 this.created_at = this.editedUser.created_at;
                 this.total_inclusive_tex = this.editedUser.total_inclusive_tex;
                 this.commission_salaryComputed = this.editedUser.commission_salaryComputed;
+                this.hourly_salaryComputed = this.editedUser.hourly_salaryComputed;
                 this.tax = parseFloat(this.editedUser.tax); // Parse 'tax' as a number
                 // ... and so on for other properties ...
 
@@ -282,6 +281,34 @@ export default {
     },
 
     methods: {
+
+    //     downloadInvoice() {
+    //   // Specify the element to convert to PDF
+    //   const element = this.$refs.invoiceSection;
+
+    //   // Configuration for the PDF conversion
+    //   const pdfOptions = {
+    //     margin: 10,
+    //     filename: 'invoice.pdf',
+    //     image: { type: 'jpeg', quality: 0.98 },
+    //     html2canvas: { scale: 2 },
+    //     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    //   };
+
+    //   // Create the PDF and offer it for download
+    //   html2pdf()
+    //     .from(element)
+    //     .set(pdfOptions)
+    //     .outputPdf()
+    //     .then((pdf) => {
+    //       const blob = new Blob([pdf], { type: 'application/pdf' });
+    //       const url = URL.createObjectURL(blob);
+    //       const a = document.createElement('a');
+    //       a.href = url;
+    //       a.download = 'invoice.pdf';
+    //       a.click();
+    //     });
+    // },
 
         formatDate(dateString) {
             const date = new Date(dateString);

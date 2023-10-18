@@ -18,14 +18,14 @@
             </h5>
           </div>
           <div class="row">
-            <div class="col-md-4 col-12">
+            <!-- <div class="col-md-4 col-12">
               <b-form-group id="input-group-2" label="Company Name:" label-for="vehicle_company">
                 <b-form-input id="vehicle_company" v-model="vehicle_company"
                   placeholder="Enter company name"></b-form-input>
               </b-form-group>
-            </div>
+            </div> -->
             <div class="col-md-4 col-12">
-              <b-form-group id="input-group-1" label="Name:" label-for="name">
+              <b-form-group id="input-group-1" label="Vehicle Name:" label-for="name">
                 <b-form-input id="name" type="text" v-model="name" placeholder="Enter name"
                   autocomplete="off"></b-form-input>
               </b-form-group>
@@ -81,6 +81,19 @@
                   <option>Extra</option>
                 </b-form-select>
               </b-form-group>
+            </div>
+            <div class="col-md-4 col-12">
+              <h4>Upload Document</h4>
+          <b-form-group id="input-group-1" label="Upload Document:" label-for="bank_upload_document">
+            <div style="display: flex">
+              <!-- Display current vehicle images -->
+              <div v-for="(image, index) in editVehicle.image" :key="index" style="margin-left: 3px; margin-bottom: 15px">
+                <img :src="'https://boltapi.fastnetstaffing.in/' + image" alt="Vehicle Image"
+                  style="max-width: 100px; max-height: 100px" />
+              </div>
+            </div>
+            <input type="file" accept="image/*" id="vehicle_image" multiple @change="vehicleImageChange" />
+          </b-form-group>
             </div>
           </div>
           <!-- <h2>Car Expense Information</h2> -->
@@ -166,39 +179,8 @@
                 </b-form-input>
               </b-form-group>
             </div>
-            <!-- <div class="col-md-4 col-12">
-                              <b-form-group id="input-group-2" label="Vehicle Expenses:" label-for="vehicle_expense">
-                                  <b-form-select v-model="selectedType" >
-                                      <option value="">Select Vehicle Expenses</option>
-                                      <option>Running</option>
-                                      <option>Oil Change</option>
-                                      <option>Milage</option>
-                                      <option>Accidential Claim</option>
-                                      <option>Other Espense</option>
-                                  </b-form-select>
-                              </b-form-group>
-                          </div> -->
-            <!-- TWo Dropdown field   -->
-
-            <!-- <div class="col-md-4 col-12">
-                              <b-form-group id="input-group-2" label="Car Maintenance Feature:"
-                                  label-for="car_maintenance_feature">
-                                  <div class="d-flex">
-                                      <b-form-select v-model="selectedType"  class="mr-2">
-                                          <option value="">Select Feature</option>
-                                          <option>Running</option>
-                                          <option>Oil Change</option>
-                                          <option>Mileage</option>
-                                          <option>Accidental Claim</option>
-                                          <option>Other Expense</option>
-                                      </b-form-select>
-                                      <b-form-input v-model="selectedTypes" placeholder="Mention Price" >
-                                      </b-form-input>
-                                  </div>
-                              </b-form-group>
-                          </div> -->
           </div>
-          <div style="
+          <!-- <div style="
               background-color: rgb(97, 116, 152);
               height: 32px;
               border-radius: 4px;
@@ -239,18 +221,7 @@
               </b-form-group>
             </div>
           </div>
-          <!-- Equipment -->
-          <h4>Upload Document</h4>
-          <b-form-group id="input-group-1" label="Upload Document:" label-for="bank_upload_document">
-            <div style="display: flex">
-              <!-- Display current vehicle images -->
-              <div v-for="(image, index) in editVehicle.image" :key="index" style="margin-left: 3px; margin-bottom: 15px">
-                <img :src="'https://boltapi.fastnetstaffing.in/' + image" alt="Vehicle Image"
-                  style="max-width: 100px; max-height: 100px" />
-              </div>
-            </div>
-            <input type="file" accept="image/*" id="vehicle_image" multiple @change="vehicleImageChange" />
-          </b-form-group>
+          <Equipment -->
           <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
             <span v-if="!isLoading">Submit</span>
             <b-spinner v-else class="mb-8 mr-8" variant="primary" small></b-spinner>

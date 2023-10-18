@@ -85,6 +85,12 @@
                 </b-form-select>
               </b-form-group>
             </div>
+            <div class="col-md-4 col-12">
+              <h4>Upload Document</h4>
+          <div style="margin-left: 3px; margin-bottom: 15px">
+            <input type="file" accept="image/*" id="image[]" multiple @change="vehicleImageChange" required />
+          </div>
+            </div>
           </div>
           <!-- <h2>Car Expense Information</h2> -->
           <div style="
@@ -173,7 +179,7 @@
             </div>
 
           </div>
-          <div style="
+          <!-- <div style="
               background-color: rgb(97, 116, 152);
               height: 32px;
               border-radius: 4px;
@@ -215,12 +221,10 @@
               </b-form-group>
             </div>
           </div>
-
-          <!-- Equipment -->
           <h4>Upload Document</h4>
           <div style="margin-left: 3px; margin-bottom: 15px">
             <input type="file" accept="image/*" id="image[]" multiple @change="vehicleImageChange" required />
-          </div>
+          </div> -->
           
           <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
             <span v-if="!isLoading">Submit</span>
