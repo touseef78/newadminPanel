@@ -329,12 +329,12 @@ export default {
         this.email = this.editedUser.driver.email;
         this.deduct_from_salary = this.editedUser.deduct_from_salary;
         this.total_payable_exclusive_tex =
-          this.editedUser.total_payable_exclusive_tex;
+        this.editedUser.total_payable_exclusive_tex;
         this.remaining_reciveable = this.editedUser.remaining_reciveable;
         this.created_at = this.editedUser.created_at;
         this.total_inclusive_tex = this.editedUser.total_inclusive_tex;
         this.commission_salaryComputed =
-          this.editedUser.commission_salaryComputed;
+        this.editedUser.commission_salaryComputed;
         this.hourly_salaryComputed = this.editedUser.hourly_salaryComputed;
         this.tax = parseFloat(this.editedUser.tax); // Parse 'tax' as a number
         // ... and so on for other properties ...
