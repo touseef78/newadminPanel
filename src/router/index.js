@@ -440,6 +440,15 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
+
+    {
+      path: "/efficiencyReport",
+      name: "efficiencyReport",
+      component: () => import("../view/efficiencyReport/efficiency_report.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
     {
       path: "/boltdata",
       name: "boltdata",

@@ -230,6 +230,27 @@ export default {
         ],
       },
 
+      /////efficiency report
+      {
+        id: "efficiencyReport",
+        title: "Efficiency Report",
+        icon: "Curved-Wallet",
+        
+        children: [
+          {
+            id: "efficiencyReport",
+            title: "view Report",
+            navLink: "/efficiencyReport",
+          },
+          // {
+          //   id: "Report",
+          //   title: "View Report",
+          //   navLink: "/report/view",
+          
+          // },
+        ],
+      },
+
     //  UberFile
     {
       id: "uberFile",

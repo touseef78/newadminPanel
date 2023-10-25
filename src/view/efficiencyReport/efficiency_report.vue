@@ -7,7 +7,7 @@
     <div class="col-12 mt-16">
       <div>
         <b-row class="align-items-center">
-          <b-col lg="3" class="my-1">
+          <b-col lg="6" class="my-1">
             <b-form-group
               label=""
               label-for="filter-input"
@@ -31,7 +31,7 @@
               </b-input-group>
             </b-form-group>
           </b-col>
-          <b-col lg="3" class="my-1">
+          <!-- <b-col lg="3" class="my-1">
             <b-form-group
               label="Start Date"
               label-for="start-date"
@@ -64,8 +64,8 @@
                 placeholder="Select end date"
               ></b-form-input>
             </b-form-group>
-          </b-col>
-          <b-col lg="3" class="my-1 d-flex justify-content-end">
+          </b-col> -->
+          <b-col lg="6" class="my-1 d-flex justify-content-end">
             <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
               >Import</b-button
             > -->
@@ -100,23 +100,11 @@
         >
 
         <template #cell(driver_name)="row">
-            {{ `${row.item.name} ${row.item.last_name} ` }}
+            {{ `${row.item.driver.name} ${row.item.driver.last_name} ` }}
           </template>
-          <template #cell(total_net)="row">
-            {{ `${row.item.net}` }}
+          <template #cell(total_efficiency)="row">
+            {{`${row.item.total_efficiency.toFixed(2)} ` }}%
           </template>
-          <template #cell(5%_admin_fee)="row">
-            {{ `${row.item.admin} ` }}
-          </template>
-          <template #cell(total_net_payable)="row">
-            {{ `${row.item.net_total}` }}
-          </template>
-          <template #cell(moms_6%_tax)="row">
-            {{ `${row.item.moms_6_tax}` }}
-          </template>
-          <template #cell(total)="row">
-      {{ parseFloat(row.item.uber_earning || 0) + parseFloat(row.item.bolt_earning || 0) }}
-    </template>
           <!-- Action Button Code -->
           <!-- <template #cell(actions)="row">
             <b-button @click="downloadFile(row.item.file)" variant="primary"
@@ -210,17 +198,10 @@ export default {
       fields: [
         { key: "id", sortable: true },
         { key: "Driver_name", sortable: true },
-        { key: "start_date", sortable: true },
-        { key: "end_date", sortable: true },
-        { key: "uber_earning", sortable: true },
-        { key: "bolt_earning", sortable: true },
+        { key: "earning", sortable: true },
+        { key: "expense", sortable: true },
         { key: "total", sortable: true },
-        { key: "moms_6%_tax", sortable: true },
-        { key: "total_net", sortable: true },
-        { key: "5%_admin_fee", sortable: true },
-        { key: "net_payable", sortable: true },
-        { key: "moms_25_tax", sortable: true },
-        { key: "total_net_payable", sortable: true },
+        { key: "total_efficiency", sortable: true },
         // { key: "actions", label: "Actions" },
       ],
 
@@ -250,8 +231,8 @@ export default {
   computed: {
     filteredUsers() {
       const filteredUsers = this.users.filter((user) => {
-        const startDate = new Date(user.start_date);
-        const endDate = new Date(user.end_date);
+        const startDate = new Date(user.created_at);
+        const endDate = new Date(user.created_at);
         const filterStartDate = this.startDateFilter ? new Date(this.startDateFilter) : null;
         const filterEndDate = this.endDateFilter ? new Date(this.endDateFilter) : null;
         if (filterStartDate && startDate < filterStartDate) {
@@ -287,7 +268,7 @@ export default {
     fetchData() {
       this.loading = true; // Set loading to true before fetching data
       axios
-        .get("uberdata") // Replace 'your_api_endpoint_url_here' with your actual API URL
+        .get("calculateEfficiency") // Replace 'your_api_endpoint_url_here' with your actual API URL
         .then((response) => {
           this.users = response.data.data;
           this.totalRows = this.users.length;
