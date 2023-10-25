@@ -345,7 +345,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Upload Document:" label-for="bank_upload_document">
                   <div style="margin-left: 3px; margin-bottom: 15px">
-                    <input type="file" accept="image/*" id="bank_upload_document" @change="BankImageChange" />
+                    <input type="file" accept="image/*" id="bank_upload_document" @change="BankImageChange" required/>
                   </div>
                 </b-form-group>
               </div>

@@ -84,7 +84,7 @@
       <div class="col-12 mt-16">
         <b-table
           id="dataTable"
-          :items="filteredUsers" 
+          :items="filteredUsers"
           :fields="fields"
           :current-page="currentPage"
           :per-page="perPage"
@@ -98,12 +98,18 @@
           y
           responsive
         >
-
-        <template #cell(driver_name)="row">
+          <template #cell(driver_name)="row">
             {{ `${row.item.driver.name} ${row.item.driver.last_name} ` }}
           </template>
           <template #cell(total_efficiency)="row">
-            {{`${row.item.total_efficiency.toFixed(2)} ` }}%
+            <span
+              :class="{
+                'text-success': row.item.total_efficiency >= 0,
+                'text-danger': row.item.total_efficiency < 50,
+              }"
+            >
+              {{ `${row.item.total_efficiency.toFixed(2)} ` }}%
+            </span>
           </template>
           <!-- Action Button Code -->
           <!-- <template #cell(actions)="row">
@@ -233,8 +239,12 @@ export default {
       const filteredUsers = this.users.filter((user) => {
         const startDate = new Date(user.created_at);
         const endDate = new Date(user.created_at);
-        const filterStartDate = this.startDateFilter ? new Date(this.startDateFilter) : null;
-        const filterEndDate = this.endDateFilter ? new Date(this.endDateFilter) : null;
+        const filterStartDate = this.startDateFilter
+          ? new Date(this.startDateFilter)
+          : null;
+        const filterEndDate = this.endDateFilter
+          ? new Date(this.endDateFilter)
+          : null;
         if (filterStartDate && startDate < filterStartDate) {
           return false;
         }
@@ -248,7 +258,6 @@ export default {
 
       return filteredUsers;
     },
-
 
     sortOptions() {
       return this.fields
