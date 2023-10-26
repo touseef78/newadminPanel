@@ -204,8 +204,8 @@ export default {
       fields: [
         { key: "id", sortable: true },
         { key: "Driver_name", sortable: true },
-        { key: "earning", sortable: true },
-        { key: "expense", sortable: true },
+        { key: "total_earning", sortable: true },
+        { key: "total_expense", sortable: true },
         { key: "total", sortable: true },
         { key: "total_efficiency", sortable: true },
         // { key: "actions", label: "Actions" },
