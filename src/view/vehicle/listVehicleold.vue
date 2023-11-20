@@ -368,9 +368,7 @@ export default {
     fetchData() {
       this.loading = true;
       // Define your API endpoint URL
-      const userId = this.$route.params.id;
-
-      let apiUrl = userId ? `deltils/${userId}` : "vehicle";
+      const apiUrl = "vehicle";
 
       // Create an object to hold the query parameters
       const queryParams = {
@@ -381,7 +379,6 @@ export default {
       axios
         .get(apiUrl, { params: queryParams })
         .then((response) => {
-          this.users = userId ? [response.data.data] : response.data.data;
           this.users = response.data.data.filter((item) => {
             const createdDate = new Date(item.created_at);
             return (

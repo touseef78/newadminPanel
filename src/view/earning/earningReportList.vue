@@ -41,7 +41,7 @@
               class="mb-0"
             >
               <b-form-input
-              id="start-date-input"
+                id="start-date-input"
                 v-model="startDateFilter"
                 type="date"
                 placeholder="Select start date"
@@ -58,7 +58,7 @@
               class="mb-0"
             >
               <b-form-input
-              id="end-date-input"
+                id="end-date-input"
                 v-model="endDateFilter"
                 type="date"
                 placeholder="Select end date"
@@ -84,7 +84,7 @@
       <div class="col-12 mt-16">
         <b-table
           id="dataTable"
-          :items="filteredUsers" 
+          :items="filteredUsers"
           :fields="fields"
           :current-page="currentPage"
           :per-page="perPage"
@@ -98,8 +98,7 @@
           y
           responsive
         >
-
-        <template #cell(driver_name)="row">
+          <template #cell(driver_name)="row">
             {{ `${row.item.name} ${row.item.last_name} ` }}
           </template>
           <template #cell(total_net)="row">
@@ -115,8 +114,11 @@
             {{ `${row.item.moms_6_tax}` }}
           </template>
           <template #cell(total)="row">
-      {{ parseFloat(row.item.uber_earning || 0) + parseFloat(row.item.bolt_earning || 0) }}
-    </template>
+            {{
+              parseFloat(row.item.uber_earning || 0) +
+              parseFloat(row.item.bolt_earning || 0)
+            }}
+          </template>
           <!-- Action Button Code -->
           <!-- <template #cell(actions)="row">
             <b-button @click="downloadFile(row.item.file)" variant="primary"
@@ -252,8 +254,12 @@ export default {
       const filteredUsers = this.users.filter((user) => {
         const startDate = new Date(user.start_date);
         const endDate = new Date(user.end_date);
-        const filterStartDate = this.startDateFilter ? new Date(this.startDateFilter) : null;
-        const filterEndDate = this.endDateFilter ? new Date(this.endDateFilter) : null;
+        const filterStartDate = this.startDateFilter
+          ? new Date(this.startDateFilter)
+          : null;
+        const filterEndDate = this.endDateFilter
+          ? new Date(this.endDateFilter)
+          : null;
         if (filterStartDate && startDate < filterStartDate) {
           return false;
         }
@@ -267,7 +273,6 @@ export default {
 
       return filteredUsers;
     },
-
 
     sortOptions() {
       return this.fields
@@ -286,10 +291,15 @@ export default {
   methods: {
     fetchData() {
       this.loading = true; // Set loading to true before fetching data
+      const name = this.$route.params.name;
+      const last_name = this.$route.params.last_name;
+      const userId = name && last_name ? `${name}/${last_name}` : null;
+      let apiUrl = userId ? `driverUber/${userId}` : "uberdata";
       axios
-        .get("uberdata") // Replace 'your_api_endpoint_url_here' with your actual API URL
+        .get(apiUrl) // Replace 'your_api_endpoint_url_here' with your actual API URL
         .then((response) => {
           this.users = response.data.data;
+
           this.totalRows = this.users.length;
         })
         .catch((error) => {

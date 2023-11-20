@@ -213,7 +213,7 @@
 
                   <b-col class="pl-0">
                     <h3 class="mb-4 mt-8">
-                      50000<span class="hp-badge-text ml-8 text-secondary"></span>
+                      30000<span class="hp-badge-text ml-8 text-secondary"></span>
                     </h3>
 
                     <p
@@ -271,7 +271,7 @@
 
                 <div id="revenue-column-card" class="overflow-hidden">
                   <apexchart
-                  v-if="series[0].data.length > 0"
+                  v-if="series[0,1].data.length > 0"
                     type="bar"
                     height="303"
                     legend="legend"

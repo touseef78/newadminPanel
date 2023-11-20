@@ -33,7 +33,7 @@ export default {
                 },
                 colors: ["#0063F7", "#98FFE0", "#1BE7FF"],
 
-                labels: ["Online", "Offline", "Marketing"],
+                labels: ["Expense", "Earning", "Profit"],
 
                 dataLabels: {
                     enabled: false,
@@ -60,7 +60,7 @@ export default {
                                     show: true,
                                     fontSize: "24px",
                                     fontWeight: "regular",
-                                    label: "Kitchen",
+                                    label: "Earning",
                                     color: "#636E72",
 
                                     formatter: function (w) {

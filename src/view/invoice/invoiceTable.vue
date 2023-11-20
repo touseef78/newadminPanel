@@ -237,7 +237,9 @@ export default {
     fetchData() {
         this.loading = true;
         // Define your API endpoint URL
-        const apiUrl = "invoice";
+        const userId = this.$route.params.id;
+
+       let apiUrl = userId ? `driverInvoice/${userId}` : "invoice";
 
         // Create an object to hold the query parameters
         const queryParams = {

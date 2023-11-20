@@ -271,7 +271,9 @@ export default {
     fetchData() {
       this.loading = true;
       // Define your API endpoint URL
-      const apiUrl = "service";
+      const userId = this.$route.params.id;
+     let apiUrl = userId ? `driverMaintence/${userId}` : "service";
+
 
       // Create an object to hold the query parameters
       const queryParams = {

@@ -50,8 +50,11 @@
             {{ formatDate(row.item.created_at) }}
           </template>
           <template #cell(name)="row">
-            {{ `${row.item.name} ${row.item.last_name}` }}
-          </template>
+            <router-link :to="{ name: 'driverDetails', params: { id: row.item.id } }">
+    {{ `${row.item.name} ${row.item.last_name}` }} 
+  </router-link>
+</template>
+
           <template #cell(personal_number)="row">
             {{ `${row.item.security_code} ` }}
           </template>
@@ -153,6 +156,7 @@ import {
   BSpinner,
 } from "bootstrap-vue";
 import axios from "axios";
+import { useRouter } from 'vue-router';
 import Papa from "papaparse";
 
 // new code 
@@ -302,6 +306,10 @@ export default {
     showDrivers(userId) {
       this.$router.push({ name: "viewDrivers", params: { id: userId } });
     },
+
+    // vehicle(userId) {
+    //   this.$router.push({ name: "vehicle", params: { id: userId } });
+    // },
 
     deleteItem(itemId) {
       this.itemIdToDelete = itemId; // Set the item ID to be deleted

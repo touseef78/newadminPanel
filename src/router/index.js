@@ -107,6 +107,14 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
+    {
+      path: "/drivers/driverDetails/:id",
+      name: "driverDetails",
+      component: () => import("../view/drivers/detailsDriver.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
 
   {
       path: "/vehicle/addVehicle",
@@ -140,6 +148,17 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
+
+    {
+      path: "/vehicle/listVehicle/:id",
+      name: "vehicleID",
+      component: () => import("@/view/vehicle/listVehicle"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
+ 
    
     {
       path: "/drivers/list",
@@ -294,6 +313,15 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
+
+    {
+      path: "/expense/list/:id",
+      name: "droverExpnse",
+      component: () => import("../view/expense/listExpense.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
     
      {
       path: "/expense/edit/:id",
@@ -338,6 +366,15 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
+
+    {
+      path: "/report/view/:id",
+      name: "driverReport",
+      component: () => import("../view/report/viewReport.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
        {
       path: "/report/Adds/:userId",
       name: "addReport",
@@ -376,6 +413,16 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
+
+
+    {
+      path: "/table/invoice/:id",
+      name: "driverInvoice",
+      component: () => import("../view/invoice/invoiceTable.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
   {
       path: "/invoice/view/:id",
       name: "invoiceReport",
@@ -395,9 +442,18 @@ const router = new VueRouter({
       },
     },
     
-       {
+   {
       path: "/service/list",
       name: "listService",
+      component: () => import("../view/car/listService.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
+    {
+      path: "/service/list/:id",
+      name: "driverMaintenance",
       component: () => import("../view/car/listService.vue"),
       meta: {
         requiresAuth: true, // This route requires authentication
@@ -442,8 +498,26 @@ const router = new VueRouter({
     },
 
     {
+      path: "/earningReportlist/:name/:last_name",
+      name: "driverEarningReportlist",
+      component: () => import("../view/earning/earningReportList.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
+    {
       path: "/efficiencyReport",
       name: "efficiencyReport",
+      component: () => import("../view/efficiencyReport/efficiency_report.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+
+    {
+      path: "/efficiencyReport/:id",
+      name: "driverEfficiencyReport",
       component: () => import("../view/efficiencyReport/efficiency_report.vue"),
       meta: {
         requiresAuth: true, // This route requires authentication

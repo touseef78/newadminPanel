@@ -50,6 +50,7 @@
                                     <option value="">Select Category</option>
                                     <option>Petrol</option>
                                     <option>Puncher</option>
+                                    <option>Fuel</option>
                                     <option>Air Pressure</option>
                                     <option>Tyre Change</option>
                                     <option>Challane</option>

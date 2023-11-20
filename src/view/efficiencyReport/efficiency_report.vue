@@ -276,8 +276,10 @@ export default {
   methods: {
     fetchData() {
       this.loading = true; // Set loading to true before fetching data
+      const userId = this.$route.params.id;
+     let apiUrl = userId ? `driverEfficiency/${userId}` : "calculateEfficiency";
       axios
-        .get("calculateEfficiency") // Replace 'your_api_endpoint_url_here' with your actual API URL
+        .get(apiUrl) // Replace 'your_api_endpoint_url_here' with your actual API URL
         .then((response) => {
           this.users = response.data.data;
           this.totalRows = this.users.length;
