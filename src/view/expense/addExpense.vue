@@ -5,7 +5,7 @@
                 <b-form @submit.prevent="addUser" v-if="show">
                     <!-- <h2>Car Information</h2> -->
                     <div style="
-              background-color: rgb(97, 116, 152);
+              background-color: #0010f7;
               height: 32px;
               border-radius: 4px;
             ">
@@ -17,7 +17,7 @@
                             Add Expense
                         </h5>
                     </div>
-                    <div class="row">
+                    <div class="row" style="margin-top: 20px;">
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Select Driver:" label-for="user_id">
                                 <b-form-select id="user_id" v-model="user_id" required>

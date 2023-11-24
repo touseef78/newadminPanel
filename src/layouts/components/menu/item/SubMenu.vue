@@ -102,3 +102,12 @@ export default {
   },
 };
 </script>
+<style>
+.arrow-active{
+ 
+  background-color: #EBFAFA !important;
+  border-radius: 7px;
+    padding: 12px 13px;
+    margin: 0 -12px !important;
+}
+</style>

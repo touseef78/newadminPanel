@@ -5,7 +5,7 @@
         <div class="col-12 mt-16">
           <b-form @submit.prevent="addUser" v-if="show">
             <div style="
-              background-color: rgb(97, 116, 152);
+              background-color: #0010f7;
               height: 32px;
               border-radius: 4px;
             ">
@@ -17,7 +17,7 @@
               Company Information
             </h5>
           </div>
-          <div class="row">
+          <div class="row" style="margin-top:20px;">
             <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Select Company:" label-for="company_id">
                   <b-form-select id="company_id" placeholder="Enter select Company" v-model="company_id" required>
@@ -30,7 +30,7 @@
               </div>
             </div>
             <div style="
-                background-color: rgb(97, 116, 152);
+                background-color: #0010f7;
                 height: 32px;
                 border-radius: 4px;
               ">
@@ -42,7 +42,7 @@
                 Personal Information
               </h5>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top:20px;">
              
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
@@ -223,7 +223,7 @@
                 <b-row>
                   <div class="col-12 mt-16">
                     <div style="
-                        background-color: rgb(97, 116, 152);
+                        background-color: #0010f7;
                         height: 32px;
                         border-radius: 4px;
                       ">
@@ -237,7 +237,7 @@
                     </div>
 
                     <!-- <b-form @submit="onSubmit" @reset="onReset" v-if="show"> -->
-                    <div class="row">
+                    <div class="row" style="margin-top:20px;">
                       <div class="col-md-4 col-12">
                         <b-form-group id="input-group-1" label="Name:" label-for="name">
                           <b-form-input id="name" type="text" placeholder="Enter name" autocomplete="off"
@@ -300,7 +300,7 @@
             </div>
 
             <div style="
-                background-color: rgb(97, 116, 152);
+                background-color: #0010f7;
                 height: 32px;
                 border-radius: 4px;
               ">
@@ -313,7 +313,7 @@
               </h5>
             </div>
 
-            <div class="row">
+            <div class="row" style="margin-top:20px;">
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Salary:" label-for="salary">
                   <b-form-select v-model="selectedOption" required>
@@ -359,7 +359,7 @@
             </div>
             <!-- Bank Information -->
             <div style="
-                background-color: rgb(97, 116, 152);
+                background-color: #0010f7;
                 height: 32px;
                 border-radius: 4px;
               ">
@@ -372,7 +372,7 @@
               </h5>
             </div>
             <!-- <h3>Bank Infomation</h3> -->
-            <div class="row">
+            <div class="row" style="margin-top:20px;">
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Bank Account Holder Name:" label-for="bank_account_holder_name">
                   <b-form-input id="bank_name" type="text" placeholder="Enter bank account holder name"

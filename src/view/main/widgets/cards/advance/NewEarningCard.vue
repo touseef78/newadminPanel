@@ -6,7 +6,7 @@
             </b-col>
 
             <b-col cols="12">
-                <apexchart :options="options" :series="series" type="donut" height="350" legend="legend"></apexchart>
+                <apexchart :options="options" :series="series" type="donut" height="465" legend="legend"></apexchart>
             </b-col>
         </b-row>
     </b-card>
