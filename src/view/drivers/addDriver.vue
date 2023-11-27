@@ -9,40 +9,43 @@
           <b-form @submit.prevent="addUser" v-if="show">
             <div style="
                 background-color: #0010f7;
-                height: 32px;
+                height: 40px;
                 border-radius: 4px;
               ">
               <h5 style="
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
+                 padding:10px;
                 ">
                 Personal Information
               </h5>
             </div>
             <div class="row" style=" margin-top:20px;">
+
               <!-- <div class="col-md-4 col-12">
-                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
-                  <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
-                    required>
-                  </b-form-input>
-                </b-form-group>
-              </div> -->
-              <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
                   <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
                     pattern="[A- Z a-z]+" title="Please enter only alphabetic characters" required>
                   </b-form-input>
+                </b-form-group>
+              </div> -->
+
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
+                  <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
+                    pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required></b-form-input>
                 </b-form-group>
               </div>
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
                   <b-form-input id="last_name" type="text" placeholder="Enter last name" autocomplete="off"
-                    v-model="last_name" pattern="[A- Z a-z]+" title="Please enter only alphabetic characters" required>
-                  </b-form-input>
+                    v-model="last_name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters"
+                    required></b-form-input>
                 </b-form-group>
               </div>
+
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Email Address:" label-for="email">
                   <b-form-input id="email" type="email" placeholder="Enter email address" v-model="email" required>
@@ -59,18 +62,32 @@
               </div>
 
 
-              <div class="col-md-4 col-12">
+              <!-- <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                   <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
                     pattern="[0-9]+" title="Please enter only numeric characters" required>
                   </b-form-input>
                 </b-form-group>
+              </div> -->
+              <div class="col-md-4 col-12">
+                <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">+46</span>
+                    </div>
+                    <b-form-input id="mobile" type="text" placeholder="_ _ _ _ _ _ _ _ _" v-model="mobile"
+                      pattern="[0-9]{9}" title="Please enter exactly 9 numeric characters" required
+                      maxlength="9"></b-form-input>
+                  </div>
+                </b-form-group>
               </div>
+
+
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
                   <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency contact name"
-                    v-model="emergency_contact_name" pattern="[A- Z a-z]+" title="Please enter only alphabetic characters"
+                    v-model="emergency_contact_name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters"
                     required></b-form-input>
                 </b-form-group>
               </div>
@@ -101,17 +118,34 @@
                 </b-form-group>
               </div>
 
-              <div class="col-md-4 col-12">
+              <!-- <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
                   <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth" v-model="date_of_birth"
                     required></b-form-input>
                 </b-form-group>
-              </div>
+              </div> -->
+              <div class="col-md-4 col-12">
+    <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
+      <div class="input-group custom-input-group">
+        <!-- Hidden input for submitting the correct date format -->
+        <input type="hidden" id="formatted_date_of_birth" name="formatted_date_of_birth" v-model="formatted_date_of_birth">
+
+        <!-- Year -->
+        <b-form-input class="custom-input" id="year" type="number" placeholder="YYYY" v-model="year" min="1900" max="9999" step="1" @input="validateYear" required></b-form-input>
+
+        <!-- Month -->
+        <b-form-input class="custom-input" id="month" type="number" placeholder="MM" v-model="month" min="1" max="12" step="1" @input="validateMonth" required></b-form-input>
+
+        <!-- Day -->
+        <b-form-input class="custom-input" id="day" type="number" placeholder="DD" v-model="day" min="1" max="31" step="1" @input="validateDay" required></b-form-input>
+      </div>
+    </b-form-group>
+  </div>
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Personal Number:" label-for="security_code">
-                  <b-form-input id="security_code" type="text" placeholder="Enter personal number" v-model="security_code" pattern="[0-9]+"
-                    required minlength="10" maxlength="13"></b-form-input>
+                  <b-form-input id="security_code" type="text" placeholder="Enter personal number" v-model="security_code"
+                    pattern="[0-9]+" required minlength="10" maxlength="11"></b-form-input>
                 </b-form-group>
               </div>
 
@@ -147,7 +181,7 @@
                 <b-form-group id="input-group-2" label="Select Driver:" label-for="type">
                   <b-form-select v-model="type" required>
                     <!-- <option value="">Select Type</option> -->
-                    <option value="uber" >Uber</option>
+                    <option value="uber">Uber</option>
                     <option value="bolt">Bolt</option>
                   </b-form-select>
                 </b-form-group>
@@ -155,17 +189,20 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
                   <div style="margin-left: 3px; margin-bottom: 15px">
-                    <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" required/>
+                    <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" required />
                   </div>
                 </b-form-group>
               </div>
+
+
 
               <div v-if="selectedCarType === 'Company'" class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
                   <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id" required>
                     <option value="">Select Car</option>
                     <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
-                      {{ vehicle.name }} | {{ vehicle.car_number }} | {{ vehicle.company ? vehicle.company.company_name : 'driver loop' }}
+                      {{ vehicle.name }} | {{ vehicle.car_number }} | {{ vehicle.company ? vehicle.company.company_name :
+                        'driver loop' }}
                     </option>
                   </b-form-select>
                 </b-form-group>
@@ -176,13 +213,14 @@
                   <div class="col-12 mt-16">
                     <div style="
                         background-color:#0010f7;
-                        height: 32px;
+                        height: 40px;
                         border-radius: 4px;
                       ">
                       <h5 style="
                           color: rgb(223, 227, 238);
                           margin-left: 5px;
                           font-weight: bold;
+                           padding:10px;
                         ">
                         Add Vehicle
                       </h5>
@@ -248,13 +286,14 @@
 
             <div style="
                 background-color: #0010f7;
-                height: 32px;
+                height: 40px;
                 border-radius: 4px;
               ">
               <h5 style="
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
+                   padding:10px;
                 ">
                 Salary Information
               </h5>
@@ -307,13 +346,14 @@
             <!-- Bank Information -->
             <div style="
                 background-color: #0010f7;
-                height: 32px;
+                height: 40px;
                 border-radius: 4px;
               ">
               <h5 style="
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
+                   padding:10px;
                 ">
                 Bank Information
               </h5>
@@ -323,7 +363,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Bank Account Holder Name:" label-for="bank_account_holder_name">
                   <b-form-input id="bank_name" type="text" placeholder="Enter bank account holder name"
-                    v-model="bank_name"  pattern="[A- Z a-z]+" title="Please enter only alphabetic characters"
+                    v-model="bank_name" pattern="[A- Z a-z]+" title="Please enter only alphabetic characters"
                     required></b-form-input>
                 </b-form-group>
               </div>
@@ -345,7 +385,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Upload Document:" label-for="bank_upload_document">
                   <div style="margin-left: 3px; margin-bottom: 15px">
-                    <input type="file" accept="image/*" id="bank_upload_document" @change="BankImageChange" required/>
+                    <input type="file" accept="image/*" id="bank_upload_document" @change="BankImageChange" required />
                   </div>
                 </b-form-group>
               </div>
@@ -407,6 +447,10 @@ import code from "../components/data-entry/form/code";
 export default {
   data() {
     return {
+      year: '',
+      month: '',
+      day: '',
+      formatted_date_of_birth: '',
       selectedImage: null,
       show: true,
       codeText: code.introduction,
@@ -470,7 +514,7 @@ export default {
       total_number_hour: "",
       type: "",
       company_name: "",
-    
+
     };
   },
   components: {
@@ -500,6 +544,27 @@ export default {
       });
   },
   methods: {
+   updateFormattedDate() {
+      // Format the date based on your requirements
+      this.formatted_date_of_birth = `${this.year}-${this.month.padStart(2, '0')}-${this.day.padStart(2, '0')}`;
+    },
+    validateYear() {
+      // Ensure that the year has exactly 4 digits
+      this.year = this.year.slice(0, 4);
+      this.updateFormattedDate();
+    },
+    validateMonth() {
+      // Ensure that the month has at most 2 digits
+      this.month = this.month.slice(0, 2);
+      this.updateFormattedDate();
+    },
+    validateDay() {
+      // Ensure that the day has at most 2 digits
+      this.day = this.day.slice(0, 2);
+      this.updateFormattedDate();
+    },
+
+    
     showMsgBoxOne() {
       debugger;
     },
@@ -631,3 +696,15 @@ export default {
   },
 };
 </script>
+<!-- <style>
+.custom-input-group {
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+ 
+}
+
+.custom-input {
+  border-radius: 10px;
+  
+}
+</style> -->

@@ -20,12 +20,14 @@
               </b-input-group>
             </b-form-group>
           </b-col>
+
           <b-col lg="3" class="my-1">
             <b-form-group label="Start Date" label-for="start-date" label-cols-sm="5" label-align-sm="right"
                 label-size="sm" class="mb-0">
                 <b-form-input id="start-date" v-model="start_date" type="date" placeholder="Select start date" style="form-control"></b-form-input>
             </b-form-group>
         </b-col>
+
         <b-col lg="3" class="my-1">
             <b-form-group label="End Date" label-for="end-date" label-cols-sm="4" label-align-sm="right"
                 label-size="sm" class="mb-0">

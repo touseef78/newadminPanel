@@ -6,13 +6,14 @@
           <b-form @submit.prevent="addUser" v-if="show">
             <div style="
               background-color: #0010f7;
-              height: 32px;
+              height: 40px;
               border-radius: 4px;
             ">
             <h5 style="
                 color: rgb(223, 227, 238);
                 margin-left: 5px;
                 font-weight: bold;
+                padding:10px;
               ">
               Company Information
             </h5>
@@ -31,13 +32,14 @@
             </div>
             <div style="
                 background-color: #0010f7;
-                height: 32px;
+                height: 40px;
                 border-radius: 4px;
               ">
               <h5 style="
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
+                  padding:10px;
                 ">
                 Personal Information
               </h5>
@@ -47,7 +49,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
                   <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
-                    pattern="[A- Z a-z]+" title="Please enter only alphabetic characters" required>
+                    pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required>
                   </b-form-input>
                 </b-form-group>
               </div>
@@ -91,18 +93,30 @@
                     minlength="8" required></b-form-input>
                 </b-form-group>
               </div>
-              <div class="col-md-4 col-12">
+              <!-- <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
                   <b-form-input id="mobile" type="text" placeholder="Enter mobile number" v-model="mobile"
                     pattern="[0-9]+" title="Please enter only numeric characters" required>
                   </b-form-input>
                 </b-form-group>
-              </div>
+              </div> -->
+                <div class="col-md-4 col-12">
+                  <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">+46</span>
+                      </div>
+                      <b-form-input id="mobile" type="text" placeholder="_ _ _ _ _ _ _ _ _" v-model="mobile"
+                        pattern="[0-9]{9}" title="Please enter exactly 9 numeric characters" required
+                        maxlength="9"></b-form-input>
+                    </div>
+                  </b-form-group>
+                </div>
 
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
                   <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency name"
-                    v-model="emergency_contact_name" pattern="[A- Z a-z]+" title="Please enter only alphabetic characters"
+                    v-model="emergency_contact_name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters"
                     required></b-form-input>
                 </b-form-group>
               </div>
@@ -144,12 +158,29 @@
                                     </b-form-input>
                                 </b-form-group>
                             </div> -->
-              <div class="col-md-4 col-12">
+              <!-- <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
                   <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth" v-model="date_of_birth"
                     required></b-form-input>
                 </b-form-group>
-              </div>
+              </div> -->
+             <div class="col-md-4 col-12">
+      <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
+        <div class="input-group custom-input-group">
+          <!-- Hidden input for submitting the correct date format -->
+          <input type="hidden" id="formatted_date_of_birth" name="formatted_date_of_birth" v-model="formatted_date_of_birth">
+
+          <!-- Year -->
+          <b-form-input class="custom-input" id="year" type="number" placeholder="YYYY" v-model="year" min="1900" max="9999" step="1" @input="validateYear" required></b-form-input>
+
+          <!-- Month -->
+          <b-form-input class="custom-input" id="month" type="number" placeholder="MM" v-model="month" min="1" max="12" step="1" @input="validateMonth" required></b-form-input>
+
+          <!-- Day -->
+          <b-form-input class="custom-input" id="day" type="number" placeholder="DD" v-model="day" min="1" max="31" step="1" @input="validateDay" required></b-form-input>
+        </div>
+      </b-form-group>
+    </div>
               <!-- <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
@@ -224,13 +255,14 @@
                   <div class="col-12 mt-16">
                     <div style="
                         background-color: #0010f7;
-                        height: 32px;
+                        height: 40px;
                         border-radius: 4px;
                       ">
                       <h5 style="
                           color: rgb(223, 227, 238);
                           margin-left: 5px;
                           font-weight: bold;
+                          padding:10px;
                         ">
                         Add Vehicle
                       </h5>
@@ -301,13 +333,14 @@
 
             <div style="
                 background-color: #0010f7;
-                height: 32px;
+                height: 40px;
                 border-radius: 4px;
               ">
               <h5 style="
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
+                  padding:10px;
                 ">
                 Salary Information
               </h5>
@@ -360,13 +393,14 @@
             <!-- Bank Information -->
             <div style="
                 background-color: #0010f7;
-                height: 32px;
+                height: 40px;
                 border-radius: 4px;
               ">
               <h5 style="
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
+                   padding:10px;
                 ">
                 Bank Information
               </h5>
@@ -459,6 +493,10 @@ import code from "../../../components/data-entry/form/code";
 export default {
   data() {
     return {
+       year: '',
+      month: '',
+      day: '',
+      formatted_date_of_birth: '',
       selectedImage: null,
       show: true,
       codeText: code.introduction,
@@ -556,6 +594,27 @@ export default {
       });
   },
   methods: {
+     updateFormattedDate() {
+      // Format the date based on your requirements
+      this.formatted_date_of_birth = `${this.year}-${this.month.padStart(2, '0')}-${this.day.padStart(2, '0')}`;
+    },
+    validateYear() {
+      // Ensure that the year has exactly 4 digits
+      this.year = this.year.slice(0, 4);
+      this.updateFormattedDate();
+    },
+    validateMonth() {
+      // Ensure that the month has at most 2 digits
+      this.month = this.month.slice(0, 2);
+      this.updateFormattedDate();
+    },
+    validateDay() {
+      // Ensure that the day has at most 2 digits
+      this.day = this.day.slice(0, 2);
+      this.updateFormattedDate();
+    },
+
+
     showMsgBoxOne() {
       debugger;
     },

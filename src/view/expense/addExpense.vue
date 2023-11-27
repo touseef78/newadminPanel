@@ -6,13 +6,14 @@
                     <!-- <h2>Car Information</h2> -->
                     <div style="
               background-color: #0010f7;
-              height: 32px;
+              height: 40px;
               border-radius: 4px;
             ">
                         <h5 style="
                 color: rgb(223, 227, 238);
                 margin-left: 5px;
                 font-weight: bold;
+                padding:10px;
               ">
                             Add Expense
                         </h5>

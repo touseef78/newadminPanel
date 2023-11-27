@@ -7,7 +7,7 @@
           <div
             style="
               background-color: #0010f7;
-              height: 32px;
+              height: 40px;
               border-radius: 4px;
             "
           >
@@ -16,13 +16,15 @@
                 color: rgb(223, 227, 238);
                 margin-left: 5px;
                 font-weight: bold;
+                padding:10px;
               "
             >
               Company Information
             </h5>
           </div>
           <div class="row" style="margin-top: 20px;">
-            <div class="col-md-4 col-12">
+
+            <!-- <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-1"
                 label="Company Name:"
@@ -36,7 +38,18 @@
                   required
                 ></b-form-input>
               </b-form-group>
-            </div>
+            </div> -->
+              <div class="col-md-4 col-12">
+      <b-form-group id="input-group-1" label="Company Name:" label-for="company_name">
+        <b-form-input
+          id="company_name"
+          type="text"
+          placeholder="Enter company name"  pattern="[A-Za-z]+" title="Please enter only alphabetic characters" 
+          v-model="company_name"
+          required
+        ></b-form-input>
+      </b-form-group>
+    </div>
             <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-1"
@@ -46,13 +59,13 @@
                 <b-form-input
                   id="owner_name"
                   type="text"
-                  placeholder="Enter organization name"
+                  placeholder="Enter organization name"  pattern="[A-Za-z]+" title="Please enter only alphabetic characters"
                   v-model="owner_name"
                   required
                 ></b-form-input>
               </b-form-group>
             </div>
-            <div class="col-md-4 col-12">
+            <!-- <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-1"
                 label=" Organization Number:"
@@ -66,7 +79,20 @@
                   required
                 ></b-form-input>
               </b-form-group>
-            </div>
+            </div> -->
+              <div class="col-md-4 col-12">
+      <b-form-group id="input-group-1" label="Organization Number:" label-for="owner_number">
+        <b-form-input
+          id="owner_number"
+          type="text"
+          placeholder="Enter organization number"
+          pattern="[0-9]+" title="Please enter only numeric characters"
+          v-model="owner_number"
+          required
+        ></b-form-input>
+      </b-form-group>
+    </div>
+
           </div>
 
           <div class="row">
@@ -83,7 +109,7 @@
                 </b-form-select>
               </b-form-group>
             </div>
-            <div class="col-md-4 col-12">
+            <!-- <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-1"
                 label="Company Document:"
@@ -98,7 +124,29 @@
                   />
                 </div>
               </b-form-group>
-            </div>
+            </div> -->
+              <div class="col-md-4 col-12">
+      <b-form-group
+        id="input-group-1"
+        label="Company Document:"
+        label-for="company_document"
+        :state="companyDocumentState"
+      >
+        <div style="margin-left: 3px; margin-bottom: 15px">
+          <input
+            type="file"
+            accept="image/*"
+            id="company_document"
+            @change="onCompanyDocumentChange"
+            required
+          />
+        </div>
+        <b-form-invalid-feedback :state="companyDocumentState">
+          Company Document is required.
+        </b-form-invalid-feedback>
+      </b-form-group>
+    </div>
+
           </div>
           <b-button
             type="submit"
@@ -152,6 +200,10 @@ import { BToast } from "bootstrap-vue";
 export default {
   data() {
     return {
+       company_name: '',
+       owner_number: '',
+        companyDocumentState: null,
+
       selectedType: "",
       show: true,
       codeText: code.introduction,
@@ -182,6 +234,11 @@ export default {
     BSpinner,
   },
   methods: {
+       onCompanyDocumentChange(event) {
+      // Check if a file is selected
+      this.companyDocumentState = event.target.files.length > 0 ? true : false;
+    },
+
     onSubmit(event) {
       event.preventDefault();
       alert(JSON.stringify(this.form));

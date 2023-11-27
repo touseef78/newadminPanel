@@ -8,14 +8,15 @@
         <div class="col-12 mt-16">
           <b-form @submit.prevent="addUser" v-if="show">
             <div style="
-                  background-color: rgb(97, 116, 152);
-                  height: 32px;
+                  background-color: #0010f7;
+                  height: 40px;
                   border-radius: 4px;
                 ">
               <h5 style="
                     color: rgb(223, 227, 238);
                     margin-left: 5px;
                     font-weight: bold;
+                    padding:10px;
                   ">
                 Personal Information
               </h5>
@@ -216,14 +217,15 @@
             <!-- Bank Information End -->
 
             <div style="
-                  background-color: rgb(97, 116, 152);
-                  height: 32px;
+                  background-color: #0010f7;
+                  height: 40px;
                   border-radius: 4px;
                 ">
               <h5 style="
                     color: rgb(223, 227, 238);
                     margin-left: 5px;
                     font-weight: bold;
+                    padding:10px;
                   ">
                 Emergency Information
               </h5>
