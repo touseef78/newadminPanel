@@ -43,7 +43,7 @@
                 id="start-date"
                 v-model="start_date"
                 type="date"
-                placeholder="Select start date"
+                placeholder="Select start date" style="form-control"
               ></b-form-input>
             </b-form-group>
           </b-col>
@@ -344,3 +344,8 @@ export default {
   },
 };
 </script>
+<style>
+.form-control{
+  padding: 11px;
+}
+</style>
