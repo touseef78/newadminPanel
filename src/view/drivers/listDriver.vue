@@ -8,7 +8,7 @@
     <div class="col-12 mt-16">
       <div>
         <b-row class="align-items-center">
-          <b-col lg="3" class="my-1">
+          <b-col lg="4" class="my-1">
             <b-form-group label-for="filter-input" label-cols-sm="1" label-align-sm="right" label-size="sm"
               class="mb-0">
               <b-input-group size="sm">
@@ -34,7 +34,7 @@
                 <b-form-input id="end-date" v-model="end_date" type="date" placeholder="Select end date"></b-form-input>
             </b-form-group>
         </b-col>
-          <b-col lg="3" class="my-1 d-flex justify-content-end">
+          <b-col lg="2" class="my-1 d-flex justify-content-end">
             <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8">Import</b-button> -->
             <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
           </b-col>
