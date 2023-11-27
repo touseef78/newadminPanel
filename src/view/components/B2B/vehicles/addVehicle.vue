@@ -7,7 +7,7 @@
           <div
             style="
               background-color: #0010f7;
-              height: 32px;
+              height: 40px;
               border-radius: 4px;
             "
           >
@@ -16,6 +16,7 @@
                 color: rgb(223, 227, 238);
                 margin-left: 5px;
                 font-weight: bold;
+                 padding:10px;
               "
             >
               Company Information
@@ -49,7 +50,7 @@
           <div
             style="
               background-color: #0010f7;
-              height: 32px;
+              height: 40px;
               border-radius: 4px;
             "
           >
@@ -58,6 +59,7 @@
                 color: rgb(223, 227, 238);
                 margin-left: 5px;
                 font-weight: bold;
+                 padding:10px;
               "
             >
               Car Information
@@ -103,7 +105,7 @@
               </b-form-group>
             </div>
 
-            <div class="col-md-4 col-12">
+            <!-- <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
                 label="Car Make:"
@@ -116,8 +118,14 @@
                   required
                 ></b-form-input>
               </b-form-group>
-            </div>
-            <div class="col-md-4 col-12">
+            </div> -->
+                   <div class="col-md-4 col-12">
+        <b-form-group id="input-group-2" label="Car Make:" label-for="car_make" :state="car_makeState">
+          <b-form-input id="car_make" v-model="car_make" placeholder="Enter Car Make" required></b-form-input>
+          <b-form-invalid-feedback :state="car_makeState">Car Make is required.</b-form-invalid-feedback>
+        </b-form-group>
+      </div>
+            <!-- <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
                 label="Car Model:"
@@ -130,7 +138,18 @@
                   required
                 ></b-form-input>
               </b-form-group>
-            </div>
+            </div> -->
+                    <div class="col-md-4 col-12">
+        <b-form-group id="input-group-2" label="Car Model:" label-for="car_model" :state="carModelState">
+          <b-form-input
+            id="car_model"
+            v-model="car_model"
+            placeholder="Enter Car Model"
+            required
+          ></b-form-input>
+          <b-form-invalid-feedback :state="carModelState">Car Model is required.</b-form-invalid-feedback>
+        </b-form-group>
+      </div>
             <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
@@ -160,7 +179,7 @@
               </b-form-group>
             </div>
 
-            <div class="col-md-4 col-12">
+            <!-- <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
                 label="Model Year:"
@@ -173,22 +192,24 @@
                   required
                 ></b-form-input>
               </b-form-group>
-            </div>
+            </div> -->
+                     <div class="col-md-4 col-12">
+        <b-form-group id="input-group-2" label="Model Year:" label-for="model_year">
+          <b-form-input
+            id="model_year"
+            v-model="model_year"
+            placeholder="Enter Model Year"
+            required
+          ></b-form-input>
+        </b-form-group>
+      </div>
 
-            <div class="col-md-4 col-12">
-              <b-form-group
-                id="input-group-2"
-                label="Registration Number:"
-                label-for="registration_number"
-              >
-                <b-form-input
-                  id="registration_number"
-                  v-model="registration_number"
-                  placeholder="Enter Registration Number"
-                  required
-                ></b-form-input>
-              </b-form-group>
-            </div>
+             <div class="col-md-4 col-12">
+                <b-form-group id="input-group-2" label="Registration Number:" label-for="registration_number">
+                  <b-form-input id="registration_number" v-model="registration_number"
+                    placeholder="Enter Registration Number" required type="number" pattern="[0-9]*"></b-form-input>
+                </b-form-group>
+              </div>
             <!-- new code  -->
             <div class="col-md-4 col-12">
               <b-form-group
@@ -206,6 +227,7 @@
                 </b-form-select>
               </b-form-group>
             </div>
+       
             <div class="col-md-4 col-12">
               <h4>Upload Document</h4>
               <div style="margin-left: 3px; margin-bottom: 15px">
@@ -224,7 +246,7 @@
           <div
             style="
               background-color: #0010f7;
-              height: 32px;
+              height: 40px;
               border-radius: 4px;
             "
           >
@@ -233,6 +255,7 @@
                 color: rgb(223, 227, 238);
                 margin-left: 5px;
                 font-weight: bold;
+                padding:10px;
               "
             >
               Vehicle Report
@@ -300,7 +323,7 @@
                 ></b-form-input>
               </b-form-group>
             </div>
-
+<!-- 
             <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
@@ -309,14 +332,28 @@
               >
                 <b-form-select v-model="select_equipment" required>
                   <option value="">Select Select Equipment</option>
-                  <option>Tool Kit</option>
-                  <option>Air Pump</option>
-                  <option>Tyre Repair Kit</option>
-                  <option>Pallet Jack</option>
-                  <option>Jump Cable</option>
+                 <option>Tool Kit</option>
+                    <option>Air Pump</option>
+                    <option>Pallet Jack</option>
+                    <option>Jump Cable</option>
+                    <option>Tire Repair Kit</option>
+                    <option>Tool Kit</option>
+                    <option>Other</option>
                 </b-form-select>
               </b-form-group>
-            </div>
+            </div> -->
+                           <div class="col-md-4 col-12">
+          <b-form-group id="input-group-2" label="Vehicle Type:" label-for="vehicle_type">
+            <b-form-select v-model="vehicle_type" required>
+              <option value="">Select Vehicle Type</option>
+              <option>Taxi</option>
+              <option>Non-Taxi</option>
+              <option>Delivery Service</option>
+              <option>Office Use</option>
+              <option>Extra</option>
+            </b-form-select>
+          </b-form-group>
+        </div>
             <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
@@ -423,6 +460,12 @@ import { BToast } from "bootstrap-vue";
 export default {
   data() {
     return {
+       car_make: '',
+      car_makeState: null,
+      car_model: '',
+      carModelState: null,
+      model_year: '',
+      vehicle_type: '',
       selectedType: "",
       show: true,
       codeText: code.introduction,
@@ -462,6 +505,14 @@ export default {
       company_id: "",
       companyes: [],
     };
+  },
+    watch: {
+    car_make(value) {
+      this.car_makeState = value ? true : false;
+    },
+    car_model(value) {
+      this.carModelState = value ? true : false;
+    },
   },
   components: {
     BRow,
