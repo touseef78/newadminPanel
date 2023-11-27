@@ -182,7 +182,7 @@ export default {
        
         {
           id: "Report",
-          title: "View Report",
+          title: "All Report",
           navLink: "/report/view",
         
         },
@@ -197,7 +197,7 @@ export default {
       children: [
         {
           id: "Invoice",
-          title: "Invoice Table",
+          title: "Invoice Result",
           navLink: "/table/invoice",
         },
         // {

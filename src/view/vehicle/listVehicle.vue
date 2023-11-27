@@ -6,7 +6,7 @@
     </div>
     <div>
       <b-row class="align-items-center">
-        <b-col lg="3" class="my-1">
+        <b-col lg="4" class="my-1">
           <b-form-group
             label-for="filter-input"
             label-cols-sm="1"
@@ -63,7 +63,7 @@
             ></b-form-input>
           </b-form-group>
         </b-col>
-        <b-col lg="3" class="my-1 d-flex justify-content-end">
+        <b-col lg="2" class="my-1 d-flex justify-content-end">
           <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
             >Import</b-button
           > -->
