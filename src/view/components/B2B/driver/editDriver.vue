@@ -13,8 +13,8 @@
           <b-form @submit.prevent="addUser" v-if="show">
             <div
               style="
-                background-color: rgb(97, 116, 152);
-                height: 32px;
+                background-color: #0010f7;
+                height: 40px;
                 border-radius: 4px;
               "
             >
@@ -23,6 +23,7 @@
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
+                  padding:10px;
                 "
               >
                 Company Information
@@ -56,8 +57,8 @@
 
             <div
               style="
-                background-color: rgb(97, 116, 152);
-                height: 32px;
+                background-color: #0010f7;
+                height: 40px;
                 border-radius: 4px;
               "
             >
@@ -66,6 +67,7 @@
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
+                  padding:10px;
                 "
               >
                 Personal Information
@@ -305,8 +307,8 @@
                   <div class="col-12 mt-16">
                     <div
                       style="
-                        background-color: rgb(97, 116, 152);
-                        height: 32px;
+                        background-color: #0010f7;
+                        height: 40px;
                         border-radius: 4px;
                       "
                     >
@@ -315,6 +317,7 @@
                           color: rgb(223, 227, 238);
                           margin-left: 5px;
                           font-weight: bold;
+                          apdding:10px;
                         "
                       >
                         Add Vehicle
@@ -513,8 +516,8 @@
 
             <div
               style="
-                background-color: rgb(97, 116, 152);
-                height: 32px;
+                background-color: #0010f7;
+                height: 40px;
                 border-radius: 4px;
               "
             >
@@ -523,6 +526,7 @@
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
+                  padding:10px;
                 "
               >
                 Salary Information
@@ -628,8 +632,8 @@
             <!-- Bank Information -->
             <div
               style="
-                background-color: rgb(97, 116, 152);
-                height: 32px;
+                background-color: #0010f7;
+                height: 40px;
                 border-radius: 4px;
               "
             >
@@ -638,6 +642,7 @@
                   color: rgb(223, 227, 238);
                   margin-left: 5px;
                   font-weight: bold;
+                  padding:10px;
                 "
               >
                 Bank Information

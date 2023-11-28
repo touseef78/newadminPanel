@@ -26,7 +26,8 @@
           </div>
         </b-col>
         <b-col cols="12" md="4" class="text-left text-sm-right hp-print-info">
-          <p>Date Due: {{ joining_date }}</p>
+
+          <p>Next Salary Due: {{ joining_date }}</p>
         </b-col>
       </b-row>
 
