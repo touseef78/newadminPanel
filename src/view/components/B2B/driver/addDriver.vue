@@ -49,7 +49,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="First Name:" label-for="first_name">
                   <b-form-input id="name" type="text" placeholder="Enter first name" autocomplete="off" v-model="name"
-                    pattern="[A-Za-z ]+" title="Please enter only alphabetic characters" required>
+                    pattern="[A-Za-z]+" title="Please enter only alphabetic characters" required>
                   </b-form-input>
                 </b-form-group>
               </div>
@@ -58,7 +58,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Last Name:" label-for="last_name">
                   <b-form-input id="last_name" type="text" placeholder="Enter last name" autocomplete="off"
-                    v-model="last_name"    pattern="[A-Za-z ]+" title="Please enter only alphabetic characters" required>
+                    v-model="last_name"    pattern="[A- Z a-z]+" title="Please enter only alphabetic characters" required>
                   </b-form-input>
                 </b-form-group>
               </div>
@@ -158,29 +158,14 @@
                                     </b-form-input>
                                 </b-form-group>
                             </div> -->
-              <!-- <div class="col-md-4 col-12">
-                <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
-                  <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth" v-model="date_of_birth"
-                    required></b-form-input>
-                </b-form-group>
-              </div> -->
-             <div class="col-md-4 col-12">
-      <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
-        <div class="input-group custom-input-group">
-          <!-- Hidden input for submitting the correct date format -->
-          <input type="hidden" id="formatted_date_of_birth" name="formatted_date_of_birth" v-model="formatted_date_of_birth">
-
-          <!-- Year -->
-          <b-form-input class="custom-input" id="year" type="number" placeholder="YYYY" v-model="year" min="1900" max="9999" step="1" @input="validateYear" required></b-form-input>
-
-          <!-- Month -->
-          <b-form-input class="custom-input" id="month" type="number" placeholder="MM" v-model="month" min="1" max="12" step="1" @input="validateMonth" required></b-form-input>
-
-          <!-- Day -->
-          <b-form-input class="custom-input" id="day" type="number" placeholder="DD" v-model="day" min="1" max="31" step="1" @input="validateDay" required></b-form-input>
-        </div>
-      </b-form-group>
-    </div>
+              
+                <div class="col-md-4 col-12">
+                  <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
+                    <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth" v-model="date_of_birth"
+                      required></b-form-input>
+                  </b-form-group>
+                </div>
+       
               <!-- <div class="col-md-4 col-12">
                 <b-form-group
                   id="input-group-2"
@@ -196,12 +181,12 @@
                   </b-form-input>
                 </b-form-group>
               </div> -->
-              <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Personal Number:" label-for="security_code">
-                  <b-form-input id="security_code" type="text" placeholder="Enter personal number" v-model="security_code" pattern="[0-9]+"
-                    required minlength="10" maxlength="13"></b-form-input>
-                </b-form-group>
-              </div>
+                       <div class="col-md-4 col-12">
+            <b-form-group id="input-group-2" label="Personal Number:" label-for="security_code">
+              <b-form-input id="security_code" type="text" placeholder="Enter personal number" v-model="security_code"
+                pattern="\d{6}-\d{4}" title="Please enter the personal number in the format 000000-0000" required></b-form-input>
+            </b-form-group>
+          </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
                   <b-form-input id="joining_date" type="date" v-model="joining_date" required>
@@ -493,6 +478,7 @@ import code from "../../../components/data-entry/form/code";
 export default {
   data() {
     return {
+      security_code: "",
        year: '',
       month: '',
       day: '',

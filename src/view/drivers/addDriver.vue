@@ -132,12 +132,12 @@
                 </b-form-group>
               </div>
 
-              <!-- <div class="col-md-4 col-12">
+              <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
                   <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth" v-model="date_of_birth"
                     required></b-form-input>
                 </b-form-group>
-              </div> -->
+              </div>
               <!-- <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
                   <div class="input-group custom-input-group">
