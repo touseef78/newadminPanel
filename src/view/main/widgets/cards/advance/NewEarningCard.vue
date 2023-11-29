@@ -14,10 +14,14 @@
 
 <script>
 import { BRow, BCol, BCard, BAvatarGroup, BAvatar } from "bootstrap-vue";
+import axios from "axios";
 
 export default {
     data() {
+        
         return {
+            totalEarning: 0,
+            totalProfit: 0,
             series: [1244, 2155, 1541],
             options: {
                 chart: {
@@ -110,5 +114,17 @@ export default {
         BAvatarGroup,
         BAvatar,
     },
+
+
+//     mounted() {
+//     // Fetch data from your API when the component is mounted
+//     axios.get("/dashboard").then((response) => {
+//       const data = response.data.data;
+
+//       // Extract data from the API response and set it to your component's data properties
+//       this.totalEarning = data.total_earning;
+//       this.totalProfit = data.total_profit;
+//     });
+//   },
 };
 </script>
