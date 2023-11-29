@@ -180,7 +180,7 @@ export default {
         { key: "email", sortable: true },
         { key: "company_name_own", sortable: true },
         // { key: "salary_commission", sortable: true },
-        { key: "joining_date", sortable: true },
+        // { key: "joining_date", sortable: true },
         // { key: "hourly_enter_amount", sortable: true },
         { key: "personal_number", sortable: true },
         { key: "date", sortable: true },
