@@ -1,5 +1,5 @@
 <template>
-  <b-col cols="12" xl="8">
+  <b-col cols="12" xl="11">
     <b-card id="invoice" class="card border-0 hp-invoice-card">
       <b-row align-h="between">
         <b-col cols="12" lg="6">
@@ -78,6 +78,10 @@
 
                   <b-button @click="driverInvoices" variant="primary" class="mb-8 mr-8" style="margin-top: 10px;">
                 <span><b> Invoice</b></span>
+                  </b-button>
+
+                  <b-button @click="editprofile" variant="primary" class="mb-8 mr-8" style="margin-top: 10px;">
+                <span><b> Edit Profile</b></span>
                   </b-button>
 
                 <b-button @click="driverEarningReportlists" variant="primary" class="mb-8 mr-8" style="margin-top: 10px;">
@@ -276,6 +280,11 @@ driverEfficiencyReports() {
 driverMaintenances() {
       this.$router.push({ name: 'driverMaintenance', params: { id: this.vehicle_id } });
 },
+
+editprofile() {
+      this.$router.push({ name: 'editDrivers', params: { id: this.idFromUrl } });
+},
+
 
 driverEarningReportlists() {
     this.$router.push({
