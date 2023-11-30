@@ -326,7 +326,7 @@ export default {
     downloadFile(fileUrl) {
       // Construct a download link for the file
       const link = document.createElement("a");
-      link.href = "https://boltapi.fastnetstaffing.in/" + fileUrl;
+      link.href = "https://backend.cionax.com/" + fileUrl;
       link.download = "downloaded_file"; // Specify the default filename for the downloaded file
       link.target = "_blank"; // Open the link in a new tab
       link.click();

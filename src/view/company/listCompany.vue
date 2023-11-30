@@ -102,7 +102,7 @@
             <div>
               <img
                 :src="
-                  'https://boltapi.fastnetstaffing.in/' +
+                  'https://backend.cionax.com/' +
                   row.item.company_document
                 "
                 alt="Image"
@@ -384,7 +384,7 @@ export default {
     },
     downloadImage(fileUrl) {
       const link = document.createElement("a");
-      link.href = "https://boltapi.fastnetstaffing.in/" + fileUrl;
+      link.href = "https://backend.cionax.com/" + fileUrl;
       link.download = "file.pdf"; // Set the desired file name
       link.target = "_blank"; // Open the link in a new tab
       link.click();

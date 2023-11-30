@@ -60,7 +60,7 @@
                             <b-form-group id="input-group-2" label="Document Upload:" label-for="profile_picture">
                                 <div style="margin-left: 3px; margin-bottom: 15px">
                                     <!-- Display current profile picture -->
-                                    <img v-if="editExpense.image" :src="'https://boltapi.fastnetstaffing.in/' + image"
+                                    <img v-if="editExpense.image" :src="'https://backend.cionax.com/' + image"
                                         alt="Picture" style="max-width: 100px; max-height: 100px" />
 
                                 </div>

@@ -439,7 +439,7 @@
                           >
                             <img
                               :src="
-                                'https://boltapi.fastnetstaffing.in/' + image
+                                'https://backend.cionax.com/' + image
                               "
                               alt="Vehicle Image"
                               style="max-width: 100px; max-height: 100px"
@@ -497,7 +497,7 @@
                     <img
                       v-if="editedUser.profile_picture"
                       :src="
-                        'https://boltapi.fastnetstaffing.in/' + profile_picture
+                        'https://backend.cionax.com/' + profile_picture
                       "
                       alt="Picture"
                       style="max-width: 100px; max-height: 100px"
@@ -704,7 +704,7 @@
                     <img
                       v-if="editedUser.bank_upload_document"
                       :src="
-                        'https://boltapi.fastnetstaffing.in/' +
+                        'https://backend.cionax.com/' +
                         bank_upload_document
                       "
                       alt="Picture"

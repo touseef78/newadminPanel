@@ -42,7 +42,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Document:" label-for="company_document">
                   <div style="margin-left: 3px; margin-bottom: 15px">
-                    <img :src="'https://boltapi.fastnetstaffing.in/' + company_document
+                    <img :src="'https://backend.cionax.com/' + company_document
                       " alt="Document" width="100" height="100" />
                   </div>
                 </b-form-group>
@@ -132,7 +132,7 @@
           <div style="display: flex">
             <!-- Display current vehicle images -->
             <div v-for="(image, index) in editedUser.image" :key="index" style="margin-left: 3px; margin-bottom: 15px">
-              <img :src="'https://boltapi.fastnetstaffing.in/' + image" alt="Vehicle Image"
+              <img :src="'https://backend.cionax.com/' + image" alt="Vehicle Image"
                 style="max-width: 100px; max-height: 100px" />
             </div>
           </div>
@@ -399,7 +399,7 @@ export default {
     },
       downloadImage(imageUrl) {
       const link = document.createElement("a");
-      link.href = "https://boltapi.fastnetstaffing.in/" + imageUrl;
+      link.href = "https://backend.cionax.com/" + imageUrl;
       link.download = "image.jpg"; // You can set the desired filename here
       link.target = "_blank"; // Open the link in a new tab
       link.click();

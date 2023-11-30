@@ -152,7 +152,7 @@
                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
                   <div style="margin-left: 3px; margin-bottom: 15px">
                     <!-- Display current profile picture -->
-                    <img v-if="editedUser.profile_picture" :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
+                    <img v-if="editedUser.profile_picture" :src="'https://backend.cionax.com/' + profile_picture
                       " alt="Picture" style="max-width: 100px; max-height: 100px" />
                     <!-- Input field to upload new profile picture -->
                     <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
@@ -240,7 +240,7 @@
                           <!-- Display current vehicle images -->
                           <div v-for="(image, index) in editedUser.vehicle_image" :key="index"
                             style="margin-left: 3px; margin-bottom: 15px">
-                            <img :src="'https://boltapi.fastnetstaffing.in/' + image
+                            <img :src="'https://backend.cionax.com/' + image
                               " alt="Vehicle Image" style="max-width: 100px; max-height: 100px" />
                           </div>
                         </div>
@@ -370,7 +370,7 @@
                 <b-form-group id="input-group-1" label="Upload Document:" label-for="bank_upload_document">
                   <div style="margin-left: 3px; margin-bottom: 15px">
                     <!-- Display current profile picture -->
-                    <img v-if="editedUser.bank_upload_document" :src="'https://boltapi.fastnetstaffing.in/' +
+                    <img v-if="editedUser.bank_upload_document" :src="'https://backend.cionax.com/' +
                       bank_upload_document
                       " alt="Picture" style="max-width: 100px; max-height: 100px" />
                     <input type="file" accept="image/*" id="bank_upload_document" @change="BnakImageChange" />

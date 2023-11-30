@@ -63,7 +63,7 @@
                     <img
                       v-if="editedUser.company_document"
                       :src="
-                        'https://boltapi.fastnetstaffing.in/' + company_document
+                        'https://backend.cionax.com/' + company_document
                       "
                       alt="Picture"
                       style="max-width: 100px; max-height: 100px"

@@ -121,7 +121,7 @@
             <div style="display: flex">
               <!-- Display current vehicle images -->
               <div v-for="(image, index) in editVehicle.image" :key="index" style="margin-left: 3px; margin-bottom: 15px">
-                <img :src="'https://boltapi.fastnetstaffing.in/' + image" alt="Vehicle Image"
+                <img :src="'https://backend.cionax.com/' + image" alt="Vehicle Image"
                   style="max-width: 100px; max-height: 100px" />
               </div>
             </div>
