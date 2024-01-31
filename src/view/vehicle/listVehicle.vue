@@ -314,7 +314,6 @@ export default {
         // { key: "car_make", sortable: true },
         // { key: "car_model", sortable: true },
         // { key: "car_color", sortable: true },
-        { key: "car_number", sortable: true },
         // { key: "meter_reading", sortable: true },
         { key: "date", sortable: true },
         { key: "actions", label: "Actions" },
@@ -368,7 +367,7 @@ export default {
     fetchData() {
       this.loading = true;
       // Define your API endpoint URL
-      const userId = this.$route.params.id;
+      const userId = this.$route.params.id || 0;
 
       let apiUrl = userId ? `deltils/${userId}` : "vehicle";
 

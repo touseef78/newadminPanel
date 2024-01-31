@@ -285,6 +285,9 @@
                   label="Select Car:"
                   label-for="vehicle_id"
                 >
+                <div>
+          <p>{{ selectedVehicleName }} | {{ selectedCarNumber }}</p>
+        </div>
                   <b-form-select
                     id="vehicle_id"
                     placeholder="Enter select car"
@@ -439,7 +442,7 @@
                           >
                             <img
                               :src="
-                                'https://backend.cionax.com/' + image
+                                'https://boltapi.fastnetstaffing.in/' + image
                               "
                               alt="Vehicle Image"
                               style="max-width: 100px; max-height: 100px"
@@ -497,7 +500,7 @@
                     <img
                       v-if="editedUser.profile_picture"
                       :src="
-                        'https://backend.cionax.com/' + profile_picture
+                        'https://boltapi.fastnetstaffing.in/' + profile_picture
                       "
                       alt="Picture"
                       style="max-width: 100px; max-height: 100px"
@@ -540,7 +543,7 @@
                   label="Salary:"
                   label-for="salary"
                 >
-                  <b-form-select v-model="selectedOption">
+                <b-form-select v-model="selectedOption" @change="updateFields">
                     <option value="">Select Salary Type</option>
                     <option>Fix</option>
                     <option>Commission</option>
@@ -704,7 +707,7 @@
                     <img
                       v-if="editedUser.bank_upload_document"
                       :src="
-                        'https://backend.cionax.com/' +
+                        'https://boltapi.fastnetstaffing.in/' +
                         bank_upload_document
                       "
                       alt="Picture"
@@ -862,6 +865,8 @@ export default {
       company_id: "",
       company_name: "",
       companyes: [],
+      selectedVehicleName: '',
+      selectedCarNumber: '',
 
     };
   },
@@ -946,13 +951,25 @@ export default {
         this.total_number_hour = this.editedUser.total_number_hour;
         this.company_id = this.editVehicle.company_id;
         this.company.company_name = this.editVehicle.company.company_name;
+        if (
+  this.editedUser.vehicle &&
+  this.editedUser.vehicle.name !== null &&
+  this.editedUser.vehicle.registration_number !== null
+) {
+  // Assuming name and car_number are properties of this.editedUser.vehicle
+  this.selectedVehicleName = this.editedUser.vehicle.name;
+  this.selectedCarNumber = this.editedUser.vehicle.registration_number;
+} else {
+  // Handle the case where this.editedUser.vehicle is null or undefined, or where name or car_number is null
+  console.error("Invalid vehicle data or missing name or car_number");
+}
             // Depending on the selected option, set the appropriate salary value
         if (this.editedUser.salary_fix !== null) {
           this.selectedOption = "Fix";
         } else if (this.editedUser.salary_commission !== null) {
           this.selectedOption = "Commission";
         } else if (this.editedUser.hourly_enter_amount !== null) {
-          this.selectedOption = "Hourly Enter Amount";
+          this.selectedOption = "Hourly Rate";
         }
 
         if (this.editedUser.vehicle_id !== null) {
@@ -1022,9 +1039,15 @@ export default {
         "bank_emergency_contact_name",
         this.bank_emergency_contact_name
       );
-      formData.append("salary_commission", this.salary_commission);
-      formData.append("salary_fix", this.salary_fix);
-      formData.append("hourly_enter_amount", this.hourly_enter_amount);
+      if (this.selectedOption === 'Hourly Rate') {
+  formData.append("hourly_enter_amount", this.hourly_enter_amount);
+}         
+ if (this.selectedOption === 'Commission') {
+  formData.append("salary_commission", this.salary_commission);
+}  
+if (this.selectedOption === 'Fix') {
+  formData.append("salary_fix", this.salary_fix);
+}  
       if (this.vehicle_id != null) {
         formData.append("vehicle_id", this.vehicle_id);
       }
@@ -1112,6 +1135,14 @@ export default {
       //   setTimeout(() => {
       //     this.codeActiveClass = !this.codeActiveClass;
       //   }, 100);
+    },
+    updateFields() {
+      // Reset other fields when dropdown changes
+      this.salary_fix = '';
+      this.salary_commission = '';
+      this.salary_commission_exclusive = '';
+      this.hourly_enter_amount = '';
+      // this.total_number_hour = '';
     },
 
     saveOwnCar() {

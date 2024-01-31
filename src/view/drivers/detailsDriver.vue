@@ -6,7 +6,7 @@
           <div class="col-lg-12 col-12" style="display: flex;">
             <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
               <div style="margin-left: 3px; margin-bottom: 15px;">
-                <img :src="'https://backend.cionax.com/' + profile_picture
+                <img :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
                       " alt="Profile Picture" width="100px;" height="100px;" style="border-radius: 50%;" />
               </div>
 
@@ -207,7 +207,6 @@ export default {
         this.status = this.editedUser.status;
         this.type = this.editedUser.type;
         this.vehicle_id = this.editedUser.vehicle_id;
-        this.vehicle_id = this.editedUser.vehicle_id;
         if (this.editedUser.company && this.editedUser.company.company_name) {
         this.company_name = this.editedUser.company.company_name;
       }        // Depending on the selected option, set the appropriate salary value
@@ -257,10 +256,18 @@ export default {
       }
     },
 
+//     vehicle() {
+//       this.$router.push({ name: 'vehicleID', params: { id: this.vehicle_id } });
+// },
     vehicle() {
-      this.$router.push({ name: 'vehicleID', params: { id: this.vehicle_id } });
+      if (this.vehicle_id) {
+  this.$router.push({ name: 'vehicleID', params: { id: this.vehicle_id } });
+} else if (this.idFromUrl) {
+  this.$router.push({ name: 'viewDrivers', params: { id: this.idFromUrl } });
+} else {
+  console.error("No valid ID available for navigation.");
+}
 },
-
 expense() {
       this.$router.push({ name: 'droverExpnse', params: { id: this.idFromUrl } });
 },

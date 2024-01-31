@@ -110,7 +110,7 @@
           <template #cell(image)="row">
             <div>
               <img
-                :src="'https://backend.cionax.com/' + row.item.image"
+                :src="'https://boltapi.fastnetstaffing.in/' + row.item.image"
                 alt="Image"
                 class="img-fluid"
                 style="max-width: 100px; max-height: 100px"
@@ -327,7 +327,7 @@ export default {
 
     downloadImage(imageUrl) {
       const link = document.createElement("a");
-      link.href = "https://backend.cionax.com/" + imageUrl;
+      link.href = "https://boltapi.fastnetstaffing.in/" + imageUrl;
       link.download = "image.jpg"; // You can set the desired filename here
       link.target = "_blank"; // Open the link in a new tab
       link.click();

@@ -133,7 +133,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
                   <div style="margin-left: 3px; margin-bottom: 15px">
-                    <img :src="'https://backend.cionax.com/' + profile_picture
+                    <img :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
                       " alt="Profile Picture" width="100" height="100" />
                   </div>
                 </b-form-group>
@@ -225,7 +225,7 @@
                       <div style="display: flex">
                         <div v-for="(image, index) in editedUser.vehicle_image" :key="index"
                           style="margin-left: 3px; margin-bottom: 15px">
-                          <img :src="'https://backend.cionax.com/' + image" alt="Vehicle Image" width="100"
+                          <img :src="'https://boltapi.fastnetstaffing.in/' + image" alt="Vehicle Image" width="100"
                             height="100" />
                         </div>
                       </div>
@@ -350,7 +350,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label-for="bank_upload_document">
                   <div style="margin-left: 3px; margin-bottom: 15px">
-                    <img :src="'https://backend.cionax.com/' +
+                    <img :src="'https://boltapi.fastnetstaffing.in/' +
                       bank_upload_document
                       " alt="Bank Documents" width="100" height="100" />
                   </div>

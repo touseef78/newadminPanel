@@ -38,8 +38,8 @@
             </div>
 
             <div class="col-md-4 col-12">
-              <b-form-group id="input-group-2" label="Car Make:" label-for="car_make">
-                <b-form-input id="car_make" v-model="car_make" placeholder="Enter Car Make"></b-form-input>
+              <b-form-group id="input-group-2" label="Model Year:" label-for="model_year">
+                <b-form-input id="model_year" v-model="model_year" placeholder="Enter Model Year"></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-4 col-12">
@@ -53,23 +53,14 @@
               </b-form-group>
             </div>
             <div class="col-md-4 col-12">
-              <b-form-group id="input-group-2" label="Car Number:" label-for="car_number">
-                <b-form-input id="car_numbar" v-model="car_number" placeholder="Enter Car Number"></b-form-input>
-              </b-form-group>
-            </div>
-
-            <div class="col-md-4 col-12">
-              <b-form-group id="input-group-2" label="Model Year:" label-for="model_year">
-                <b-form-input id="model_year" v-model="model_year" placeholder="Enter Model Year"></b-form-input>
-              </b-form-group>
-            </div>
-
-            <div class="col-md-4 col-12">
               <b-form-group id="input-group-2" label="Registration Number:" label-for="registration_number">
                 <b-form-input id="registration_number" v-model="registration_number"
                   placeholder="Enter Registration Number"></b-form-input>
               </b-form-group>
             </div>
+          
+
+          
             <!-- new code  -->
             <div class="col-md-4 col-12">
               <b-form-group id="input-group-2" label="Vehicle Type:" label-for="vehicle_type">
@@ -89,7 +80,7 @@
             <div style="display: flex">
               <!-- Display current vehicle images -->
               <div v-for="(image, index) in editVehicle.image" :key="index" style="margin-left: 3px; margin-bottom: 15px">
-                <img :src="'https://backend.cionax.com/' + image" alt="Vehicle Image"
+                <img :src="'https://boltapi.fastnetstaffing.in/' + image" alt="Vehicle Image"
                   style="max-width: 100px; max-height: 100px" />
               </div>
             </div>
@@ -130,7 +121,7 @@
                 <b-form-input id="insurance" v-model="insurance" placeholder="Enter Insurance"></b-form-input>
               </b-form-group>
             </div>
-            <div class="col-md-4 col-12">
+            <div v-if="vehicle_type === 'Taxi'" class="col-md-4 col-12">
               <b-form-group id="input-group-2" label="Texameter Inspection Date:" label-for="texameter_inspection_date">
                 <b-form-input id="texameter_inspection_date" type="date" v-model="texameter_inspection_date"
                   placeholder="Enter Texameter Inspection Date"></b-form-input>
@@ -153,9 +144,9 @@
               <b-form-group id="input-group-2" label="Category of Vehicle:" label-for="category_of_vehicle">
                 <b-form-select v-model="category_of_vehicle">
                   <option value="">Select Category Vehicle:</option>
-                  <option>Taxi</option>
                   <option>Transport</option>
                   <option>Personal</option>
+                  <option>Other</option>
                 </b-form-select>
               </b-form-group>
             </div>
@@ -441,9 +432,26 @@ export default {
           this.isLoading = false;
         })
         .catch((error) => {
-          this.errors = error.response.data.errors;
-          console.log(error.response.data);
-          this.isLoading = false;
+            if (error.response && error.response.status === 422) {
+                // Handle validation errors
+                this.errors = error.response.data.errors;
+                console.log(this.errors);
+            } else if (error.response && error.response.status === 400) {
+                // Handle other errors with a custom message
+                this.$bvToast.toast(error.response.data.message || "An error occurred.", {
+                    title: "Error",
+                    variant: "danger",
+                    solid: true,
+                    appendToast: true,
+                    toaster: "b-toaster-top-right",
+                    autoHideDelay: 5000,
+                });
+            } else {
+                // Handle other types of errors
+                console.error(error);
+            }
+
+            this.isLoading = false;
         });
     },
 

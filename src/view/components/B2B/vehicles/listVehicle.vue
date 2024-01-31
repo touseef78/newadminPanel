@@ -213,7 +213,7 @@ export default {
         // { key: "car_make", sortable: true },
         { key: "car_model", sortable: true },
         // { key: "car_color", sortable: true },
-        { key: "car_number", sortable: true },
+        // { key: "car_number", sortable: true },
         { key: "date", sortable: true },
         { key: "actions", label: "Actions" },
       ],

@@ -197,8 +197,7 @@
 
                   <b-col class="pl-0">
                     <h3 class="mb-4 mt-8">
-                      {{ totalEarning
-                      }}<span class="hp-badge-text ml-8 text-secondary"></span>
+                      {{ totalEarning.toFixed(2) }}<span class="hp-badge-text ml-8 text-secondary"></span>
                     </h3>
 
                     <p
@@ -462,6 +461,7 @@ export default {
       this.b2bDriverCount = data.driverb2b;
       this.b2bVehicleCount = data.vehicleb2b;
       this.totalEarning = data.total_earning;
+      this.totalEarning = parseFloat(data.total_earning); // Parse 'total_earning' as a number
       this.totalProfit = data.total_profit;
       this.totalExpense = data.expense;
     });

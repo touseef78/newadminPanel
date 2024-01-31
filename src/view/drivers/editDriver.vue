@@ -152,7 +152,7 @@
                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
                   <div style="margin-left: 3px; margin-bottom: 15px">
                     <!-- Display current profile picture -->
-                    <img v-if="editedUser.profile_picture" :src="'https://backend.cionax.com/' + profile_picture
+                    <img v-if="editedUser.profile_picture" :src="'https://boltapi.fastnetstaffing.in/' + profile_picture
                       " alt="Picture" style="max-width: 100px; max-height: 100px" />
                     <!-- Input field to upload new profile picture -->
                     <input type="file" accept="image/*" id="profile_picture" @change="onProfilePictureChange" />
@@ -160,33 +160,41 @@
                 </b-form-group>
               </div>
 
-              <div v-if="selectedCarType === 'Company'" class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
-                  <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id">
-                    <option value="">Select Car</option>
-                    <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
-                      {{ vehicle.name }} | {{ vehicle.car_number }} | {{ vehicle.company ? vehicle.company.company_name : 'driver loop' }}
-                    </option>
-                  </b-form-select>
-                </b-form-group>
-              </div>
+      <div v-if="selectedCarType === 'Company'" class="col-md-4 col-12">
+      <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id" >
+        <div>
+          <p>{{ selectedVehicleName }} | {{ selectedCarNumber }}</p>
+        </div>
+        <b-form-select id="vehicle_id" placeholder="Select Car" v-model="vehicle_id">
+          <option value="">Select Car</option>
+          <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
+            {{ vehicle.name }} | {{ vehicle.car_number }} | {{ vehicle.company ? vehicle.company.company_name : 'driver loop' }}
+          </option>
+        </b-form-select>
+      </b-form-group>
+    </div>
+
+ 
+
               <!-- Dropdown  of Add Vehicle -->
               <div v-if="selectedCarType === 'Own'">
                 <b-row>
                   <div class="col-12 mt-16">
+
                     <div style="
-                        background-color: rgb(97, 116, 152);
-                        height: 32px;
-                        border-radius: 4px;
-                      ">
-                      <h5 style="
-                          color: rgb(223, 227, 238);
-                          margin-left: 5px;
-                          font-weight: bold;
-                        ">
-                        Add Vehicle
-                      </h5>
-                    </div>
+                background-color:#0010f7;
+                height: 40px;
+                border-radius: 4px;
+              ">
+              <h5 style="
+                  color: rgb(223, 227, 238);
+                  margin-left: 5px;
+                  font-weight: bold;
+                   padding:10px;
+                ">
+                  Add Vehicle
+              </h5>
+            </div>
 
                     <!-- <b-form @submit="onSubmit" @reset="onReset" v-if="show"> -->
                     <div class="row">
@@ -240,7 +248,7 @@
                           <!-- Display current vehicle images -->
                           <div v-for="(image, index) in editedUser.vehicle_image" :key="index"
                             style="margin-left: 3px; margin-bottom: 15px">
-                            <img :src="'https://backend.cionax.com/' + image
+                            <img :src="'https://boltapi.fastnetstaffing.in/' + image
                               " alt="Vehicle Image" style="max-width: 100px; max-height: 100px" />
                           </div>
                         </div>
@@ -278,57 +286,54 @@
               </h5>
             </div>
 
-            <div class="row">
-              <div class="col-md-4 col-12">
-                <b-form-group id="input-group-1" label="Salary:" label-for="salary">
-                  <b-form-select v-model="selectedOption">
-                    <option value="">Select Salary Type</option>
-                    <option>Fix</option>
-                    <option>Commission</option>
-                    <option>Hourly Rate</option>
-                  </b-form-select>
-                </b-form-group>
-              </div>
+            <div>
+    <div class="row">
+      <div class="col-md-4 col-12">
+        <b-form-group id="input-group-1" label="Salary:" label-for="salary">
+          <b-form-select v-model="selectedOption" @change="updateFields">
+            <option value="">Select Salary Type</option>
+            <option>Fix</option>
+            <option>Commission</option>
+            <option>Hourly Rate</option>
+          </b-form-select>
+        </b-form-group>
+      </div>
 
-              <div v-if="selectedOption === 'Fix'" class="col-md-4 col-12">
-                <b-form-group label="Fix Salary ($/hr)" label-for="fix-salary-input">
-                  <b-form-input id="salary_fix" type="text" v-model="salary_fix"
-                    placeholder="Enter fix salary"></b-form-input>
-                </b-form-group>
-              </div>
-              <!-- 
-              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                <b-form-group label="Commission (%/Company)" label-for="commission-input">
-                  <b-form-input id="salary_commission" type="text" v-model="salary_commission"
-                    placeholder="Enter commission"></b-form-input>
-                </b-form-group>
-              </div> -->
-              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
-                  <b-form-input id="salary_commission" type="text" v-model="salary_commission"
-                    placeholder="Enter commission include vat"></b-form-input>
-                </b-form-group>
-              </div>
-              <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
-                <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
-                  <b-form-input id="salary_commission" type="text" v-model="salary_commission_exclusive"
-                    placeholder="Enter commission exclusive vat"></b-form-input>
-                </b-form-group>
-              </div>
+      <div v-if="selectedOption === 'Fix'" class="col-md-4 col-12">
+        <b-form-group label="Fix Salary ($/hr)" label-for="fix-salary-input">
+          <b-form-input id="salary_fix" type="text" v-model="salary_fix" placeholder="Enter fix salary"></b-form-input>
+        </b-form-group>
+      </div>
 
-              <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
-                <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
-                  <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
-                    placeholder="Hourly Rate (SEK/hr)"></b-form-input>
-                </b-form-group>
-              </div>
-              <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
-                <b-form-group label="Total Number Of Hours" label-for="total_number_hour">
-                  <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
-                    placeholder="Enter Total Number Hours"></b-form-input>
-                </b-form-group>
-              </div>
-            </div>
+      <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+        <b-form-group label="Commission Include VAT (%/Company)" label-for="commission-input">
+          <b-form-input id="salary_commission" type="text" v-model="salary_commission"
+            placeholder="Enter commission include vat"></b-form-input>
+        </b-form-group>
+      </div>
+
+      <div v-if="selectedOption === 'Commission'" class="col-md-4 col-12">
+        <b-form-group label="Commission Exclusive VAT (%/Company)" label-for="commission-input">
+          <b-form-input id="salary_commission_exclusive" type="text" v-model="salary_commission_exclusive"
+            placeholder="Enter commission exclusive vat"></b-form-input>
+        </b-form-group>
+      </div>
+
+      <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
+        <b-form-group label="Hourly Rate (SEK/hr)" label-for="hourly_enter_amount">
+          <b-form-input id="hourly_enter_amount" type="text" v-model="hourly_enter_amount"
+            placeholder="Hourly Rate (SEK/hr)"></b-form-input>
+        </b-form-group>
+      </div>
+
+      <div v-if="selectedOption === 'Hourly Rate'" class="col-md-4 col-12">
+        <b-form-group label="Total Number Of Hours" label-for="total_number_hour">
+          <b-form-input id="total_number_hour" type="text" v-model="total_number_hour"
+            placeholder="Enter Total Number Hours"></b-form-input>
+        </b-form-group>
+      </div>
+    </div>
+  </div>
             <!-- Bank Information -->
             <div style="
                 background-color: #0010f7;
@@ -370,7 +375,7 @@
                 <b-form-group id="input-group-1" label="Upload Document:" label-for="bank_upload_document">
                   <div style="margin-left: 3px; margin-bottom: 15px">
                     <!-- Display current profile picture -->
-                    <img v-if="editedUser.bank_upload_document" :src="'https://backend.cionax.com/' +
+                    <img v-if="editedUser.bank_upload_document" :src="'https://boltapi.fastnetstaffing.in/' +
                       bank_upload_document
                       " alt="Picture" style="max-width: 100px; max-height: 100px" />
                     <input type="file" accept="image/*" id="bank_upload_document" @change="BnakImageChange" />
@@ -498,6 +503,8 @@ export default {
       type: "",
       bolt_earning:'',
       uber_earning:'',
+      selectedVehicleName: '',
+      selectedCarNumber: '',
 
     };
   },
@@ -548,9 +555,6 @@ export default {
         this.address = this.editedUser.address;
         this.date_of_birth = this.editedUser.date_of_birth;
         this.profile_picture = this.editedUser.profile_picture;
-        this.salary_commission = this.editedUser.salary_commission;
-        this.salary_fix = this.editedUser.salary_fix;
-        this.hourly_enter_amount = this.editedUser.hourly_enter_amount;
         this.bank_name = this.editedUser.bank_name;
         this.bank_title = this.editedUser.bank_title;
         this.bank_account_number = this.editedUser.bank_account_number;
@@ -562,7 +566,7 @@ export default {
         this.owner_name = this.editedUser.owner_name;
         this.owner_number = this.editedUser.owner_number;
         this.company_document = this.editedUser.company_document;
-        this.vehicle_id = this.editedUser.vehicle_id;
+       this.vehicle_id = this.editedUser.vehicle_id; // Set the vehicle_id
         this.taxi_driving_liscence = this.editedUser.taxi_driving_liscence;
         this.vehicle_name = this.editedUser.vehicle_name;
         this.description = this.editedUser.description;
@@ -577,13 +581,27 @@ export default {
         this.type = this.editedUser.type;
         this.uber_earning = this.editedUser.uber_earning;
         this.bolt_earning = this.editedUser.bolt_earning;
-        // Depending on the selected option, set the appropriate salary value
+        this.salary_fix = this.editedUser.salary_fix;
+        this.salary_commission = this.editedUser.salary_commission;
+        this.hourly_enter_amount = this.editedUser.hourly_enter_amount;
+        if (
+  this.editedUser.vehicle &&
+  this.editedUser.vehicle.name !== null &&
+  this.editedUser.vehicle.registration_number !== null
+) {
+  // Assuming name and car_number are properties of this.editedUser.vehicle
+  this.selectedVehicleName = this.editedUser.vehicle.name;
+  this.selectedCarNumber = this.editedUser.vehicle.registration_number;
+} else {
+  // Handle the case where this.editedUser.vehicle is null or undefined, or where name or car_number is null
+  console.error("Invalid vehicle data or missing name or car_number");
+}
         if (this.editedUser.salary_fix !== null) {
           this.selectedOption = "Fix";
         } else if (this.editedUser.salary_commission !== null) {
           this.selectedOption = "Commission";
         } else if (this.editedUser.hourly_enter_amount !== null) {
-          this.selectedOption = "Hourly Enter Amount";
+          this.selectedOption = "Hourly Rate";
         }
 
         if (this.editedUser.vehicle_id !== null) {
@@ -628,7 +646,6 @@ export default {
       const formData = new FormData();
       formData.append("name", this.name);
        formData.append("postal_code", this.postal_code);
-        formData.append("name", this.name);
       formData.append("salary_commission_exclusive", this.salary_commission_exclusive);
       formData.append("email", this.email);
       formData.append("last_name", this.last_name);
@@ -636,27 +653,27 @@ export default {
       formData.append("password", this.password);
       formData.append("mobile", this.mobile);
       formData.append("gender", this.gender);
-      formData.append("emergency_contact_name", this.emergency_contact_name);
-      formData.append("emergency_contact_number", this.emergency_contact_number);
+    
       formData.append("address", this.address);
       formData.append("date_of_birth", this.date_of_birth);
       formData.append("salary", this.salary);
-      formData.append("bank_name", this.bank_name);
-      formData.append("bank_account_number", this.bank_account_number);
-      formData.append("company_name_own", this.company_name_own);
       formData.append("company_name", this.company_name);
-      formData.append("taxi_driving_liscence", this.taxi_driving_liscence);
-      formData.append(
-        "bank_emergency_contact_name",
-        this.bank_emergency_contact_name
-      );
+  
       formData.append("owner_name", this.owner_name);
       formData.append("owner_number", this.owner_number);
       formData.append("company_document", this.company_document);
-      formData.append("salary_commission", this.salary_commission);
-      formData.append("salary_fix", this.salary_fix);
-      formData.append("hourly_enter_amount", this.hourly_enter_amount);
-      if (this.vehicle_id != null) {
+    
+      if (this.selectedOption === 'Hourly Rate') {
+  formData.append("hourly_enter_amount", this.hourly_enter_amount);
+}         
+ if (this.selectedOption === 'Commission') {
+  formData.append("salary_commission", this.salary_commission);
+}  
+if (this.selectedOption === 'Fix') {
+  formData.append("salary_fix", this.salary_fix);
+}  
+
+  if (this.vehicle_id != null) {
         formData.append("vehicle_id", this.vehicle_id);
       }
       formData.append("profile_picture", this.profile_picture);
@@ -675,12 +692,22 @@ export default {
           formData.append("vehicle_image[]", image);
         }
       }
-      formData.append("bank_upload_document", this.bank_upload_document);
       formData.append("total_number_hour", this.total_number_hour);
       formData.append("selectedCarType", this.selectedCarType);
       formData.append("type", this.type);
       formData.append("bolt_earning", this.bolt_earning);
       formData.append("uber_earning", this.uber_earning);
+      
+      formData.append("bank_name", this.bank_name || ''); // Append an empty string if the value is null
+formData.append("bank_account_number", this.bank_account_number || '');
+formData.append("company_name_own", this.company_name_own || '');
+formData.append("bank_upload_document", this.bank_upload_document || null); // Use null if the value is null
+formData.append("taxi_driving_liscence", this.taxi_driving_liscence || '');
+formData.append("bank_emergency_contact_name", this.bank_emergency_contact_name || '');
+formData.append("emergency_contact_name", this.emergency_contact_name || '');
+formData.append("emergency_contact_number", this.emergency_contact_number || '' );
+formData.append("salary_commission_exclusive", this.salary_commission_exclusive || '') ;
+
       axios
         .post(`driversUpdate/${this.editedUser.id}`, formData)
         .then((response) => {
@@ -733,6 +760,14 @@ export default {
       //   setTimeout(() => {
       //     this.codeActiveClass = !this.codeActiveClass;
       //   }, 100);
+    },
+    updateFields() {
+      // Reset other fields when dropdown changes
+      this.salary_fix = '';
+      this.salary_commission = '';
+      this.salary_commission_exclusive = '';
+      this.hourly_enter_amount = '';
+      this.total_number_hour = '';
     },
 
     saveOwnCar() {

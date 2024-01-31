@@ -44,7 +44,7 @@
         <b-form-input
           id="company_name"
           type="text"
-          placeholder="Enter company name"  pattern="[A-Za-z]+" title="Please enter only alphabetic characters" 
+          placeholder="Enter company name" 
           v-model="company_name"
           required
         ></b-form-input>

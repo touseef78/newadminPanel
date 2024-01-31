@@ -132,6 +132,17 @@ export default {
     },
 
     submitFile() {
+      if (!this.type || !this.start_date || !this.end_date || !this.fileToUpload) {
+    this.$bvToast.toast("Please fill in all required fields.", {
+      title: "Error",
+      variant: "danger",
+      solid: true,
+      appendToast: true,
+      toaster: "b-toaster-top-right",
+      autoHideDelay: 5000,
+    });
+    return;
+  }
       if (this.fileToUpload) {
         this.loading = true;
 

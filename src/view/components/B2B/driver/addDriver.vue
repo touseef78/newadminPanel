@@ -117,14 +117,14 @@
                 <b-form-group id="input-group-1" label="Emergency Contact Name:" label-for="emergency_contact_name">
                   <b-form-input id="emergency_contact_name" type="text" placeholder="Enter emergency name"
                     v-model="emergency_contact_name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters"
-                    required></b-form-input>
+                   ></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Emergency Contact Number:" label-for="emergency_contact_number">
                   <b-form-input id="emergency_contact_number" type="text" placeholder="Enter mobile number"
                     v-model="emergency_contact_number" pattern="[0-9]+" title="Please enter only numeric characters"
-                    required></b-form-input>
+                  ></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
@@ -181,7 +181,7 @@
                   </b-form-input>
                 </b-form-group>
               </div> -->
-                       <div class="col-md-4 col-12">
+            <div class="col-md-4 col-12">
             <b-form-group id="input-group-2" label="Personal Number:" label-for="security_code">
               <b-form-input id="security_code" type="text" placeholder="Enter personal number" v-model="security_code"
                 pattern="\d{6}-\d{4}" title="Please enter the personal number in the format 000000-0000" required></b-form-input>
@@ -395,14 +395,14 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label="Bank Account Holder Name:" label-for="bank_account_holder_name">
                   <b-form-input id="bank_name" type="text" placeholder="Enter bank account holder name"
-                    v-model="bank_name"  pattern="[A- Z a-z]+" title="Please enter only alphabetic characters" required></b-form-input>
+                    v-model="bank_name" ></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-2" label="Bank Account Number:" label-for="bank_account_number">
                   <b-form-input id="bank_account_number" placeholder="Enter bank account number"
                     v-model="bank_account_number" pattern="[0-9]+" title="Please enter only numeric characters"
-                    required></b-form-input>
+                    ></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-md-4 col-12">
@@ -434,7 +434,7 @@
               <div class="col-md-4 col-12">
                 <b-form-group id="input-group-1" label=" Description:" label-for="bank_emergency_contact_name">
                   <b-form-input id="bank_emergency_contact_name" type="text" placeholder="Enter Description"
-                    v-model="bank_emergency_contact_name" required></b-form-input>
+                    v-model="bank_emergency_contact_name"></b-form-input>
                 </b-form-group>
               </div>
             </div>

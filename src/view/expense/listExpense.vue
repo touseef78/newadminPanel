@@ -45,7 +45,7 @@
 
           <!-- Action Button Code -->
           <template #cell(image)="row">
-            <img :src="'https://backend.cionax.com/' + row.item.image" alt="Image" class="img-fluid"
+            <img :src="'https://boltapi.fastnetstaffing.in/' + row.item.image" alt="Image" class="img-fluid"
               style="max-width: 100px; max-height: 100px" />
           </template>
           <template #cell(actions)="row">

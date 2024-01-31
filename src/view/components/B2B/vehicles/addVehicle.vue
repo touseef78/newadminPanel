@@ -84,8 +84,6 @@
                   v-model="name"
                   placeholder="Enter vehicle name"
                   autocomplete="off"
-                  pattern="[A-Za-z]+"
-                  title="Please enter only alphabetic characters"
                   required
                 ></b-form-input>
               </b-form-group>
@@ -119,10 +117,14 @@
                 ></b-form-input>
               </b-form-group>
             </div> -->
-                   <div class="col-md-4 col-12">
-        <b-form-group id="input-group-2" label="Car Make:" label-for="car_make" :state="car_makeState">
-          <b-form-input id="car_make" v-model="car_make" placeholder="Enter Car Make" required></b-form-input>
-          <b-form-invalid-feedback :state="car_makeState">Car Make is required.</b-form-invalid-feedback>
+            <div class="col-md-4 col-12">
+        <b-form-group id="input-group-2" label="Model Year:" label-for="model_year">
+          <b-form-input
+            id="model_year"
+            v-model="model_year"
+            placeholder="Enter Model Year"
+            required
+          ></b-form-input>
         </b-form-group>
       </div>
             <!-- <div class="col-md-4 col-12">
@@ -147,7 +149,6 @@
             placeholder="Enter Car Model"
             required
           ></b-form-input>
-          <b-form-invalid-feedback :state="carModelState">Car Model is required.</b-form-invalid-feedback>
         </b-form-group>
       </div>
             <div class="col-md-4 col-12">
@@ -165,20 +166,11 @@
               </b-form-group>
             </div>
             <div class="col-md-4 col-12">
-              <b-form-group
-                id="input-group-2"
-                label="Car Number:"
-                label-for="car_number"
-              >
-                <b-form-input
-                  id="car_numbar"
-                  v-model="car_number"
-                  placeholder="Enter Car Number"
-                  required
-                ></b-form-input>
-              </b-form-group>
-            </div>
-
+                <b-form-group id="input-group-2" label="Registration Number:" label-for="registration_number">
+                  <b-form-input id="registration_number" v-model="registration_number"
+                    placeholder="Enter Registration Number" type="number" pattern="[0-9]*"></b-form-input>
+                </b-form-group>
+              </div>
             <!-- <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
@@ -193,23 +185,9 @@
                 ></b-form-input>
               </b-form-group>
             </div> -->
-                     <div class="col-md-4 col-12">
-        <b-form-group id="input-group-2" label="Model Year:" label-for="model_year">
-          <b-form-input
-            id="model_year"
-            v-model="model_year"
-            placeholder="Enter Model Year"
-            required
-          ></b-form-input>
-        </b-form-group>
-      </div>
+       
 
-             <div class="col-md-4 col-12">
-                <b-form-group id="input-group-2" label="Registration Number:" label-for="registration_number">
-                  <b-form-input id="registration_number" v-model="registration_number"
-                    placeholder="Enter Registration Number" required type="number" pattern="[0-9]*"></b-form-input>
-                </b-form-group>
-              </div>
+            
             <!-- new code  -->
             <div class="col-md-4 col-12">
               <b-form-group
@@ -308,7 +286,7 @@
                 ></b-form-input>
               </b-form-group>
             </div>
-            <div class="col-md-4 col-12">
+            <div v-if="vehicle_type === 'Taxi'" class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
                 label="Texameter Inspection Date:"
@@ -341,8 +319,8 @@
                     <option>Other</option>
                 </b-form-select>
               </b-form-group>
-            </div> -->
-                           <div class="col-md-4 col-12">
+          </div> -->
+                           <!-- <div class="col-md-4 col-12">
           <b-form-group id="input-group-2" label="Vehicle Type:" label-for="vehicle_type">
             <b-form-select v-model="vehicle_type" required>
               <option value="">Select Vehicle Type</option>
@@ -353,7 +331,7 @@
               <option>Extra</option>
             </b-form-select>
           </b-form-group>
-        </div>
+        </div> -->
             <div class="col-md-4 col-12">
               <b-form-group
                 id="input-group-2"
@@ -614,9 +592,26 @@ export default {
           this.isLoading = false;
         })
         .catch((error) => {
-          this.errors = error.response.data.errors;
-          console.log(error.response.data);
-          this.isLoading = false;
+            if (error.response && error.response.status === 422) {
+                // Handle validation errors
+                this.errors = error.response.data.errors;
+                console.log(this.errors);
+            } else if (error.response && error.response.status === 400) {
+                // Handle other errors with a custom message
+                this.$bvToast.toast(error.response.data.message || "An error occurred.", {
+                    title: "Error",
+                    variant: "danger",
+                    solid: true,
+                    appendToast: true,
+                    toaster: "b-toaster-top-right",
+                    autoHideDelay: 5000,
+                });
+            } else {
+                // Handle other types of errors
+                console.error(error);
+            }
+
+            this.isLoading = false;
         });
     },
 

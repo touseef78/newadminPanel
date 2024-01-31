@@ -69,7 +69,7 @@
                     <img
                       v-if="editedUser.image"
                       :src="
-                        'https://backend.cionax.com/' + image
+                        'https://boltapi.fastnetstaffing.in/' + image
                       "
                       alt="Picture"
                       style="max-width: 100px; max-height: 100px"
