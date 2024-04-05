@@ -16,16 +16,19 @@
               : require('@/assets/img/pages/authentication/authentication-bg.svg')
               " alt="Background Image" /> -->
 
-            <img class="m-auto" :src="this.$store.state.themeConfig.theme == 'dark'
+            <!-- <img class="m-auto" :src="this.$store.state.themeConfig.theme == 'dark'
               ? require('@/assets/img/pages/authentication/logo.jpg')
               : require('@/assets/img/pages/authentication/logo.jpg')
-              " alt="Background Image" />
+              " alt="Background Image" /> -->
+              <h2 class="text-primary-1 hp-text-color-dark-0 mx-16 mx-lg-0 mb-16">
+               BigWays            
+             </h2>
           </b-col>
 
           <b-col cols="12" md="11" lg="9" class="hp-text-item text-center">
-            <h2 class="text-primary-1 hp-text-color-dark-0 mx-16 mx-lg-0 mb-16">
+            <!-- <h2 class="text-primary-1 hp-text-color-dark-0 mx-16 mx-lg-0 mb-16">
               Fleet Management system           
-             </h2>
+             </h2> -->
 
             <!-- <p class="mb-0 text-black-80 hp-text-color-dark-30">
               Lorem Ipsum is simply dummy text of the printing and typesetting

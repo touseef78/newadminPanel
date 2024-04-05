@@ -7,8 +7,9 @@
     <div class="col-12 mt-16">
       <div>
         <b-row class="align-items-center">
-          <b-col lg="3" class="my-1">
+          <b-col lg="6" class="my-1">
             <b-form-group
+              label=""
               label-for="filter-input"
               label-cols-sm="1"
               label-align-sm="right"
@@ -30,48 +31,12 @@
               </b-input-group>
             </b-form-group>
           </b-col>
-          <b-col lg="3" class="my-1">
-            <b-form-group
-              label="Start Date"
-              label-for="start-date"
-              label-cols-sm="5"
-              label-align-sm="right"
-              label-size="sm"
-              class="mb-0"
-            >
-              <b-form-input
-                id="start-date"
-                v-model="start_date"
-                type="date"
-                placeholder="Select start date" style="form-control"
-              ></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col lg="3" class="my-1">
-            <b-form-group
-              label="End Date"
-              label-for="end-date"
-              label-cols-sm="4"
-              label-align-sm="right"
-              label-size="sm"
-              class="mb-0"
-            >
-              <b-form-input
-                id="end-date"
-                v-model="end_date"
-                type="date"
-                placeholder="Select end date"
-              ></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col lg="3" class="my-1 d-flex justify-content-end">
-            <b-button
-              @click="exportDataToCSV"
-              variant="primary"
-              class="mb-8 mr-8"
-              >Export</b-button
-            >
-          </b-col>
+
+          <!-- <b-col lg="6" class="my-1 d-flex justify-content-end">
+            <b-button @click="openModal" variant="primary" class="mb-8 mr-8">
+              Add Vehicle
+            </b-button>
+          </b-col> -->
         </b-row>
       </div>
     </div>
@@ -94,39 +59,80 @@
           y
           responsive
         >
+          <!-- Action Button Code -->
+          <!-- <template #cell(actions)="row">
+            <b-button @click="downloadFile(row.item.file)" variant="primary"
+              >Download</b-button
+            >
+          </template> -->
+
           <template #cell(vehicle_name)="row">
-            {{ `${row.item.vehicle.name}` }}
+            {{ row.item.vehicle ? row.item.vehicle.name : 'N/A' }}
           </template>
-          <template #cell(car_color)="row">
-            {{ `${row.item.vehicle.car_color}` }}
-          </template>
-          <template #cell(car_number)="row">
-            {{ `${row.item.vehicle.car_number}` }}
-          </template>
-          <template #cell(date)="row">
-            {{ formatDate(row.item.created_at) }}
-          </template>
-          <!-- Action Button Code -->
-          <template #cell(image)="row">
-            <div>
-              <img
-                :src="'https://boltapi.fastnetstaffing.in/' + row.item.image"
-                alt="Image"
-                class="img-fluid"
-                style="max-width: 100px; max-height: 100px"
-                @click="downloadImage(row.item.image)"
-              />
-            </div>
-          </template>
-          <!-- Action Button Code -->
-          <template #cell(actions)="row">
+          <template #cell(vehicle_type)="row">
+  {{ row.item.vehicle ? row.item.vehicle.vehicle_type : 'N/A' }}
+</template>
+          <template #cell(status)="row">
             <b-button
-              @click="detailsServices(row.item.id)"
-              variant="primary"
+              @click="handleButtonClick(row.item)"
+              :variant="row.item.status === 'Pending' ? 'warning' : 'primary'"
               class="mb-8 mr-8"
-              >Details
+            >
+              <!-- {{ row.item.status === "Approved" ? "Pending" : "Approved" }} -->
+              {{ row.item.status }}
             </b-button>
           </template>
+          <template #cell(actions)="row">
+            <b-button
+              @click="showDeleteConfirmation = true"
+              variant="link"
+              class="p-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                fill="currentColor"
+                style="color: red; margin-left: 6px; margin-bottom: 10px"
+                class="bi bi-eye"
+                viewBox="0 0 16 16"
+              >
+                <!-- ... your SVG path ... -->
+                <path
+                  d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"
+                />
+              </svg>
+            </b-button>
+
+            <b-modal
+              v-model="showDeleteConfirmation"
+              title="Delete Confirmation"
+            >
+              <p>Are you sure you want to delete this item?</p>
+              <template #modal-footer>
+                <b-button variant="danger" @click="deleteItem(row.item.id)"
+                  >Delete</b-button
+                >
+                <b-button
+                  variant="secondary"
+                  @click="showDeleteConfirmation = false"
+                  >Cancel</b-button
+                >
+              </template>
+            </b-modal>
+            <!-- <b-button @click="updateStatus(row.item)" :variant="row.item.status === 'Approved' ? 'warning' : 'primary'"
+              class="mb-8 mr-8">
+              {{ row.item.status === "Approved" ? "Pending" : "Approved" }}
+            </b-button> -->
+
+            <!-- <b-button
+              @click="toggleCardModal(row.item)"
+              variant="link"
+              class="p-0"
+            >
+            </b-button> -->
+          </template>
+
 
           <b-form-group
             label="Filter"
@@ -210,17 +216,22 @@ export default {
       sortDesc: false,
       selectedCardOption: "",
       rowToUpdate: null,
+      modalVisible: false,
+      editMode: false,
       users: [], // Instead of 'items', use 'users' array to store fetched data
       fields: [
         { key: "id", sortable: true },
+        { key: "name", sortable: true },
+        { key: "email", sortable: true },
+        { key: "phone_number", sortable: true },
+        { key: "city", sortable: true },
+        { key: "pickup_location", sortable: true },
+        { key: "drop_location", sortable: true },
+        { key: "amount", sortable: true },
+        { key: "total_students", sortable: true },
+        { key: "vehicle_type", sortable: true },
         { key: "vehicle_name", sortable: true },
-        { key: "car_number", sortable: true },
-        { key: "car_color", sortable: true },
-        { key: "service_meter_reading", sortable: true },
-        { key: "total_life_kilometer", sortable: true },
-        { key: "category", sortable: true },
-        { key: "date", sortable: true },
-        { key: "image", sortable: true },
+        { key: "status", sortable: true },
         { key: "actions", label: "Actions" },
       ],
 
@@ -229,14 +240,10 @@ export default {
       showDeleteConfirmation: false,
       itemIdToDelete: null,
       loading: false,
-      created_at: new Date(), // Replace with your actual date data
-      start_date: null,
-      end_date: null,
+      startDateFilter: "",
+      endDateFilter: "",
+      your_vehicle_id: null,
     };
-  },
-  watch: {
-    start_date: "fetchData",
-    end_date: "fetchData",
   },
   components: {
     BRow,
@@ -269,43 +276,25 @@ export default {
   },
   methods: {
     fetchData() {
-      this.loading = true;
-      // Define your API endpoint URL
-      const userId = this.$route.params.id;
-     let apiUrl = userId ? `driverMaintence/${userId}` : "service";
-
-
-      // Create an object to hold the query parameters
-      const queryParams = {
-        start_date: this.start_date,
-        end_date: this.end_date,
-      };
-
+      this.loading = true; // Set loading to true before fetching data
+      let apiUrl = "registration";
       axios
-        .get(apiUrl, { params: queryParams })
+        .get(apiUrl) // Replace 'your_api_endpoint_url_here' with your actual API URL
         .then((response) => {
-          this.users = response.data.data.filter((item) => {
-            const createdDate = new Date(item.created_at);
-            return (
-              (!this.start_date || createdDate >= new Date(this.start_date)) &&
-              (!this.end_date || createdDate <= new Date(this.end_date))
-            );
-          });
-          this.users.forEach((item, index) => {
-            item.srNo = index + 1;
-          });
-          this.users.forEach((item) => {
-            item.id = item.vehicle_id; // Use user's ID as the serial number
-          });
+          this.users = response.data.data;
+
           this.totalRows = this.users.length;
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
         })
         .finally(() => {
-          this.loading = false;
+          this.loading = false; // Set loading to false after fetching data, whether success or error
         });
     },
+
+
+ 
     onFiltered(filteredItems) {
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
@@ -325,27 +314,52 @@ export default {
       URL.revokeObjectURL(url);
     },
 
-    downloadImage(imageUrl) {
+    deleteItem(itemId) {
+      this.itemIdToDelete = itemId; // Set the item ID to be deleted
+      axios
+        .delete(`registration/${itemId}`)
+        .then((response) => {
+          this.showDeleteConfirmation = false;
+          this.fetchData(); // Refresh the data after deletion
+        })
+        .catch((error) => {
+          // Handle error
+          console.error("Error deleting item:", error);
+        });
+    },
+
+    downloadFile(fileUrl) {
+      // Construct a download link for the file
       const link = document.createElement("a");
-      link.href = "https://boltapi.fastnetstaffing.in/" + imageUrl;
-      link.download = "image.jpg"; // You can set the desired filename here
+      link.href = "https://boltapi.fastnetstaffing.in/" + fileUrl;
+      link.download = "downloaded_file"; // Specify the default filename for the downloaded file
       link.target = "_blank"; // Open the link in a new tab
       link.click();
     },
 
-    formatDate(dateString) {
-      const date = new Date(dateString);
-      return date.toLocaleDateString();
+    handleButtonClick(item) {
+      this.updateStatus(item);
+      this.toggleCardModal(item);
+    },
+    updateStatus(user) {
+      user.status = user.status === "Approved" ? "Pending" : "Approved";
+      axios
+        .post(`expenseUpdate/${user.id}`, user)
+        .then((response) => {
+          console.log("Status updated successfully:", response.data);
+        })
+        .catch((error) => {
+          console.error("Error updating status:", error);
+        });
+    },
+    toggleCardModal(item) {
+      this.selectedCardOption = ""; // Reset the selected card option
+      this.rowToUpdate = item; // Set the row to be updated
+      this.isCardModalVisible = true; // Show the modal
     },
 
-    detailsServices(userId) {
-      this.$router.push({ name: "Servicedetails", params: { id: userId } });
-    },
   },
+
+  
 };
 </script>
-<style>
-.form-control{
-  padding: 11px;
-}
-</style>

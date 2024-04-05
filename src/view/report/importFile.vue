@@ -11,8 +11,8 @@
               label-for="Select Driver"
             >
               <b-form-select id="type" v-model="type" required>
-                <option value="bolt">Bolt</option>
-                <option value="uber">Uber</option>
+                <option value="Careem">Careem</option>
+                <option value="Uber">Uber</option>
               </b-form-select>
             </b-form-group>
           </div>

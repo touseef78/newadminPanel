@@ -7,7 +7,7 @@
     <div class="col-12 mt-16">
       <div>
         <b-row class="align-items-center">
-          <b-col lg="4" class="my-1">
+          <b-col lg="3" class="my-1">
             <b-form-group
               label=""
               label-for="filter-input"
@@ -65,7 +65,7 @@
               ></b-form-input>
             </b-form-group>
           </b-col>
-          <b-col lg="2" class="my-1 d-flex justify-content-end">
+          <b-col lg="3" class="my-1 d-flex justify-content-end">
             <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
               >Import</b-button
             > -->
@@ -75,10 +75,18 @@
               class="mb-8 mr-8"
               >Export</b-button
             >
+            <b-button
+              @click="exportDataToPDF"
+              variant="primary"
+              class="mb-8 mr-8"
+              >PDF</b-button
+            >
           </b-col>
         </b-row>
       </div>
     </div>
+
+    
     <!-- filter end -->
     <b-row>
       <div class="col-12 mt-16">
@@ -99,26 +107,30 @@
           responsive
         >
           <template #cell(driver_name)="row">
-            {{ `${row.item.name} ${row.item.last_name} ` }}
+            {{ `${row.item.driver_first_name}` }}
           </template>
-          <template #cell(total_net)="row">
-            {{ `${row.item.net}` }}
+          <template v-slot:cell(SR_NO)="data">
+        {{ data.index + 1 }}
+      </template>
+          <template #cell(actions)="row">
+            <b-button @click="editUser(row.item.id)" variant="link" class="p-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                fill="currentColor"
+                style="color: orange; margin-left: 10px; margin-bottom: 10px"
+                class="bi bi-pencil"
+                viewBox="0 0 16 16"
+              >
+                <!-- ... your existing SVG path ... -->
+                <path
+                  d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"
+                />
+              </svg>
+            </b-button>
           </template>
-          <template #cell(5%_admin_fee)="row">
-            {{ `${row.item.admin} ` }}
-          </template>
-          <template #cell(total_net_payable)="row">
-            {{ `${row.item.net_total}` }}
-          </template>
-          <template #cell(moms_6%_tax)="row">
-            {{ `${row.item.moms_6_tax}` }}
-          </template>
-          <template #cell(total)="row">
-            {{
-              parseFloat(row.item.uber_earning || 0) +
-              parseFloat(row.item.bolt_earning || 0)
-            }}
-          </template>
+         
           <!-- Action Button Code -->
           <!-- <template #cell(actions)="row">
             <b-button @click="downloadFile(row.item.file)" variant="primary"
@@ -195,6 +207,8 @@ import {
 } from "bootstrap-vue";
 import axios from "axios";
 import Papa from "papaparse";
+import jsPDF from "jspdf";
+import 'jspdf-autotable';
 
 // new code
 // import code from "./code";
@@ -210,20 +224,27 @@ export default {
       rowToUpdate: null,
       users: [], // Instead of 'items', use 'users' array to store fetched data
       fields: [
-        { key: "id", sortable: true },
-        { key: "Driver_name", sortable: true },
+        { key: "SR_NO", sortable: true },
+        { key: "driver_name", sortable: true },
+        { key: "vehicle_number", sortable: true },
+        { key: "uber_ride", sortable: true },
+        { key: "uber_total_earnings", sortable: true },
+        { key: "cash_balance_uber", sortable: true },
+        { key: "careem_ride", sortable: true },
+        { key: "careem_total_earnings", sortable: true },
+        { key: "cash_balance_careem", sortable: true },
+        { key: "total_earnings", sortable: true },
+        { key: "total_cash_balance_in_uber_and_careem", sortable: true },
+        { key: "machine_earning", sortable: true },
+        { key: "salk_amount", sortable: true },
+        { key: "fuel_amount", sortable: true },
+        { key: "net_amount", sortable: true },
+        { key: "total_ride", sortable: true },
+        { key: "rms_trip", sortable: true },
+        { key: "diff", sortable: true },
         { key: "start_date", sortable: true },
         { key: "end_date", sortable: true },
-        { key: "uber_earning", sortable: true },
-        { key: "bolt_earning", sortable: true },
-        { key: "total", sortable: true },
-        { key: "moms_6%_tax", sortable: true },
-        { key: "total_net", sortable: true },
-        { key: "5%_admin_fee", sortable: true },
-        { key: "net_payable", sortable: true },
-        { key: "moms_25_tax", sortable: true },
-        { key: "total_net_payable", sortable: true },
-        // { key: "actions", label: "Actions" },
+        { key: "actions", label: "Actions" },
       ],
 
       filter: "", // Define filter property for search functionality
@@ -233,6 +254,7 @@ export default {
       loading: false,
       startDateFilter: "",
       endDateFilter: "",
+
     };
   },
   components: {
@@ -291,10 +313,7 @@ export default {
   methods: {
     fetchData() {
       this.loading = true; // Set loading to true before fetching data
-      const name = this.$route.params.name;
-      const last_name = this.$route.params.last_name;
-      const userId = name && last_name ? `${name}/${last_name}` : null;
-      let apiUrl = userId ? `driverUber/${userId}` : "uberdata";
+      let apiUrl = "uberdata";
       axios
         .get(apiUrl) // Replace 'your_api_endpoint_url_here' with your actual API URL
         .then((response) => {
@@ -317,9 +336,13 @@ export default {
       this.codeActive = !this.codeActive;
     },
 
+    editUser(userId) {
+      this.$router.push({ name: "editDriver", params: { id: userId } });
+    },
+
     exportDataToCSV() {
       const csv = Papa.unparse(this.users);
-      const blob = new Blob([csv], { type: "text/csv" });
+      const blob = new Blob([csv] , { type: "text/csv" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -327,6 +350,60 @@ export default {
       a.click();
       URL.revokeObjectURL(url);
     },
+
+
+    exportDataToPDF() {
+  const pdf = new jsPDF();
+  const columns = [
+    { title: "Driver Name", dataKey: "driver_first_name" },
+    { title: "Vehicle Number", dataKey: "vehicle_number" },
+    { title: "Uber Ride", dataKey: "uber_ride" },
+    { title: "uber Earnings", dataKey: "uber_total_earnings" },
+    { title: "Cash Balance", dataKey: "cash_balance_uber" },
+    { title: "Careem Ride", dataKey: "careem_ride" },
+    { title: "Careem Earnings", dataKey: "careem_total_earnings" },
+    { title: "Total Earnings", dataKey: "total_earnings" },
+    { title: "Machine Earning", dataKey: "machine_earnings" },
+    { title: "Salk Amount", dataKey: "salk_amount" },
+    { title: "Fuel Amount", dataKey: "fuel_amount" },
+    { title: "Net Amount", dataKey: "net_amount" },
+    { title: "Diff", dataKey: "diff" },
+
+
+
+
+    // Add other columns as needed
+  ];
+
+  const rows = this.filteredUsers.map(user => {
+    return {
+      driver_first_name: user.driver_first_name,
+      vehicle_number: user.vehicle_number,
+      uber_ride: user.uber_ride,
+      uber_total_earnings: user.uber_total_earnings,
+      cash_balance_uber: user.cash_balance_uber,
+      careem_ride: user.careem_ride,
+      careem_total_earnings: user.careem_total_earnings,
+      total_earnings: user.total_earnings,
+      machine_earnings: user.machine_earnings,
+      salk_amount: user.salk_amount,
+      fuel_amount: user.fuel_amount,
+      net_amount: user.net_amount,
+      diff: user.diff,
+      
+      // Map other properties
+    };
+  });
+
+  pdf.autoTable({
+    head: [columns.map(col => col.title)],
+    body: rows.map(row => Object.values(row)),
+  });
+
+  pdf.save("exported_data.pdf");
+},
+
+
 
     deleteItem(itemId) {
       this.itemIdToDelete = itemId; // Set the item ID to be deleted
@@ -349,6 +426,7 @@ export default {
       link.target = "_blank"; // Open the link in a new tab
       link.click();
     },
+    
   },
 };
 </script>

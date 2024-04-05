@@ -2,67 +2,52 @@
     <b-card>
         <b-row>
             <div class="col-12 mt-16">
-                <b-form @submit.prevent="addUser" v-if="show">
+                <b-form @submit.prevent="addExpense" v-if="show">
                     <!-- <h2>Car Information</h2> -->
                     <div style="
               background-color: #0010f7;
-              height: 32px;
+              height: 40px;
               border-radius: 4px;
             ">
                         <h5 style="
                 color: rgb(223, 227, 238);
                 margin-left: 5px;
                 font-weight: bold;
+                padding:10px;
               ">
-                          Vehicle Maintenance 
+                            Add Driver
                         </h5>
                     </div>
-                    <div class="row" style="margin-top: 20px;">
+                    <div class="row">
                         <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
-                                <b-form-select id="user_id" v-model="vehicle_id" required>
-                                    <option value="">Select Car</option>
-                                    <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
-                                        {{ vehicle.name }}
-                                        &nbsp;
-                                        {{ vehicle.car_number }}  
-                                    </option>
-                                </b-form-select>
+                            <b-form-group id="input-group-2" label="Machine Earning:" label-for="machine_earning">
+                                <b-form-input id="machine_earning" v-model="machine_earning" placeholder="Enter  machine earning"
+                                    ></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Meter Reading:" label-for="service_meter_reading">
-                                <b-form-input id="service_meter_reading" v-model="service_meter_reading" placeholder="Enter  meter reading"
-                                    required></b-form-input>
+                            <b-form-group id="input-group-2" label="Salk Amount:" label-for="salk_amount">
+                                <b-form-input id="salk_amount" v-model="salk_amount" placeholder="Enter  salk amount"
+                                    ></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Category:" label-for="category">
-                                <b-form-select id="category" v-model="category" required>
-                                    <option value="">Select Category</option>
-                                    <option>Petrol</option>
-                                    <option>Puncher</option>
-                                    <option>Air Pressure</option>
-                                    <option>Tyre Change</option>
-                                    <option>Challan</option>
-                                    <option>Online Payment</option>
-                                    <option>Customer</option>
-                                    <option>Other</option>
-                                </b-form-select>
+                            <b-form-group id="input-group-2" label="Fuel Amount:" label-for="salk_amount">
+                                <b-form-input id="fuel_amount" v-model="fuel_amount" placeholder="Enter  fuel amount"
+                                    ></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Total Life In Km(If have):"
-                                label-for="total_life_kilometer">
-                                <b-form-input id="total_life_kilometer" v-model="total_life_kilometer"
-                                    placeholder="Enter  total life in km"></b-form-input>
+                            <b-form-group id="input-group-2" label="RMS Trip:" label-for="rms_trip">
+                                <b-form-input id="rms_trip" v-model="rms_trip" placeholder="Enter rms trip"
+                                    ></b-form-input>
                             </b-form-group>
                         </div>
+
                         <div class="col-md-4 col-12">
-                            <b-form-group id="input-group-2" label="Picture Upload:" label-for="Service Image">
-                                <div style="margin-left: 3px; margin-bottom: 15px">
-                                    <input type="file" accept="image/*" id="image" @change="onProfilePictureChange" />
-                                </div>
+                            <b-form-group id="input-group-2" label="Vehicle No:" label-for="vehicle_number">
+                                <b-form-input id="vehicle_number" v-model="vehicle_number" placeholder="Enter vehicle number"
+                                    ></b-form-input>
                             </b-form-group>
                         </div>
                     </div>
@@ -107,16 +92,22 @@ export default {
         return {
             selectedType: "",
             show: true,
+            isLoading: false,
             codeText: code.introduction,
             codeActive: false,
             codeActiveClass: false,
-            image: null,
-            isLoading: false,
-            vehicles: [],
-            vehicle_id:'',
-            category:'',
-            service_meter_reading:'',
-            total_life_kilometer:'',
+       
+            card:'',
+            user_id: '',
+            drivers: [],
+            editExpense: {},
+            salk_amount: "",
+            fuel_amount: "",
+            rms_trip: "",
+            machine_earning: "",
+            vehicle_number: "",
+
+       
 
 
         };
@@ -139,12 +130,27 @@ export default {
     created() {
         // Load the clients data when the component is created
         axios
-            .get("vehicle")
+            .get("uberdata")
             .then((response) => {
-                this.vehicles = response.data.data;
+                this.drivers = response.data.data;
             })
             .catch((error) => {
                 console.log(error);
+            });
+        // Load the clients data when the component is created
+        const userId = this.$route.params.id;
+        axios
+            .get(`expense/${userId}`)
+            .then((response) => {
+                this.editExpense = response.data.data;
+                this.salk_amount = this.editExpense.salk_amount;
+                this.fuel_amount = this.editExpense.fuel_amount;
+                this.rms_trip = this.editExpense.rms_trip;
+                this.machine_earning = this.editExpense.machine_earning;
+                this.vehicle_number = this.editExpense.vehicle_number;
+            })
+            .catch((error) => {
+                console.error("Error fetching user data:", error);
             });
     },
 
@@ -158,28 +164,32 @@ export default {
         },
         onReset(event) {
             event.preventDefault();
-            
+            // Reset our form values
+            this.form.email = "";
+            this.form.name = "";
+            this.form.food = null;
+            this.form.checked = [];
             // Trick to reset/clear native browser form validation state
             this.show = false;
             this.$nextTick(() => {
                 this.show = true;
             });
         },
-        //    Add Vehicle
-        addUser() {
+        //    Add Expense
+        addExpense() {
             this.isLoading = true;
             // Create a FormData object to handle the image file
             const formData = new FormData();
-            formData.append("image", this.image);
-            formData.append("service_meter_reading", this.service_meter_reading);
-            formData.append("category", this.category);
-            formData.append("vehicle_id", this.vehicle_id);
-            formData.append("total_life_kilometer", this.total_life_kilometer);
+            formData.append("fuel_amount", this.fuel_amount);
+            formData.append("salk_amount", this.salk_amount);
+            formData.append("rms_trip", this.rms_trip);
+            formData.append("machine_earning", this.machine_earning);
+            formData.append("vehicle_number", this.vehicle_number);
             axios
-                .post("service", formData)
+                .post(`driverUpdate/${this.editExpense.id}`, formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("Maintenance added successfully!", {
+                    this.$bvToast.toast("Driver added successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,
@@ -209,14 +219,6 @@ export default {
             setTimeout(() => {
                 this.codeActiveClass = !this.codeActiveClass;
             }, 100);
-        },
-
-        vehicleImageChange(event) {
-            const files = event.target.files;
-            if (files && files.length > 0) {
-                // Convert FileList to an array
-                this.image = Array.from(files);
-            }
         },
     },
 };

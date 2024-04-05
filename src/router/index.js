@@ -19,14 +19,7 @@ const router = new VueRouter({
       },
     },
 
-     {
-      path: "/form/driver/add",
-      name: "form/driver/add",
-      component: () => import("../view/drivers/driverForm.vue"),    
-       meta: {
-        layout: "full",
-      }, 
-    },
+     
 
 
      {
@@ -99,257 +92,21 @@ const router = new VueRouter({
       },
     },
 
-    {
-      path: "/drivers/add",
-      name: "drivers",
-      component: () => import("@/view/drivers/addDriver"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-    {
-      path: "/drivers/driverDetails/:id",
-      name: "driverDetails",
-      component: () => import("../view/drivers/detailsDriver.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
 
-  {
-      path: "/vehicle/addVehicle",
-      name: "vehicle",
-      component: () => import("@/view/vehicle/addVehicle"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-    {
-      path: "/vehicle/viewVehicle/:id",
-      name: "viewVehicle",
-      component: () => import("@/view/vehicle/viewVehicle"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-    {
-      path: "/vehicle/editVehicle/:id",
-      name: "editVehicle",
-      component: () => import("@/view/vehicle/editVehicle"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-    {
-      path: "/vehicle/listVehicle",
-      name: "vehicle",
-      component: () => import("@/view/vehicle/listVehicle"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
-    {
-      path: "/vehicle/listVehicle/:id",
-      name: "vehicleID",
-      component: () => import("@/view/vehicle/listVehicle"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
- 
+   
    
     {
-      path: "/drivers/list",
-      name: "drivers",
-      component: () => import("@/view/drivers/listDriver"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-    // new list driver 
-    //  {
-    //   path: "/drivers/new",
-    //   name: "drivers",
-    //   component: () => import("@/view/drivers/newListDriver"),
-     
-    // },
-    //  B2B Driver 
-     {
-      path: "/B2B/driver/lists",
-      name: "driver",
-      component: () => import("../view/components/B2B/driver/listDriver.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-      {
-      path: "/B2B/driver/add",
-      name: "driver",
-      component: () => import("../view/components/B2B/driver/addDriver.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-        {
-      path: "/B2B/driver/edit/:id",
-      name: "B2B/driver/edit",
-      component: () => import("../view/components/B2B/driver/editDriver.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-        {
-      path: "/B2B/driver/view/:id",
-      name: "B2B/driver/view",
-      component: () => import("../view/components/B2B/driver/viewDriver.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-   // B2B Vehicle
-
-    {
-      path: "/B2B/Vehicle/lists",
-      name: "/B2B/Vehicle/lists",
-      component: () => import("../view/components/B2B/vehicles/listVehicle.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-      {
-      path: "/B2B/Vehicle/add",
-      name: "/B2B/Vehicle/add",
-      component: () => import("../view/components/B2B/vehicles/addVehicle.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
-    {
-      path: "/B2B/Vehicle/edit/:id",
-      name: "B2B/Vehicle/edit",
-      component: () => import("../view/components/B2B/vehicles/editVehicleB2B.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
-    {
-      path: "/B2B/Vehicle/view/:id",
-      name: "B2B/Vehicle/view",
-      component: () => import("../view/components/B2B/vehicles/viewVehicleB2B.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
-     // company 
-     {
-      path: "/company/add",
-      name: "companAdd",
-      component: () => import("../view/company/addCompany.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-    
-       {
-      path: "/company/list",
-      name: "listCompany",
-      component: () => import("../view/company/listCompany.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
-    {
-      path: "/company/edit/:id",
-      name: "editCompany",
-      component: () => import("../view/company/editCompany.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
-
-    // Eidt 
-       {
-      path: "/drivers/edit/:id",
-      name: "editDrivers",
-      component: () => import("../view/drivers/editDriver.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-   
-    
-  {
-      path: "/drivers/view/:id",
-      name: "viewDrivers",
-      component: () => import("../view/drivers/viewDriver.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
-  
-
-  // Expense
-{
-      path: "/expense/add",
-      name: "addExpense",
-      component: () => import("../view/expense/addExpense.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-   {
-      path: "/expense/list",
-      name: "listExpense",
-      component: () => import("../view/expense/listExpense.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
-    {
-      path: "/expense/list/:id",
-      name: "droverExpnse",
-      component: () => import("../view/expense/listExpense.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-    
-     {
       path: "/expense/edit/:id",
-      name: "editExpense",
-      component: () => import("../view/expense/editExpense.vue"),
+      name: "editDriver",
+      component: () => import("../view/earning/editdriver.vue"),
       meta: {
         requiresAuth: true, // This route requires authentication
       },
     },
-     {
-      path: "/expense/view/:id",
-      name: "viewExpense",
-      component: () => import("../view/expense/viewExpense.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
+ 
 
-    {
-      path: "/expense/Details/:id",
-      name: "expenseDetails",
-      component: () => import("../view/expense/detailsExpense.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
+    
 
-    // Report
     {
       path: "/file/upload",
       name: "uploadFile",
@@ -393,145 +150,39 @@ const router = new VueRouter({
 },
 
 
-    // import file
+    // vehicle
 
 
     {
-      path: "/Import/importFile",
-      name: "importFile",
-      component: () => import("../view/report/importFile.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-    // invoice
-      {
-      path: "/table/invoice",
-      name: "invoiceTable",
-      component: () => import("../view/invoice/invoiceTable.vue"),
+      path: "/vehicle",
+      name: "vehicleList",
+      component: () => import("../view/vehicle/vehicleList.vue"),
       meta: {
         requiresAuth: true, // This route requires authentication
       },
     },
 
 
-    {
-      path: "/table/invoice/:id",
-      name: "driverInvoice",
-      component: () => import("../view/invoice/invoiceTable.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-  {
-      path: "/invoice/view/:id",
-      name: "invoiceReport",
-      component: () => import("../view/invoice/invoiceReport.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
-    // Service 
-       {
-      path: "/service/vehicle",
-      name: "carService",
-      component: () => import("../view/car/carService.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
     
-   {
-      path: "/service/list",
-      name: "listService",
-      component: () => import("../view/car/listService.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
 
     {
-      path: "/service/list/:id",
-      name: "driverMaintenance",
-      component: () => import("../view/car/listService.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-    {
-      path: "/service/details/:id",
-      name: "Servicedetails",
-      component: () => import("../view/car/detailsService.vue"),
+      path: "/registration",
+      name: "RegistrationList",
+      component: () => import("../view/registration/RegistrationList.vue"),
       meta: {
         requiresAuth: true, // This route requires authentication
       },
     },
 
 
-    {
-      path: "/maintenance/edit/:id",
-      name: "maintenanceEdit",
-      component: () => import("../view/car/editService.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
+
 
    // uberfile
 
-    {
-      path: "/uberfile/listUberFile",
-      name: "listUberFile",
-      component: () => import("../view/uberfile/listUberFile.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-    {
-      path: "/earningReportlist",
-      name: "earningReportlist",
-      component: () => import("../view/earning/earningReportList.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
 
-    {
-      path: "/earningReportlist/:name/:last_name",
-      name: "driverEarningReportlist",
-      component: () => import("../view/earning/earningReportList.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
 
-    {
-      path: "/efficiencyReport",
-      name: "efficiencyReport",
-      component: () => import("../view/efficiencyReport/efficiency_report.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
-    {
-      path: "/efficiencyReport/:id",
-      name: "driverEfficiencyReport",
-      component: () => import("../view/efficiencyReport/efficiency_report.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-    {
-      path: "/boltdata",
-      name: "boltdata",
-      component: () => import("../view/uberfile/boltdata.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
-
+  
+ 
     {
       path: "/main/widgets/crypto-icons",
       name: "crypto-icons",
@@ -857,14 +508,14 @@ const router = new VueRouter({
     },
 
     // COMPONENTS
-    {
-      path: "/components/components-page",
-      name: "components-page",
-      meta: {
-        title: "Components",
-      },
-      component: () => import("@/view/components/components-page")
-    },
+    // {
+    //   path: "/components/components-page",
+    //   name: "components-page",
+    //   meta: {
+    //     title: "Components",
+    //   },
+    //   component: () => import("@/view/components/components-page")
+    // },
     {
       path: "/components/general/remix-icons",
       name: "remix-icons",

@@ -36,8 +36,74 @@
                     <p
                       class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30"
                     >
-                      Total Driver
+                      Total Parents
                     </p> 
+                  </b-col>
+                </b-row>
+              </b-card>
+            </b-col>
+            <b-col cols="12" md="6" xl="3" class="mb-32">
+              <b-card>
+                <b-row>
+                  <b-col class="hp-flex-none w-auto">
+                    <b-avatar
+                      class="bg-danger-4 hp-bg-color-dark-danger"
+                      size="48px"
+                    >
+                      <!-- <i
+                        class="iconly-Light-Discount text-danger"
+                        style="font-size: 24px"
+                      ></i> -->
+                        <i
+                          class="iconly-Light-People text-primary hp-text-color-dark-primary-2"
+                          style="font-size: 24px"
+                        ></i>
+                    </b-avatar>
+                  </b-col>
+
+                  <b-col class="pl-0">
+                    <h3 class="mb-4 mt-8">
+                      {{ b2bDriverCount
+                      }}
+                      <span class="hp-badge-text ml-8 text-secondary"></span>
+                    </h3>
+
+                    <p
+                      class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30"
+                    >
+                      Total Students
+                    </p>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </b-col>
+            <b-col cols="12" md="6" xl="3" class="mb-32">
+              <b-card>
+                <b-row>
+                  <b-col class="hp-flex-none w-auto">
+                    <b-avatar
+                      class="bg-secondary-4 hp-bg-color-dark-secondary"
+                      size="48px"
+                    >
+                      <!-- <i
+                        class="iconly-Light-Ticket text-warning"
+                        style="font-size: 24px"
+                      ></i> -->
+                      <i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 352h8.2c32.3-39.1 81.1-64 135.8-64c5.4 0 10.7 .2 16 .7V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM320 352H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H360.2C335.1 449.6 320 410.5 320 368c0-5.4 .2-10.7 .7-16l-.7 0zm320 16a144 144 0 1 0 -288 0 144 144 0 1 0 288 0zM496 288c8.8 0 16 7.2 16 16v48h32c8.8 0 16 7.2 16 16s-7.2 16-16 16H496c-8.8 0-16-7.2-16-16V304c0-8.8 7.2-16 16-16z"/></svg></i>
+                    </b-avatar>
+                  </b-col>
+
+                  <b-col class="pl-0">
+                    <h3 class="mb-4 mt-8">
+                      {{ b2bCount
+                      }}<span class="hp-badge-text ml-8 text-secondary"></span>
+                    </h3>
+
+                    <p
+                      class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30"
+                    >
+                      Toatl Driver
+                    </p>
                   </b-col>
                 </b-row>
               </b-card>
@@ -71,73 +137,6 @@
                       class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30"
                     >
                       Total Vehicle
-                    </p>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-
-            <b-col cols="12" md="6" xl="3" class="mb-32">
-              <b-card>
-                <b-row>
-                  <b-col class="hp-flex-none w-auto">
-                    <b-avatar
-                      class="bg-secondary-4 hp-bg-color-dark-secondary"
-                      size="48px"
-                    >
-                      <!-- <i
-                        class="iconly-Light-Ticket text-warning"
-                        style="font-size: 24px"
-                      ></i> -->
-                      <i><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 352h8.2c32.3-39.1 81.1-64 135.8-64c5.4 0 10.7 .2 16 .7V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM320 352H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H360.2C335.1 449.6 320 410.5 320 368c0-5.4 .2-10.7 .7-16l-.7 0zm320 16a144 144 0 1 0 -288 0 144 144 0 1 0 288 0zM496 288c8.8 0 16 7.2 16 16v48h32c8.8 0 16 7.2 16 16s-7.2 16-16 16H496c-8.8 0-16-7.2-16-16V304c0-8.8 7.2-16 16-16z"/></svg></i>
-                    </b-avatar>
-                  </b-col>
-
-                  <b-col class="pl-0">
-                    <h3 class="mb-4 mt-8">
-                      {{ b2bCount
-                      }}<span class="hp-badge-text ml-8 text-secondary"></span>
-                    </h3>
-
-                    <p
-                      class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30"
-                    >
-                      B2B
-                    </p>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-
-            <b-col cols="12" md="6" xl="3" class="mb-32">
-              <b-card>
-                <b-row>
-                  <b-col class="hp-flex-none w-auto">
-                    <b-avatar
-                      class="bg-danger-4 hp-bg-color-dark-danger"
-                      size="48px"
-                    >
-                      <!-- <i
-                        class="iconly-Light-Discount text-danger"
-                        style="font-size: 24px"
-                      ></i> -->
-                        <i
-                          class="iconly-Light-People text-primary hp-text-color-dark-primary-2"
-                          style="font-size: 24px"
-                        ></i>
-                    </b-avatar>
-                  </b-col>
-
-                  <b-col class="pl-0">
-                    <h3 class="mb-4 mt-8">
-                      {{ b2bDriverCount
-                      }}<span class="hp-badge-text ml-8 text-secondary"></span>
-                    </h3>
-
-                    <p
-                      class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30"
-                    >
-                      B2B Driver
                     </p>
                   </b-col>
                 </b-row>
@@ -279,7 +278,7 @@
       </b-row>
       <b-row>
         <!-- new code  -->
-        <b-col cols="12" xl="8">
+        <!-- <b-col cols="12" xl="8">
           <b-row>
             <b-col cols="12" class="mb-32">
               <b-card class="hp-card-4 hp-chart-text-color">
@@ -301,14 +300,14 @@
               </b-card>
             </b-col>
           </b-row>
-        </b-col>
-        <b-col cols="12" xl="4">
+        </b-col> -->
+        <!-- <b-col cols="12" xl="4">
           <b-row>
             <b-col cols="12" class="mb-32">
               <new-earning-card />
             </b-col>
           </b-row>
-        </b-col>
+        </b-col> -->
       </b-row>
     </b-col>
   </b-row>

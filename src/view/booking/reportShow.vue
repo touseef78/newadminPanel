@@ -34,19 +34,20 @@
 
         <b-col cols="12" lg="6">
           <p class="hp-p1-body mb-16 text-right">
-            Invoice Number:00000{{ id }}
+            Invoice Number:00000
           </p>
           <p class="hp-p1-body mb-16 text-right">
             Date: {{ formatDate(created_at) }}
           </p>
         </b-col>
         <b-col cols="12">
-          <p>Company Name: {{ company_name_own }}</p>
-          <p>Driver Name: {{ driver_first_name }} {{ driver_last_name }}</p>
-          <p>Address: {{ address }}</p>
-          <p>Email: {{ email }}</p>
-          <p>Phone Number:{{ mobile }}</p>
+          <p>Company Name: </p>
+          <p>Driver Name: </p>
+          <p>Address: </p>
+          <p>Email: </p>
+          <p>Phone Number:</p>
         </b-col>
+
         <div class="divider"></div>
       </b-row>
       <b-row>
@@ -86,6 +87,13 @@
                 <b-td class="py-6">
                   <p>Total Amount</p>
                 </b-td>
+                <!-- <b-td class="py-6">
+                                        <p></p>
+                                    </b-td>
+                                     <b-td class="py-6">
+                                        <p></p>
+                                    </b-td> -->
+
                 <b-td class="py-6 pr-0 text-right">
                   <h5>SEK {{ salary_fix }}</h5>
                 </b-td>
@@ -97,6 +105,13 @@
                 <b-td class="py-6">
                   <p>Total Hourly Rate</p>
                 </b-td>
+                <!-- <b-td class="py-6">
+                                        <p></p>
+                                    </b-td>
+                                     <b-td class="py-6">
+                                        <p></p>
+                                    </b-td> -->
+
                 <b-td class="py-6 pr-0 text-right">
                   <h5>SEK {{ hourly_salaryComputed }}</h5>
                 </b-td>
@@ -112,7 +127,6 @@
                   <h5>SEK {{ commission_salaryComputed }}</h5>
                 </b-td>
               </b-tr>
-
               <b-tr>
                 <b-td class="py-6 pl-0">
                   <p>2</p>
@@ -120,6 +134,13 @@
                 <b-td class="py-6">
                   <p>Expense Deduct From Salary</p>
                 </b-td>
+                <!-- <b-td class="py-6">
+                                        <p></p>
+                                    </b-td>
+                                     <b-td class="py-6">
+                                        <p></p>
+                                    </b-td> -->
+
                 <b-td class="py-6 pr-0 text-right">
                   <h5>SEK {{ deduct_from_salary }}</h5>
                 </b-td>
@@ -131,8 +152,15 @@
                 <b-td class="py-6">
                   <p>Total Payable</p>
                 </b-td>
+                <!-- <b-td class="py-6">
+                                        <p></p>
+                                    </b-td>
+                                     <b-td class="py-6">
+                                        <p></p>
+                                    </b-td> -->
+
                 <b-td class="py-6 pr-0 text-right">
-                  <h5>SEK {{ total_payable }}</h5>
+                  <h5>SEk {{ total_payable }}</h5>
                 </b-td>
               </b-tr>
             </b-tbody>
@@ -152,9 +180,15 @@
               SEK {{ total_payable_exclusive_tex }}
             </h5>
           </b-row>
+
+          <!-- <b-row align-v="center" align-h="between">
+                        <p class="hp-badge-text hp-flex-none w-auto">Discount %10</p>
+                        <h5 class="mb-4 hp-flex-none w-auto">-$ 24.80</h5>
+                    </b-row> -->
+
           <b-row align-v="center" align-h="between">
             <p class="hp-badge-text hp-flex-none w-auto">Tax %6</p>
-            <h5 class="hp-flex-none w-auto">SEK{{ tax.toFixed(2) }}</h5>
+            <h5 class="hp-flex-none w-auto">SEK</h5>
           </b-row>
 
           <b-row>
@@ -173,18 +207,18 @@
       </b-row>
 
       <b-col cols="12" xl="3" class="pb-16 hp-print-checkout">
-  <b-row align-v="center" align-h="start">
-    <b-button
-      @click="printFacture"
-      type="submit"
-      variant="primary"
-      class="download-button"
-  :class="{ 'hidden-button': !printingEnabled }"  
-    >
-      Download Invoice
-    </b-button>
-  </b-row>
-</b-col>
+        <b-row align-v="center" align-h="start">
+          <b-button
+            @click="printFacture"
+            type="submit"
+            variant="primary"
+            class="download-button"
+            :class="{ 'hidden-button': !printingEnabled }"
+          >
+            Download Report
+          </b-button>
+        </b-row>
+      </b-col>
     </b-card>
   </b-col>
 </template>
@@ -195,7 +229,6 @@ import code from "../components/data-entry/form/code";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import moment from "moment";
-
 import {
   BRow,
   BCol,
@@ -227,7 +260,6 @@ export default {
     return {
       selectedType: "",
       show: true,
-      id: null,
       codeText: code.introduction,
       codeActive: false,
       codeActiveClass: false,
@@ -243,20 +275,6 @@ export default {
         vehicle_image: [], // Initialize the array here
       },
       users: [], // Instead of 'items', use 'users' array to store fetched data
-      driver_first_name: "",
-      driver_last_name: "",
-      receiveable: "",
-      payable: "",
-      uber_amount: "",
-      total_salary: "",
-      salary_fix: "",
-      total_payable_exclusive_tex: "",
-      deduct_from_salary: "",
-      remaining_reciveable: "",
-      mobile: "",
-      address: "",
-      total_inclusive_tex: "",
-      tax: "",
       created_at: new Date(), // Replace with your actual date data
       company_name_own: "",
       invoice: {
@@ -269,95 +287,40 @@ export default {
   created() {
     // Load the clients data when the component is created
     axios
-      .get("invoice")
+      .get("booking")
       .then((response) => {
         this.drivers = response.data.data;
       })
       .catch((error) => {
         console.log(error);
-      });
-
-    const userId = this.$route.params.id;
-    axios
-      .get(`invoice/${userId}`)
-      .then((response) => {
-        this.editedUser = response.data.data;
-        // Set the data properties with values from editedUser
-        this.id = this.editedUser.id;
-        this.total_payable = this.editedUser.total_payable;
-        this.total_receivable = this.editedUser.total_receivable;
-        this.uber_earning = this.editedUser.driver.uber_earning;
-        this.bolt_earning = this.editedUser.driver.bolt_earning;
-        this.salary_fix = this.editedUser.driver.salary_fix;
-        this.driver_first_name = this.editedUser.driver.name;
-        this.driver_last_name = this.editedUser.driver.last_name;
-        this.company_name_own = this.editedUser.driver.company_name_own;
-        this.mobile = this.editedUser.driver.mobile;
-        this.address = this.editedUser.driver.address;
-        this.email = this.editedUser.driver.email;
-        this.deduct_from_salary = this.editedUser.deduct_from_salary;
-        this.total_payable_exclusive_tex =
-          this.editedUser.total_payable_exclusive_tex;
-        this.remaining_reciveable = this.editedUser.remaining_reciveable;
-        this.created_at = this.editedUser.created_at;
-        this.total_inclusive_tex = this.editedUser.total_inclusive_tex;
-        this.commission_salaryComputed =
-          this.editedUser.commission_salaryComputed;
-        this.hourly_salaryComputed = this.editedUser.hourly_salaryComputed;
-        this.tax = parseFloat(this.editedUser.tax); // Parse 'tax' as a number
-        // ... and so on for other properties ...
-      })
-      .catch((error) => {
-        console.error("Error fetching user data:", error);
-      });
+      });   
   },
 
   methods: {
-    // printFacture() {
-    //   var pdf = new jsPDF();
-    //   var element = document.getElementById("invoice");
-    //   var width = element.style.width;
-    //   var height = element.style.height;
-    //   html2canvas(element).then((canvas) => {
-    //     var image = canvas.toDataURL("image/png");
-    //     pdf.addImage(image, "JPEG", 15, 30, width, height);
-    //     pdf.save(
-    //       "invoice" +
-    //         moment(this.invoice.date_debut).format("LL") +
-    //         "_" +
-    //         moment(this.invoice.date_fin).format("LL") +
-    //         ".pdf"
-    //     );
-    //   });
-    //   const downloadButton = document.querySelector('.download-button');
-    //     if (downloadButton) {
-    //         downloadButton.classList.add('downloaded');
-    //     }
-    // },
     printFacture() {
-    const downloadButton = document.querySelector('.download-button');
-    if (downloadButton) {
-      downloadButton.classList.add('hidden-button');
-      // Generate the PDF
-      var pdf = new jsPDF();
-      var element = document.getElementById("invoice");
-      var width = element.style.width;
-      var height = element.style.height;
-      html2canvas(element).then((canvas) => {
-        var image = canvas.toDataURL("image/png");
-        pdf.addImage(image, "JPEG", 15, 30, width, height);
-        pdf.save(
-          "invoice" +
-          moment(this.invoice.date_debut).format("LL") +
-          "_" +
-          moment(this.invoice.date_fin).format("LL") +
-          ".pdf"
-        );
-        
-        downloadButton.classList.remove('hidden-button');
-      });
-    }
-  },
+      const downloadButton = document.querySelector(".download-button");
+      if (downloadButton) {
+        downloadButton.classList.add("hidden-button");
+        // Generate the PDF
+        var pdf = new jsPDF();
+        var element = document.getElementById("invoice");
+        var width = element.style.width;
+        var height = element.style.height;
+        html2canvas(element).then((canvas) => {
+          var image = canvas.toDataURL("image/png");
+          pdf.addImage(image, "JPEG", 15, 30, width, height);
+          pdf.save(
+            "invoice" +
+              moment(this.invoice.date_debut).format("LL") +
+              "_" +
+              moment(this.invoice.date_fin).format("LL") +
+              ".pdf"
+          );
+          downloadButton.classList.remove("hidden-button");
+        });
+      }
+    },
+
     formatDate(dateString) {
       const date = new Date(dateString);
       return date.toLocaleDateString();
