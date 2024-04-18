@@ -344,7 +344,7 @@ export default {
     updateStatus(user) {
       user.status = user.status === "Approved" ? "Pending" : "Approved";
       axios
-        .post(`expenseUpdate/${user.id}`, user)
+        .post(`registrationUpdate/${user.id}`, user)
         .then((response) => {
           console.log("Status updated successfully:", response.data);
         })

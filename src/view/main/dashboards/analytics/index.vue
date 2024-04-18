@@ -156,7 +156,7 @@
                     </h3>
 
                     <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
-                      B2B Vehicle
+                      Total Constructor
                     </p>
                   </b-col>
                 </b-row>
@@ -248,12 +248,12 @@
       </b-row>
       <b-row>
         <!-- new code  -->
-        <!-- <b-col cols="12" xl="8">
+        <b-col cols="12" xl="8">
           <b-row>
             <b-col cols="12" class="mb-32">
               <b-card class="hp-card-4 hp-chart-text-color">
                 <div class="divider">
-                  <h5>Top Five Pending Expense List</h5>
+                  <h5>Top Five Pending Request List</h5>
                 </div>
                 <h4>Revenue</h4>
 
@@ -270,14 +270,14 @@
               </b-card>
             </b-col>
           </b-row>
-        </b-col> -->
-        <!-- <b-col cols="12" xl="4">
+        </b-col>
+        <b-col cols="12" xl="4">
           <b-row>
             <b-col cols="12" class="mb-32">
               <new-earning-card />
             </b-col>
           </b-row>
-        </b-col> -->
+        </b-col>
       </b-row>
     </b-col>
   </b-row>
@@ -312,12 +312,12 @@ export default {
       totalExpense: 0,
       series: [
         {
-          name: "Earning",
-          data: [], // Initialize as an empty array
+          name: "Pending Request",
+          data: [14,2,3,10], // Initialize as an empty array
         },
         {
-          name: "Expense",
-          data: [],
+          name: "Approved Request",
+          data: [14,2,3,4], // Initialize as an empty array
         },
       ],
       options: {
@@ -408,11 +408,11 @@ export default {
               fontSize: "14px",
             },
             formatter: (value) => {
-              return value / 1000 + "K";
+              return value / 1 ;
             },
           },
           min: 0,
-          max: 100000,
+          max: 100,
           tickAmount: 4,
         },
       },
