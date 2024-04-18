@@ -11,18 +11,27 @@
       <b-col cols="12">
         <b-row align-v="center" align-h="center" class="h-100">
           <b-col cols="12" md="10" class="hp-bg-item text-center mb-32 mb-md-0">
-            <!-- <img class="m-auto" :src="this.$store.state.themeConfig.theme == 'dark'
+            <img class="m-auto " :src="this.$store.state.themeConfig.theme == 'dark'
               ? require('@/assets/img/pages/authentication/authentication-bg-dark.svg')
-              : require('@/assets/img/pages/authentication/authentication-bg.svg')
-              " alt="Background Image" /> -->
+              : require('@/assets/img/pages/authentication/truck.png')
+              " alt="Background Image" />
 
             <!-- <img class="m-auto" :src="this.$store.state.themeConfig.theme == 'dark'
               ? require('@/assets/img/pages/authentication/logo.jpg')
               : require('@/assets/img/pages/authentication/logo.jpg')
               " alt="Background Image" /> -->
-              <h2 class="text-primary-1 hp-text-color-dark-0 mx-16 mx-lg-0 mb-16">
-               BigWays            
-             </h2>
+
+            <!-- <h1 class="text-primary-1 hp-text-color-dark-0 mx-16 mx-lg-0 mb-16">
+              BigWays Management
+              <br> System
+            </h1> -->
+            <h1 class="text-primary-1 hp-text-color-dark-0 mx-16 mx-lg-0 mb-16">
+              <strong>BigWays Management</strong>
+              <br>
+              <strong> System</strong>
+            </h1>
+
+
           </b-col>
 
           <b-col cols="12" md="11" lg="9" class="hp-text-item text-center">

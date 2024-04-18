@@ -12,7 +12,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // Highlightjs
 import VueHighlightJS from 'vue-highlightjs';
-import 'highlight.js/styles/mono-blue.css';
+// import 'highlight.js/styles/mono-blue.css';
 
 // Apexcharts
 import VueApexCharts from 'vue-apexcharts'
