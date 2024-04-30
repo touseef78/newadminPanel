@@ -173,13 +173,118 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
-
-
-
-
-   // uberfile
-
-
+    {
+      path: "/registration/edit/:id",
+      name: "RegistrationEdit",
+      component: () => import("../view/registration/RegistrationEdit.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+     {
+      path: "/registration/view/:id",
+      name: "RegistrationView",
+      component: () => import("../view/registration/RegistrationView.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    
+    // parent code here 
+     {
+      path: "/parent",
+      name: "ParentList",
+      component: () => import("../view/parent/ParentList.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+// child code here 
+  {
+      path: "/ChildList/:id",
+      name: "ChildList",
+      component: () => import("../view/child/ChildList.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    // Divers code here 
+    // Driver  List code here 
+    {
+      path: "/driver/list",
+      name: "DriverList",
+      component: () => import("../view/Driver/DriverList.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+    // Add drivers code here 
+   {
+      path: "/drivers/add",
+      name: "DriverAdd",
+      component: () => import("../view/Driver/DriverAdd.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+    // Driver Detail code here 
+    {
+      path: "/drivers/detail",
+      name: "DriverDetail",
+      component: () => import("../view/Driver/DriverDetail.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+    // Driver  View code here 
+     {
+      path: "/drivers/view/:id",
+      name: "DriverView",
+      component: () => import("../view/Driver/DriverView.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+// Driver edit code here 
+ {
+      path: "/drivers/edit/:id",
+      name: "DriverEdit",
+      component: () => import("../view/Driver/DriverEdit.vue"),
+    
+    },
+    // Caretaker code start here 
+    {
+      path: "/caretaker/add",
+      name: "CareTakerAdd",
+      component: () => import("../view/Caretaker/AddCareTaker.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+       {
+      path: "/caretaker/list",
+      name: "CareTakeList",
+      component: () => import("../view/Caretaker/ListCareTaker.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+        {
+      path: "/caretaker/view/:id",
+      name: "ViewCareTaker",
+      component: () => import("../view/Caretaker/ViewCareTaker.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+        {
+      path: "/caretaker/edit/:id",
+      name: "EditCareTaker",
+      component: () => import("../view/Caretaker/EditCareTaker.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
 
   
  
