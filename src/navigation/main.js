@@ -39,26 +39,125 @@ export default {
         },
       ],
     },
-
+    // parent code here 
+    {
+      id: "Parents",
+      title: "Parents",
+      icon: "Curved-EditSquare",
       
+      children: [
+        {
+          id: "Parents",
+          title: "View Parent",
+          navLink: "/parent",
+        },
+      ],
+      
+    },
+    // Divers code here 
+     {
+      id: "Divers",
+      title: "Divers",
+      icon: "Curved-AddUser",
+      
+      children: [
+       
+          {
+          id: "drivers",
+          title: "Add Drivers",
+          navLink: "/drivers/add",
+        },
+     
+        {
+          id: "drivers",
+          title: "List Drivers",
+          navLink: "/driver/list",
+        },
+      
+      ],
+      
+    },
+    // Care Taker code here 
+     {
+      id: "CareTaker",
+      title: "CareTaker",
+      icon: "Curved-EditSquare",
+      
+      children: [
+        {
+          id: "Care Taker",
+          title: "AddCareTaker",
+          navLink: "/caretaker/add",
+        },
+          {
+          id: "Care Taker",
+          title: "ListCareTaker",
+          navLink: "/caretaker/list",
+        },
+      ],
+    },
+    // ...... 
+        {
+      id: "Driver  Attendance",
+      title: "DriverAttendance",
+      icon: "Curved-EditSquare",
+      
+      children: [
+        // {
+        //   id: "Care Taker",
+        //   title: "AddCareTaker",
+        //   navLink: "/caretaker/add",
+        // },
+        //   {
+        //   id: "Care Taker",
+        //   title: "ListCareTaker",
+        //   navLink: "/caretaker/list",
+        // },
+      ],
+    },
+    // ...... 
+        {
+      id: "Student Attendance",
+      title: "StudentAttendance",
+      icon: "Curved-EditSquare",
+      
+      children: [
+        // {
+        //   id: "Care Taker",
+        //   title: "AddCareTaker",
+        //   navLink: "/caretaker/add",
+        // },
+        //   {
+        //   id: "Care Taker",
+        //   title: "ListCareTaker",
+        //   navLink: "/caretaker/list",
+        // },
+      ],
+    },
+    // ....
+        {
+      id: "Car Tracker",
+      title: "CarTracker",
+      icon: "Curved-EditSquare",
+      
+      children: [
+        // {
+        //   id: "Care Taker",
+        //   title: "AddCareTaker",
+        //   navLink: "/caretaker/add",
+        // },
+        //   {
+        //   id: "Care Taker",
+        //   title: "ListCareTaker",
+        //   navLink: "/caretaker/list",
+        // },
+      ],
+    },
+    
+
    
 
- // uber and bolt data
-      // {
-      //   id: "uber",
-      //   title: "Import Data",
-      //   navLink: "/uberdata",
-      //   icon: "Curved-Wallet",
-      // },
-
-
-      // {
-      //   id: "bolt",
-      //   title: "Bolt Data",
-      //   navLink: "/boltdata",
-      //   icon: "Curved-Wallet",
-
-      // },
+ 
 
   ]
 }
