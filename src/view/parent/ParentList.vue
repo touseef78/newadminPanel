@@ -79,17 +79,6 @@
                                 <b-button variant="secondary" @click="showDeleteConfirmation = false">Cancel</b-button>
                             </template>
                         </b-modal>
-                        <!-- <b-button @click="updateStatus(row.item)"
-                            :variant="row.item.status === 'Approved' ? 'warning' : 'primary'" class="mb-8 mr-8">
-                            {{ row.item.status === "Approved" ? "Pending" : "Approved" }}
-                        </b-button> -->
-
-                        <!-- <b-button
-              @click="toggleCardModal(row.item)"
-              variant="link"
-              class="p-0"
-            >
-            </b-button> -->
                     </template>
 
 
@@ -216,7 +205,7 @@ export default {
     methods: {
         fetchData() {
             this.loading = true; // Set loading to true before fetching data
-            let apiUrl = "registration";
+            let apiUrl = "approved";
             axios
                 .get(apiUrl) // Replace 'your_api_endpoint_url_here' with your actual API URL
                 .then((response) => {
