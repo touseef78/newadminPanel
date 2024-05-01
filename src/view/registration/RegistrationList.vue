@@ -88,7 +88,7 @@
               </template>
             </b-modal>
             <!-- end delete -->
-            
+
             <!-- Edit Code here  -->
             <b-button @click="editUser(row.item.id)" variant="link" class="p-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
@@ -99,7 +99,7 @@
               </svg>
             </b-button>
 
-           
+
             <!-- <b-button @click="updateStatus(row.item)" :variant="row.item.status === 'Approved' ? 'warning' : 'primary'"
               class="mb-8 mr-8">
               {{ row.item.status === "Approved" ? "Pending" : "Approved" }}
@@ -277,9 +277,9 @@ export default {
     },
 
     ///  delete
-  showDeleteConfirmation(itemId) {
-    this.itemIdToDelete = itemId;
-    this.showDeleteConfirmations = true;
+    showDeleteConfirmation(itemId) {
+      this.itemIdToDelete = itemId;
+      this.showDeleteConfirmations = true;
     },
     deleteItem(itemId) {
       this.itemIdToDelete = itemId; // Set the item ID to be deleted
@@ -294,7 +294,7 @@ export default {
           console.error("Error deleting item:", error);
         });
     },
-/// end delete
+    /// end delete
     downloadFile(fileUrl) {
       // Construct a download link for the file
       const link = document.createElement("a");

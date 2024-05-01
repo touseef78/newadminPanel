@@ -7,7 +7,7 @@
         <div class="col-12 mt-16">
             <div>
                 <b-row class="align-items-center">
-                    <b-col lg="6" class="my-1">
+                    <b-col lg="3" class="my-1">
                         <b-form-group label="" label-for="filter-input" label-cols-sm="1" label-align-sm="right"
                             label-size="sm" class="mb-0">
                             <b-input-group size="sm">
@@ -19,7 +19,23 @@
                             </b-input-group>
                         </b-form-group>
                     </b-col>
-                    <b-col lg="6" class="my-1 d-flex justify-content-end">
+                    <!-- Start Date  -->
+                    <b-col lg="3" class="my-1">
+                        <b-form-group label="Start Date" label-for="start-date" label-cols-sm="5" label-align-sm="right"
+                            label-size="sm" class="mb-0">
+                            <b-form-input id="start-date" v-model="start_date" type="date"
+                                placeholder="Select start date"></b-form-input>
+                        </b-form-group>
+                    </b-col>
+                    <!-- End Date  -->
+                    <b-col lg="3" class="my-1">
+                        <b-form-group label="End Date" label-for="end-date" label-cols-sm="4" label-align-sm="right"
+                            label-size="sm" class="mb-0">
+                            <b-form-input id="end-date" v-model="end_date" type="date"
+                                placeholder="Select end date"></b-form-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="3" class="my-1 d-flex justify-content-end">
                         <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
               >Import</b-button
             > -->
@@ -140,9 +156,11 @@ export default {
             editMode: false,
             users: [], // Instead of 'items', use 'users' array to store fetched data
             fields: [
-                { key: "care_taker", sortable: true },
+                { key: "id", sortable: true },
                 { key: "name", sortable: true },
                 { key: "attendance", sortable: true },
+                { key: "time", sortable: true },
+                { key: "date", sortable: true },
                 // { key: "actions", label: "Actions" },
             ],
 
@@ -154,6 +172,9 @@ export default {
             startDateFilter: "",
             endDateFilter: "",
             your_vehicle_id: null,
+            created_at: new Date(), // Replace wi
+            start_date: null,
+            end_date: null,
         };
     },
     components: {
@@ -193,7 +214,28 @@ export default {
         fetchData(userId) {
             this.loading = true; // Set loading to true before fetching data
             // let apiUrl = "studentGet";
+            // Create an object to hold the query parameters
+            const queryParams = {
+                start_date: this.start_date,
+                end_date: this.end_date,
+            };
             axios
+                // Filter date code start 
+                .get(apiUrl, { params: queryParams })
+                .then((response) => {
+                    this.users = response.data.data.filter((item) => {
+                        const createdDate = new Date(item.created_at);
+                        return (
+                            (!this.start_date || createdDate >= new Date(this.start_date)) &&
+                            (!this.end_date || createdDate <= new Date(this.end_date))
+                        );
+                    });
+                    this.users.forEach((item, index) => {
+                        item.srNo = index + 1;
+                    });
+                    this.totalRows = this.users.length;
+                })
+                // Filter date code end 
                 .get(`careTakerAttenShow/${userId}`) // Replace 'your_api_endpoint_url_here' with your actual API URL
                 .then((response) => {
                     this.users = response.data.data;
@@ -206,6 +248,7 @@ export default {
                 .finally(() => {
                     this.loading = false; // Set loading to false after fetching data, whether success or error
                 });
+
         },
 
 

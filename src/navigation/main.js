@@ -97,6 +97,7 @@ export default {
       ],
     },
     // ............. 
+    // Care Taker Attendance Code here 
        {
       id: "CareTakerAttendance",
       title: "CareTakerAttendance",
@@ -124,9 +125,9 @@ export default {
         },
       ],
     },
-    // ...... 
+    // Student Attendance Code here 
         {
-      id: "Student Attendance",
+      id: "StudentAttendance",
       title: "StudentAttendance",
       icon: "Curved-EditSquare",
       
@@ -136,11 +137,11 @@ export default {
         //   title: "AddCareTaker",
         //   navLink: "/caretaker/add",
         // },
-        //   {
-        //   id: "Care Taker",
-        //   title: "ListCareTaker",
-        //   navLink: "/caretaker/list",
-        // },
+          {
+          id: "StudentAttendance",
+          title: "StudentAttendance",
+          navLink: "/studentattendance/list",
+        },
       ],
     },
     // ....

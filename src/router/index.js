@@ -320,7 +320,15 @@ const router = new VueRouter({
       //   requiresAuth: true, // This route requires authentication
       // },
     },
-
+// Student Attendance code here 
+{
+      path: "/studentattendance/list",
+      name: "StudentAttendanceList",
+      component: () => import("../view/StudentAttendance/StudentAttendanceList.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
   
  
     {

@@ -7,7 +7,7 @@
         <div class="col-12 mt-16">
             <div>
                 <b-row class="align-items-center">
-                    <b-col lg="6" class="my-1">
+                    <b-col lg="3" class="my-1">
                         <b-form-group label="" label-for="filter-input" label-cols-sm="1" label-align-sm="right"
                             label-size="sm" class="mb-0">
                             <b-input-group size="sm">
@@ -19,7 +19,23 @@
                             </b-input-group>
                         </b-form-group>
                     </b-col>
-                    <b-col lg="6" class="my-1 d-flex justify-content-end">
+                    <!-- Start Date  -->
+                    <b-col lg="3" class="my-1">
+                        <b-form-group label="Start Date" label-for="start-date" label-cols-sm="5" label-align-sm="right"
+                            label-size="sm" class="mb-0">
+                            <b-form-input id="start-date" v-model="start_date" type="date"
+                                placeholder="Select start date"></b-form-input>
+                        </b-form-group>
+                    </b-col>
+                    <!-- End Date  -->
+                    <b-col lg="3" class="my-1">
+                        <b-form-group label="End Date" label-for="end-date" label-cols-sm="4" label-align-sm="right"
+                            label-size="sm" class="mb-0">
+                            <b-form-input id="end-date" v-model="end_date" type="date"
+                                placeholder="Select end date"></b-form-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="3" class="my-1 d-flex justify-content-end">
                         <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
               >Import</b-button
             > -->
@@ -143,6 +159,8 @@ export default {
                 { key: "driver_id", sortable: true },
                 { key: "name", sortable: true },
                 { key: "attendance", sortable: true },
+                { key: "date", sortable: true },
+                { key: "time", sortable: true },
                 // { key: "actions", label: "Actions" },
             ],
 
