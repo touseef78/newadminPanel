@@ -119,6 +119,70 @@
                                 </b-form-group>
                             </div>
                         </div>
+                        <!-- <div style="
+                background-color: rgb(97, 116, 152);
+                height: 32px;
+                border-radius: 4px;
+              ">
+                            <h4 style="
+                  color: rgb(223, 227, 238);
+                  margin-left: 5px;
+                  font-weight: bold;
+                ">
+                                Vehicle Information
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Vehicle Name:" label-for="vehicle_name">
+                                    <b-form-input id="vehicle_name" placeholder="Enter vehicle name"
+                                        v-model="vehicle_name" disabled>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
+
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Vehicle Type:" label-for="vehicle_type">
+                                    <b-form-input id="vehicle_type" placeholder="Enter vehicle type"
+                                        v-model="vehicle_type" disabled>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Vehicle Number:" label-for="vehicle_number">
+                                    <b-form-input id="vehicle_number" placeholder="Enter vehicle number"
+                                        v-model="vehicle_number" disabled>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Distance: (Km)" label-for="per_km">
+                                    <b-form-input id="per_km" type="number" placeholder="Enter Distance"
+                                        v-model="per_km" disabled></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Seating Capacity: "
+                                    label-for="seating_capacity">
+                                    <b-form-input id="seating_capacity" type="number"
+                                        placeholder="Enter sitting capacity" v-model="seating_capacity"
+                                        disabled></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Pickup Location: " label-for="pickup_location">
+                                    <b-form-input id="pickup_location" type="text" placeholder="Enter pickup location"
+                                        v-model="pickup_location" disabled></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Drop Location: " label-for="drop_location">
+                                    <b-form-input id="drop_location" type="text" placeholder="Enter dropoff location"
+                                        v-model="drop_location" disabled></b-form-input>
+                                </b-form-group>
+                            </div>
+
+                        </div> -->
 
                     </b-form>
                 </div>
@@ -174,6 +238,10 @@ export default {
             gender: "",
             postal_code: '',
             city: '',
+            per_km: "",
+            seating_capacity: "",
+            pickup_location: "",
+            drop_location: "",
             address: "",
             date_of_birth: "",
             salary: "",
@@ -188,12 +256,8 @@ export default {
             joining_date: '',
             vehicle_name: "",
             vehicle_company: "",
-            description: "",
-            car_make: "",
-            car_model: "",
-            car_color: "",
-            car_number: "",
-            total_number_hour: "",
+            vehicle_number: '',
+            vehicle_type: "",
             type: '',
 
             // vehicle_image: null,
@@ -248,7 +312,10 @@ export default {
                 this.taxi_driving_liscence = this.editedUser.taxi_driving_liscence;
                 this.vehicle_name = this.editedUser.vehicle_name;
                 this.vehicle_image = this.editedUser.vehicle_image;
-                this.type = this.editedUser.type;
+                this.per_km = this.editedUser.vehicle.per_km;
+                this.seating_capacity = this.editedUser.vehicle.seating_capacity;
+                this.pickup_location = this.editedUser.vehicle.pickup_location;
+                this.drop_location = this.editedUser.vehicle.drop_location;
 
                 // ... and so on for other properties ...
             })

@@ -87,7 +87,7 @@
                     </h3>
 
                     <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
-                      Toatl Driver
+                      Total Driver
                     </p>
                   </b-col>
                 </b-row>
@@ -156,7 +156,7 @@
                     </h3>
 
                     <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
-                      Total Constructor
+                      Total Care Taker
                     </p>
                   </b-col>
                 </b-row>
@@ -182,7 +182,7 @@
                     </h3>
 
                     <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
-                      Total Earning
+                      Total Car Tracker
                     </p>
                   </b-col>
                 </b-row>
@@ -258,14 +258,8 @@
                 <h4>Revenue</h4>
 
                 <div id="revenue-column-card" class="overflow-hidden">
-                  <apexchart
-                  v-if="series[0,1].data.length > 0"
-                    type="bar"
-                    height="303"
-                    legend="legend"
-                    :options="options"
-                    :series="series"
-                  ></apexchart>
+                  <apexchart v-if="series[0, 1].data.length > 0" type="bar" height="303" legend="legend"
+                    :options="options" :series="series"></apexchart>
                 </div>
               </b-card>
             </b-col>
@@ -313,11 +307,11 @@ export default {
       series: [
         {
           name: "Pending Request",
-          data: [14,2,3,10], // Initialize as an empty array
+          data: [14, 2, 3, 10], // Initialize as an empty array
         },
         {
           name: "Approved Request",
-          data: [14,2,3,4], // Initialize as an empty array
+          data: [14, 2, 3, 4], // Initialize as an empty array
         },
       ],
       options: {
@@ -408,7 +402,7 @@ export default {
               fontSize: "14px",
             },
             formatter: (value) => {
-              return value / 1 ;
+              return value / 1;
             },
           },
           min: 0,

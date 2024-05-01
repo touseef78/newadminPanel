@@ -96,28 +96,38 @@ export default {
         },
       ],
     },
-    // ...... 
-        {
-      id: "Driver  Attendance",
-      title: "DriverAttendance",
+    // ............. 
+    // Care Taker Attendance Code here 
+       {
+      id: "CareTakerAttendance",
+      title: "CareTakerAttendance",
       icon: "Curved-EditSquare",
       
       children: [
-        // {
-        //   id: "Care Taker",
-        //   title: "AddCareTaker",
-        //   navLink: "/caretaker/add",
-        // },
-        //   {
-        //   id: "Care Taker",
-        //   title: "ListCareTaker",
-        //   navLink: "/caretaker/list",
-        // },
+          {
+          id: "CareTakerAttendance",
+          title: "ListCareTakerAttendance",
+          navLink: "/caretakerattendance/list",
+        },
       ],
     },
     // ...... 
         {
-      id: "Student Attendance",
+      id: "DriverAttendance",
+      title: "DriverAttendance",
+      icon: "Curved-EditSquare",
+      
+      children: [
+          {
+          id: "DriverAttendance",
+          title: "ListDriverAttendance",
+          navLink: "/driverattendance/list",
+        },
+      ],
+    },
+    // Student Attendance Code here 
+        {
+      id: "StudentAttendance",
       title: "StudentAttendance",
       icon: "Curved-EditSquare",
       
@@ -127,11 +137,11 @@ export default {
         //   title: "AddCareTaker",
         //   navLink: "/caretaker/add",
         // },
-        //   {
-        //   id: "Care Taker",
-        //   title: "ListCareTaker",
-        //   navLink: "/caretaker/list",
-        // },
+          {
+          id: "StudentAttendance",
+          title: "StudentAttendance",
+          navLink: "/studentattendance/list",
+        },
       ],
     },
     // ....

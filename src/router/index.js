@@ -285,7 +285,50 @@ const router = new VueRouter({
       //   requiresAuth: true, // This route requires authentication
       // },
     },
-
+    // Driver  Attendance code here 
+   
+      {
+      path: "/driverattendance/list",
+      name: "ListDriverAttendance",
+      component: () => import("../view/DriverAttendance/ListDriverAttendance.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+       {
+      path: "/driverattendance/:id",
+      name: "ViewDriverAttendance",
+      component: () => import("../view/DriverAttendance/ViewDriverAttendance.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+    // Care Taker Attendance  code here 
+    {
+      path: "/caretakerattendance/list",
+      name: "AttendanceCareTaker",
+      component: () => import("../view/AttendanceCareTaker/ListAttendanceCareTaker.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+     {
+      path: "/caretakerattendance/:id",
+      name: "ViewAttendanceCareTaker",
+      component: () => import("../view/AttendanceCareTaker/ViewAttendanceCareTaker.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+// Student Attendance code here 
+{
+      path: "/studentattendance/list",
+      name: "StudentAttendanceList",
+      component: () => import("../view/StudentAttendance/StudentAttendanceList.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
   
  
     {
