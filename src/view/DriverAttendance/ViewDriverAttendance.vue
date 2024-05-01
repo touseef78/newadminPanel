@@ -35,26 +35,12 @@
                     :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy"
                     :sort-desc.sync="sortDesc" :sort-direction="sortDirection" show-empty @filtered="onFiltered" y
                     responsive>
-                    <!-- Action Button Code -->
-                    <!-- <template #cell(actions)="row">
-            <b-button @click="downloadFile(row.item.file)" variant="primary"
-              >Download</b-button
-            >
-          </template> -->
 
-                    <template #cell(vehicle_name)="row">
-                        {{ row.item.vehicle ? row.item.vehicle.name : 'N/A' }}
-                    </template>
-                    <template #cell(vehicle_type)="row">
-                        {{ row.item.vehicle ? row.item.vehicle.vehicle_type : 'N/A' }}
-                    </template>
-                    <!-- <template #cell(status)="row">
-                        <b-button @click="handleButtonClick(row.item)"
-                            :variant="row.item.status === 'Pending' ? 'warning' : 'primary'" class="mb-8 mr-8">
 
-                            {{ row.item.status }}
-                        </b-button>
-                    </template> -->
+                    <template #cell(name)="row">
+                        {{ `${row.item.driver.name}` }}
+                    </template>
+
                     <template #cell(actions)="row">
                         <b-button @click="showDeleteConfirmation = true" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
@@ -65,12 +51,7 @@
                                     d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
                             </svg>
                         </b-button>
-                        <!-- .......View Childern  -->
 
-                        <b-button @click="detailsChilds(row.item.id)" variant="primary" class="mb-8 mr-8">Children
-                            Detail
-                        </b-button>
-                        <!-- ...... -->
 
                         <b-modal v-model="showDeleteConfirmation" title="Delete Confirmation">
                             <p>Are you sure you want to delete this item?</p>
@@ -159,19 +140,10 @@ export default {
             editMode: false,
             users: [], // Instead of 'items', use 'users' array to store fetched data
             fields: [
-                { key: "id", sortable: true },
+                { key: "driver_id", sortable: true },
                 { key: "name", sortable: true },
-                { key: "email", sortable: true },
-                { key: "phone_number", sortable: true },
-                { key: "city", sortable: true },
-                { key: "pickup_location", sortable: true },
-                { key: "drop_location", sortable: true },
-                { key: "amount", sortable: true },
-                // { key: "total_students", sortable: true },
-                // { key: "vehicle_type", sortable: true },
-                // { key: "vehicle_name", sortable: true },
-                // { key: "status", sortable: true },
-                { key: "actions", label: "Actions" },
+                { key: "attendance", sortable: true },
+                // { key: "actions", label: "Actions" },
             ],
 
             filter: "", // Define filter property for search functionality
@@ -211,14 +183,18 @@ export default {
         },
     },
     mounted() {
-        this.fetchData();
+        this.fetchData(userId);
+    },
+    created() {
+        const userId = this.$route.params.id;
+        this.fetchData(userId);
     },
     methods: {
-        fetchData() {
+        fetchData(userId) {
             this.loading = true; // Set loading to true before fetching data
-            let apiUrl = "registration";
+            // let apiUrl = "studentGet";
             axios
-                .get(apiUrl) // Replace 'your_api_endpoint_url_here' with your actual API URL
+                .get(`DriverAttendance/${userId}`) // Replace 'your_api_endpoint_url_here' with your actual API URL
                 .then((response) => {
                     this.users = response.data.data;
 
@@ -256,7 +232,7 @@ export default {
         deleteItem(itemId) {
             this.itemIdToDelete = itemId; // Set the item ID to be deleted
             axios
-                .delete(`registration/${itemId}`)
+                .delete(`destroyStudent/${itemId}`)
                 .then((response) => {
                     this.showDeleteConfirmation = false;
                     this.fetchData(); // Refresh the data after deletion
@@ -280,25 +256,11 @@ export default {
             this.updateStatus(item);
             this.toggleCardModal(item);
         },
-        updateStatus(user) {
-            user.status = user.status === "Approved" ? "Pending" : "Approved";
-            axios
-                .post(`registrationUpdate/${user.id}`, user)
-                .then((response) => {
-                    console.log("Status updated successfully:", response.data);
-                })
-                .catch((error) => {
-                    console.error("Error updating status:", error);
-                });
-        },
+
         toggleCardModal(item) {
             this.selectedCardOption = ""; // Reset the selected card option
             this.rowToUpdate = item; // Set the row to be updated
             this.isCardModalVisible = true; // Show the modal
-        },
-        //  child  code here 
-        detailsChilds(userId) {
-            this.$router.push({ name: "ChildList", params: { id: userId } });
         },
 
     },

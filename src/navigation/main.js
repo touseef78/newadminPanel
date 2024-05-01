@@ -96,23 +96,32 @@ export default {
         },
       ],
     },
+    // ............. 
+       {
+      id: "CareTakerAttendance",
+      title: "CareTakerAttendance",
+      icon: "Curved-EditSquare",
+      
+      children: [
+          {
+          id: "CareTakerAttendance",
+          title: "ListCareTakerAttendance",
+          navLink: "/caretakerattendance/list",
+        },
+      ],
+    },
     // ...... 
         {
-      id: "Driver  Attendance",
+      id: "DriverAttendance",
       title: "DriverAttendance",
       icon: "Curved-EditSquare",
       
       children: [
-        // {
-        //   id: "Care Taker",
-        //   title: "AddCareTaker",
-        //   navLink: "/caretaker/add",
-        // },
-        //   {
-        //   id: "Care Taker",
-        //   title: "ListCareTaker",
-        //   navLink: "/caretaker/list",
-        // },
+          {
+          id: "DriverAttendance",
+          title: "ListDriverAttendance",
+          navLink: "/driverattendance/list",
+        },
       ],
     },
     // ...... 
