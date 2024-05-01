@@ -90,42 +90,35 @@
                             </h4>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 col-12">
+                            <!-- <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Car Type:" label-for="vehicle_type">
                                     <b-form-input id="vehicle_type" type="text" placeholder="Enter car type"
                                         v-model="vehicle_type" required></b-form-input>
                                 </b-form-group>
-                            </div>
-                            <!-- <div class="col-md-4 col-12">
+                            </div> -->
+                            <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Car Type:" label-for="vehicle_type">
-                                    <b-form-select id="vehicle_type" v-model="vehicle_type" @change="updateCarType"
+                                    <b-form-select id="vehicle_type" v-model="vehicle_type" @change="fetchVehicles"
                                         required>
                                         <option value="AC">AC</option>
-                                        <option value="Non-AC">Non-AC</option>
+                                        <option value="Non AC">Non-AC</option>
+                                    </b-form-select>
+                                    <!-- <div v-if="loading" class="spinner-border loader" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div> -->
+                                </b-form-group>
+                            </div>
+
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
+                                    <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id">
+                                        <option value="">Select Car</option>
+                                        <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
+                                            {{ vehicle.name }}
+                                        </option>
                                     </b-form-select>
                                 </b-form-group>
-                            </div> -->
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Car Name:" label-for="name">
-                                    <b-form-input id="name" type="text" placeholder="Enter car type" v-model="name"
-                                        required></b-form-input>
-                                </b-form-group>
                             </div>
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Amount:" label-for="amount">
-                                    <b-form-input id="amount" type="number" placeholder="Enter amount" v-model="amount"
-                                        required></b-form-input>
-                                </b-form-group>
-                            </div>
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Total Students:" label-for="total_students">
-                                    <b-form-input id="total_students" type="number" placeholder="Enter total student"
-                                        v-model="total_students" required>
-                                    </b-form-input>
-                                </b-form-group>
-                            </div>
-
                         </div>
                         <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
                             <span v-if="!isLoading">Submit</span>
@@ -195,7 +188,7 @@ export default {
             // bank_upload_document: null,
             // profile_picture: null,
             successMessage: "",
-            // vehicle_id: "",
+            vehicle_id: "",
             // vehicles: [],
             // joining_date: '',
             ////
@@ -222,15 +215,14 @@ export default {
     },
 
     created() {
-        // Load the vehicles data when the component is created
-        // axios
-        //     .get("notAssign")
-        //     .then((response) => {
-        //         this.vehicles = response.data.data;
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
+        axios
+            .get("vehicle")
+            .then((response) => {
+                this.vehicles = response.data.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
 
         const userId = this.$route.params.id;
         axios
@@ -241,6 +233,7 @@ export default {
                 this.name = this.editedUser.name;
                 this.city = this.editedUser.city;
                 this.email = this.editedUser.email;
+                this.vehicle_id = this.editedUser.vehicle_id;
                 this.reg_no = this.editedUser.vehicle.reg_no;
                 this.number_of_student = this.editedUser.number_of_student;
                 this.car_type = this.editedUser.car_type;
@@ -251,7 +244,7 @@ export default {
                 this.amount = this.editedUser.amount;
                 this.total_students = this.editedUser.total_students;
                 this.vehicle_type = this.editedUser.vehicle.vehicle_type;
-                this.name = this.editedUser.vehicle.name;
+                
 
 
                 // Depending on the selected option, set the appropriate salary value
@@ -303,9 +296,8 @@ export default {
             formData.append("profile_picture", this.profile_picture);
             formData.append("name", this.name);
             formData.append("email", this.email);
-            formData.append("vehicle_type", this.vehicle_type);
+            formData.append("vehicle_id", this.vehicle_id);
             formData.append("number_of_student", this.number_of_student);
-            formData.append("car_type", this.car_type);
             formData.append("distance", this.distance);
             formData.append("city", this.city);
             formData.append("phone_number", this.phone_number);
@@ -344,6 +336,20 @@ export default {
             if (file) {
                 this.profile_picture = file;
             }
+        },
+
+        fetchVehicles() {
+            // this.isLoading = true;
+            axios
+            .get(`vehicleIndex/${vehicleType.value}`)
+            .then((response) => {
+                this.vehicles = response.data.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+            // this.isLoading = false;
+
         },
 
         vehicleImageChange(event) {
