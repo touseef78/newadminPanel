@@ -119,7 +119,7 @@
                                 </b-form-group>
                             </div>
                         </div>
-                        <!-- <div style="
+                        <div style="
                 background-color: rgb(97, 116, 152);
                 height: 32px;
                 border-radius: 4px;
@@ -182,7 +182,7 @@
                                 </b-form-group>
                             </div>
 
-                        </div> -->
+                        </div>
 
                     </b-form>
                 </div>
@@ -310,9 +310,11 @@ export default {
                 this.salary = this.editedUser.salary;
                 this.vehicle_id = this.editedUser.vehicle_id;
                 this.taxi_driving_liscence = this.editedUser.taxi_driving_liscence;
-                this.vehicle_name = this.editedUser.vehicle_name;
+                this.vehicle_name = this.editedUser.vehicle.name;
                 this.vehicle_image = this.editedUser.vehicle_image;
                 this.per_km = this.editedUser.vehicle.per_km;
+                this.vehicle_number = this.editedUser.vehicle.vehicle_number;
+                this.vehicle_type = this.editedUser.vehicle.vehicle_type;
                 this.seating_capacity = this.editedUser.vehicle.seating_capacity;
                 this.pickup_location = this.editedUser.vehicle.pickup_location;
                 this.drop_location = this.editedUser.vehicle.drop_location;

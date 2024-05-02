@@ -53,9 +53,13 @@
                     responsive>
 
 
-                    <template #cell(name)="row">
+                    <template #cell(care_taker)="row">
                         {{ `${row.item.care_taker.name}` }}
                     </template>
+                    <!-- <template #cell(care_taker)="row">
+                        {{ row.item.care_taker ? row.item.care_taker.name : 'N/A' }}
+                    </template> -->
+
 
                     <template #cell(actions)="row">
                         <b-button @click="showDeleteConfirmation = true" variant="link" class="p-0">
@@ -156,8 +160,8 @@ export default {
             editMode: false,
             users: [], // Instead of 'items', use 'users' array to store fetched data
             fields: [
-                { key: "id", sortable: true },
-                { key: "name", sortable: true },
+                { key: "careTaker_id", sortable: true },
+                { key: "care_taker", sortable: true },
                 { key: "attendance", sortable: true },
                 { key: "time", sortable: true },
                 { key: "date", sortable: true },
@@ -215,26 +219,9 @@ export default {
             this.loading = true; // Set loading to true before fetching data
             // let apiUrl = "studentGet";
             // Create an object to hold the query parameters
-            const queryParams = {
-                start_date: this.start_date,
-                end_date: this.end_date,
-            };
+
             axios
-                // Filter date code start 
-                .get(apiUrl, { params: queryParams })
-                .then((response) => {
-                    this.users = response.data.data.filter((item) => {
-                        const createdDate = new Date(item.created_at);
-                        return (
-                            (!this.start_date || createdDate >= new Date(this.start_date)) &&
-                            (!this.end_date || createdDate <= new Date(this.end_date))
-                        );
-                    });
-                    this.users.forEach((item, index) => {
-                        item.srNo = index + 1;
-                    });
-                    this.totalRows = this.users.length;
-                })
+
                 // Filter date code end 
                 .get(`careTakerAttenShow/${userId}`) // Replace 'your_api_endpoint_url_here' with your actual API URL
                 .then((response) => {

@@ -329,6 +329,14 @@ const router = new VueRouter({
       //   requiresAuth: true, // This route requires authentication
       // },
     },
+      {
+      path: "/studentattendance/:id",
+      name: "StudentAttendanceView",
+      component: () => import("../view/StudentAttendance/StudentAttendanceView.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
   
  
     {

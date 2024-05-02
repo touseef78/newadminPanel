@@ -139,7 +139,7 @@ export default {
         // },
           {
           id: "StudentAttendance",
-          title: "StudentAttendance",
+          title: "ListStudentAttendance",
           navLink: "/studentattendance/list",
         },
       ],
