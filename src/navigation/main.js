@@ -28,13 +28,13 @@ export default {
 
     {
       id: "Registration",
-      title: "Reguest",
+      title: "Request",
       icon: "Curved-EditSquare",
       
       children: [
         {
           id: "Registration",
-          title: "View Reguest",
+          title: "View Request",
           navLink: "/registration",
         },
       ],
@@ -56,8 +56,8 @@ export default {
     },
     // Divers code here 
      {
-      id: "Divers",
-      title: "Divers",
+      id: "Drivers",
+      title: "Drivers",
       icon: "Curved-AddUser",
       
       children: [
@@ -80,47 +80,47 @@ export default {
     // Care Taker code here 
      {
       id: "CareTaker",
-      title: "CareTaker",
+      title: "Care Taker",
       icon: "Curved-EditSquare",
       
       children: [
         {
           id: "Care Taker",
-          title: "AddCareTaker",
+          title: "Add CareTaker",
           navLink: "/caretaker/add",
         },
           {
           id: "Care Taker",
-          title: "ListCareTaker",
+          title: "List CareTaker",
           navLink: "/caretaker/list",
         },
       ],
     },
     // ............. 
     // Care Taker Attendance Code here 
-       {
-      id: "CareTakerAttendance",
-      title: "CareTakerAttendance",
-      icon: "Curved-EditSquare",
+    //    {
+    //   id: "CareTakerAttendance",
+    //   title: "CareTakerAttendance",
+    //   icon: "Curved-EditSquare",
       
-      children: [
-          {
-          id: "CareTakerAttendance",
-          title: "ListCareTakerAttendance",
-          navLink: "/caretakerattendance/list",
-        },
-      ],
-    },
+    //   children: [
+    //       {
+    //       id: "CareTakerAttendance",
+    //       title: "ListCareTakerAttendance",
+    //       navLink: "/caretakerattendance/list",
+    //     },
+    //   ],
+    // },
     // ...... 
         {
       id: "DriverAttendance",
-      title: "DriverAttendance",
+      title: "Driver Attendance",
       icon: "Curved-EditSquare",
       
       children: [
           {
           id: "DriverAttendance",
-          title: "ListDriverAttendance",
+          title: "List Driver Attendance",
           navLink: "/driverattendance/list",
         },
       ],
@@ -128,7 +128,7 @@ export default {
     // Student Attendance Code here 
         {
       id: "StudentAttendance",
-      title: "StudentAttendance",
+      title: "Student Attendance",
       icon: "Curved-EditSquare",
       
       children: [
@@ -138,16 +138,16 @@ export default {
         //   navLink: "/caretaker/add",
         // },
           {
-          id: "StudentAttendance",
-          title: "ListStudentAttendance",
+          id: "Student Attendance",
+          title: "List Student Attendance",
           navLink: "/studentattendance/list",
         },
       ],
     },
     // ....
         {
-      id: "Car Tracker",
-      title: "CarTracker",
+      id: "Live Tracker",
+      title: "Live Tracker",
       icon: "Curved-EditSquare",
       
       children: [
@@ -164,10 +164,47 @@ export default {
       ],
     },
     
+    // expense code here 
+       {
+      id: "Expense",
+      title: "Expense",
+      icon: "Curved-EditSquare",
+      
+      children: [
+      
+          {
+          id: "Expense",
+          title: "Add Expense",
+          navLink: "/expense/add",
+        },
+          {
+          id: "Expense",
+          title: "List Expense",
+          navLink: "/expense/list",
+        },
+      ],
+    },
+// Report code  here 
 
-   
-
- 
+      {
+      id: "Report",
+      title: "Report",
+      icon: "Curved-EditSquare",
+      
+      children: [
+      
+          {
+          id: "Report",
+          title: "Earing Report",
+          navLink: "/bigways/earning/report",
+        },
+          {
+          id: "Report",
+          title: "Expense Report",
+          navLink: "/bigways/expense/report",
+        },
+      ],
+    },
 
   ]
 }

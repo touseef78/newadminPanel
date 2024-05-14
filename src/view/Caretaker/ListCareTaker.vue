@@ -35,15 +35,14 @@
         <b-row>
             <div class="col-12 mt-16">
                 <b-table id="dataTable" :items="users" :fields="fields" :current-page="currentPage" :per-page="perPage"
-                    :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy"
-                    :sort-desc.sync="sortDesc" :sort-direction="sortDirection" show-empty @filtered="onFiltered" y
-                    responsive>
+                    :filter="filter" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" show-empty @filtered="onFiltered"
+                    y responsive>
                     <!-- Action Button Code -->
                     <template #cell(date)="row">
                         {{ formatDate(row.item.created_at) }}
                     </template>
                     <template #cell(name)="row">
-                        {{ `${row.item.name} ${row.item.last_name}` }}
+                        {{ `${row.item.name}` }}
                     </template>
                     <template #cell(personal_number)="row">
                         {{ `${row.item.security_code} ` }}
@@ -117,15 +116,6 @@
                 <b-row class="mt-16 align-items-center justify-content-end">
 
                     <b-row>
-
-
-                        <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
-                            <pre v-highlightjs>
-                <code class="hljs html">
-                    {{ codeText }}
-                </code>
-            </pre>
-                        </div>
                     </b-row>
                 </b-row>
             </div>
@@ -170,7 +160,7 @@ export default {
                 { key: "email", sortable: true },
                 { key: "joining_date", sortable: true },
 
-                { key: "date", sortable: true },
+                // { key: "date", sortable: true },
                 // { key: "status", sortable: true },
                 { key: "actions", label: "Actions" },
             ],

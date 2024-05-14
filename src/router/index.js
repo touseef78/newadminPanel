@@ -95,14 +95,14 @@ const router = new VueRouter({
 
    
    
-    {
-      path: "/expense/edit/:id",
-      name: "editDriver",
-      component: () => import("../view/earning/editdriver.vue"),
-      meta: {
-        requiresAuth: true, // This route requires authentication
-      },
-    },
+    // {
+    //   path: "/expense/edit/:id",
+    //   name: "editDriver",
+    //   component: () => import("../view/earning/editdriver.vue"),
+    //   meta: {
+    //     requiresAuth: true, // This route requires authentication
+    //   },
+    // },
  
 
     
@@ -208,6 +208,15 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
+    // payment code here 
+  {
+      path: "/PaymentDetail/:id",
+      name: "PaymentDetail",
+      component: () => import("../view/payment/PaymentDetail.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
     // Divers code here 
     // Driver  List code here 
     {
@@ -304,22 +313,22 @@ const router = new VueRouter({
       // },
     },
     // Care Taker Attendance  code here 
-    {
-      path: "/caretakerattendance/list",
-      name: "AttendanceCareTaker",
-      component: () => import("../view/AttendanceCareTaker/ListAttendanceCareTaker.vue"),
-      // meta: {
-      //   requiresAuth: true, // This route requires authentication
-      // },
-    },
-     {
-      path: "/caretakerattendance/:id",
-      name: "ViewAttendanceCareTaker",
-      component: () => import("../view/AttendanceCareTaker/ViewAttendanceCareTaker.vue"),
-      // meta: {
-      //   requiresAuth: true, // This route requires authentication
-      // },
-    },
+    // {
+    //   path: "/caretakerattendance/list",
+    //   name: "AttendanceCareTaker",
+    //   component: () => import("../view/AttendanceCareTaker/ListAttendanceCareTaker.vue"),
+    //   // meta: {
+    //   //   requiresAuth: true, // This route requires authentication
+    //   // },
+    // },
+    //  {
+    //   path: "/caretakerattendance/:id",
+    //   name: "ViewAttendanceCareTaker",
+    //   component: () => import("../view/AttendanceCareTaker/ViewAttendanceCareTaker.vue"),
+    //   // meta: {
+    //   //   requiresAuth: true, // This route requires authentication
+    //   // },
+    // },
 // Student Attendance code here 
 {
       path: "/studentattendance/list",
@@ -337,7 +346,52 @@ const router = new VueRouter({
       //   requiresAuth: true, // This route requires authentication
       // },
     },
-  
+    //  Expense code here 
+     {
+      path: "/expense/list",
+      name: "ExpenseList",
+      component: () => import("../view/Expense/ExpenseList.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+      {
+      path: "/expense/add",
+      name: "ExpenseAdd",
+      component: () => import("../view/Expense/ExpenseAdd.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+        {
+      path: "/expense/view/:id",
+      name: "ExpenseView",
+      component: () => import("../view/Expense/ExpenseView.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+        {
+      path: "/expense/edit/:id",
+      name: "ExpenseEdit",
+      component: () => import("../view/Expense/ExpenseEdit.vue"),
+      // meta: {
+      //   requiresAuth: true, // This route requires authentication
+      // },
+    },
+  {
+    // Report code here 
+    path: "/bigways/expense/report",
+      name: "BigwaysExpenseReport",
+      component: () => import("../view/BigwaysReport/ExpenseReport.vue"),
+    
+    },
+    {
+      path: "/bigways/earning/report",
+      name: "BigwaysEarningReport",
+      component: () => import("../view/BigwaysReport/EarningReport.vue"),
+    
+    },
  
     {
       path: "/main/widgets/crypto-icons",

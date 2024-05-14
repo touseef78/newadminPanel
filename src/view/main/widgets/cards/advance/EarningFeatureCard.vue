@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <b-card>
         <b-row>
             <b-col class="hp-flex-none w-auto">
@@ -34,4 +34,4 @@ export default {
         BAvatar,
     },
 };
-</script>
+</script> -->

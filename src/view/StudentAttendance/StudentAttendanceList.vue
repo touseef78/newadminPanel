@@ -42,11 +42,9 @@
                     <template #cell(date)="row">
                         {{ formatDate(row.item.created_at) }}
                     </template>
-                    <!-- <template #cell(vehicle_name)="row">
-                        {{ row.item.vehicle ? row.item.vehicle.name : 'N/A' }}
-                    </template> -->
+                    <!-- Student code  here  -->
                     <template #cell(student_name)="row">
-                        {{ `${row.item.student.student_name}` }}
+                        {{ row.item.student ? row.item.student.student_name : 'N/A' }}
                     </template>
                     <!-- <template #cell(student_id)="row">
                         {{ `${row.item.vehicle.name}` }}

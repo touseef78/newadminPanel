@@ -25,7 +25,7 @@
 
                   <b-col class="pl-0">
                     <h3 class="mb-4 mt-8">
-                      {{ driverCount
+                      {{ totalParents
                       }}<span class="hp-badge-text ml-8 text-primary"></span>
                     </h3>
                     <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
@@ -51,7 +51,7 @@
 
                   <b-col class="pl-0">
                     <h3 class="mb-4 mt-8">
-                      {{ b2bDriverCount
+                      {{ totalStudents
                       }}
                       <span class="hp-badge-text ml-8 text-secondary"></span>
                     </h3>
@@ -82,7 +82,7 @@
 
                   <b-col class="pl-0">
                     <h3 class="mb-4 mt-8">
-                      {{ b2bCount
+                      {{ totalDriver
                       }}<span class="hp-badge-text ml-8 text-secondary"></span>
                     </h3>
 
@@ -116,7 +116,7 @@
 
                   <b-col class="pl-0">
                     <h3 class="mb-4 mt-8">
-                      {{ vehicleCount
+                      {{ totalVehicle
                       }}<span class="hp-badge-text ml-8 text-secondary"></span>
                     </h3>
 
@@ -151,7 +151,7 @@
 
                   <b-col class="pl-0">
                     <h3 class="mb-4 mt-8">
-                      {{ b2bVehicleCount
+                      {{ totalCareTaker
                       }}<span class="hp-badge-text ml-8 text-secondary"></span>
                     </h3>
 
@@ -178,11 +178,11 @@
 
                   <b-col class="pl-0">
                     <h3 class="mb-4 mt-8">
-                      {{ totalEarning.toFixed(2) }}<span class="hp-badge-text ml-8 text-secondary"></span>
+                      {{ totalPendeingRequest }}<span class="hp-badge-text ml-8 text-secondary"></span>
                     </h3>
 
                     <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
-                      Total Car Tracker
+                      Total Pending Request
                     </p>
                   </b-col>
                 </b-row>
@@ -207,11 +207,12 @@
 
                   <b-col class="pl-0">
                     <h3 class="mb-4 mt-8">
-                      30000<span class="hp-badge-text ml-8 text-secondary"></span>
+                      {{ driverAttendance
+                      }}<span class="hp-badge-text ml-8 text-secondary"></span>
                     </h3>
 
                     <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
-                      Total Profit
+                      Today Driver Attendance
                     </p>
                   </b-col>
                 </b-row>
@@ -232,8 +233,69 @@
 
                   <b-col class="pl-0">
                     <h3 class="mb-4 mt-8">
-                      {{ totalExpense
+                      {{ studentAttendance
                       }}<span class="hp-badge-text ml-8 text-secondary"></span>
+                    </h3>
+
+                    <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
+                      Today Student Attendance
+                    </p>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </b-col>
+            <!-- ....  -->
+            <!-- new code  -->
+            <b-col cols="12" md="6" xl="3" class="mb-32">
+              <b-card>
+                <b-row>
+                  <b-col class="hp-flex-none w-auto">
+                    <b-avatar class="bg-primary-4 hp-bg-color-dark-primary" size="48px">
+                      <!-- <i
+                        class="iconly-Light-People text-primary hp-text-color-dark-primary-2"
+                        style="font-size: 24px"
+                      ></i> -->
+                      <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                          viewBox="0 0 16 16" class="bi bi-car-front-fill" style="color: black;">
+                          <path
+                            d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z">
+                          </path>
+                        </svg>
+                      </i>
+                    </b-avatar>
+                  </b-col>
+
+                  <b-col class="pl-0">
+                    <h3 class="mb-4 mt-8">
+                      {{ totalEarning
+                      }}<span class="hp-badge-text ml-8 text-secondary"></span>
+                    </h3>
+
+                    <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
+                      Total Earning
+                    </p>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </b-col>
+
+            <b-col cols="12" md="6" xl="3" class="mb-32">
+              <b-card>
+                <b-row>
+                  <b-col class="hp-flex-none w-auto">
+                    <b-avatar class="bg-primary-4 hp-bg-color-dark-primary" size="48px">
+                      <!-- <i
+                        class="iconly-Light-Buy text-secondary"
+                        style="font-size: 24px"
+                      ></i> -->
+                      <i style="color: red;">SEK</i>
+                    </b-avatar>
+                  </b-col>
+
+                  <b-col class="pl-0">
+                    <h3 class="mb-4 mt-8">
+                      {{ totalExpense }}<span class="hp-badge-text ml-8 text-secondary"></span>
                     </h3>
 
                     <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
@@ -243,7 +305,40 @@
                 </b-row>
               </b-card>
             </b-col>
+
+            <b-col cols="12" md="6" xl="3" class="mb-32">
+              <b-card>
+                <b-row>
+                  <b-col class="hp-flex-none w-auto">
+                    <b-avatar class="bg-primary-4 hp-bg-color-dark-primary" size="48px">
+                      <!-- <i
+                        class="iconly-Light-Ticket text-warning"
+                        style="font-size: 24px"
+                      ></i> -->
+                      <i style="color: black;">
+                        <!-- <img src="" alt=""> -->
+                        SEK
+                      </i>
+                    </b-avatar>
+                  </b-col>
+
+                  <b-col class="pl-0">
+                    <h3 class="mb-4 mt-8">
+                      {{ earningThisMonth
+                      }}<span class="hp-badge-text ml-8 text-secondary"></span>
+                    </h3>
+
+                    <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
+                      Earing This Month
+                    </p>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </b-col>
+
+            <!-- ...........  -->
           </b-row>
+
         </b-col>
       </b-row>
       <b-row>
@@ -296,22 +391,26 @@ export default {
       image: null,
       isLoading: false,
       amount: "",
-      driverCount: 0,
-      vehicleCount: 0,
-      b2bCount: 0,
-      b2bDriverCount: 0,
-      b2bVehicleCount: 0,
+      totalParents: 0,
+      totalStudents: 0,
+      totalDriver: 0,
+      totalVehicle: 0,
+      totalCareTaker: 0,
+      totalPendeingRequest: 0,
+      driverAttendance: 0,
+      studentAttendance: 0,
       totalEarning: 0,
-      totalProfit: 0,
       totalExpense: 0,
+      earningThisMonth: 0,
+
       series: [
         {
-          name: "Pending Request",
-          data: [14, 2, 3, 10], // Initialize as an empty array
+          name: "Expense",
+          data: [], // Initialize as an empty array
         },
         {
-          name: "Approved Request",
-          data: [14, 2, 3, 4], // Initialize as an empty array
+          name: "Earing",
+          data: [], // Initialize as an empty array
         },
       ],
       options: {
@@ -406,50 +505,53 @@ export default {
             },
           },
           min: 0,
-          max: 100,
+          max: 10000,
           tickAmount: 4,
         },
       },
     };
   },
-  // mounted() {
-  //   // Fetch data from your API when the component is mounted
-  //   axios.get("/dashboard").then((response) => {
-  //     const data = response.data.data;
+  mounted() {
+    // Fetch data from your API when the component is mounted
+    axios.get("/dashboard").then((response) => {
+      const data = response.data.total_counts;
 
-  //     // Extract data from the API response and set it to your component's data properties
-  //     this.driverCount = data.driver;
-  //     this.vehicleCount = data.vehicle;
-  //     this.b2bCount = data.company;
-  //     this.b2bDriverCount = data.driverb2b;
-  //     this.b2bVehicleCount = data.vehicleb2b;
-  //     this.totalEarning = data.total_earning;
-  //     this.totalEarning = parseFloat(data.total_earning); // Parse 'total_earning' as a number
-  //     this.totalProfit = data.total_profit;
-  //     this.totalExpense = data.expense;
-  //   });
-  // },
+      // Extract data from the API response and set it to your component's data properties
+      this.totalParents = data.total_parents;
+      this.totalStudents = data.total_students;
+      this.totalDriver = data.total_drivers;
+      this.totalVehicle = data.total_vehicles;
+      this.totalCareTaker = data.total_careTakers;
+      this.totalPendingRequest = data.total_pending_requests;
+      this.driverAttendance = data.today_drivers_attendance;
+      this.studentAttendance = data.today_students_attendance;
+      this.totalEarning = data.net_earning;
+      this.totalExpense = data.total_expense;
+      this.earningThisMonth = data.current_month_earning;
 
-  // created() {
-  //   // Fetch Monthly Earnings data
-  //   axios
-  //     .get("/getMonthlyearning") // Adjust the API endpoint
-  //     .then((response) => {
-  //       this.series[0].data = response.data.map((item) => Number(item.earning));
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
+    });
+  },
 
-  //   // Fetch Monthly Expense data
-  //   axios
-  //     .get("/getMonthlyexpense") // Adjust the API endpoint
-  //     .then((response) => {
-  //       this.series[1].data = response.data.map((item) => Number(item.expense));
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // },
+  created() {
+    // Fetch Monthly Earnings data
+    axios
+      .get("/getMonthlyExpenses") // Adjust the API endpoint
+      .then((response) => {
+        this.series[0].data = response.data.map((item) => Number(item.monthly_expense));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    // Fetch Monthly Expense data
+    axios
+      .get("/getMonthlyEarnings") // Adjust the API endpoint
+      .then((response) => {
+        this.series[1].data = response.data.map((item) => Number(item.monthly_earning));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
 };
 </script>

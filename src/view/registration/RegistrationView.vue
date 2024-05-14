@@ -29,9 +29,9 @@
                 </b-form-group>
               </div> -->
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Name:" label-for="name">
-                                    <b-form-input id="name" type="text" placeholder="Enter name" autocomplete="off"
-                                        v-model="name" pattern="[A- Z a-z]+"
+                                <b-form-group id="input-group-1" label="Name:" label-for="first_name">
+                                    <b-form-input id="first_name" type="text" placeholder="Enter name"
+                                        autocomplete="off" v-model="first_name" pattern="[A- Z a-z]+"
                                         title="Please enter only alphabetic characters" disabled>
                                     </b-form-input>
                                 </b-form-group>
@@ -182,7 +182,7 @@ export default {
             showModal: false,
             isLoading: false,
             // Add Driver
-            name: "",
+            first_name: "",
             email: '',
             city: '',
             car_type: "",
@@ -241,7 +241,7 @@ export default {
             .then((response) => {
 
                 this.editedUser = response.data.data;
-                this.name = this.editedUser.name;
+                this.first_name = this.editedUser.name;
                 this.city = this.editedUser.city;
                 this.email = this.editedUser.email;
                 this.reg_no = this.editedUser.vehicle.reg_no;
@@ -316,7 +316,7 @@ export default {
                 .post(`updateReguest/${this.editedUser.id}`, formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("Driver added successfully!", {
+                    this.$bvToast.toast("Request added successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,
