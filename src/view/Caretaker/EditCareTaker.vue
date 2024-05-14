@@ -308,7 +308,7 @@ export default {
                 .post(`careTakerUpdate/${this.editedUser.id}`, formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("Driver Update successfully!", {
+                    this.$bvToast.toast("CareTaker Updated successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,

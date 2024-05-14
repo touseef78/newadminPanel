@@ -35,8 +35,8 @@
     <b-row>
       <div class="col-12 mt-16">
         <b-table id="dataTable" :items="users" :fields="fields" :current-page="currentPage" :per-page="perPage"
-          :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
-          :sort-direction="sortDirection" show-empty @filtered="onFiltered" y responsive>
+          :filter="filter" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" show-empty @filtered="onFiltered" y
+          responsive>
           <!-- Action Button Code -->
           <!-- <template #cell(actions)="row">
             <b-button @click="downloadFile(row.item.file)" variant="primary"
@@ -132,13 +132,7 @@
         </div>
         <b-row class="mt-16 align-items-center justify-content-end">
           <b-row>
-            <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
-              <pre v-highlightjs>
-        <code class="hljs html">
-          {{ codeText }}
-        </code>
-      </pre>
-            </div>
+
           </b-row>
         </b-row>
       </div>
@@ -185,6 +179,8 @@ export default {
         { key: "email", sortable: true },
         { key: "phone_number", sortable: true },
         { key: "city", sortable: true },
+        { key: "date", sortable: true },
+        { key: "time", sortable: true },
         { key: "pickup_location", sortable: true },
         { key: "drop_location", sortable: true },
         { key: "amount", sortable: true },

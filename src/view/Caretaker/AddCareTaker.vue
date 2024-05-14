@@ -281,7 +281,7 @@ export default {
                 .post("careTaker", formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("Driver added successfully!", {
+                    this.$bvToast.toast("CareTaker added successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,

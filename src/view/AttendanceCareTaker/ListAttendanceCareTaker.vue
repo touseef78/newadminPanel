@@ -147,10 +147,7 @@ export default {
         };
 
     },
-    watch: {
-        start_date: 'fetchData',
-        end_date: 'fetchData',
-    },
+
     components: {
         BRow,
         BCol,

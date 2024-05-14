@@ -18,11 +18,11 @@ import axios from "axios";
 
 export default {
     data() {
-        
+
         return {
             totalEarning: 0,
             totalProfit: 0,
-            series: [1244, 2155, 1541],
+            series: [],
             options: {
                 chart: {
                     id: "earnings-donut-card",
@@ -37,7 +37,7 @@ export default {
                 },
                 colors: ["#0063F7", "#98FFE0", "#1BE7FF"],
 
-                labels: ["Expense", "Earning", "Profit"],
+                labels: ["Earning", "Other Expense", "Fuel Expense"],
 
                 dataLabels: {
                     enabled: false,
@@ -116,15 +116,18 @@ export default {
     },
 
 
-//     mounted() {
-//     // Fetch data from your API when the component is mounted
-//     axios.get("/dashboard").then((response) => {
-//       const data = response.data.data;
+    mounted() {
+        // Fetch data from your API when the component is mounted
+        axios.get("/earnings").then((response) => {
+            const data = response.data.data;
 
-//       // Extract data from the API response and set it to your component's data properties
-//       this.totalEarning = data.total_earning;
-//       this.totalProfit = data.total_profit;
-//     });
-//   },
+            // Extract data from the API response and set it to your component's data properties
+            this.series = [
+                data.net_earning,
+                data.others_expense,
+                data.fuel_expense
+            ];
+        });
+    },
 };
 </script>

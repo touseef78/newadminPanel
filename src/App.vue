@@ -91,11 +91,11 @@ export default {
 
     // Theme
     if (window.location.search == "?theme=light") {
-        this.themeLight(false);
+      this.themeLight(false);
     }
 
     if (window.location.search == "?theme=dark") {
-        this.themeDark(false);
+      this.themeDark(false);
     }
 
     if (localStorage.getItem("theme")) {

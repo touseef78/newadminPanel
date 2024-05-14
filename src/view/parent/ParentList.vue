@@ -32,9 +32,8 @@
         <b-row>
             <div class="col-12 mt-16">
                 <b-table id="dataTable" :items="users" :fields="fields" :current-page="currentPage" :per-page="perPage"
-                    :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy"
-                    :sort-desc.sync="sortDesc" :sort-direction="sortDirection" show-empty @filtered="onFiltered" y
-                    responsive>
+                    :filter="filter" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" show-empty @filtered="onFiltered"
+                    y responsive>
                     <!-- Action Button Code -->
                     <!-- <template #cell(actions)="row">
             <b-button @click="downloadFile(row.item.file)" variant="primary"
@@ -57,7 +56,7 @@
                     </template> -->
                     <template #cell(actions)="row">
                         <!-- delete -->
-                        <b-button @click="showDeleteConfirmation(row.item.id)" variant="link" class="p-0">
+                        <b-button @click="showDeleteConfirmation(row.item.id)" variant="link" class="p-0 btn-sm mr-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                                 style="color: red; margin-left: 6px; margin-bottom: 10px" class="bi bi-eye"
                                 viewBox="0 0 16 16">
@@ -78,8 +77,15 @@
 
                         <!-- .......View Childern  -->
 
-                        <b-button @click="detailsChilds(row.item.id)" variant="primary" class="mb-8 mr-8">Children
+                        <b-button @click="detailsChilds(row.item.id)" variant="primary"
+                            class="btn-sm mb-8 mr-2">Children
                             Detail
+                        </b-button>
+                        <!-- ...... -->
+                        <!-- .......Payment Detail  -->
+
+                        <b-button @click="detailspayment(row.item.id)" variant="primary" class="btn-sm mb-8 mr-2">
+                            Payment Details
                         </b-button>
                         <!-- ...... -->
                     </template>
@@ -103,13 +109,6 @@
                 </div>
                 <b-row class="mt-16 align-items-center justify-content-end">
                     <b-row>
-                        <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
-                            <pre v-highlightjs>
-                <code class="hljs html">
-                    {{ codeText }}
-                </code>
-            </pre>
-                        </div>
                     </b-row>
                 </b-row>
             </div>
@@ -159,7 +158,7 @@ export default {
                 { key: "pickup_location", sortable: true },
                 { key: "drop_location", sortable: true },
                 { key: "amount", sortable: true },
-                // { key: "total_students", sortable: true },
+                // { key: "pending_amount", sortable: true },
                 // { key: "vehicle_type", sortable: true },
                 // { key: "vehicle_name", sortable: true },
                 // { key: "status", sortable: true },
@@ -294,6 +293,9 @@ export default {
         //  child  code here 
         detailsChilds(userId) {
             this.$router.push({ name: "ChildList", params: { id: userId } });
+        },
+        detailspayment(userId) {
+            this.$router.push({ name: "PaymentDetail", params: { id: userId } });
         },
 
     },

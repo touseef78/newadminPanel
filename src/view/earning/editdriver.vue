@@ -21,33 +21,33 @@
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Machine Earning:" label-for="machine_earning">
-                                <b-form-input id="machine_earning" v-model="machine_earning" placeholder="Enter  machine earning"
-                                    ></b-form-input>
+                                <b-form-input id="machine_earning" v-model="machine_earning"
+                                    placeholder="Enter  machine earning"></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Salk Amount:" label-for="salk_amount">
-                                <b-form-input id="salk_amount" v-model="salk_amount" placeholder="Enter  salk amount"
-                                    ></b-form-input>
+                                <b-form-input id="salk_amount" v-model="salk_amount"
+                                    placeholder="Enter  salk amount"></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Fuel Amount:" label-for="salk_amount">
-                                <b-form-input id="fuel_amount" v-model="fuel_amount" placeholder="Enter  fuel amount"
-                                    ></b-form-input>
+                                <b-form-input id="fuel_amount" v-model="fuel_amount"
+                                    placeholder="Enter  fuel amount"></b-form-input>
                             </b-form-group>
                         </div>
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="RMS Trip:" label-for="rms_trip">
-                                <b-form-input id="rms_trip" v-model="rms_trip" placeholder="Enter rms trip"
-                                    ></b-form-input>
+                                <b-form-input id="rms_trip" v-model="rms_trip"
+                                    placeholder="Enter rms trip"></b-form-input>
                             </b-form-group>
                         </div>
 
                         <div class="col-md-4 col-12">
                             <b-form-group id="input-group-2" label="Vehicle No:" label-for="vehicle_number">
-                                <b-form-input id="vehicle_number" v-model="vehicle_number" placeholder="Enter vehicle number"
-                                    ></b-form-input>
+                                <b-form-input id="vehicle_number" v-model="vehicle_number"
+                                    placeholder="Enter vehicle number"></b-form-input>
                             </b-form-group>
                         </div>
                     </div>
@@ -96,8 +96,8 @@ export default {
             codeText: code.introduction,
             codeActive: false,
             codeActiveClass: false,
-       
-            card:'',
+
+            card: '',
             user_id: '',
             drivers: [],
             editExpense: {},
@@ -107,7 +107,7 @@ export default {
             machine_earning: "",
             vehicle_number: "",
 
-       
+
 
 
         };

@@ -21,14 +21,16 @@
                     </b-col>
                     <!-- Start Date  -->
                     <b-col lg="3" class="my-1">
+
                         <b-form-input id="start-date" v-model="startDateFilter" type="date"
                             placeholder="Select start date"></b-form-input>
-
                     </b-col>
                     <!-- End Date  -->
                     <b-col lg="3" class="my-1">
+
                         <b-form-input id="end-date" v-model="endDateFilter" type="date"
                             placeholder="Select end date"></b-form-input>
+
                     </b-col>
                     <b-col lg="3" class="my-1 d-flex justify-content-end">
                         <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8"
@@ -43,18 +45,19 @@
         <b-row>
             <div class="col-12 mt-16">
                 <b-table id="dataTable" :items="filteredUsers" :fields="fields" :current-page="currentPage"
-                    :per-page="perPage" :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy"
-                    :sort-desc.sync="sortDesc" :sort-direction="sortDirection" show-empty @filtered="onFiltered" y
-                    responsive>
+                    :per-page="perPage" :filter="filter" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" show-empty
+                    @filtered="onFiltered" y responsive>
 
 
-                    <template #cell(care_taker)="row">
-                        {{ `${row.item.care_taker.name}` }}
+
+                    <template #cell(student_name)="row">
+                        <!-- {{ `${row.item.student.student_name}` }} -->
+                        {{ row.item.student ? row.item.student.student_name : 'N/A' }}
                     </template>
-                    <!-- <template #cell(care_taker)="row">
-                        {{ row.item.care_taker ? row.item.care_taker.name : 'N/A' }}
-                    </template> -->
 
+                    <template #cell(vehicle_name)="row">
+                        {{ row.item.vehicle ? row.item.vehicle.name : 'N/A' }}
+                    </template>
 
                     <template #cell(actions)="row">
                         <b-button @click="showDeleteConfirmation = true" variant="link" class="p-0">
@@ -75,17 +78,7 @@
                                 <b-button variant="secondary" @click="showDeleteConfirmation = false">Cancel</b-button>
                             </template>
                         </b-modal>
-                        <!-- <b-button @click="updateStatus(row.item)"
-                            :variant="row.item.status === 'Approved' ? 'warning' : 'primary'" class="mb-8 mr-8">
-                            {{ row.item.status === "Approved" ? "Pending" : "Approved" }}
-                        </b-button> -->
 
-                        <!-- <b-button
-              @click="toggleCardModal(row.item)"
-              variant="link"
-              class="p-0"
-            >
-            </b-button> -->
                     </template>
 
 
@@ -107,13 +100,6 @@
                 </div>
                 <b-row class="mt-16 align-items-center justify-content-end">
                     <b-row>
-                        <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
-                            <pre v-highlightjs>
-                <code class="hljs html">
-                    {{ codeText }}
-                </code>
-            </pre>
-                        </div>
                     </b-row>
                 </b-row>
             </div>
@@ -155,11 +141,12 @@ export default {
             editMode: false,
             users: [], // Instead of 'items', use 'users' array to store fetched data
             fields: [
-                { key: "careTaker_id", sortable: true },
-                { key: "care_taker", sortable: true },
+                { key: "student_id", sortable: true },
+                { key: "student_name", sortable: true },
                 { key: "attendance", sortable: true },
-                { key: "time", sortable: true },
+                { key: "vehicle_name", sortable: true },
                 { key: "date", sortable: true },
+                { key: "time", sortable: true },
                 // { key: "actions", label: "Actions" },
             ],
 
@@ -170,7 +157,6 @@ export default {
             loading: false,
             startDateFilter: null,
             endDateFilter: null,
-            your_vehicle_id: null,
 
         };
     },
@@ -210,9 +196,10 @@ export default {
             });
         },
     },
-    mounted() {
-        this.fetchData(userId);
-    },
+    // mounted() {
+    //     const userId = this.$route.params.id;
+    //     this.fetchData(userId);
+    // },
     created() {
         const userId = this.$route.params.id;
         this.fetchData(userId);
@@ -221,12 +208,8 @@ export default {
         fetchData(userId) {
             this.loading = true; // Set loading to true before fetching data
             // let apiUrl = "studentGet";
-            // Create an object to hold the query parameters
-
             axios
-
-                // Filter date code end 
-                .get(`careTakerAttenShow/${userId}`) // Replace 'your_api_endpoint_url_here' with your actual API URL
+                .get(`studentAttenShow/${userId}`) // Replace 'your_api_endpoint_url_here' with your actual API URL
                 .then((response) => {
                     this.users = response.data.data;
 
@@ -238,7 +221,6 @@ export default {
                 .finally(() => {
                     this.loading = false; // Set loading to false after fetching data, whether success or error
                 });
-
         },
 
 

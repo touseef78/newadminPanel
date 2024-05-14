@@ -189,13 +189,7 @@ export default {
             // profile_picture: null,
             successMessage: "",
             vehicle_id: "",
-            // vehicles: [],
-            // joining_date: '',
-            ////
-            // description: "",
-            // vehicle_image: [],
 
-            // company_name: "",
 
         };
     },
@@ -244,7 +238,7 @@ export default {
                 this.amount = this.editedUser.amount;
                 this.total_students = this.editedUser.total_students;
                 this.vehicle_type = this.editedUser.vehicle.vehicle_type;
-                
+
 
 
                 // Depending on the selected option, set the appropriate salary value
@@ -314,7 +308,7 @@ export default {
                 .post(`updateReguest/${this.editedUser.id}`, formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("Driver added successfully!", {
+                    this.$bvToast.toast("Request updated successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,
@@ -341,13 +335,13 @@ export default {
         fetchVehicles() {
             // this.isLoading = true;
             axios
-            .get(`vehicleIndex/${vehicleType.value}`)
-            .then((response) => {
-                this.vehicles = response.data.data;
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+                .get(`vehicleIndex/${vehicleType.value}`)
+                .then((response) => {
+                    this.vehicles = response.data.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
             // this.isLoading = false;
 
         },

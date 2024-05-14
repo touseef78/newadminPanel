@@ -1,41 +1,42 @@
 <template>
-    <b-card>
-        <!-- filter  -->
-        <div v-if="loading" class="text-center mt-4">
-            <b-spinner label="Loading..."></b-spinner>
-        </div>
-        <div class="col-12 mt-16">
-            <div>
-                <b-row class="align-items-center">
-                    <b-col lg="6" class="my-1">
-                        <b-form-group label="" label-for="filter-input" label-cols-sm="1" label-align-sm="right"
-                            label-size="sm" class="mb-0">
-                            <b-input-group size="sm">
-                                <b-form-input id="filter-input" v-model="filter" type="search"
-                                    placeholder="Type to Search"></b-form-input>
-                                <b-input-group-append>
-                                    <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
-                                </b-input-group-append>
-                            </b-input-group>
-                        </b-form-group>
-                    </b-col>
-                    <b-col lg="4" class="my-1 d-flex justify-content-end">
-                        <b-button @click="openModal" variant="primary" class="mb-8 mr-8">Add Child</b-button>
-                    </b-col>
-                    <b-col lg="2" class="my-1 d-flex justify-content-end">
-                        <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
-                    </b-col>
-                </b-row>
-            </div>
-        </div>
-        <!-- model -->
-        <b-modal v-model="modalVisible" title="Add Child" hide-footer>
+  <b-card>
+    <!-- filter  -->
+    <div v-if="loading" class="text-center mt-4">
+      <b-spinner label="Loading..."></b-spinner>
+    </div>
+    <div class="col-12 mt-16">
+      <div>
+        <b-row class="align-items-center">
+          <b-col lg="6" class="my-1">
+            <b-form-group label="" label-for="filter-input" label-cols-sm="1" label-align-sm="right" label-size="sm"
+              class="mb-0">
+              <b-input-group size="sm">
+                <b-form-input id="filter-input" v-model="filter" type="search"
+                  placeholder="Type to Search"></b-form-input>
+                <b-input-group-append>
+                  <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                </b-input-group-append>
+              </b-input-group>
+            </b-form-group>
+          </b-col>
+          <b-col lg="4" class="my-1 d-flex justify-content-end">
+            <b-button @click="openModal" variant="primary" class="mb-8 mr-8">Add Child</b-button>
+          </b-col>
+          <b-col lg="2" class="my-1 d-flex justify-content-end">
+            <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
+          </b-col>
+        </b-row>
+      </div>
+    </div>
+    <!-- model -->
+    <b-modal v-model="modalVisible" title="Add Child" hide-footer>
       <!-- Your form content goes here -->
       <form @submit.prevent="submitForm">
         <div class="row">
           <div class="col-md-6 col-12">
             <b-form-group id="input-group-1" label="Student Name:" label-for="name">
-              <b-form-input id="student_name" type="text" placeholder="Enter name" v-model="student_name" required></b-form-input>
+              <b-form-input id="student_name" type="text" placeholder="Enter name" v-model="student_name"
+                required></b-form-input>
             </b-form-group>
           </div>
           <div class="col-md-6 col-12">
@@ -46,30 +47,28 @@
           </div>
           <div class="col-md-6 col-12">
             <b-form-group id="input-group-1" label="Notes" label-for="notes">
-              <b-form-input id="notes" type="text" placeholder="Enter notes"
-                v-model="notes" required></b-form-input>
+              <b-form-input id="notes" type="text" placeholder="Enter notes" v-model="notes" required></b-form-input>
             </b-form-group>
           </div>
           <div class="col-md-6 col-12">
-            <b-form-group id="input-group-1" label=" Pickup Time" label-for="pickup_time">
+            <b-form-group id="input-group-1" label=" School Pickup Time" label-for="pickup_time">
               <b-form-input id="pickup_time" type="time" placeholder="Enter pickup_time" v-model="pickup_time"
                 required></b-form-input>
             </b-form-group>
           </div>
           <div class="col-md-6 col-12">
-            <b-form-group id="input-group-1" label="Drop Time" label-for="drop_time">
+            <b-form-group id="input-group-1" label="School Drop Time" label-for="drop_time">
               <b-form-input id="drop_time" type="time" placeholder="Enter time " v-model="drop_time"
                 required></b-form-input>
             </b-form-group>
           </div>
           <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Picture:" label-for="image">
-                                    <div style="margin-left: 3px; margin-bottom: 15px">
-                                        <input type="file" accept="image/*" id="image"
-                                            @change="onProfilePictureChange" />
-                                    </div>
-                                </b-form-group>
-                            </div>
+            <b-form-group id="input-group-2" label="Picture:" label-for="image">
+              <div style="margin-left: 3px; margin-bottom: 15px">
+                <input type="file" accept="image/*" id="image" @change="onProfilePictureChange" />
+              </div>
+            </b-form-group>
+          </div>
         </div>
         <div class="d-flex justify-content-end">
           <!-- <b-button type="submit" variant="primary">Submit</b-button> -->
@@ -80,21 +79,21 @@
         </div>
       </form>
     </b-modal>
-        <!-- end model -->
-        <!-- filter end -->
-        <b-row>
-            <div class="col-12 mt-16">
-                <b-table id="dataTable" :items="users" :fields="fields" :current-page="currentPage" :per-page="perPage"
-                    :filter="filter" :filter-included-fields="filterOn" :sort-by.sync="sortBy"
-                    :sort-desc.sync="sortDesc" :sort-direction="sortDirection" show-empty @filtered="onFiltered" y
-                    responsive>
+    <!-- end model -->
+    <!-- filter end -->
+    <b-row>
+      <div class="col-12 mt-16">
+        <b-table id="dataTable" :items="users" :fields="fields" :current-page="currentPage" :per-page="perPage"
+          :filter="filter" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" show-empty @filtered="onFiltered" y
+          responsive>
 
-                    <template #cell(image)="row">
-  <img :src="'https://backendbigways.singsavatech.com/' + row.item.image" alt="Picture" width="100" height="100" />
-</template>
+          <template #cell(image)="row">
+            <img :src="'https://backendbigways.singsavatech.com/' + row.item.image" alt="Picture" width="100"
+              height="100" />
+          </template>
 
-                    <!-- Action Button Code -->
-                    <template #cell(actions)="row">
+          <!-- Action Button Code -->
+          <template #cell(actions)="row">
             <b-button @click="editUser(row.item.id)" variant="link" class="p-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                 style="color: orange; margin-left: 10px; margin-bottom: 10px" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -129,40 +128,98 @@
           </template>
 
 
-                    <b-form-group label="Filter" label-for="filter-input" label-cols-sm="3" label-align-sm="right"
-                        label-size="sm" class="mb-0">
-                        <b-input-group size="sm">
-                            <b-form-input id="filter-input" v-model="filter" type="search"
-                                placeholder="Type to Search"></b-form-input>
+          <b-form-group label="Filter" label-for="filter-input" label-cols-sm="3" label-align-sm="right" label-size="sm"
+            class="mb-0">
+            <b-input-group size="sm">
+              <b-form-input id="filter-input" v-model="filter" type="search"
+                placeholder="Type to Search"></b-form-input>
 
-                            <b-input-group-append>
-                                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
-                            </b-input-group-append>
-                        </b-input-group>
-                    </b-form-group>
-                </b-table>
-                <div class="mx-8 d-flex justify-content-end">
-                    <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"
-                        aria-controls="my-table"></b-pagination>
-                </div>
-                <b-row class="mt-16 align-items-center justify-content-end">
-                    <b-row>
-                        <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
-                            <pre v-highlightjs>
-                <code class="hljs html">
-                    {{ codeText }}
-                </code>
-            </pre>
-                        </div>
-                    </b-row>
-                </b-row>
-            </div>
+              <b-input-group-append>
+                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+              </b-input-group-append>
+            </b-input-group>
+          </b-form-group>
+        </b-table>
+        <div class="mx-8 d-flex justify-content-end">
+          <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"
+            aria-controls="my-table"></b-pagination>
+        </div>
+        <b-row class="mt-16 align-items-center justify-content-end">
+          <b-row>
+
+          </b-row>
         </b-row>
-    </b-card>
+      </div>
+    </b-row>
+  </b-card>
 </template>
 
 <script>
 import {
+  BRow,
+  BCol,
+  BCard,
+  BButton,
+  BTable,
+  BFormGroup,
+  BInputGroup,
+  BFormInput,
+  BFormSelect,
+  BPagination,
+  BInputGroupAppend,
+  BSpinner,
+} from "bootstrap-vue";
+import axios from "axios";
+import Papa from "papaparse";
+
+// new code
+// import code from "./code";
+// new code end
+export default {
+  data() {
+    return {
+      perPage: 8,
+      currentPage: 1,
+      sortBy: "age",
+      sortDesc: false,
+      selectedCardOption: "",
+      rowToUpdate: null,
+      modalVisible: false,
+      isLoading: false,
+      editMode: false,
+      users: [], // Instead of 'items', use 'users' array to store fetched data
+      fields: [
+        { key: "id", sortable: true },
+        { key: "student_name", sortable: true },
+        { key: "school_name", sortable: true },
+        { key: "notes", sortable: true },
+        { key: "pickup_time", sortable: true },
+        { key: "drop_time", sortable: true },
+        { key: "image", sortable: true },
+        { key: "actions", label: "Actions" },
+      ],
+
+      filter: "", // Define filter property for search functionality
+      totalRows: 0, // Initialize totalRows to 0
+      showDeleteConfirmations: false,
+      itemIdToDelete: null,
+      loading: false,
+      startDateFilter: "",
+      endDateFilter: "",
+      your_vehicle_id: null,
+      notes: "",
+      pickup_time: "",
+      image: "",
+      notes: "",
+      pickup_time: "",
+      student_name: "",
+      drop_time: "",
+      school_name: "",
+      image: null,
+      studentId: null,
+    };
+  },
+  components: {
     BRow,
     BCol,
     BCard,
@@ -175,108 +232,45 @@ import {
     BPagination,
     BInputGroupAppend,
     BSpinner,
-} from "bootstrap-vue";
-import axios from "axios";
-import Papa from "papaparse";
+  },
+  computed: {
+    sortOptions() {
+      return this.fields
+        .filter((f) => f.sortable)
+        .map((f) => {
+          return { text: f.label, value: f.key };
+        });
+    },
+    rows() {
+      return this.users.length;
+    },
+  },
+  mounted() {
+    const userId = this.$route.params.id;
+    this.fetchData(userId);
+  },
+  created() {
+    const userId = this.$route.params.id;
+    this.fetchData(userId);
+  },
+  methods: {
+    fetchData(userId) {
+      this.loading = true; // Set loading to true before fetching data
+      // let apiUrl = "studentGet";
+      axios
+        .get(`studentGet/${userId}`) // Replace 'your_api_endpoint_url_here' with your actual API URL
+        .then((response) => {
+          this.users = response.data.data;
 
-// new code
-// import code from "./code";
-// new code end
-export default {
-    data() {
-        return {
-            perPage: 8,
-            currentPage: 1,
-            sortBy: "age",
-            sortDesc: false,
-            selectedCardOption: "",
-            rowToUpdate: null,
-            modalVisible: false,
-            isLoading: false,
-            editMode: false,
-            users: [], // Instead of 'items', use 'users' array to store fetched data
-            fields: [
-                { key: "id", sortable: true },
-                { key: "student_name", sortable: true },
-                { key: "school_name", sortable: true },
-                { key: "notes", sortable: true },
-                { key: "pickup_time", sortable: true },
-                { key: "drop_time", sortable: true },
-                { key: "image", sortable: true },
-                { key: "actions", label: "Actions" },
-            ],
-
-            filter: "", // Define filter property for search functionality
-            totalRows: 0, // Initialize totalRows to 0
-            showDeleteConfirmations: false,
-            itemIdToDelete: null,
-            loading: false,
-            startDateFilter: "",
-            endDateFilter: "",
-            your_vehicle_id: null,
-            notes: "",
-      pickup_time: "",
-      image: "",
-      notes: "",
-      pickup_time: "",
-      student_name: "",
-      drop_time: "",
-      school_name: "",
-      image: null,
-      studentId: null,
-        };
+          this.totalRows = this.users.length;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        })
+        .finally(() => {
+          this.loading = false; // Set loading to false after fetching data, whether success or error
+        });
     },
-    components: {
-        BRow,
-        BCol,
-        BCard,
-        BButton,
-        BTable,
-        BFormGroup,
-        BInputGroup,
-        BFormInput,
-        BFormSelect,
-        BPagination,
-        BInputGroupAppend,
-        BSpinner,
-    },
-    computed: {
-        sortOptions() {
-            return this.fields
-                .filter((f) => f.sortable)
-                .map((f) => {
-                    return { text: f.label, value: f.key };
-                });
-        },
-        rows() {
-            return this.users.length;
-        },
-    },
-    mounted() {
-        this.fetchData(userId);
-    },
-    created() {
-        const userId = this.$route.params.id;
-        this.fetchData(userId);
-    },
-    methods: {
-        fetchData(userId) {
-            this.loading = true; // Set loading to true before fetching data
-            // let apiUrl = "studentGet";
-            axios
-                .get(`studentGet/${userId}`) // Replace 'your_api_endpoint_url_here' with your actual API URL
-                .then((response) => {
-                    this.users = response.data.data;
-
-                    this.totalRows = this.users.length;
-                })
-                .catch((error) => {
-                    console.error("Error fetching data:", error);
-                })
-                .finally(() => {
-                    this.loading = false; // Set loading to false after fetching data, whether success or error
-                });
-        },
 
     openModal() {
       this.resetFormFields();
@@ -312,7 +306,7 @@ export default {
           .post(`studentUpdated/${this.studentId}`, formData)
           .then((response) => {
             console.log(response.data);
-            this.$bvToast.toast("child Updated successfully!", {
+            this.$bvToast.toast("Child Updated successfully!", {
               title: "Success",
               variant: "success",
               solid: true,
@@ -379,34 +373,34 @@ export default {
     },
 
     onProfilePictureChange(event) {
-            const file = event.target.files[0];
-            if (file) {
-                this.image = file;
-            }
-        },
+      const file = event.target.files[0];
+      if (file) {
+        this.image = file;
+      }
+    },
 
-        onFiltered(filteredItems) {
-            this.totalRows = filteredItems.length;
-            this.currentPage = 1;
-        },
-        codeClick() {
-            this.codeActive = !this.codeActive;
-        },
+    onFiltered(filteredItems) {
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
+    },
+    codeClick() {
+      this.codeActive = !this.codeActive;
+    },
 
-        exportDataToCSV() {
-            const csv = Papa.unparse(this.users);
-            const blob = new Blob([csv], { type: "text/csv" });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "exported_data.csv";
-            a.click();
-            URL.revokeObjectURL(url);
-        },
+    exportDataToCSV() {
+      const csv = Papa.unparse(this.users);
+      const blob = new Blob([csv], { type: "text/csv" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "exported_data.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    },
 
- showDeleteConfirmation(itemId) {
-    this.itemIdToDelete = itemId;
-    this.showDeleteConfirmations = true;
+    showDeleteConfirmation(itemId) {
+      this.itemIdToDelete = itemId;
+      this.showDeleteConfirmations = true;
     },
     deleteItem(itemId) {
       this.itemIdToDelete = itemId; // Set the item ID to be deleted
@@ -415,46 +409,46 @@ export default {
         .then((response) => {
           this.showDeleteConfirmations = false;
           const userId = this.$route.params.id;
-            this.fetchData(userId);
-                })
+          this.fetchData(userId);
+        })
         .catch((error) => {
           // Handle error
           console.error("Error deleting item:", error);
         });
     },
 
-        downloadFile(fileUrl) {
-            // Construct a download link for the file
-            const link = document.createElement("a");
-            link.href = "https://boltapi.fastnetstaffing.in/" + fileUrl;
-            link.download = "downloaded_file"; // Specify the default filename for the downloaded file
-            link.target = "_blank"; // Open the link in a new tab
-            link.click();
-        },
+    downloadFile(fileUrl) {
+      // Construct a download link for the file
+      const link = document.createElement("a");
+      link.href = "https://boltapi.fastnetstaffing.in/" + fileUrl;
+      link.download = "downloaded_file"; // Specify the default filename for the downloaded file
+      link.target = "_blank"; // Open the link in a new tab
+      link.click();
+    },
 
-        handleButtonClick(item) {
-            this.updateStatus(item);
-            this.toggleCardModal(item);
-        },
-        updateStatus(user) {
-            user.status = user.status === "Approved" ? "Pending" : "Approved";
-            axios
-                .post(`registrationUpdate/${user.id}`, user)
-                .then((response) => {
-                    console.log("Status updated successfully:", response.data);
-                })
-                .catch((error) => {
-                    console.error("Error updating status:", error);
-                });
-        },
-        toggleCardModal(item) {
-            this.selectedCardOption = ""; // Reset the selected card option
-            this.rowToUpdate = item; // Set the row to be updated
-            this.isCardModalVisible = true; // Show the modal
-        },
+    handleButtonClick(item) {
+      this.updateStatus(item);
+      this.toggleCardModal(item);
+    },
+    updateStatus(user) {
+      user.status = user.status === "Approved" ? "Pending" : "Approved";
+      axios
+        .post(`registrationUpdate/${user.id}`, user)
+        .then((response) => {
+          console.log("Status updated successfully:", response.data);
+        })
+        .catch((error) => {
+          console.error("Error updating status:", error);
+        });
+    },
+    toggleCardModal(item) {
+      this.selectedCardOption = ""; // Reset the selected card option
+      this.rowToUpdate = item; // Set the row to be updated
+      this.isCardModalVisible = true; // Show the modal
+    },
 
 
-     async editUser(userId) {
+    async editUser(userId) {
       try {
         // Make an API call to fetch user data based on userId
         const response = await axios.get(`studentShow/${userId}`);
@@ -479,7 +473,7 @@ export default {
       }
     },
 
-    },
+  },
 
 
 };
