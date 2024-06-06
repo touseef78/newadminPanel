@@ -41,10 +41,6 @@
                     <template #cell(date)="row">
                         {{ formatDate(row.item.created_at) }}
                     </template>
-                    <!-- check  code  here  -->
-                    <template #cell(amount)="row">
-                        {{ row.item.amount ? row.item.amount : 'N/A' }}
-                    </template>
 
                     <template #cell(payments_status)="row">
                         <b-button @click="togglePaymentStatus(row.item)"
@@ -151,10 +147,12 @@ export default {
             users: {}, // Instead of 'items', use 'users' array to store fetched data
             fields: [
                 { key: "id", sortable: true },
-                { key: "student_name", sortable: true },
-                { key: "amount", sortable: true },
-                { key: "school_name", sortable: true },
-                { key: "payments_status", sortable: true },
+                { key: "Zone_name", sortable: true },
+                { key: "pickup_time ", sortable: true },
+                { key: "dropoff_time", sortable: true },
+                { key: "Sub_zone", sortable: true },
+                // { key: "image", sortable: true },
+                { key: "zone_status", sortable: true },
                 // { key: "actions", label: "Actions" },
             ],
 
@@ -171,9 +169,6 @@ export default {
             end_date: null,
             image: "",
             image: null,
-            payments_status: "",
-            total_students: '',
-            amount: "",
             name: '',
 
 
@@ -221,7 +216,7 @@ export default {
             this.loading = true; // Set loading to true before fetching data
             // let apiUrl = "studentGet";
             axios
-                .get(`studentGet/${userId}`) // Replace 'your_api_endpoint_url_here' with your actual API URL
+                .get(`paymentsDetailsjjjjjjjjjjj/${userId}`) // Replace 'your_api_endpoint_url_here' with your actual API URL
                 .then((response) => {
                     this.users = response.data.data;
 
@@ -266,7 +261,7 @@ export default {
         togglePaymentStatus(user) {
             user.payments_status = user.payments_status === 'PAID' ? 'UNPAID' : 'PAID';
             axios
-                .post(`updateReguest/${user.id}`, user)
+                .post(`updateReguestyyyy/${user.id}`, user)
                 .then((response) => {
                     console.log('Status updated successfully:', response.data);
                 })
@@ -288,7 +283,7 @@ export default {
                 this.userToChangePaymentStatus.payments_status = this.newPaymentStatus;
 
                 // Call the API to update the payment status
-                axios.post(`updateReguest/${this.userToChangePaymentStatus.id}`, this.userToChangePaymentStatus)
+                axios.post(`updateReguesthhhhhhhhhh/${this.userToChangePaymentStatus.id}`, this.userToChangePaymentStatus)
                     .then(response => {
                         console.log('Payment status updated successfully:', response.data);
                     })

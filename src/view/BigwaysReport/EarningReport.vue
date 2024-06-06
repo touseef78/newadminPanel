@@ -254,13 +254,7 @@ export default {
         },
 
 
-        // editUser(userId) {
-        //     this.$router.push({ name: "ExpenseEdit", params: { id: userId } });
-        // },
 
-        // showDrivers(userId) {
-        //     this.$router.push({ name: "ExpenseView", params: { id: userId } });
-        // },
         ///  delete
         showDeleteConfirmation(itemId) {
             this.itemIdToDelete = itemId;

@@ -302,9 +302,6 @@ export default {
             formData.append("date_of_birth", this.date_of_birth);
             formData.append("profile_picture", this.profile_picture);
             formData.append("joining_date", this.joining_date);
-            // for (const image of this.vehicle_image) {
-            //   formData.append('vehicle_image[]', image);
-            // }
             if (this.vehicle_image) {
                 for (const image of this.vehicle_image) {
                     formData.append("vehicle_image[]", image);

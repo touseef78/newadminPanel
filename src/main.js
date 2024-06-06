@@ -7,7 +7,7 @@ import router from './router'
 import App from './App.vue'
 
 // Bootstrap
-import { BootstrapVueIcons, PopoverPlugin, ToastPlugin, ModalPlugin, SidebarPlugin, TooltipPlugin, TabsPlugin } from 'bootstrap-vue'
+import { BootstrapVueIcons, PopoverPlugin, ToastPlugin, ModalPlugin, SidebarPlugin, TooltipPlugin, TabsPlugin,IconsPlugin  } from 'bootstrap-vue'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // Highlightjs
@@ -25,6 +25,7 @@ Vue.use(PopoverPlugin)
 Vue.use(ToastPlugin)
 Vue.use(ModalPlugin)
 Vue.use(BootstrapVueIcons)
+Vue.use(IconsPlugin);
 
 // Highlight
 Vue.use(VueHighlightJS)
@@ -47,4 +48,4 @@ new Vue({
   router,
   store,
   render: h => h(App),
-}).$mount('#app')
+}).$mount('#app');

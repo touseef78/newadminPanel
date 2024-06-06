@@ -38,6 +38,16 @@
                                     <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
                                 </b-form-group>
                             </div>
+
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Expense Type:" label-for="type">
+                                    <b-form-select v-model="type" required>
+                                        <option value="">Select Expense Type</option>
+                                        <option value="fuel">Fuel</option>
+                                        <option value="others">Others</option>
+                                    </b-form-select>
+                                </b-form-group>
+                            </div>
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Profile Picture:" label-for="image">
                                     <div style="margin-left: 3px; margin-bottom: 15px">
@@ -105,6 +115,7 @@ export default {
 
             name: "",
             amount: "",
+            type: '',
             image: null,
             successMessage: "",
             vehicles: [],
@@ -145,6 +156,7 @@ export default {
                 this.editedUser = response.data.data;
                 this.name = this.editedUser.name;
                 this.amount = this.editedUser.amount;
+                this.type = this.editedUser.type;
                 this.image = this.editedUser.image;
                 // this.city = this.editedUser.city;
 
@@ -185,6 +197,7 @@ export default {
             const formData = new FormData();
             formData.append("name", this.name);
             formData.append("amount", this.amount);
+            formData.append("type", this.type);
             formData.append("image", this.image);
 
             axios

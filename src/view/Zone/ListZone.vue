@@ -41,36 +41,30 @@
                     <template #cell(date)="row">
                         {{ formatDate(row.item.created_at) }}
                     </template>
-                    <!-- check  code  here  -->
-                    <template #cell(amount)="row">
-                        {{ row.item.amount ? row.item.amount : 'N/A' }}
-                    </template>
-
-                    <template #cell(payments_status)="row">
-                        <b-button @click="togglePaymentStatus(row.item)"
-                            :variant="row.item.payments_status === 'PAID' ? 'success' : 'danger'">
-                            {{ row.item.payments_status === 'PAID' ? 'PAID' : 'UNPAID' }}
-                        </b-button>
-                        <b-modal v-model="showPaymentConfirmation" title="Change Payment Status Confirmation">
-                            <p>Are you sure you want to change the payment status to {{ newPaymentStatus }}?</p>
-                            <template #modal-footer>
-                                <b-button variant="success" @click="confirmPaymentStatus">Confirm</b-button>
-                                <b-button variant="secondary" @click="cancelPaymentStatus">Cancel</b-button>
-                            </template>
-                        </b-modal>
-                    </template>
-
-                    <!-- image  show code here  -->
-                    <template #cell(image)="row">
-                        <img :src="'https://backendbigways.singsavatech.com/' + row.item.image" alt="Picture"
-                            width="100" height="100" />
-                    </template>
-                    <!-- end image code here  -->
                     <template #cell(personal_number)="row">
                         {{ `${row.item.security_code} ` }}
                     </template>
+                    <!-- ..... -->
+                    <template #cell(pickup_location)="row">
+                        {{ `${row.item.zone_pickup_name} ` }}
+                    </template>
+                    <!-- ..... -->
+                    <template #cell(dropoff_location)="row">
+                        {{ `${row.item.schools.address} ` }}
+                    </template>
                     <template #cell(actions)="row">
-
+                        <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
+                color: rgba(0, 255, 195, 0.87);
+                margin-left: 6px;
+                margin-bottom: 10px;
+              " class="bi bi-eye" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                <path
+                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                            </svg>
+                        </b-button>
                         <!-- delete -->
                         <b-button @click="showDeleteConfirmation(row.item.id)" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
@@ -91,6 +85,21 @@
                         </b-modal>
                         <!-- end delete -->
 
+
+                        <b-button @click="editUser(row.item.id)" variant="link" class="p-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                style="color: orange; margin-left: 10px; margin-bottom: 10px" class="bi bi-pencil"
+                                viewBox="0 0 16 16">
+
+                                <path
+                                    d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                            </svg>
+                        </b-button>
+                        <!-- .......Zone Detail  -->
+                        <b-button @click="vehiclepdetail(row.item.id)" variant="primary" class="btn-sm mb-8 mr-2">
+                            More Vehicle
+                        </b-button>
+                        <!-- ...... -->
                     </template>
 
                     <b-form-group label="Filter" label-for="filter-input" label-cols-sm="3" label-align-sm="right"
@@ -148,14 +157,14 @@ export default {
             currentPage: 1,
             sortBy: "age",
             sortDesc: false,
-            users: {}, // Instead of 'items', use 'users' array to store fetched data
+            users: [
+            ], // Instead of 'items', use 'users' array to store fetched data
             fields: [
                 { key: "id", sortable: true },
-                { key: "student_name", sortable: true },
-                { key: "amount", sortable: true },
-                { key: "school_name", sortable: true },
-                { key: "payments_status", sortable: true },
-                // { key: "actions", label: "Actions" },
+                { key: "name", sortable: true },
+                { key: "pickup_location", sortable: true },
+                { key: "dropoff_location", sortable: true },
+                { key: "actions", label: "Actions" },
             ],
 
             filter: "", // Define filter property for search functionality
@@ -163,19 +172,9 @@ export default {
             showDeleteConfirmations: false,
             itemIdToDelete: null,
             loading: false,
-            showPaymentConfirmation: false, // Control the visibility of the payment confirmation modal
-            userToChangePaymentStatus: null, // Store the user object whose payment status will be changed
-            newPaymentStatus: '',
             created_at: new Date(), // Replace with your actual date data
             start_date: null,
             end_date: null,
-            image: "",
-            image: null,
-            payments_status: "",
-            total_students: '',
-            amount: "",
-            name: '',
-
 
         };
 
@@ -212,26 +211,42 @@ export default {
         },
     },
     mounted() {
-        const userId = this.$route.params.id;
-        this.fetchData(userId);
+        this.fetchData();
+
     },
-
     methods: {
-        fetchData(userId) {
-            this.loading = true; // Set loading to true before fetching data
-            // let apiUrl = "studentGet";
-            axios
-                .get(`studentGet/${userId}`) // Replace 'your_api_endpoint_url_here' with your actual API URL
-                .then((response) => {
-                    this.users = response.data.data;
+        fetchData() {
+            this.loading = true;
+            // Define your API endpoint URL
 
+            const apiUrl = "zones";
+
+            // Create an object to hold the query parameters
+            const queryParams = {
+                start_date: this.start_date,
+                end_date: this.end_date,
+            };
+
+            axios
+                .get(apiUrl, { params: queryParams })
+                .then((response) => {
+                    this.users = response.data.data.filter((item) => {
+                        const createdDate = new Date(item.created_at);
+                        return (
+                            (!this.start_date || createdDate >= new Date(this.start_date)) &&
+                            (!this.end_date || createdDate <= new Date(this.end_date))
+                        );
+                    });
+                    this.users.forEach((item, index) => {
+                        item.srNo = index + 1;
+                    });
                     this.totalRows = this.users.length;
                 })
                 .catch((error) => {
                     console.error("Error fetching data:", error);
                 })
                 .finally(() => {
-                    this.loading = false; // Set loading to false after fetching data, whether success or error
+                    this.loading = false;
                 });
         },
         onFiltered(filteredItems) {
@@ -252,62 +267,47 @@ export default {
             a.click();
             URL.revokeObjectURL(url);
         },
+
+
+        editUser(userId) {
+            this.$router.push({ name: "EditZone", params: { id: userId } });
+        },
+
+        showDrivers(userId) {
+            this.$router.push({ name: "ViewZone", params: { id: userId } });
+        },
+        ///  delete
         showDeleteConfirmation(itemId) {
             this.itemIdToDelete = itemId;
             this.showDeleteConfirmations = true;
         },
+        deleteItem(itemId) {
 
+            this.itemIdToDelete = itemId; // Set the item ID to be deleted
+            axios
+                .delete(`zonesDelete/${itemId}`)
+                .then((response) => {
+                    this.showDeleteConfirmations = false;
+                    this.fetchData(); // Refresh the data after deletion
+                })
+                .catch((error) => {
+                    // Handle error
+                    console.error("Error deleting item:", error);
+                });
+
+
+        },
         formatDate(dateString) {
             const date = new Date(dateString);
             return date.toLocaleDateString();
 
         },
-        // ............... 
-        togglePaymentStatus(user) {
-            user.payments_status = user.payments_status === 'PAID' ? 'UNPAID' : 'PAID';
-            axios
-                .post(`updateReguest/${user.id}`, user)
-                .then((response) => {
-                    console.log('Status updated successfully:', response.data);
-                })
-                .catch((error) => {
-                    console.error('Error updating status:', error);
-                });
-            // You can also call another method here to update the status on the server
+        // zonedetail(userId) {
+        //     this.$router.push({ name: "ZoneDetail", params: { id: userId } });
+        // },
+        vehiclepdetail(userId) {
+            this.$router.push({ name: "VehicleDetail", params: { id: userId } });
         },
-
-        togglePaymentStatus(user) {
-            this.userToChangePaymentStatus = user; // Store the user object
-            this.newPaymentStatus = user.payments_status === 'PAID' ? 'UNPAID' : 'PAID'; // Determine the new payment status
-            this.showPaymentConfirmation = true; // Open the payment confirmation modal
-        },
-
-        confirmPaymentStatus() {
-            if (this.userToChangePaymentStatus) {
-                // Update the payment status
-                this.userToChangePaymentStatus.payments_status = this.newPaymentStatus;
-
-                // Call the API to update the payment status
-                axios.post(`updateReguest/${this.userToChangePaymentStatus.id}`, this.userToChangePaymentStatus)
-                    .then(response => {
-                        console.log('Payment status updated successfully:', response.data);
-                    })
-                    .catch(error => {
-                        console.error('Error updating payment status:', error);
-                    });
-
-                // Close the confirmation modal
-                this.showPaymentConfirmation = false;
-            }
-        },
-
-        cancelPaymentStatus() {
-            // Reset the user object and close the confirmation modal
-            this.userToChangePaymentStatus = null;
-            this.newPaymentStatus = '';
-            this.showPaymentConfirmation = false;
-        },
-
     },
 };
 </script>

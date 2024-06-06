@@ -172,7 +172,7 @@
                         class="iconly-Light-Buy text-secondary"
                         style="font-size: 24px"
                       ></i> -->
-                      <i style="color: red;">SEK</i>
+                      <i style="color: red;">PKR</i>
                     </b-avatar>
                   </b-col>
 
@@ -200,7 +200,7 @@
                       ></i> -->
                       <i style="color: black;">
                         <!-- <img src="" alt=""> -->
-                        SEK
+                        PKR
                       </i>
                     </b-avatar>
                   </b-col>
@@ -227,7 +227,7 @@
                         class="iconly-Light-Discount text-danger"
                         style="font-size: 24px"
                       ></i> -->
-                      <i style="color: blue;">SEK</i>
+                      <i style="color: blue;">PKR</i>
                     </b-avatar>
                   </b-col>
 
@@ -289,7 +289,7 @@
                         class="iconly-Light-Buy text-secondary"
                         style="font-size: 24px"
                       ></i> -->
-                      <i style="color: red;">SEK</i>
+                      <i style="color: red;">PKR</i>
                     </b-avatar>
                   </b-col>
 
@@ -317,7 +317,7 @@
                       ></i> -->
                       <i style="color: black;">
                         <!-- <img src="" alt=""> -->
-                        SEK
+                        PKR
                       </i>
                     </b-avatar>
                   </b-col>
@@ -330,6 +330,32 @@
 
                     <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
                       Earing This Month
+                    </p>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </b-col>
+            <!-- fuel Expense code here  -->
+            <b-col cols="12" md="6" xl="3" class="mb-32">
+              <b-card>
+                <b-row>
+                  <b-col class="hp-flex-none w-auto">
+                    <b-avatar class="bg-primary-4 hp-bg-color-dark-primary" size="48px">
+                      <!-- <i
+                        class="iconly-Light-Buy text-secondary"
+                        style="font-size: 24px"
+                      ></i> -->
+                      <i style="color: red;">PKR</i>
+                    </b-avatar>
+                  </b-col>
+
+                  <b-col class="pl-0">
+                    <h3 class="mb-4 mt-8">
+                      {{ netEarnings }}<span class="hp-badge-text ml-8 text-secondary"></span>
+                    </h3>
+
+                    <p class="hp-p1-body mb-0 text-black-80 hp-text-color-dark-30">
+                      Profit
                     </p>
                   </b-col>
                 </b-row>
@@ -391,6 +417,7 @@ export default {
       image: null,
       isLoading: false,
       amount: "",
+      netEarnings: 0,
       totalParents: 0,
       totalStudents: 0,
       totalDriver: 0,
@@ -525,9 +552,10 @@ export default {
       this.totalPendingRequest = data.total_pending_requests;
       this.driverAttendance = data.today_drivers_attendance;
       this.studentAttendance = data.today_students_attendance;
-      this.totalEarning = data.net_earning;
+      this.totalEarning = data.total_earning;
       this.totalExpense = data.total_expense;
       this.earningThisMonth = data.current_month_earning;
+      this.netEarnings = data.net_earning;
 
     });
   },
