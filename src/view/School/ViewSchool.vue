@@ -17,51 +17,57 @@
                   margin-left: 5px;
                   font-weight: bold;
                 ">
-                                Company Expense
+                                School Information
                             </h4>
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Name:" label-for="name">
-                                    <b-form-input id="name" type="text" placeholder="Enter  name" autocomplete="off"
-                                        v-model="name" disabled>
+                                <b-form-group id="input-group-1" label="School Name:" label-for="name">
+                                    <b-form-input id="name" type="text" placeholder="Enter school name"
+                                        autocomplete="off" v-model="name" pattern="[A- Z a-z]+"
+                                        title="Please enter only alphabetic characters" disabled>
                                     </b-form-input>
                                 </b-form-group>
                             </div>
 
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Email Address:" label-for="email">
-                                    <b-form-input id="email" type="email" placeholder="Enter email address"
-                                        v-model="email" disabled>
+                                <b-form-group id="input-group-2" label="School Address:" label-for="address ">
+                                    <b-form-input id="address " type="address " placeholder="Enter school address"
+                                        v-model="address" disabled>
                                     </b-form-input>
-                                    <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
                                 </b-form-group>
                             </div>
 
+
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                                    <div style="margin-left: 3px; margin-bottom: 15px">
-                                        <img :src="'https://backendbigways.singsavatech.com/' + profile_picture
-                                            " alt="Profile Picture" width="100" height="100" />
-                                    </div>
+                                <b-form-group id="input-group-2" label="Branch Name:" label-for="branch_name">
+                                    <b-form-input id="branch_name" type="branch_name" placeholder="Enter branch name"
+                                        v-model="branch_name" disabled>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Monthly Amount:" label-for="amount">
+                                    <b-form-input id="amount" type="amount" placeholder="Enter monthly amount"
+                                        v-model="amount" disabled>
+                                    </b-form-input>
                                 </b-form-group>
                             </div>
                         </div>
 
-
-
-
-
-
-
+                        <!-- Bank Information End -->
+                        <!-- <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
+                            <span v-if="!isLoading">Submit</span>
+                            <b-spinner v-else class="mb-8 mr-8" variant="primary" small></b-spinner>
+                        </b-button> -->
                     </b-form>
                 </div>
                 <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
                     <pre v-highlightjs>
-              <code class="hljs html">
-                {{ codeText }}
-              </code>
-            </pre>
+          <code class="hljs html">
+            {{ codeText }}
+          </code>
+        </pre>
                 </div>
             </b-row>
         </b-card>
@@ -104,34 +110,9 @@ export default {
             isLoading: false,
             // Add Driver
             name: "",
-            email: "",
-            mobile: "",
-            gender: "",
-            postal_code: '',
-            city: '',
-            per_km: "",
-            seating_capacity: "",
-            pickup_location: "",
-            drop_location: "",
-            password: '',
             address: "",
-            profile_picture: "",
-            successMessage: "",
-            vehicle_id: "",
-            vehicles: [],
-            editedUser: {
-                // ... other properties ...
-                vehicle_image: [], // Initialize the array here
-            },
-            joining_date: '',
-            vehicle_name: "",
-            vehicle_company: "",
-            vehicle_number: '',
-            vehicle_type: "",
-            date_of_birth: "",
-
-
-            // vehicle_image: null,
+            branch_name: "",
+            amount: "",
         };
     },
     components: {
@@ -150,43 +131,16 @@ export default {
     },
 
     created() {
-        // Load the clients data when the component is created
-        // axios
-        //     .get("vehicle")
-        //     .then((response) => {
-        //         this.vehicles = response.data.data;
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
-
         const userId = this.$route.params.id;
         axios
-            .get(`drivers/${userId}`)
+            .get(`schoolsShow/${userId}`)
             .then((response) => {
                 this.editedUser = response.data.data;
                 // Set the data properties with values from editedUser
                 this.name = this.editedUser.name;
-                this.vehicle_type = this.editedUser.vehicle.vehicle_type;
-                this.vehicle_number = this.editedUser.vehicle.vehicle_number;
-                this.postal_code = this.editedUser.postal_code;
-                this.city = this.editedUser.city;
-                this.password = this.editedUser.password;
-                this.email = this.editedUser.email;
-                this.mobile = this.editedUser.mobile;
-                this.joining_date = this.editedUser.joining_date;
-                this.gender = this.editedUser.gender;
                 this.address = this.editedUser.address;
-                this.date_of_birth = this.editedUser.date_of_birth;
-                this.profile_picture = this.editedUser.profile_picture;
-                this.salary = this.editedUser.salary;
-                this.vehicle_id = this.editedUser.vehicle_id;
-                this.vehicle_name = this.editedUser.vehicle.name; // Assign vehicle name to vehicle_name
-                this.vehicle_image = this.editedUser.vehicle_image;
-                this.per_km = this.editedUser.vehicle.per_km;
-                this.seating_capacity = this.editedUser.vehicle.seating_capacity;
-                this.pickup_location = this.editedUser.vehicle.pickup_location;
-                this.drop_location = this.editedUser.vehicle.drop_location;
+                this.amount = this.editedUser.amount;
+                this.branch_name = this.editedUser.branch_name;
                 // ... and so on for other properties ...
             })
             .catch((error) => {

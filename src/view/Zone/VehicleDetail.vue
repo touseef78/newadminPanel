@@ -17,70 +17,34 @@
                   margin-left: 5px;
                   font-weight: bold;
                 ">
-                                Personal Information
+                                Vehicle Information
                             </h4>
                         </div>
                         <div class="row">
-
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Name:" label-for="name">
-                                    <b-form-input id="name" type="text" placeholder="Enter first name"
-                                        autocomplete="off" v-model="name" pattern="[A- Z a-z]+"
-                                        title="Please enter only alphabetic characters" required>
+                                <b-form-group id="input-group-2" label="Zone Title:" label-for="name">
+                                    <b-form-input id="name" type="name" placeholder="Enter zone title " v-model="name"
+                                        disabled>
                                     </b-form-input>
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Email Address:" label-for="email">
-                                    <b-form-input id="email" type="email" placeholder="Enter email address"
-                                        v-model="email" required>
-                                    </b-form-input>
-                                    <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
-                                </b-form-group>
-                            </div>
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
-                                    <b-form-input id="mobile" type="text" placeholder="Enter mobile number"
-                                        v-model="mobile" pattern="[0-9]+" title="Please enter only numeric characters"
-                                        required>
+                                <b-form-group id="input-group-2" label="Pickup Time:" label-for="pickup_time">
+                                    <b-form-input id="pickup_time" type="time" placeholder="Enter pickup time "
+                                        v-model="pickup_time" required>
                                     </b-form-input>
                                 </b-form-group>
                             </div>
-
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Gender:" label-for="gender">
-                                    <b-form-select v-model="gender" required>
-                                        <option value="">Select Gender</option>
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Other</option>
-                                    </b-form-select>
-                                </b-form-group>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Address:" label-for="address">
-                                    <b-form-input id="address" placeholder="Enter address" v-model="address" required>
+                                <b-form-group id="input-group-2" label="Dropoff Time:" label-for="return_time">
+                                    <b-form-input id="return_time" type="time" placeholder="Enter dropoff time "
+                                        v-model="return_time" required>
                                     </b-form-input>
-                                </b-form-group>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
-                                    <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth"
-                                        v-model="date_of_birth" required></b-form-input>
-                                </b-form-group>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
-                                    <b-form-input id="joining_date" type="date" v-model="joining_date"
-                                        required></b-form-input>
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
-                                    <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id"
+                                    <b-form-select id="vehicle_id" placeholder="Select car" v-model="vehicle_id"
                                         required>
                                         <option value="">Select Car</option>
                                         <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
@@ -89,46 +53,44 @@
                                     </b-form-select>
                                 </b-form-group>
                             </div>
-
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Postal Code:" label-for="postal_code">
-                                    <b-form-input id="postal_code" placeholder="Enter Postal code" v-model="postal_code"
-                                        required>
+                            <div class="position-relative col-md-4 col-12">
+                                <b-form-group id="input-group-1" label="Pickup Location:" label-for="zone_pickup_name">
+                                    <b-form-input id="zone_pickup_name" type="text" placeholder="Enter pickup location"
+                                        autocomplete="off" v-model="zone_pickup_name" @change="geocodeAddress"
+                                        @input="getLocationSuggestions" @keydown.down.prevent="moveDown"
+                                        @keydown.up.prevent="moveUp" @keydown.enter.prevent="selectHighlightedLocation"
+                                        disabled>
                                     </b-form-input>
-                                </b-form-group>
-                            </div>
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="City:" label-for="city">
-                                    <b-form-input id="city" placeholder="Enter city" v-model="city" required>
-                                    </b-form-input>
-                                </b-form-group>
-                            </div>
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Password:" label-for="password">
-                                    <b-form-input id="password" type="text" placeholder="Enter password"
-                                        v-model="password" minlength="8" maxlength="8" required>
-                                    </b-form-input>
-                                </b-form-group>
-                            </div>
-
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Salary:" label-for="salary">
-                                    <b-form-input id="salary" placeholder="Enter your salary" v-model="salary" required>
-                                    </b-form-input>
-
-                                </b-form-group>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                                    <div style="margin-left: 3px; margin-bottom: 15px">
-                                        <input type="file" accept="image/*" id="profile_picture"
-                                            @change="onProfilePictureChange" required />
+                                    <ul class="dropdown-menu" v-if="suggestions.length > 0">
+                                        <li v-for="(suggestion, index) in suggestions" :key="index"
+                                            :class="{ 'highlighted': index === highlightedIndex }"
+                                            @click="selectLocation(suggestion)">
+                                            <strong>{{ suggestion.description }}</strong>
+                                        </li>
+                                    </ul>
+                                    <div class="invalid-feedback" v-if="!zone_pickup_name">
+                                        This field must be filled.
                                     </div>
                                 </b-form-group>
                             </div>
+                            <!-- <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Dropoff Location:" label-for="schools_id">
+                                    <b-form-select id="schools_id" placeholder="Dropoff location" v-model="schools_id"
+                                        disabled>
+                                        <option value="">Dropoff Location</option>
+                                        <option v-for="schools in schools" :key="schools.id" :value="schools.id">
+                                            {{ schools.address }}
+                                        </option>
+                                    </b-form-select>
+                                </b-form-group>
+                            </div> -->
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Dropoff Location:" label-for="schools_id">
+                                    <b-form-input id="schools_id" placeholder="Dropoff location"
+                                        v-model="editedUser.schools.address" disabled></b-form-input>
+                                </b-form-group>
+                            </div>
+
 
                         </div>
 
@@ -187,26 +149,29 @@ export default {
             isLoading: false,
             // Add Driver
             name: "",
-            postal_code: '',
-            city: '',
-            password: '',
-            email: "",
-            mobile: "",
-            gender: "",
             address: "",
-            date_of_birth: "",
-            salary: "",
-            company_name: "",
-            profile_picture: null,
-            successMessage: "",
+            suggestions: [],
+            highlightedIndex: -1,
+            dropoff_location: "",
+            pickup_time: "",
+            return_time: "",
+            mid_names: [
+                { value: '' }
+            ],
             vehicle_id: "",
+            schools_id: "",
             vehicles: [],
-            joining_date: '',
-            ////
-            description: "",
-            vehicle_image: [],
+            schools: [],
+            zone_pickup_latitude: "",
+            zone_pickup_longitude: "",
+            mid_latitude: "",
+            mid_longitude: "",
+            editedUser: null,
+            zone_pickup_name: "",
+            pickup_location: "",
 
-            company_name: "",
+
+
 
         };
     },
@@ -235,7 +200,34 @@ export default {
             .catch((error) => {
                 console.log(error);
             });
+        axios
+            .get("schools")
+            .then((response) => {
+                this.schools = response.data.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        const userId = this.$route.params.id;
+
+        axios
+            .get(`zonesShow/${userId}`)
+            .then((response) => {
+
+                this.editedUser = response.data.data;
+                this.name = this.editedUser.name;
+                this.zone_pickup_name = this.editedUser.zone_pickup_name;
+                this.schools_id = this.editedUser.schools.address;
+                this.schools_id = this.editedUser.schools_id;
+
+
+            })
+            .catch((error) => {
+                console.error("Error fetching user data:", error);
+            });
     },
+
     methods: {
         showMsgBoxOne() {
             debugger;
@@ -261,27 +253,26 @@ export default {
 
         addUser() {
             this.isLoading = true;
+
             // Create a FormData object to handle the image file
             const formData = new FormData();
-            formData.append("profile_picture", this.profile_picture);
             formData.append("name", this.name);
-            formData.append("postal_code", this.postal_code);
-            formData.append("city", this.city);
-            formData.append("password", this.password);
-            formData.append("email", this.email);
-            formData.append("joining_date", this.joining_date);
-            formData.append("mobile", this.mobile);
-            formData.append("gender", this.gender);
-            formData.append("address", this.address);
-            formData.append("date_of_birth", this.date_of_birth);
-            formData.append("salary", this.salary);
+            formData.append("pickup_time", this.pickup_time);
+            formData.append("mid_name[]", this.mid_name);
+            formData.append("return_time", this.return_time);
+            formData.append("zone_pickup_name", this.address);
+            formData.append("schools_id", this.schools_id);
+            formData.append("zone_pickup_longitude", this.zone_pickup_longitude);
+            formData.append("zone_pickup_latitude", this.zone_pickup_latitude);
             formData.append("vehicle_id", this.vehicle_id);
+            formData.append("zone_id", this.$route.params.id);
+            formData.append("mid_longitude", this.mid_longitude);
             axios
 
-                .post("careTaker", formData)
+                .post("addvehicle", formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("CareTaker added successfully!", {
+                    this.$bvToast.toast("Vehicle added successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,
@@ -291,7 +282,6 @@ export default {
                         variant: "primary", // Background color
                     });
                     this.isLoading = false;
-                    this.$router.push({ name: 'ListCareTaker' });
                 })
                 .catch((error) => {
                     this.errors = error.response.data.errors;
@@ -332,6 +322,17 @@ export default {
         saveOwnCar() {
             this.showModal = false;
         },
+        // multiple  field code 
+        addMidpoint() {
+            this.mid_names.push({ value: '' });
+        },
+        removeMidpoint(index) {
+            if (this.mid_names.length > 1) {
+                this.mid_names.splice(index, 1);
+            } else {
+                this.mid_names[index].value = '';
+            }
+        }
     },
 };
 </script>

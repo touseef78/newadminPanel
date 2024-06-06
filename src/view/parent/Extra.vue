@@ -21,112 +21,55 @@
                             </h4>
                         </div>
                         <div class="row">
-
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-1" label="Name:" label-for="name">
                                     <b-form-input id="name" type="text" placeholder="Enter first name"
-                                        autocomplete="off" v-model="name" pattern="[A- Z a-z]+"
-                                        title="Please enter only alphabetic characters" required>
+                                        autocomplete="off" v-model="name">
                                     </b-form-input>
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Email Address:" label-for="email">
+                                <b-form-group id="input-group-2" label="Email:" label-for="email">
                                     <b-form-input id="email" type="email" placeholder="Enter email address"
-                                        v-model="email" required>
+                                        v-model="email">
                                     </b-form-input>
                                     <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Mobile:" label-for="mobile">
-                                    <b-form-input id="mobile" type="text" placeholder="Enter mobile number"
-                                        v-model="mobile" pattern="[0-9]+" title="Please enter only numeric characters"
-                                        required>
-                                    </b-form-input>
-                                </b-form-group>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Gender:" label-for="gender">
-                                    <b-form-select v-model="gender" required>
-                                        <option value="">Select Gender</option>
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Other</option>
-                                    </b-form-select>
-                                </b-form-group>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Address:" label-for="address">
-                                    <b-form-input id="address" placeholder="Enter address" v-model="address" required>
-                                    </b-form-input>
-                                </b-form-group>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Date of Birth:" label-for="date_of_birth">
-                                    <b-form-input id="date_of_birth" type="date" placeholder="Enter date of birth"
-                                        v-model="date_of_birth" required></b-form-input>
-                                </b-form-group>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Joining Date:" label-for="joining_date">
-                                    <b-form-input id="joining_date" type="date" v-model="joining_date"
-                                        required></b-form-input>
-                                </b-form-group>
-                            </div>
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
-                                    <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id"
-                                        required>
-                                        <option value="">Select Car</option>
-                                        <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
-                                            {{ vehicle.name }}
-                                        </option>
-                                    </b-form-select>
-                                </b-form-group>
-                            </div>
-
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Postal Code:" label-for="postal_code">
-                                    <b-form-input id="postal_code" placeholder="Enter Postal code" v-model="postal_code"
-                                        required>
-                                    </b-form-input>
+                                <b-form-group id="input-group-1" label="Mobile:" label-for="phone_number">
+                                    <b-form-input id="phone_number" type="number" placeholder="Enter mobile number"
+                                        v-model="phone_number"></b-form-input>
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="City:" label-for="city">
-                                    <b-form-input id="city" placeholder="Enter city" v-model="city" required>
-                                    </b-form-input>
-                                </b-form-group>
-                            </div>
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Password:" label-for="password">
-                                    <b-form-input id="password" type="text" placeholder="Enter password"
-                                        v-model="password" minlength="8" maxlength="8" required>
-                                    </b-form-input>
+                                    <b-form-input id="city" placeholder="Enter city " v-model="city"></b-form-input>
                                 </b-form-group>
                             </div>
 
 
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Salary:" label-for="salary">
-                                    <b-form-input id="salary" placeholder="Enter your salary" v-model="salary" required>
+                                <b-form-group id="input-group-2" label="Pickup Location:" label-for="pickup_location">
+                                    <b-form-input id="pickup_location" placeholder="Enter pickup location"
+                                        v-model="pickup_location">
                                     </b-form-input>
-
                                 </b-form-group>
                             </div>
 
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Profile Picture:" label-for="profile_picture">
-                                    <div style="margin-left: 3px; margin-bottom: 15px">
-                                        <input type="file" accept="image/*" id="profile_picture"
-                                            @change="onProfilePictureChange" required />
-                                    </div>
+                                <b-form-group id="input-group-2" label="Dropoff Location:" label-for="drop_location">
+                                    <b-form-input id="drop_location" type="text" placeholder="Enter dropoff location"
+                                        v-model="drop_location">
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
+
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Amount :" label-for="amount">
+                                    <b-form-input id="amount" type="number" placeholder="Enter  amount"
+                                        v-model="amount">
+                                    </b-form-input>
                                 </b-form-group>
                             </div>
 
@@ -141,10 +84,10 @@
                 </div>
                 <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
                     <pre v-highlightjs>
-          <code class="hljs html">
-            {{ codeText }}
-          </code>
-        </pre>
+            <code class="hljs html">
+              {{ codeText }}
+            </code>
+          </pre>
                 </div>
             </b-row>
         </b-card>
@@ -172,14 +115,12 @@ import code from "../components/data-entry/form/code";
 export default {
     data() {
         return {
-            select_vehicle_type: "",
-            selectedImage: null,
             show: true,
             codeText: code.introduction,
             codeActive: false,
             codeActiveClass: false,
             selectedOption: "",
-            fixSalary: "",
+            selectedCarType: "",
             inputField1: "",
             inputField2: "",
             inputField3: "",
@@ -187,26 +128,13 @@ export default {
             isLoading: false,
             // Add Driver
             name: "",
-            postal_code: '',
-            city: '',
-            password: '',
             email: "",
-            mobile: "",
-            gender: "",
-            address: "",
-            date_of_birth: "",
-            salary: "",
-            company_name: "",
-            profile_picture: null,
-            successMessage: "",
-            vehicle_id: "",
-            vehicles: [],
-            joining_date: '',
-            ////
-            description: "",
-            vehicle_image: [],
+            phone_number: "",
+            city: "",
+            pickup_location: "",
+            drop_location: "",
+            amount: "",
 
-            company_name: "",
 
         };
     },
@@ -235,8 +163,44 @@ export default {
             .catch((error) => {
                 console.log(error);
             });
+
+        const userId = this.$route.params.id;
+        axios
+            .get(`registration/${userId}`)
+            .then((response) => {
+
+                this.editedUser = response.data.data;
+                this.name = this.editedUser.name;
+                this.email = this.editedUser.email;
+                this.phone_number = this.editedUser.phone_number;
+                this.city = this.editedUser.city;
+                this.pickup_location = this.editedUser.pickup_location;
+                this.drop_location = this.editedUser.drop_location;
+                this.amount = this.editedUser.amount;
+
+            })
+            .catch((error) => {
+                console.error("Error fetching user data:", error);
+            });
     },
     methods: {
+        fetchData() {
+            this.loading = true; // Set loading to true before fetching data
+            let apiUrl = "approved";
+            axios
+                .get(apiUrl) // Replace 'your_api_endpoint_url_here' with your actual API URL
+                .then((response) => {
+                    this.users = response.data.data;
+
+                    this.totalRows = this.users.length;
+                })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                })
+                .finally(() => {
+                    this.loading = false; // Set loading to false after fetching data, whether success or error
+                });
+        },
         showMsgBoxOne() {
             debugger;
         },
@@ -262,26 +226,20 @@ export default {
         addUser() {
             this.isLoading = true;
             // Create a FormData object to handle the image file
-            const formData = new FormData();
-            formData.append("profile_picture", this.profile_picture);
-            formData.append("name", this.name);
-            formData.append("postal_code", this.postal_code);
-            formData.append("city", this.city);
-            formData.append("password", this.password);
-            formData.append("email", this.email);
-            formData.append("joining_date", this.joining_date);
-            formData.append("mobile", this.mobile);
-            formData.append("gender", this.gender);
-            formData.append("address", this.address);
-            formData.append("date_of_birth", this.date_of_birth);
-            formData.append("salary", this.salary);
-            formData.append("vehicle_id", this.vehicle_id);
-            axios
 
-                .post("careTaker", formData)
+            const formData = new FormData();
+            formData.append("name", this.name);
+            formData.append("email", this.email);
+            formData.append("city", this.city);
+            formData.append("phone_number", this.phone_number);
+            formData.append("pickup_location", this.pickup_location);
+            formData.append("drop_location", this.drop_location);
+            formData.append("amount", this.amount);
+            axios
+                .post(`registration/${this.editedUser.id}`, formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("CareTaker added successfully!", {
+                    this.$bvToast.toast(" Parent Updated successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,
@@ -291,7 +249,6 @@ export default {
                         variant: "primary", // Background color
                     });
                     this.isLoading = false;
-                    this.$router.push({ name: 'ListCareTaker' });
                 })
                 .catch((error) => {
                     this.errors = error.response.data.errors;
@@ -299,9 +256,11 @@ export default {
                     this.isLoading = false;
                 });
         },
+
         onProfilePictureChange(event) {
             const file = event.target.files[0];
             if (file) {
+                // Set the selected file to the data property
                 this.profile_picture = file;
             }
         },
@@ -314,9 +273,10 @@ export default {
             }
         },
 
-        BankImageChange(event) {
+        BnakImageChange(event) {
             const file = event.target.files[0];
             if (file) {
+                // Set the selected file to the data property
                 this.bank_upload_document = file;
             }
         },

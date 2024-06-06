@@ -17,50 +17,35 @@
                   margin-left: 5px;
                   font-weight: bold;
                 ">
-                                Company Expense
+                                Pickup Point Information
                             </h4>
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Name:" label-for="name">
-                                    <b-form-input id="name" type="text" placeholder="Enter first name"
-                                        autocomplete="off" v-model="name" pattern="[A- Z a-z]+"
+                                <b-form-group id="input-group-1" label="Title:" label-for="title">
+                                    <b-form-input id="title" type="text" placeholder="Enter school title"
+                                        autocomplete="off" v-model="title" pattern="[A- Z a-z]+"
                                         title="Please enter only alphabetic characters" required>
                                     </b-form-input>
                                 </b-form-group>
                             </div>
 
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Amount:" label-for="amount">
-                                    <b-form-input id="amount" type="amount" placeholder="Enter amount" v-model="amount"
-                                        required>
+                                <b-form-group id="input-group-2" label="Pickup Point:" label-for="pickup_name">
+                                    <b-form-input id="pickup_name" type="pickup_name" placeholder="Enter pickup point"
+                                        v-model="pickup_name" required>
                                     </b-form-input>
-                                    <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
                                 </b-form-group>
                             </div>
 
 
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Expense Type:" label-for="type">
-                                    <b-form-select v-model="type" required>
-                                        <option value="">Select Expense Type</option>
-                                        <option value="fuel">Fuel</option>
-                                        <option value="others">Others</option>
-                                    </b-form-select>
+                                <b-form-group id="input-group-2" label="Dropoff Point:" label-for="drop_name">
+                                    <b-form-input id="drop_name" type="drop_name" placeholder="Enter dropoff point"
+                                        v-model="drop_name" required>
+                                    </b-form-input>
                                 </b-form-group>
                             </div>
-
-
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Expense Picture:" label-for="image">
-                                    <div style="margin-left: 3px; margin-bottom: 15px">
-                                        <input type="file" accept="image/*" id="image" @change="onProfilePictureChange"
-                                            required />
-                                    </div>
-                                </b-form-group>
-                            </div>
-
                         </div>
 
                         <!-- Bank Information End -->
@@ -103,23 +88,23 @@ import code from "../components/data-entry/form/code";
 export default {
     data() {
         return {
+            select_vehicle_type: "",
             selectedImage: null,
             show: true,
             codeText: code.introduction,
             codeActive: false,
             codeActiveClass: false,
             selectedOption: "",
-
+            fixSalary: "",
+            inputField1: "",
+            inputField2: "",
+            inputField3: "",
             showModal: false,
             isLoading: false,
             // Add Driver
-            name: "",
-            amount: "",
-            type: '',
-            image: null,
-            successMessage: "",
-            vehicles: [],
-
+            title: "",
+            drop_name: "",
+            pickup_name: "",
 
 
         };
@@ -177,17 +162,15 @@ export default {
             this.isLoading = true;
             // Create a FormData object to handle the image file
             const formData = new FormData();
-            formData.append("image", this.image);
-            formData.append("name", this.name);
-            formData.append("amount", this.amount);
-            formData.append("type", this.type);
-
+            formData.append("title", this.title);
+            formData.append("pickup_name", this.pickup_name);
+            formData.append("drop_name", this.drop_name);
             axios
 
-                .post("expenseStore", formData)
+                .post("pickupPointsStore", formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("Expense added successfully!", {
+                    this.$bvToast.toast("Pickup point added successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,
@@ -197,7 +180,6 @@ export default {
                         variant: "primary", // Background color
                     });
                     this.isLoading = false;
-                    this.$router.push({ name: 'ExpenseList' });
                 })
                 .catch((error) => {
                     this.errors = error.response.data.errors;
@@ -208,7 +190,7 @@ export default {
         onProfilePictureChange(event) {
             const file = event.target.files[0];
             if (file) {
-                this.image = file;
+                this.profile_picture = file;
             }
         },
 

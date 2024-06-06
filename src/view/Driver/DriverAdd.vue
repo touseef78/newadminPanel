@@ -108,7 +108,7 @@
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Password:" label-for="password">
                                     <b-form-input id="password" type="number" placeholder="Enter password"
-                                        v-model="password" minlength="8" maxlength="8">
+                                        v-model="password" minlength="8" maxlength="8" required>
                                     </b-form-input>
                                 </b-form-group>
                             </div>
@@ -117,7 +117,7 @@
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-1" label="Salary:" label-for="salary">
                                     <b-form-input id="salary" type="number" placeholder="Enter your salary"
-                                        v-model="salary">
+                                        v-model="salary" required>
                                     </b-form-input>
 
                                 </b-form-group>
@@ -292,6 +292,7 @@ export default {
                         variant: "primary", // Background color
                     });
                     this.isLoading = false;
+                    this.$router.push({ name: 'DriverList' });
                 })
                 .catch((error) => {
                     this.errors = error.response.data.errors;

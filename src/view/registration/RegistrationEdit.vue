@@ -23,9 +23,9 @@
                         <div class="row">
 
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Name:" label-for="name">
-                                    <b-form-input id="name" type="text" placeholder="Enter name" autocomplete="off"
-                                        v-model="name" pattern="[A- Z a-z]+"
+                                <b-form-group id="input-group-1" label="Name:" label-for="first_name">
+                                    <b-form-input id="first_name" type="text" placeholder="Enter name"
+                                        autocomplete="off" v-model="first_name" pattern="[A- Z a-z]+"
                                         title="Please enter only alphabetic characters" required>
                                     </b-form-input>
                                 </b-form-group>
@@ -74,6 +74,27 @@
                                         v-model="drop_location" required></b-form-input>
                                 </b-form-group>
                             </div>
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Amount:" label-for="amount">
+                                    <b-form-input id="amount" type="number" placeholder="Enter amount" v-model="amount"
+                                        required></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Fix Monthly Amount:"
+                                    label-for="fixed_monthly_amount">
+                                    <b-form-input id="fixed_monthly_amount" type="number"
+                                        placeholder="Enter fixed monthly amount" v-model="fixedMonthlyAmount"
+                                        @input="updateAmount"></b-form-input>
+                                </b-form-group>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Total Students:" label-for="total_students">
+                                    <b-form-input id="total_students" type="number" placeholder="Enter total student"
+                                        v-model="total_students" required>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
 
                         </div>
                         <div style="
@@ -90,12 +111,7 @@
                             </h4>
                         </div>
                         <div class="row">
-                            <!-- <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Car Type:" label-for="vehicle_type">
-                                    <b-form-input id="vehicle_type" type="text" placeholder="Enter car type"
-                                        v-model="vehicle_type" required></b-form-input>
-                                </b-form-group>
-                            </div> -->
+
                             <div class="col-md-4 col-12">
                                 <b-form-group id="input-group-2" label="Car Type:" label-for="vehicle_type">
                                     <b-form-select id="vehicle_type" v-model="vehicle_type" @change="fetchVehicles"
@@ -103,9 +119,7 @@
                                         <option value="AC">AC</option>
                                         <option value="Non AC">Non-AC</option>
                                     </b-form-select>
-                                    <!-- <div v-if="loading" class="spinner-border loader" role="status">
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div> -->
+
                                 </b-form-group>
                             </div>
 
@@ -119,8 +133,28 @@
                                     </b-form-select>
                                 </b-form-group>
                             </div>
+                            <!-- Zone  Information  code  here  -->
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Zone Title:" label-for="zone_name">
+                                    <b-form-input id="zone_name" type="text" placeholder="Enter zone title"
+                                        v-model="zone_name" required>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
+
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Pickup Location:"
+                                    label-for="zone_pickup_location">
+                                    <b-form-input id="zone_pickup_location" type="zone_pickup_location"
+                                        placeholder="Enter pickup location " v-model="zone_pickup_location" required>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
+
+                            <!-- Zone  infomation  code  here  end  -->
                         </div>
-                        <b-button type="submit" variant="primary" class="mb-8 mr-8" :disabled="isLoading">
+                        <b-button @click="updateAmount" type="submit" variant="primary" class="mb-8 mr-8"
+                            :disabled="isLoading">
                             <span v-if="!isLoading">Submit</span>
                             <b-spinner v-else class="mb-8 mr-8" variant="primary" small></b-spinner>
                         </b-button>
@@ -137,6 +171,14 @@
         </b-card>
     </div>
 </template>
+<style>
+/* Remove up and down arrows from number input */
+#total_students::-webkit-inner-spin-button,
+#total_students::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>
 
 <script>
 import {
@@ -159,7 +201,7 @@ import code from "../components/data-entry/form/code";
 export default {
     data() {
         return {
-            vehicle_type: "",
+            // vehicle_type: "",
             selectedImage: null,
             show: true,
             codeText: code.introduction,
@@ -172,13 +214,15 @@ export default {
             showModal: false,
             isLoading: false,
             // Add Driver
-            name: "",
+            first_name: '',
+            // name: "",
             email: '',
             city: '',
             car_type: "",
-            reg_no: '',
-            name: "",
-            per_km: "",
+            // reg_no: '',
+            // vehicle_number: '',
+            // name: "",
+            // per_km: "",
             phone_number: '',
             number_of_student: "",
             pickup_location: "",
@@ -189,9 +233,27 @@ export default {
             // profile_picture: null,
             successMessage: "",
             vehicle_id: "",
-
-
+            vehicles: [],
+            fixedMonthlyAmount: "", // New property to store fixed monthly amount
+            originalAmount: "",
+            submitted: false,
+            amountUpdatedManually: false,
+            zone_name: "",
+            zone_pickup_location: "",
         };
+
+    },
+
+    computed: {
+        updatedAmount() {
+            // Return the updated amount based on whether the form has been submitted
+            // and if the amount has been manually updated
+            if (this.submitted || this.amountUpdatedManually) {
+                return this.fixedMonthlyAmount || this.amount;
+            } else {
+                return this.amount;
+            }
+        },
     },
     components: {
         BRow,
@@ -224,27 +286,24 @@ export default {
             .then((response) => {
 
                 this.editedUser = response.data.data;
-                this.name = this.editedUser.name;
+                this.first_name = this.editedUser.name;
                 this.city = this.editedUser.city;
                 this.email = this.editedUser.email;
                 this.vehicle_id = this.editedUser.vehicle_id;
-                this.reg_no = this.editedUser.vehicle.reg_no;
+                // this.vehicle_number = this.editedUser.vehicle.vehicle_number;
                 this.number_of_student = this.editedUser.number_of_student;
                 this.car_type = this.editedUser.car_type;
-                this.per_km = this.editedUser.vehicle.per_km;
+                // this.per_km = this.editedUser.vehicle.per_km;
                 this.phone_number = this.editedUser.phone_number;
                 this.pickup_location = this.editedUser.pickup_location;
                 this.drop_location = this.editedUser.drop_location;
                 this.amount = this.editedUser.amount;
                 this.total_students = this.editedUser.total_students;
                 this.vehicle_type = this.editedUser.vehicle.vehicle_type;
-
-
-
-                // Depending on the selected option, set the appropriate salary value
-
-
-                // ... and so on for other properties ...
+                this.name = this.editedUser.vehicle.name;
+                // this.zone_name = this.editedUser.name;
+                this.zone_name = this.editedUser.zone.name;
+                this.zone_pickup_location = this.editedUser.pickup_location;
             })
             .catch((error) => {
                 console.error("Error fetching user data:", error);
@@ -252,15 +311,20 @@ export default {
 
     },
     methods: {
-        // updateCarType() {
-        //     // Add logic here to update the displayed content based on the selected vehicle type
-        //     // For example:
-        //     if (this.vehicle_type === 'AC') {
-        //         // Logic for AC type
-        //     } else if (this.vehicle_type === 'Non-AC') {
-        //         // Logic for Non-AC type
-        //     }
+        // updateAmount() {
+        //     // Set the submitted flag to true to indicate that the form has been submitted
+        //     this.submitted = true;
         // },
+        updateAmount() {
+            if (!this.fixedMonthlyAmount) {
+                // If fixedMonthlyAmount is not entered, use the calculated amount
+                this.amountUpdatedManually = false;
+            } else {
+                // If fixedMonthlyAmount is entered, use it
+                this.amount = this.fixedMonthlyAmount;
+                this.amountUpdatedManually = true;
+            }
+        },
         showMsgBoxOne() {
             debugger;
         },
@@ -286,6 +350,7 @@ export default {
         addUser() {
             this.isLoading = true;
             // Create a FormData object to handle the image file
+            this.amount = this.updatedAmount;
             const formData = new FormData();
             formData.append("profile_picture", this.profile_picture);
             formData.append("name", this.name);
@@ -299,6 +364,8 @@ export default {
             formData.append("drop_location", this.drop_location);
             formData.append("amount", this.amount);
             formData.append("total_students", this.total_students);
+            formData.append("zone_name", this.zone_name);
+            formData.append("zone_pickup_location", this.zone_pickup_location);
 
 
             // formData.append("type", "uber");
@@ -371,6 +438,10 @@ export default {
 
         saveOwnCar() {
             this.showModal = false;
+        },
+        updateAmountManually() {
+            // Set the flag to true when amount is updated manually
+            this.amountUpdatedManually = true;
         },
     },
 };

@@ -156,6 +156,7 @@ export default {
                 { key: "name", sortable: true },
                 { key: "image", sortable: true },
                 { key: "amount", sortable: true },
+                { key: "type", sortable: true },
                 { key: "actions", label: "Actions" },
             ],
 

@@ -17,50 +17,35 @@
                   margin-left: 5px;
                   font-weight: bold;
                 ">
-                                Company Expense
+                                Zone Vehicle Information
                             </h4>
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Name:" label-for="name">
-                                    <b-form-input id="name" type="text" placeholder="Enter first name"
-                                        autocomplete="off" v-model="name" pattern="[A- Z a-z]+"
-                                        title="Please enter only alphabetic characters" required>
-                                    </b-form-input>
-                                </b-form-group>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Amount:" label-for="amount">
-                                    <b-form-input id="amount" type="amount" placeholder="Enter amount" v-model="amount"
-                                        required>
-                                    </b-form-input>
-                                    <!-- <span class="text-danger" v-if="errors.email">{{ errors.email[0] }}</span> -->
-                                </b-form-group>
-                            </div>
-
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Expense Type:" label-for="type">
-                                    <b-form-select v-model="type" required>
-                                        <option value="">Select Expense Type</option>
-                                        <option value="fuel">Fuel</option>
-                                        <option value="others">Others</option>
+                                <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
+                                    <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id">
+                                        <option value="">Select Car</option>
+                                        <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
+                                            {{ vehicle.name }}
+                                        </option>
                                     </b-form-select>
                                 </b-form-group>
                             </div>
-
-
-
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Expense Picture:" label-for="image">
-                                    <div style="margin-left: 3px; margin-bottom: 15px">
-                                        <input type="file" accept="image/*" id="image" @change="onProfilePictureChange"
-                                            required />
-                                    </div>
+                                <b-form-group id="input-group-2" label="Pickup Time:" label-for="pickup_time">
+                                    <b-form-input id="pickup_time" type="time" placeholder="Enter pickup time "
+                                        v-model="pickup_time" required>
+                                    </b-form-input>
                                 </b-form-group>
                             </div>
 
+                            <div class="col-md-4 col-12">
+                                <b-form-group id="input-group-2" label="Dropoff Time:" label-for="return_time">
+                                    <b-form-input id="return_time" type="time" placeholder="Enter dropoff time "
+                                        v-model="return_time" required>
+                                    </b-form-input>
+                                </b-form-group>
+                            </div>
                         </div>
 
                         <!-- Bank Information End -->
@@ -72,10 +57,10 @@
                 </div>
                 <div v-if="codeActive" class="col-12 mt-24 hljs-container" :class="{ active: codeActiveClass }">
                     <pre v-highlightjs>
-          <code class="hljs html">
-            {{ codeText }}
-          </code>
-        </pre>
+            <code class="hljs html">
+              {{ codeText }}
+            </code>
+          </pre>
                 </div>
             </b-row>
         </b-card>
@@ -103,24 +88,32 @@ import code from "../components/data-entry/form/code";
 export default {
     data() {
         return {
-            selectedImage: null,
             show: true,
             codeText: code.introduction,
             codeActive: false,
             codeActiveClass: false,
             selectedOption: "",
-
+            inputField1: "",
+            inputField2: "",
+            inputField3: "",
             showModal: false,
             isLoading: false,
-            // Add Driver
+            //    .......... 
             name: "",
-            amount: "",
-            type: '',
-            image: null,
-            successMessage: "",
+            address: "",
+            suggestions: [],
+            highlightedIndex: -1,
+            dropoff_location: "",
+            pickup_time: "",
+            return_time: "",
+            vehicle_id: "",
+            schools_id: "",
             vehicles: [],
-
-
+            zone_pickup_latitude: "",
+            zone_pickup_longitude: "",
+            mid_latitude: "",
+            mid_longitude: "",
+            editedUser: null,
 
         };
     },
@@ -140,7 +133,6 @@ export default {
     },
 
     created() {
-        // Load the vehicles data when the component is created
         axios
             .get("notAssign")
             .then((response) => {
@@ -148,6 +140,23 @@ export default {
             })
             .catch((error) => {
                 console.log(error);
+            });
+
+        const userId = this.$route.params.id;
+        axios
+            .get(`ZoneTimeShowVehicle/${userId}`)
+            .then((response) => {
+
+                this.editedUser = response.data.data;
+                // this.name = this.editedUser.name;
+                this.pickup_time = this.editedUser.pickup_time;
+                this.return_time = this.editedUser.return_time;
+                // this.zone_pickup_name = this.editedUser.zone_pickup_name;
+                this.vehicle_id = this.editedUser.vehicle_id;
+
+            })
+            .catch((error) => {
+                console.error("Error fetching user data:", error);
             });
     },
     methods: {
@@ -163,7 +172,6 @@ export default {
             event.preventDefault();
             // Reset our form values
             this.form.email = "";
-            this.form.name = "";
             this.form.food = null;
             this.form.checked = [];
             // Trick to reset/clear native browser form validation state
@@ -176,18 +184,19 @@ export default {
         addUser() {
             this.isLoading = true;
             // Create a FormData object to handle the image file
+
             const formData = new FormData();
-            formData.append("image", this.image);
-            formData.append("name", this.name);
-            formData.append("amount", this.amount);
-            formData.append("type", this.type);
+            formData.append("vehicle_id", this.vehicle_id);
+            formData.append("pickup_time", this.pickup_time);
+            formData.append("return_time", this.return_time)
+
+
 
             axios
-
-                .post("expenseStore", formData)
+                .post(`ZoneTimeUpdateVehicle/${this.editedUser.id}`, formData)
                 .then((response) => {
                     console.log(response.data);
-                    this.$bvToast.toast("Expense added successfully!", {
+                    this.$bvToast.toast("Zone Vehicle Update successfully!", {
                         title: "Success",
                         variant: "success",
                         solid: true,
@@ -197,7 +206,6 @@ export default {
                         variant: "primary", // Background color
                     });
                     this.isLoading = false;
-                    this.$router.push({ name: 'ExpenseList' });
                 })
                 .catch((error) => {
                     this.errors = error.response.data.errors;
@@ -205,10 +213,12 @@ export default {
                     this.isLoading = false;
                 });
         },
+
         onProfilePictureChange(event) {
             const file = event.target.files[0];
             if (file) {
-                this.image = file;
+                // Set the selected file to the data property
+                this.profile_picture = file;
             }
         },
 
@@ -220,9 +230,10 @@ export default {
             }
         },
 
-        BankImageChange(event) {
+        BnakImageChange(event) {
             const file = event.target.files[0];
             if (file) {
+                // Set the selected file to the data property
                 this.bank_upload_document = file;
             }
         },

@@ -62,10 +62,39 @@
                 required></b-form-input>
             </b-form-group>
           </div>
+
+          <div class="col-md-6 col-12">
+            <b-form-group label="Zone Title" label-for="zone_id">
+              <b-form-select id="zone_id" placeholder="Select Zone Title" v-model="zone_id" required>
+                <option value="" disabled>Select Zone Title</option>
+                <option v-for="zone in zones" :key="zone.id" :value="zone.id">
+                  {{ zone.name }} &nbsp;/ {{ zone.zone_pickup_name }}
+                </option>
+              </b-form-select>
+            </b-form-group>
+            <!-- <div v-if="loading" class="spinner-border loader" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div> -->
+          </div>
+
+          <div class="col-md-6 col-12">
+            <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
+              <b-form-select id="vehicle_id" placeholder="Select car" v-model="vehicle_id" required>
+                <option value="">Select Car</option>
+                <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
+                  {{ vehicle.name }}
+                </option>
+              </b-form-select>
+            </b-form-group>
+          </div>
+
+          <!-- ..... -->
           <div class="col-md-4 col-12">
             <b-form-group id="input-group-2" label="Picture:" label-for="image">
               <div style="margin-left: 3px; margin-bottom: 15px">
-                <input type="file" accept="image/*" id="image" @change="onProfilePictureChange" />
+                <!-- <input type="file" accept="image/*" id="image" @change="onProfilePictureChange" /> -->
+                <img :src="'https://backendbigways.singsavatech.com/' + image
+                  " alt="Profile Picture" width="100" height="100" />
               </div>
             </b-form-group>
           </div>
@@ -94,12 +123,15 @@
 
           <!-- Action Button Code -->
           <template #cell(actions)="row">
-            <b-button @click="editUser(row.item.id)" variant="link" class="p-0">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-                style="color: orange; margin-left: 10px; margin-bottom: 10px" class="bi bi-pencil" viewBox="0 0 16 16">
-                <!-- ... your existing SVG path ... -->
+            <b-button @click="showChilds(row.item.id)" variant="link" class="p-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
+                color: rgba(0, 255, 195, 0.87);
+                margin-left: 6px;
+                margin-bottom: 10px;
+              " class="bi bi-eye" viewBox="0 0 16 16">
                 <path
-                  d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                  d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
               </svg>
             </b-button>
             <b-button @click="showDeleteConfirmation(row.item.id)" variant="link" class="p-0">
@@ -118,6 +150,14 @@
 
               </template>
             </b-modal>
+            <b-button @click="editUser(row.item.id)" variant="link" class="p-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                style="color: orange; margin-left: 10px; margin-bottom: 10px" class="bi bi-pencil" viewBox="0 0 16 16">
+                <!-- ... your existing SVG path ... -->
+                <path
+                  d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+              </svg>
+            </b-button>
 
             <!-- <b-button
               @click="toggleCardModal(row.item)"
@@ -195,6 +235,8 @@ export default {
         { key: "notes", sortable: true },
         { key: "pickup_time", sortable: true },
         { key: "drop_time", sortable: true },
+        { key: "amount", sortable: true },
+        { key: "payment_status", sortable: true },
         { key: "image", sortable: true },
         { key: "actions", label: "Actions" },
       ],
@@ -208,6 +250,7 @@ export default {
       endDateFilter: "",
       your_vehicle_id: null,
       notes: "",
+      // name: "",
       pickup_time: "",
       image: "",
       notes: "",
@@ -215,8 +258,19 @@ export default {
       student_name: "",
       drop_time: "",
       school_name: "",
+      payment_status: "",
+      amount: "",
+      zones: [],
+      zone_id: "",
+      schools: '',
+      school_id: "",
+      vehicle_id: "",
+      schools_id: "",
+      vehicles: [],
+      schools: [],
       image: null,
       studentId: null,
+
     };
   },
   components: {
@@ -250,8 +304,24 @@ export default {
     this.fetchData(userId);
   },
   created() {
-    const userId = this.$route.params.id;
-    this.fetchData(userId);
+    axios
+      .get("notAssign")
+      .then((response) => {
+        this.vehicles = response.data.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    axios.get("zones") // Replace with the actual endpoint for fetching zones
+      .then(response => {
+        this.zones = response.data.data; // Assuming response.data is an array of zones
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // ............ 
+
+
   },
   methods: {
     fetchData(userId) {
@@ -279,6 +349,9 @@ export default {
     },
     resetFormFields() {
       this.notes = "";
+      // this.name = "";
+      this.zone_id = "";
+      this.vehicle_id = "";
       this.pickup_time = "";
       this.image = "";
       this.notes = "";
@@ -286,7 +359,7 @@ export default {
       this.student_name = "";
       this.drop_time = "";
       this.school_name = "";
-      this.image = null;
+      this.image = "";
       // ... reset other fields ...
     },
 
@@ -296,12 +369,15 @@ export default {
         this.isLoading = true;
         // Create a FormData object to handle the image file
         const formData = new FormData();
+        // formData.append("name", this.name);
+        formData.append("vehicle_id", this.vehicle_id);
         formData.append("student_name", this.student_name);
         formData.append("school_name", this.school_name);
         formData.append("notes", this.notes);
         formData.append("pickup_time", this.pickup_time);
         formData.append("drop_time", this.drop_time);
         formData.append("image", this.image);
+        formData.append("zone_id", this.zone_id);
         axios
           .post(`studentUpdated/${this.studentId}`, formData)
           .then((response) => {
@@ -334,6 +410,9 @@ export default {
         this.isLoading = true;
         // Create a FormData object to handle the image file
         const formData = new FormData();
+        // formData.append("name", this.name);
+        formData.append("zone_id", this.zone_id);
+        formData.append("vehicle_id", this.vehicle_id);
         formData.append("student_name", this.student_name);
         formData.append("school_name", this.school_name);
         formData.append("notes", this.notes);
@@ -447,14 +526,19 @@ export default {
       this.isCardModalVisible = true; // Show the modal
     },
 
+    showChilds(userId) {
+      this.$router.push({ name: "ChildView", params: { id: userId } });
+    },
 
     async editUser(userId) {
       try {
         // Make an API call to fetch user data based on userId
-        const response = await axios.get(`studentShow/${userId}`);
+        const response = await axios.get(`show/${userId}`);
 
         // Populate form fields with the fetched user data
         const userData = response.data.data; // Ensure the correct property is used (response.data.data)
+        this.name = userData.name;
+        this.zone_id = userData.zone_id;
         this.school_name = userData.school_name;
         this.student_name = userData.student_name;
         this.notes = userData.notes;
@@ -462,6 +546,7 @@ export default {
         this.drop_time = userData.drop_time;
         this.image = userData.image;
         this.studentId = userData.id
+        this.vehicle_id = userData.vehicle_id
 
         // ... Populate other fields accordingly
 

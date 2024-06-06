@@ -146,21 +146,17 @@ export default {
     },
     // ....
         {
-      id: "Live Tracker",
+      id: "LiveTracker",
       title: "Live Tracker",
       icon: "Curved-EditSquare",
       
       children: [
-        // {
-        //   id: "Care Taker",
-        //   title: "AddCareTaker",
-        //   navLink: "/caretaker/add",
-        // },
-        //   {
-        //   id: "Care Taker",
-        //   title: "ListCareTaker",
-        //   navLink: "/caretaker/list",
-        // },
+        {
+          id: "LiveTracker",
+          title: "Live Tracking",
+          // navLink:  "/tracking/live",
+        },
+       
       ],
     },
     
@@ -205,6 +201,68 @@ export default {
         },
       ],
     },
-
+    // ....... friday  work 
+    // School code here 
+       {
+      id: "School",
+      title: "School",
+      icon: "Curved-EditSquare",
+      
+      children: [
+      
+          {
+          id: "School",
+          title: "Add School",
+          navLink: "/school/add",
+        },
+          {
+          id: "School",
+          title: "List School",
+          navLink: "/school/list",
+        },
+      ],
+    },
+// Zone Code here 
+      {
+      id: "Zone",
+      title: "Zone",
+      icon: "Curved-EditSquare",
+      
+      children: [
+      
+          {
+          id: "Zone",
+          title: "Add Zone",
+          navLink: "/zone/add",
+        },
+          {
+          id: "Zone",
+          title: "List Zone",
+          navLink: "/zone/list",
+        },
+      ],
+    },
+    // School  Bus Route code here 
+    //  {
+    //   id: "SchoolBusRoute",
+    //   title: "School Bus Route",
+    //   icon: "Curved-EditSquare",
+      
+    //   children: [
+      
+    //       {
+    //       id: "SchoolBusRoute",
+    //       title: "Add School Bus Route",
+    //       navLink: "/route/add",
+    //     },
+    //       {
+    //       id: "SchoolBusRoute",
+    //       title: "List School Bus Route",
+    //       navLink: "/route/list",
+    //     },
+    //   ],
+    // },
   ]
 }
+
+

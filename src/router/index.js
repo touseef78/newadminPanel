@@ -199,11 +199,37 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
+    // Edit Parent  code  here 
+        {
+      path: "/parent/edit/:id",
+      name: "ParentEdit",
+      component: () => import("../view/parent/ParentEdit.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    // View Parent code  here 
+        {
+      path: "/parent/view/:id",
+      name: "ParentView",
+      component: () => import("../view/parent/ParentView.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
 // child code here 
   {
       path: "/ChildList/:id",
       name: "ChildList",
       component: () => import("../view/child/ChildList.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    {
+      path: "/ChildView/:id",
+      name: "ChildView",
+      component: () => import("../view/child/ChildView.vue"),
       meta: {
         requiresAuth: true, // This route requires authentication
       },
@@ -392,6 +418,120 @@ const router = new VueRouter({
       component: () => import("../view/BigwaysReport/EarningReport.vue"),
     
     },
+    // Live Tracking code here 
+
+    {
+      path: "/tracking/live",
+      name: "LiveTracking",
+      component: () => import("../view/Tracking/LiveTracking.vue"),
+  
+    },
+    // Zone  code  here 
+     {
+      path: "/zone/add",
+      name: "AddZone",
+      component: () => import("../view/Zone/AddZone.vue"),
+  
+    },
+     {
+      path: "/zone/list",
+      name: "ListZone",
+      component: () => import("../view/Zone/ListZone.vue"),
+  
+    },
+  {
+      path: "/zone/view/:id",
+      name: "ViewZone",
+      component: () => import("../view/Zone/ViewZone.vue"),
+
+    },
+     {
+      path: "/zone/edit/:id",
+      name: "EditZone",
+      component: () => import("../view/Zone/EditZone.vue"),
+    
+    },
+    {
+      path: "/ZoneDetail/:id",
+      name: "ZoneDetail",
+      component: () => import("../view/Zone/ZoneDetail.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    // Zone  time  Edit  code here 
+      {
+      path: "/ZoneTimeVehicle/:id",
+      name: "ZoneTimeVehicle",
+      component: () => import("../view/Zone/ZoneTimeVehicle.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    // ............ 
+    {
+      path: "/VehicleDetail/:id",
+      name: "VehicleDetail",
+      component: () => import("../view/Zone/VehicleDetail.vue"),
+      meta: {
+        requiresAuth: true, // This route requires authentication
+      },
+    },
+    // School  code here 
+    {
+      path: "/school/add",
+      name: "AddSchool",
+      component: () => import("../view/School/AddSchool.vue"),
+  
+    },
+     {
+      path: "/school/list",
+      name: "ListSchool",
+      component: () => import("../view/School/ListSchool.vue"),
+  
+    },
+     {
+      path: "/school/view/:id",
+      name: "ViewSchool",
+      component: () => import("../view/School/ViewSchool.vue"),
+
+    },
+ {
+      path: "/school/edit/:id",
+      name: "EditSchool",
+      component: () => import("../view/School/EditSchool.vue"),
+    
+    },
+    // School bus route code here 
+//      {
+//       path: "/route/add",
+//       name: "AddSchoolBusRoute",
+//       component: () => import("../view/SchoolBusRoute/AddSchoolBusRoute.vue"),
+  
+//     },
+//      {
+//       path: "/route/list",
+//       name: "ListSchoolBusRoute",
+//       component: () => import("../view/SchoolBusRoute/ListSchoolBusRoute.vue"),
+  
+//     }, 
+//       {
+//       path: "/route/view/:id",
+//       name: "ViewSchoolBusRoute",
+//       component: () => import("../view/SchoolBusRoute/ViewSchoolBusRoute.vue"),
+//       // meta: {
+//       //   requiresAuth: true, // This route requires authentication
+//       // },
+//     },
+
+//  {
+//       path: "/route/edit/:id",
+//       name: "EditSchoolBusRoute",
+//       component: () => import("../view/SchoolBusRoute/EditSchoolBusRoute.vue"),
+    
+//     },
+    
+    
  
     {
       path: "/main/widgets/crypto-icons",

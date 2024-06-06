@@ -7,7 +7,7 @@
     <div class="col-12 mt-16">
       <div>
         <b-row class="align-items-center">
-          <b-col lg="6" class="my-1">
+          <b-col lg="3" class="my-1">
             <b-form-group label="" label-for="filter-input" label-cols-sm="1" label-align-sm="right" label-size="sm"
               class="mb-0">
               <b-input-group size="sm">
@@ -19,7 +19,17 @@
               </b-input-group>
             </b-form-group>
           </b-col>
-          <b-col lg="6" class="my-1 d-flex justify-content-end">
+          <!-- Start Date  -->
+          <b-col lg="3" class="my-1">
+            <b-form-input id="start-date" v-model="startDateFilter" type="date"
+              placeholder="Select start date"></b-form-input>
+          </b-col>
+          <!-- End Date  -->
+          <b-col lg="3" class="my-1">
+            <b-form-input id="end-date" v-model="endDateFilter" type="date"
+              placeholder="Select end date"></b-form-input>
+          </b-col>
+          <b-col lg="3" class="my-1 d-flex justify-content-end">
             <b-button @click="exportDataToCSV" variant="primary" class="mb-8 mr-8">Export</b-button>
           </b-col>
 
@@ -34,15 +44,10 @@
     <!-- filter end -->
     <b-row>
       <div class="col-12 mt-16">
-        <b-table id="dataTable" :items="users" :fields="fields" :current-page="currentPage" :per-page="perPage"
+        <b-table id="dataTable" :items="filteredUsers" :fields="fields" :current-page="currentPage" :per-page="perPage"
           :filter="filter" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" show-empty @filtered="onFiltered" y
           responsive>
-          <!-- Action Button Code -->
-          <!-- <template #cell(actions)="row">
-            <b-button @click="downloadFile(row.item.file)" variant="primary"
-              >Download</b-button
-            >
-          </template> -->
+
 
           <template #cell(vehicle_name)="row">
             {{ row.item.vehicle ? row.item.vehicle.name : 'N/A' }}
@@ -50,13 +55,29 @@
           <template #cell(vehicle_type)="row">
             {{ row.item.vehicle ? row.item.vehicle.vehicle_type : 'N/A' }}
           </template>
+          <!-- <template #cell(amount)="row">
+            {{ isNaN(row.item.amount) ? 'Fix' : row.item.amount }}
+          </template> -->
+
+          <template #cell(request_type)="row">
+            {{ row.item.request_type }}
+          </template>
+          <!-- ...............  -->
+          <!-- Approved  code here  -->
           <template #cell(status)="row">
             <b-button @click="handleButtonClick(row.item)"
               :variant="row.item.status === 'Pending' ? 'warning' : 'primary'" class="mb-8 mr-8">
-              <!-- {{ row.item.status === "Approved" ? "Pending" : "Approved" }} -->
               {{ row.item.status }}
             </b-button>
+            <b-modal v-model="showPaymentConfirmation" title="Change Payment Status Confirmation">
+              <p>Are you sure you want to change status to {{ newPaymentStatus }}?</p>
+              <template #modal-footer>
+                <b-button variant="success" @click="confirmPaymentStatus">Confirm</b-button>
+                <b-button variant="secondary" @click="cancelPaymentStatus">Cancel</b-button>
+              </template>
+            </b-modal>
           </template>
+
           <template #cell(actions)="row">
 
             <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
@@ -98,19 +119,6 @@
                   d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
               </svg>
             </b-button>
-
-
-            <!-- <b-button @click="updateStatus(row.item)" :variant="row.item.status === 'Approved' ? 'warning' : 'primary'"
-              class="mb-8 mr-8">
-              {{ row.item.status === "Approved" ? "Pending" : "Approved" }}
-            </b-button> -->
-
-            <!-- <b-button
-              @click="toggleCardModal(row.item)"
-              variant="link"
-              class="p-0"
-            >
-            </b-button> -->
           </template>
 
 
@@ -127,7 +135,7 @@
           </b-form-group>
         </b-table>
         <div class="mx-8 d-flex justify-content-end">
-          <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"
+          <b-pagination v-model="currentPage" :total-rows="filteredUsers.length" :per-page="perPage"
             aria-controls="my-table"></b-pagination>
         </div>
         <b-row class="mt-16 align-items-center justify-content-end">
@@ -183,9 +191,11 @@ export default {
         { key: "time", sortable: true },
         { key: "pickup_location", sortable: true },
         { key: "drop_location", sortable: true },
+        { key: "pickup_time", sortable: true },
+        { key: "dropoff_time", sortable: true },
         { key: "amount", sortable: true },
-
         { key: "status", sortable: true },
+        { key: "request_type", label: "Request Type", sortable: true },
         { key: "actions", label: "Actions" },
       ],
 
@@ -193,10 +203,14 @@ export default {
       totalRows: 0, // Initialize totalRows to 0
       showDeleteConfirmations: false,
       itemIdToDelete: null,
+      showPaymentConfirmation: false, // Flag to control the visibility of the confirmation modal
+      newPaymentStatus: '',
       loading: false,
       startDateFilter: "",
       endDateFilter: "",
       your_vehicle_id: null,
+      startDateFilter: null,
+      endDateFilter: null,
     };
   },
   components: {
@@ -224,9 +238,25 @@ export default {
     rows() {
       return this.users.length;
     },
+    filteredUsers() {
+      if (!this.startDateFilter || !this.endDateFilter) {
+        return this.users; // Return all data if start or end date is not selected
+      }
+      return this.users.filter(user => {
+        // Filter users based on start and end dates
+        return new Date(user.date) >= new Date(this.startDateFilter) &&
+          new Date(user.date) <= new Date(this.endDateFilter);
+      });
+    },
   },
   mounted() {
-    this.fetchData();
+    // this.fetchData();
+    const userId = this.$route.params.id;
+    this.fetchData(userId);
+  },
+  created() {
+    const userId = this.$route.params.id;
+    this.fetchData(userId);
   },
   methods: {
     fetchData() {
@@ -322,6 +352,36 @@ export default {
       this.selectedCardOption = ""; // Reset the selected card option
       this.rowToUpdate = item; // Set the row to be updated
       this.isCardModalVisible = true; // Show the modal
+    },
+
+    handleButtonClick(item) {
+      this.newPaymentStatus = item.status === 'Pending' ? 'Approved' : 'Pending';
+      this.rowToUpdate = item;
+      this.showPaymentConfirmation = true;
+    },
+
+    confirmPaymentStatus() {
+      // Update the status based on the stored newPaymentStatus
+      this.rowToUpdate.status = this.newPaymentStatus;
+      axios
+        .post(`updateStatus/${this.rowToUpdate.id}`, { status: this.newPaymentStatus })
+        .then((response) => {
+          console.log("Status updated successfully:", response.data);
+          // Close the modal
+          this.showPaymentConfirmation = false;
+        })
+        .catch((error) => {
+          console.error("Error updating status:", error);
+          // Close the modal even in error scenarios
+          this.showPaymentConfirmation = false;
+        });
+    }
+    ,
+    cancelPaymentStatus() {
+      // Handle cancel logic here
+      // For example, reset any changes made to the newPaymentStatus
+      // Then close the modal
+      this.showPaymentConfirmation = false;
     },
 
   },
