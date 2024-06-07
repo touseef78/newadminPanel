@@ -112,44 +112,42 @@
                         </div>
                         <div class="row">
 
-                            <div class="col-md-4 col-12">
+
+
+                            <div class="col-md-4 col-12" v-if="request_type === 'public'">
+                                <b-form-group id="input-group-2" label="Select Zone:" label-for="zone_id">
+                                    <b-form-select id="zone_id" placeholder="Enter select zone" v-model="zone_id">
+                                        <option value="">Select Zone</option>
+                                        <option v-for="zone in zones" :key="zone.id" :value="zone.id">{{ zone.name }}
+                                        </option>
+                                    </b-form-select>
+                                </b-form-group>
+                            </div>
+
+                            <!-- Displayed in private mode only -->
+
+                            <div class="col-md-4 col-12" v-if="request_type === 'private'">
                                 <b-form-group id="input-group-2" label="Car Type:" label-for="vehicle_type">
                                     <b-form-select id="vehicle_type" v-model="vehicle_type" @change="fetchVehicles"
                                         required>
                                         <option value="AC">AC</option>
                                         <option value="Non AC">Non-AC</option>
                                     </b-form-select>
-
                                 </b-form-group>
                             </div>
 
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-4 col-12" v-if="request_type === 'private'">
                                 <b-form-group id="input-group-2" label="Select Car:" label-for="vehicle_id">
                                     <b-form-select id="vehicle_id" placeholder="Enter select car" v-model="vehicle_id">
                                         <option value="">Select Car</option>
-                                        <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
-                                            {{ vehicle.name }}
-                                        </option>
+                                        <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">{{
+                                            vehicle.name }}</option>
                                     </b-form-select>
                                 </b-form-group>
                             </div>
-                            <!-- Zone  Information  code  here  -->
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Zone Title:" label-for="zone_name">
-                                    <b-form-input id="zone_name" type="text" placeholder="Enter zone title"
-                                        v-model="zone_name" required>
-                                    </b-form-input>
-                                </b-form-group>
-                            </div>
 
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Pickup Location:"
-                                    label-for="zone_pickup_location">
-                                    <b-form-input id="zone_pickup_location" type="zone_pickup_location"
-                                        placeholder="Enter pickup location " v-model="zone_pickup_location" required>
-                                    </b-form-input>
-                                </b-form-group>
-                            </div>
+
+
 
                             <!-- Zone  infomation  code  here  end  -->
                         </div>
@@ -219,27 +217,26 @@ export default {
             email: '',
             city: '',
             car_type: "",
-            // reg_no: '',
-            // vehicle_number: '',
-            // name: "",
-            // per_km: "",
+
+            zone_id: "",
             phone_number: '',
             number_of_student: "",
             pickup_location: "",
             drop_location: "",
             amount: "",
             total_students: "",
-            // bank_upload_document: null,
-            // profile_picture: null,
+
             successMessage: "",
             vehicle_id: "",
             vehicles: [],
+            zones: [],
             fixedMonthlyAmount: "", // New property to store fixed monthly amount
             originalAmount: "",
             submitted: false,
             amountUpdatedManually: false,
             zone_name: "",
             zone_pickup_location: "",
+            request_type: "",
         };
 
     },
@@ -254,6 +251,7 @@ export default {
                 return this.amount;
             }
         },
+
     },
     components: {
         BRow,
@@ -270,7 +268,66 @@ export default {
         BSpinner,
     },
 
+    // created() {
+    //     axios
+    //         .get("vehicle")
+    //         .then((response) => {
+    //             this.vehicles = response.data.data;
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+
+    //     axios
+    //         .get("zones")
+    //         .then((response) => {
+    //             this.zones = response.data.data;
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+
+    //     const userId = this.$route.params.id;
+    //     axios
+    //         .get(`registration/${userId}`)
+    //         .then((response) => {
+
+    //             this.editedUser = response.data.data;
+    //             this.first_name = this.editedUser.name;
+    //             this.city = this.editedUser.city;
+    //             this.email = this.editedUser.email;
+    //             this.vehicle_id = this.editedUser.vehicle_id;
+    //             // this.vehicle_number = this.editedUser.vehicle.vehicle_number;
+    //             this.number_of_student = this.editedUser.number_of_student;
+    //             this.car_type = this.editedUser.car_type;
+    //             // this.per_km = this.editedUser.vehicle.per_km;
+    //             this.phone_number = this.editedUser.phone_number;
+    //             this.pickup_location = this.editedUser.pickup_location;
+    //             this.drop_location = this.editedUser.drop_location;
+    //             this.amount = this.editedUser.amount;
+    //             this.total_students = this.editedUser.total_students;
+    //             this.request_type = this.editedUser.request_type;
+    //             this.vehicle_type = this.editedUser.vehicle.vehicle_type;
+    //             this.name = this.editedUser.vehicle.name;
+    //             // this.zone_id = this.editedUser.zone.name;
+    //             // this.zone_id = this.editedUser.zone_id;
+    //             if (this.editedUser.zone) {
+    //                 this.zone_name = this.editedUser.zone.name; // Correctly assign zone name
+    //                 this.zone_id = this.editedUser.zone.id;     // Correctly assign zone ID
+    //             } else {
+    //                 console.error("Zone information is missing in the user data");
+    //                 this.zone_name = null; // Set to null or handle as needed
+    //             }
+
+    //             this.zone_pickup_location = this.editedUser.pickup_location;
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error fetching user data:", error);
+    //         });
+
+    // },
     created() {
+        // Fetch vehicles data
         axios
             .get("vehicle")
             .then((response) => {
@@ -280,36 +337,55 @@ export default {
                 console.log(error);
             });
 
+        // Fetch zones data
+        axios
+            .get("zones")
+            .then((response) => {
+                this.zones = response.data.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        // Fetch user registration data
         const userId = this.$route.params.id;
         axios
             .get(`registration/${userId}`)
             .then((response) => {
-
                 this.editedUser = response.data.data;
+
+                // Assign data from response to component's properties
                 this.first_name = this.editedUser.name;
                 this.city = this.editedUser.city;
                 this.email = this.editedUser.email;
                 this.vehicle_id = this.editedUser.vehicle_id;
-                // this.vehicle_number = this.editedUser.vehicle.vehicle_number;
                 this.number_of_student = this.editedUser.number_of_student;
                 this.car_type = this.editedUser.car_type;
-                // this.per_km = this.editedUser.vehicle.per_km;
                 this.phone_number = this.editedUser.phone_number;
                 this.pickup_location = this.editedUser.pickup_location;
                 this.drop_location = this.editedUser.drop_location;
                 this.amount = this.editedUser.amount;
                 this.total_students = this.editedUser.total_students;
-                this.vehicle_type = this.editedUser.vehicle.vehicle_type;
-                this.name = this.editedUser.vehicle.name;
-                // this.zone_name = this.editedUser.name;
-                this.zone_name = this.editedUser.zone.name;
+                this.request_type = this.editedUser.request_type;
+                this.vehicle_type = this.editedUser.vehicle ? this.editedUser.vehicle.vehicle_type : null;
+                this.name = this.editedUser.vehicle ? this.editedUser.vehicle.name : null;
+
+                // Ensure zone exists before accessing its properties
+                if (this.editedUser.zone) {
+                    this.zone_name = this.editedUser.zone.name; // Correctly assign zone name
+                    this.zone_id = this.editedUser.zone.id;     // Correctly assign zone ID
+                } else {
+                    console.error("Zone information is missing in the user data");
+                    this.zone_name = null; // Set to null or handle as needed
+                }
+
                 this.zone_pickup_location = this.editedUser.pickup_location;
             })
             .catch((error) => {
                 console.error("Error fetching user data:", error);
             });
-
-    },
+    }
+    ,
     methods: {
         // updateAmount() {
         //     // Set the submitted flag to true to indicate that the form has been submitted
@@ -364,8 +440,7 @@ export default {
             formData.append("drop_location", this.drop_location);
             formData.append("amount", this.amount);
             formData.append("total_students", this.total_students);
-            formData.append("zone_name", this.zone_name);
-            formData.append("zone_pickup_location", this.zone_pickup_location);
+            formData.append("zone_id", this.zone_id);
 
 
             // formData.append("type", "uber");

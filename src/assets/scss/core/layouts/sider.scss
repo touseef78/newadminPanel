@@ -136,7 +136,12 @@ body.collapse-btn-none.collapsed-active {
                 overflow-x: hidden;
 
                 &::-webkit-scrollbar {
-                    width: 0;
+                    width: 8px; // Set the width of the scrollbar
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background-color: rgba(0, 0, 0, 0.2); // Customize scrollbar thumb color
+                    border-radius: 4px; // Add some roundness
                 }
 
                 > li + li {
@@ -369,6 +374,15 @@ body.collapse-btn-none.collapsed-active {
         padding: 0 4px;
         overflow-y: auto;
         overflow-x: hidden;
+
+        &::-webkit-scrollbar {
+            width: 8px; // Set the width of the scrollbar
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2); // Customize scrollbar thumb color
+            border-radius: 4px; // Add some roundness
+        }
 
         &:before {
             content: "";

@@ -90,37 +90,37 @@
                             </h5>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-4 col-12" v-if="request_type === 'private'">
                                 <b-form-group id="input-group-2" label="Car Type:" label-for="vehicle_type">
                                     <b-form-input id="vehicle_type" type="text" placeholder="Enter car type"
                                         v-model="vehicle_type" disabled></b-form-input>
                                 </b-form-group>
                             </div>
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-4 col-12" v-if="request_type === 'private'">
                                 <b-form-group id="input-group-2" label="Car Name:" label-for="carname">
                                     <b-form-input id="carname" type="text" placeholder="Enter car type" v-model="name"
                                         disabled></b-form-input>
                                 </b-form-group>
                             </div>
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-4 col-12" v-if="request_type === 'private'">
                                 <b-form-group id="input-group-2" label="Car Number:" label-for="reg_no">
                                     <b-form-input id="reg_no" type="number" placeholder="Enter car type"
                                         v-model="reg_no" disabled></b-form-input>
                                 </b-form-group>
                             </div>
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-4 col-12" v-if="request_type === 'private'">
                                 <b-form-group id="input-group-2" label="Distance: (Km)" label-for="per_km">
                                     <b-form-input id="per_km" type="number" placeholder="Enter Distance"
                                         v-model="per_km" disabled></b-form-input>
                                 </b-form-group>
                             </div>
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-4 col-12" v-if="request_type === 'private'">
                                 <b-form-group id="input-group-2" label="Amount:" label-for="amount">
                                     <b-form-input id="amount" type="number" placeholder="Enter amount" v-model="amount"
                                         disabled></b-form-input>
                                 </b-form-group>
                             </div>
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-4 col-12" v-if="request_type === 'private'">
                                 <b-form-group id="input-group-2" label="Total Students:" label-for="total_students">
                                     <b-form-input id="total_students" type="number" placeholder="Enter total student"
                                         v-model="total_students" disabled>
@@ -128,19 +128,10 @@
                                 </b-form-group>
                             </div>
                             <!-- Zone  Information  code  here  -->
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-4 col-12" v-if="request_type === 'public'">
                                 <b-form-group id="input-group-2" label="Zone Title:" label-for="zone_name">
                                     <b-form-input id="zone_name" type="zone_name" placeholder="Enter zone title "
-                                        v-model="zone_name" required>
-                                    </b-form-input>
-                                </b-form-group>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-2" label="Pickup Location:"
-                                    label-for="zone_pickup_location">
-                                    <b-form-input id="zone_pickup_location" type="zone_pickup_location"
-                                        placeholder="Enter pickup location " v-model="zone_pickup_location" required>
+                                        v-model="zone_name" disabled>
                                     </b-form-input>
                                 </b-form-group>
                             </div>
@@ -200,10 +191,10 @@ export default {
             email: '',
             city: '',
             car_type: "",
-            // reg_no: '',
+            reg_no: "",
             // vehicle_number: '',
             // name: "",
-            // per_km: "",
+            per_km: "",
             phone_number: '',
             number_of_student: "",
             pickup_location: "",
@@ -211,7 +202,7 @@ export default {
             amount: "",
             total_students: "",
             // bank_upload_document: null,
-            // profile_picture: null,
+            request_type: "",
             successMessage: "",
             vehicle_id: "",
             vehicles: [],
@@ -219,8 +210,6 @@ export default {
             originalAmount: "",
             submitted: false,
             amountUpdatedManually: false,
-            zone_name: "",
-            zone_pickup_location: "",
         };
 
     },
@@ -251,7 +240,55 @@ export default {
         BSpinner,
     },
 
+    // created() {
+    //     axios
+    //         .get("vehicle")
+    //         .then((response) => {
+    //             this.vehicles = response.data.data;
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+
+    //     const userId = this.$route.params.id;
+    //     axios
+    //         .get(`registration/${userId}`)
+    //         .then((response) => {
+
+    //             this.editedUser = response.data.data;
+    //             this.first_name = this.editedUser.name;
+    //             this.city = this.editedUser.city;
+    //             this.email = this.editedUser.email;
+    //             this.reg_no = this.editedUser.vehicle.reg_no;
+    //             this.vehicle_id = this.editedUser.vehicle_id;
+    //             // this.vehicle_number = this.editedUser.vehicle.vehicle_number;
+    //             this.number_of_student = this.editedUser.number_of_student;
+    //             this.car_type = this.editedUser.car_type;
+    //             this.per_km = this.editedUser.vehicle.per_km;
+    //             this.phone_number = this.editedUser.phone_number;
+    //             this.pickup_location = this.editedUser.pickup_location;
+    //             this.drop_location = this.editedUser.drop_location;
+    //             this.amount = this.editedUser.amount;
+    //             this.total_students = this.editedUser.total_students;
+    //             this.vehicle_type = this.editedUser.vehicle.vehicle_type;
+    //             this.name = this.editedUser.vehicle.name;
+    //             this.request_type = this.editedUser.request_type;
+
+
+
+
+    //             // Depending on the selected option, set the appropriate salary value
+
+
+    //             // ... and so on for other properties ...
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error fetching user data:", error);
+    //         });
+
+    // },
     created() {
+        // Fetch vehicles data
         axios
             .get("vehicle")
             .then((response) => {
@@ -261,41 +298,45 @@ export default {
                 console.log(error);
             });
 
+        // Fetch user registration data
         const userId = this.$route.params.id;
         axios
             .get(`registration/${userId}`)
             .then((response) => {
-
                 this.editedUser = response.data.data;
+
+                // Assign data from response to component's properties
                 this.first_name = this.editedUser.name;
                 this.city = this.editedUser.city;
                 this.email = this.editedUser.email;
-                this.vehicle_id = this.editedUser.vehicle_id;
-                // this.vehicle_number = this.editedUser.vehicle.vehicle_number;
-                this.number_of_student = this.editedUser.number_of_student;
-                this.car_type = this.editedUser.car_type;
-                // this.per_km = this.editedUser.vehicle.per_km;
                 this.phone_number = this.editedUser.phone_number;
                 this.pickup_location = this.editedUser.pickup_location;
                 this.drop_location = this.editedUser.drop_location;
                 this.amount = this.editedUser.amount;
                 this.total_students = this.editedUser.total_students;
-                this.vehicle_type = this.editedUser.vehicle.vehicle_type;
-                this.name = this.editedUser.vehicle.name;
-                this.zone_name = this.editedUser.name;
-                this.zone_pickup_location = this.editedUser.pickup_location;
+                this.request_type = this.editedUser.request_type;
 
+                // Vehicle information
+                if (this.editedUser.vehicle) {
+                    this.vehicle_type = this.editedUser.vehicle.vehicle_type;
+                    this.name = this.editedUser.vehicle.name;
+                    this.reg_no = this.editedUser.vehicle.reg_no;
+                    this.per_km = this.editedUser.vehicle.per_km;
+                }
 
+                // Check and assign zone name if available
+                if (this.editedUser.zone) {
+                    this.zone_name = this.editedUser.zone.name; // Assign the zone name to zone_name
+                } else {
+                    this.zone_name = 'No Zone'; // Fallback in case zone is not available
+                }
 
                 // Depending on the selected option, set the appropriate salary value
-
-
                 // ... and so on for other properties ...
             })
             .catch((error) => {
                 console.error("Error fetching user data:", error);
             });
-
     },
     methods: {
         // updateAmount() {

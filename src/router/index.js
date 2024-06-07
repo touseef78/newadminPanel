@@ -31,6 +31,17 @@ const router = new VueRouter({
       },
     },
 
+
+   {
+  path: "/zone/overall",
+  name: "OverAllZone",
+  component: () => import("../view/Zone/OverAllZone.vue"),
+  meta: {
+    layout: "full",
+  },
+}
+,
+
     
 
     // MAIN
@@ -468,6 +479,8 @@ const router = new VueRouter({
         requiresAuth: true, // This route requires authentication
       },
     },
+    // Over All  Zone  code here 
+     
     // ............ 
     {
       path: "/VehicleDetail/:id",

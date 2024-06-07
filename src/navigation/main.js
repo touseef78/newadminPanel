@@ -240,6 +240,12 @@ export default {
           title: "List Zone",
           navLink: "/zone/list",
         },
+        // Over All Zone Detail 
+        //  {
+        //   id: "Zone",
+        //   title: "OverAll Zone",
+        //   navLink: "/zone/overall",
+        // },
       ],
     },
     // School  Bus Route code here 
@@ -264,5 +270,6 @@ export default {
     // },
   ]
 }
+
 
 
