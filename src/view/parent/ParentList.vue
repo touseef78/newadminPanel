@@ -179,7 +179,7 @@ export default {
                 { key: "city", sortable: true },
                 { key: "pickup_location", sortable: true },
                 { key: "drop_location", sortable: true },
-                { key: "amount", sortable: true },
+                { key: "pending_request", sortable: true },
                 // { key: "pending_amount", sortable: true },
                 // { key: "vehicle_type", sortable: true },
                 // { key: "vehicle_name", sortable: true },

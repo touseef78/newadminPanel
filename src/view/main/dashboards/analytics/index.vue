@@ -374,7 +374,7 @@
             <b-col cols="12" class="mb-32">
               <b-card class="hp-card-4 hp-chart-text-color">
                 <div class="divider">
-                  <h5>Top Five Pending Request List</h5>
+                  <h5>Top Expense And Earning</h5>
                 </div>
                 <h4>Revenue</h4>
 

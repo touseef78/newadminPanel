@@ -88,6 +88,14 @@
             </b-form-group>
           </div>
 
+          <div class="col-md-6 col-12">
+            <b-form-group id="input-group-1" label="Amount" label-for="amount">
+              <b-form-input id="amount" type="number" placeholder="Enter amount " v-model="amount"
+                required></b-form-input>
+            </b-form-group>
+          </div>
+
+
           <!-- ..... -->
           <div class="col-md-4 col-12">
             <b-form-group id="input-group-2" label="Picture:" label-for="image">
@@ -236,7 +244,7 @@ export default {
         { key: "pickup_time", sortable: true },
         { key: "drop_time", sortable: true },
         { key: "amount", sortable: true },
-        { key: "payment_status", sortable: true },
+        { key: "payments_status", sortable: true },
         { key: "image", sortable: true },
         { key: "actions", label: "Actions" },
       ],
@@ -360,6 +368,7 @@ export default {
       this.drop_time = "";
       this.school_name = "";
       this.image = "";
+      this.amount = "";
       // ... reset other fields ...
     },
 
@@ -378,6 +387,7 @@ export default {
         formData.append("drop_time", this.drop_time);
         formData.append("image", this.image);
         formData.append("zone_id", this.zone_id);
+        formData.append("amount", this.amount);
         axios
           .post(`studentUpdated/${this.studentId}`, formData)
           .then((response) => {
@@ -420,6 +430,7 @@ export default {
         formData.append("pickup_time", this.pickup_time);
         formData.append("drop_time", this.drop_time);
         formData.append("image", this.image);
+        formData.append("amount", this.amount);
         formData.append("parent_id", this.params || this.$route.params.id);
         axios
           .post("studentadd", formData)
@@ -547,6 +558,7 @@ export default {
         this.image = userData.image;
         this.studentId = userData.id
         this.vehicle_id = userData.vehicle_id
+        this.amount = userData.amount
 
         // ... Populate other fields accordingly
 

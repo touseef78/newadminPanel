@@ -50,6 +50,22 @@
                     <template #cell(personal_number)="row">
                         {{ `${row.item.security_code} ` }}
                     </template>
+                    <template #cell(expense_status)="row">
+      <b-button @click="togglePaymentStatus(row.item)"
+                :variant="getButtonVariant(row.item.expense_status)">
+        {{ row.item.expense_status }}
+      </b-button>
+      <b-modal v-model="showPaymentConfirmation" title="Change Payment Status Confirmation">
+        <p>Select the new payment status for the Expense:</p>
+        <b-form-group label="Payment Status" label-for="payment-status-select">
+          <b-form-select id="payment-status-select" v-model="newPaymentStatus" :options="statusOptions"></b-form-select>
+        </b-form-group>
+        <template #modal-footer>
+          <b-button variant="success" @click="confirmPaymentStatus">Confirm</b-button>
+          <b-button variant="secondary" @click="cancelPaymentStatus">Cancel</b-button>
+        </template>
+      </b-modal>
+    </template>
                     <template #cell(actions)="row">
                         <!-- <b-button @click="showDrivers(row.item.id)" variant="link" class="p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" style="
@@ -157,6 +173,7 @@ export default {
                 { key: "image", sortable: true },
                 { key: "amount", sortable: true },
                 { key: "type", sortable: true },
+                { key: "expense_status", sortable: true },
                 { key: "actions", label: "Actions" },
             ],
 
@@ -170,6 +187,14 @@ export default {
             end_date: null,
             image: "",
             image: null,
+            showPaymentConfirmation: false, // Control the visibility of the payment confirmation modal
+            userToChangePaymentStatus: null, // Store the user object whose payment status will be changed
+            newPaymentStatus: '',
+            statusOptions: [
+        { value: 'APPROVED', text: 'APPROVED' },
+        { value: 'Pending', text: 'Pending' },
+        { value: 'REJECTED', text: 'REJECTED' }
+      ]
 
         };
 
@@ -296,6 +321,50 @@ export default {
             return date.toLocaleDateString();
 
         },
+
+        togglePaymentStatus(user) {
+      this.userToChangePaymentStatus = user; // Store the user object
+      this.newPaymentStatus = user.expense_status; // Initialize the new payment status with the current status
+      this.showPaymentConfirmation = true; // Open the payment confirmation modal
+    },
+
+        confirmPaymentStatus() {
+      if (this.userToChangePaymentStatus) {
+        // Update the payment status
+        this.userToChangePaymentStatus.expense_status = this.newPaymentStatus;
+
+        // Call the API to update the payment status
+        axios.post(`expenseUpdate/${this.userToChangePaymentStatus.id}`, this.userToChangePaymentStatus)
+          .then(response => {
+            console.log('Payment status updated successfully:', response.data);
+          })
+          .catch(error => {
+            console.error('Error updating payment status:', error);
+          });
+
+        // Close the confirmation modal
+        this.showPaymentConfirmation = false;
+      }
+    },
+
+        cancelPaymentStatus() {
+      // Reset the user object and close the confirmation modal
+      this.userToChangePaymentStatus = null;
+      this.newPaymentStatus = '';
+      this.showPaymentConfirmation = false;
+    },
+    getButtonVariant(expense_status) {
+      switch(expense_status) {
+        case 'APPROVED':
+          return 'success';
+        case 'Pending':
+          return 'warning';
+        case 'REJECTED':
+          return 'dark';
+        default:
+          return 'secondary';
+      }
+    },
     },
 };
 </script>

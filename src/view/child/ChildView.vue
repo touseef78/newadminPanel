@@ -93,9 +93,14 @@
                             </div>
 
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Driver Name" label-for="driver_name">
-                                    <b-form-input id="driver_name" type="text" placeholder="Enter driver name"
-                                        v-model="driver_name" disabled></b-form-input>
+                                <b-form-group id="input-group-1" label="Reg No" label-for="driver_name">
+                                    <b-form-input id="vehicle_id" placeholder="Reg No" v-model="vehicle_id"
+                                        disabled>
+                                        <option value="">Reg No</option>
+                                        <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
+                                            {{ vehicle.reg_no }}
+                                        </option>
+                                    </b-form-input>
                                 </b-form-group>
                             </div>
 
@@ -119,9 +124,9 @@
                                 </b-form-group>
                             </div>
                             <div class="col-md-4 col-12">
-                                <b-form-group id="input-group-1" label="Payment Status" label-for="payment_status">
-                                    <b-form-input id="payment_status" type="text" placeholder="Enter payment status"
-                                        v-model="payment_status" disabled></b-form-input>
+                                <b-form-group id="input-group-1" label="Payment Status" label-for="payments_status">
+                                    <b-form-input id="payments_status" type="text" placeholder="Enter payment status"
+                                        v-model="payments_status" disabled></b-form-input>
                                 </b-form-group>
                             </div>
 
@@ -157,6 +162,7 @@ export default {
             selectedZone: null, // To store details of the selected zone
             vehicles: [],
             image: "",
+            amount: "",
             payment_status: "",
             pickup_location: "",
             drop_location: '',
@@ -185,9 +191,11 @@ export default {
                 this.drop_time = data.drop_time;
                 this.zone_id = data.zone_id;
                 this.vehicle_id = data.vehicle.name;
+                this.vehicle_id = data.vehicle.reg_no;
                 this.zone_id = data.zone.name;
                 this.image = data.image;
-                this.payment_status = data.payment_status;
+                this.amount = data.amount;
+                this.payments_status = data.payments_status;
                 this.pickup_location = data.vehicle.pickup_location;
                 this.drop_location = data.vehicle.drop_location;
             })

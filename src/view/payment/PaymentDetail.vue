@@ -46,7 +46,7 @@
                         {{ row.item.amount ? row.item.amount : 'N/A' }}
                     </template>
 
-                    <template #cell(payments_status)="row">
+                    <!-- <template #cell(payments_status)="row">
                         <b-button @click="togglePaymentStatus(row.item)"
                             :variant="row.item.payments_status === 'PAID' ? 'success' : 'danger'">
                             {{ row.item.payments_status === 'PAID' ? 'PAID' : 'UNPAID' }}
@@ -58,13 +58,37 @@
                                 <b-button variant="secondary" @click="cancelPaymentStatus">Cancel</b-button>
                             </template>
                         </b-modal>
-                    </template>
+                    </template> -->
+                    <template #cell(payments_status)="row">
+      <b-button @click="togglePaymentStatus(row.item)"
+                :variant="getButtonVariant(row.item.payments_status)">
+        {{ row.item.payments_status }}
+      </b-button>
+      <b-modal v-model="showPaymentConfirmation" title="Change Payment Status Confirmation">
+        <p>Select the new payment status for the Student:</p>
+        <b-form-group label="Payment Status" label-for="payment-status-select">
+          <b-form-select id="payment-status-select" v-model="newPaymentStatus" :options="statusOptions"></b-form-select>
+        </b-form-group>
+        <template #modal-footer>
+          <b-button variant="success" @click="confirmPaymentStatus">Confirm</b-button>
+          <b-button variant="secondary" @click="cancelPaymentStatus">Cancel</b-button>
+        </template>
+      </b-modal>
+    </template>
 
                     <!-- image  show code here  -->
-                    <template #cell(image)="row">
-                        <img :src="'https://backendbigways.singsavatech.com/' + row.item.image" alt="Picture"
-                            width="100" height="100" />
-                    </template>
+    <template #cell(payments_image)="row">
+      <div v-if="row.item.payments_image">
+        <img :src="'https://backendbigways.singsavatech.com/' + row.item.payments_image" alt="Picture"
+             width="100" height="100" 
+             @click="downloadImage(row.item.payments_image)" />
+      </div>
+      <div v-else>
+        <!-- You can replace this with a placeholder image if you prefer -->
+        <p>No Image</p>
+      </div>
+    </template>
+ 
                     <!-- end image code here  -->
                     <template #cell(personal_number)="row">
                         {{ `${row.item.security_code} ` }}
@@ -153,7 +177,8 @@ export default {
                 { key: "id", sortable: true },
                 { key: "student_name", sortable: true },
                 { key: "amount", sortable: true },
-                { key: "school_name", sortable: true },
+                // { key: "school_name", sortable: true },
+                { key: "payments_image", sortable: true },
                 { key: "payments_status", sortable: true },
                 // { key: "actions", label: "Actions" },
             ],
@@ -175,6 +200,12 @@ export default {
             total_students: '',
             amount: "",
             name: '',
+            statusOptions: [
+        { value: 'PAID', text: 'PAID' },
+        { value: 'UNPAID', text: 'UNPAID' },
+        { value: 'PENDING', text: 'PENDING' },
+        { value: 'REJECTED', text: 'REJECTED' }
+      ]
 
 
         };
@@ -266,7 +297,7 @@ export default {
         togglePaymentStatus(user) {
             user.payments_status = user.payments_status === 'PAID' ? 'UNPAID' : 'PAID';
             axios
-                .post(`updateReguest/${user.id}`, user)
+                .post(`studentUpdated/${user.id}`, user)
                 .then((response) => {
                     console.log('Status updated successfully:', response.data);
                 })
@@ -277,36 +308,59 @@ export default {
         },
 
         togglePaymentStatus(user) {
-            this.userToChangePaymentStatus = user; // Store the user object
-            this.newPaymentStatus = user.payments_status === 'PAID' ? 'UNPAID' : 'PAID'; // Determine the new payment status
-            this.showPaymentConfirmation = true; // Open the payment confirmation modal
-        },
+      this.userToChangePaymentStatus = user; // Store the user object
+      this.newPaymentStatus = user.payments_status; // Initialize the new payment status with the current status
+      this.showPaymentConfirmation = true; // Open the payment confirmation modal
+    },
 
-        confirmPaymentStatus() {
-            if (this.userToChangePaymentStatus) {
-                // Update the payment status
-                this.userToChangePaymentStatus.payments_status = this.newPaymentStatus;
+    confirmPaymentStatus() {
+      if (this.userToChangePaymentStatus) {
+        // Update the payment status
+        this.userToChangePaymentStatus.payments_status = this.newPaymentStatus;
 
-                // Call the API to update the payment status
-                axios.post(`updateReguest/${this.userToChangePaymentStatus.id}`, this.userToChangePaymentStatus)
-                    .then(response => {
-                        console.log('Payment status updated successfully:', response.data);
-                    })
-                    .catch(error => {
-                        console.error('Error updating payment status:', error);
-                    });
+        // Call the API to update the payment status
+        axios.post(`studentUpdated/${this.userToChangePaymentStatus.id}`, this.userToChangePaymentStatus)
+          .then(response => {
+            console.log('Payment status updated successfully:', response.data);
+          })
+          .catch(error => {
+            console.error('Error updating payment status:', error);
+          });
 
-                // Close the confirmation modal
-                this.showPaymentConfirmation = false;
-            }
-        },
+        // Close the confirmation modal
+        this.showPaymentConfirmation = false;
+      }
+    },
 
-        cancelPaymentStatus() {
-            // Reset the user object and close the confirmation modal
-            this.userToChangePaymentStatus = null;
-            this.newPaymentStatus = '';
-            this.showPaymentConfirmation = false;
-        },
+    cancelPaymentStatus() {
+      // Reset the user object and close the confirmation modal
+      this.userToChangePaymentStatus = null;
+      this.newPaymentStatus = '';
+      this.showPaymentConfirmation = false;
+    },
+    getButtonVariant(status) {
+      switch(status) {
+        case 'PAID':
+          return 'success';
+        case 'UNPAID':
+          return 'danger';
+        case 'PENDING':
+          return 'warning';
+        case 'REJECTED':
+          return 'dark';
+        default:
+          return 'secondary';
+      }
+    },
+    downloadImage(imageUrl) {
+      const link = document.createElement("a");
+      link.href = "https://backendbigways.singsavatech.com/" + imageUrl;
+      link.download = "image.jpg"; // You can set the desired filename here
+      link.target = "_blank"; // Open the link in a new tab
+      document.body.appendChild(link); // Append the link to the body
+      link.click(); // Simulate click
+      document.body.removeChild(link); // Remove the link from the body
+    },
 
     },
 };
